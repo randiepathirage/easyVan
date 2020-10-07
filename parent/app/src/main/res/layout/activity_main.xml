@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnNewsFeed"
+        android:layout_width="117dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="212dp"
+        android:background="@drawable/roundededge"
+        android:text="News Feed"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnLocation"
+        android:layout_width="117dp"
+        android:layout_height="119dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="212dp"
+        android:background="@drawable/roundededge"
+        android:text="location"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toEndOf="@+id/btnNewsFeed" />
+
+    <Button
+        android:id="@+id/btnCalendar"
+        android:layout_width="117dp"
+        android:layout_height="119dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/roundededge"
+        android:text="calendar"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnNewsFeed"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnNewsFeed" />
+
+    <Button
+        android:id="@+id/btnPayFees"
+        android:layout_width="117dp"
+        android:layout_height="119dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/roundededge"
+        android:text="pay fees"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnLocation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnLocation" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="176dp"
+        android:layout_height="193dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNewsFeed"
+        app:layout_constraintEnd_toEndOf="@+id/btnLocation"
+        app:layout_constraintStart_toStartOf="@+id/btnNewsFeed"
+        app:srcCompat="@drawable/logo1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
