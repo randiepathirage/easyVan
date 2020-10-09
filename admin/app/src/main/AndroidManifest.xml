@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ezvanadmin">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".newArticle"></activity>
+        <activity android:name=".Drivers" />
+        <activity android:name=".addnewOwner" />
+        <activity android:name=".addNewParent" />
+        <activity android:name=".newsfeed" />
+        <activity android:name=".schoolVans" />
+        <activity android:name=".Owners" />
+        <activity android:name=".Parents" />
+        <activity android:name=".driverDetails" />
+        <activity android:name=".School_Van_Details" />
+        <activity android:name=".reportGenerator" />
+        <activity android:name=".manage" />
+        <activity android:name=".verifyDrivers" />
+        <activity android:name=".verifySchoolVans" />
+        <activity android:name=".verify" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
