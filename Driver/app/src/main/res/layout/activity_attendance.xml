@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Attendance">
+
+    <TextView
+        android:id="@+id/txtdashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Attendance"
+        android:background="#F7931e"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TableRow
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="125dp"
+            android:backgroundTint="#ACE16F"
+            android:textStyle="bold"
+            android:text="Name"
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="125dp"
+            android:backgroundTint="#ACE16F"
+            android:textStyle="bold"
+            android:text="Mark Attendance"
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="198dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:layout_width="209dp"
+            android:layout_height="70dp"
+            android:text=""
+            android:textSize="18dp"
+            android:textColor="#000000"/>
+    </TableRow>
+
+</TableLayout>
