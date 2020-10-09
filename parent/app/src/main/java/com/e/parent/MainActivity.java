@@ -1,6 +1,7 @@
 package com.e.parent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),newsfeedfrag.class);
-                startActivity(intent);
-            }
+                button.setVisibility(View.GONE);
+        FragmentManager fm=getSupportFragmentManager();
+        newsfeedfrag fragment=new newsfeedfrag();
+        fm.beginTransaction().replace(R.id.main,fragment).commit();
+        }
         });
-    }
-}
+        }
+        }
