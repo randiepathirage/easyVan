@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btnMarkAttend"
         android:layout_width="163dp"
         android:layout_height="48dp"
         android:background="@drawable/roundededge"
