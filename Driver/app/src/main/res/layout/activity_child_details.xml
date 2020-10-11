@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChildDetails">
+    tools:context=".ChildDetails"
+    android:layout_gravity="center_horizontal">
 
     <TextView
         android:id="@+id/txtc_details"
@@ -23,11 +24,12 @@
 
     <EditText
         android:id="@+id/txtchildname"
-        android:layout_width="341dp"
-        android:layout_height="48dp"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Child name: "
+        android:background="@android:drawable/editbox_background"
+        android:hint="  Enter child name:"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
