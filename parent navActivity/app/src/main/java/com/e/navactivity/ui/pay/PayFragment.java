@@ -23,11 +23,11 @@ public class PayFragment extends Fragment {
         payViewModel =
                 ViewModelProviders.of(this).get(PayViewModel.class);
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        //final TextView textView = root.findViewById(R.id.text_home);
         payViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+               // textView.setText(s);
             }
         });
         return root;

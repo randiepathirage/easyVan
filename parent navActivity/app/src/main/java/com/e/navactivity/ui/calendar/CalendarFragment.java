@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.e.navactivity.Attendance;
 import com.e.navactivity.R;
-import com.e.navactivity.act2;
 
 public class CalendarFragment extends Fragment {
 
@@ -40,7 +40,7 @@ public class CalendarFragment extends Fragment {
         btnMarkAttend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),act2.class));
+                startActivity(new Intent(getActivity(), Attendance.class));
             }
         });
         return root;
