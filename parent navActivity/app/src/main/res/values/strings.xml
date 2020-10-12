@@ -1,9 +1,22 @@
 <resources>
-    <string name="app_name">navActivity</string>
+    <string name="app_name">EasyVan</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="description">van type:Nissan
+    number:NQ-2345
+    No of Seats:20
+    No of available seats:8
+    Owners name:Mr.abc
+    Drivers name:Mr.dff
+    Facilities:full A/C with out caretaker
+        Schools:sc1,sc2,sc3
+        location:placeAbc
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Child1</string>
+    <string name="title_activity_attendance">Attendance</string>
+    <string name="tab_text_1">child1</string>
+    <string name="tab_text_2">child2</string>
 </resources>

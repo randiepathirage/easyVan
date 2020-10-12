@@ -9,7 +9,6 @@ public class NewsFeedViewModel extends ViewModel {
 
     public NewsFeedViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is newsfeed fragment");
     }
 
     public LiveData<String> getText() {

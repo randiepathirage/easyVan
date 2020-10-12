@@ -33,4 +33,13 @@
         android:textColor="#fff"
         android:textStyle="bold"/>
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnMarkAttend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_calender" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
