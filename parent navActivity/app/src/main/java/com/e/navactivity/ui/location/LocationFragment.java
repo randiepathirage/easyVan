@@ -25,7 +25,6 @@ public class LocationFragment extends Fragment {
         locationViewModel =
                 ViewModelProviders.of(this).get(LocationViewModel.class);
         View root = inflater.inflate(R.layout.fragment_location, container, false);
-       // final TextView textView = root.findViewById(R.id.text_location);
         locationViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
