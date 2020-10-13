@@ -2,12 +2,13 @@ package com.example.driver;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,11 +16,16 @@ public class ChildDetails extends AppCompatActivity {
 
     Button ok;
     BottomNavigationView bottom_nav;
+    Toolbar top_bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_details);
+
+        top_bar = findViewById(R.id.top_toolbar);
+        setSupportActionBar(top_bar);
+
 
         ok = findViewById(R.id.btnok);
         ok.setOnClickListener(new View.OnClickListener() {
@@ -67,5 +73,32 @@ public class ChildDetails extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu,menu);
+        return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.top_notification:
+                /*notification open*/
+                return true;
+            case R.id.top_profile:
+                /*profile open*/
+                return true;
+            case R.id.top_calendar:
+                Intent i = new Intent(getApplicationContext(),Calendar.class);
+                startActivity(i);
+                return true;
+            case R.id.top_expense:
+                Intent j = new Intent(getApplicationContext(),Expense.class);
+                startActivity(j);
+                return true;
+        }
+        return false;
     }
 }

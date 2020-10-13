@@ -6,20 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Payment">
 
-    <TextView
-        android:id="@+id/txtdashboard"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Payment"
         android:background="#F7931e"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:title="Payment"
+        app:titleTextColor="#FFFFFF"
+        app:menu="@menu/top_menu" />
 
     <TableRow
         android:id="@+id/textView3"
@@ -189,6 +187,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
         android:background="#F7931e"
         app:menu="@menu/menu_navigation"
         app:itemIconTint="@drawable/selector"

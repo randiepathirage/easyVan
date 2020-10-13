@@ -8,33 +8,30 @@
     android:gravity="center_horizontal"
     tools:context=".Route">
 
-    <TextView
-        android:id="@+id/txtdashboard"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Route"
         android:background="#F7931e"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:title="Route"
+        app:titleTextColor="#FFFFFF"
+        app:menu="@menu/top_menu" />
 
     <EditText
         android:id="@+id/et_source"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:background="@android:drawable/editbox_background"
         android:hint="Curent location"
         android:padding="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdashboard" />
+        app:layout_constraintTop_toBottomOf="@+id/top_toolbar" />
 
     <EditText
         android:id="@+id/et_destination"
@@ -53,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="@drawable/round_button"
         android:text="Go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
