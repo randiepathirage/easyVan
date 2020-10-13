@@ -1,20 +1,25 @@
 package com.example.driver;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class Route extends AppCompatActivity {
 
     EditText etSource,etDestination;
     Button go;
+    BottomNavigationView bottom_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,44 @@ public class Route extends AppCompatActivity {
                 }else{
                     DisplayTrack(sSource,sDestination);
                 }
+            }
+        });
+
+        bottom_nav = findViewById(R.id.bottom_navigation);
+        bottom_nav.setSelectedItemId(R.id.nav_route);
+
+        bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_c_details:
+                        Intent i = new Intent(getApplicationContext(),ChildDetails.class);
+                        startActivity(i);
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_attendance:
+                        Intent j = new Intent(getApplicationContext(),Attendance.class);
+                        startActivity(j);
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_alert:
+                        Intent k = new Intent(getApplicationContext(),Alert.class);
+                        startActivity(k);
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_route:
+                        return true;
+
+                    case R.id.nav_payment:
+                        Intent m = new Intent(getApplicationContext(),Payment.class);
+                        startActivity(m);
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
             }
         });
     }

@@ -184,22 +184,14 @@
             android:text=""
             android:textSize="18dp"/>
     </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F7931e"
+        app:menu="@menu/menu_navigation"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"/>
 
 </TableLayout>
