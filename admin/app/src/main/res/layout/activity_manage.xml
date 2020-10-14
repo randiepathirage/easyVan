@@ -7,78 +7,69 @@
     tools:context=".manage">
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/btnDri"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="290dp"
         android:background="@drawable/custom_button"
         android:text="Drivers"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnPar"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/custom_button"
         android:text="Parents"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnOwn"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="170dp"
         android:background="@drawable/custom_button"
         android:text="Owners"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnSvan"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="410dp"
         android:background="@drawable/custom_button"
         android:text="School Vans"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar5"
-        android:layout_width="424dp"
-        android:layout_height="66dp"
-        android:background="@color/orr"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:text="Manage"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar5"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="413dp"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/orr"
+        android:itemBackground="@color/orr"
+        app:itemIconTint="@color/design_default_color_background"
+        app:itemTextColor="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
+        app:menu="@menu/menu_navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

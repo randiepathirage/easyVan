@@ -10,5 +10,6 @@ public class addNewParent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_parent);
+        getSupportActionBar().setTitle("Add New Parent");
     }
 }

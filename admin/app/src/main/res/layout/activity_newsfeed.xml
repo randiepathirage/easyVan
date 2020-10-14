@@ -7,38 +7,31 @@
     tools:context=".newsfeed">
 
     <Button
-        android:id="@+id/button14"
-        android:layout_width="205dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="80dp"
+        android:id="@+id/btnNew"
+        android:layout_width="170dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/custom_button"
         android:text="New"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar11"
-        android:layout_width="424dp"
-        android:layout_height="66dp"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="413dp"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
         android:background="@color/orr"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:itemBackground="@color/orr"
+        app:itemIconTint="@color/design_default_color_background"
+        app:itemTextColor="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/menu_navigation" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Newsfeed"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar11"
-        app:layout_constraintStart_toStartOf="@+id/toolbar11"
-        app:layout_constraintTop_toTopOf="@+id/toolbar11" />
 </androidx.constraintlayout.widget.ConstraintLayout>
