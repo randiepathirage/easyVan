@@ -94,6 +94,14 @@
 
 
 
+
+
+
+
+
+
+        getSupportActionBar().setTitle("Vans");
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </ScrollView>

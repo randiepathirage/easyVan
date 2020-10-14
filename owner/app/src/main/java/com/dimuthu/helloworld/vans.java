@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class drivers extends AppCompatActivity {
+public class vans extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drivers);
-        getSupportActionBar().setTitle("Driver");
+        setContentView(R.layout.activity_vans);
+
+        getSupportActionBar().setTitle("Van");
     }
 }

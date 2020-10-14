@@ -55,6 +55,13 @@ public class Manage extends AppCompatActivity {
                 startActivity(mang);
 
             }});
+        vanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent vn = new Intent(Manage.this,vans.class);
+                startActivity(vn);
+
+            }});
 
 
 
