@@ -10,5 +10,6 @@ public class verifyDrivers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_drivers);
+        getSupportActionBar().setTitle("Verify Drivers");
     }
 }

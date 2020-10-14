@@ -10,5 +10,6 @@ public class verifySchoolVans extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_school_vans);
+        getSupportActionBar().setTitle("Verify School Vans");
     }
 }

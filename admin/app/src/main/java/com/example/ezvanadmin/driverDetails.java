@@ -10,5 +10,6 @@ public class driverDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_details);
+        getSupportActionBar().setTitle("Driver Details");
     }
 }
