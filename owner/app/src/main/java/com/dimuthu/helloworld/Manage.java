@@ -84,5 +84,7 @@ public class Manage extends AppCompatActivity {
                 return false;
             }
         });
+
+        getSupportActionBar().setTitle("Manage");
     }
 }

@@ -1,9 +1,12 @@
 package com.dimuthu.helloworld;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,7 +14,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     Button manage1 , report1 ,expenses1 , calender1, request1 , location1 ;
+    private Menu menu;
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,notification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,request.class));
+                return true;
+        }
+        return true;
+    }
 
 
     @Override
@@ -77,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        getSupportActionBar().setTitle("Home");
 
 
     }

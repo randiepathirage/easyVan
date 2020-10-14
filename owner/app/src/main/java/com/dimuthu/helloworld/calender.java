@@ -81,5 +81,6 @@ public class calender extends AppCompatActivity {
                 return false;
             }
         });
+        getSupportActionBar().setTitle("Calender");
     }
 }

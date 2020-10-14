@@ -79,5 +79,6 @@ public class location extends AppCompatActivity {
                 return false;
             }
         });
+        getSupportActionBar().setTitle("Location");
     }
 }

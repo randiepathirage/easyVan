@@ -81,5 +81,6 @@ public class Expenses extends AppCompatActivity {
                 return false;
             }
         });
+        getSupportActionBar().setTitle("Expenses");
     }
 }

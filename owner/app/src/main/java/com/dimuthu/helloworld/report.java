@@ -81,5 +81,6 @@ public class report extends AppCompatActivity {
                 return false;
             }
         });
+        getSupportActionBar().setTitle("Report");
     }
 }
