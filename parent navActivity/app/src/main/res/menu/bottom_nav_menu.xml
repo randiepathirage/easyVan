@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/navigation_newsfeed"
-        android:icon="@drawable/ic_newsfeed"
-        android:title="News Feed" />
+        android:title="News Feed"
+        android:icon="@drawable/ic_newsfeed" />
 
     <item
         android:id="@+id/navigation_Pay"
-        android:icon="@drawable/ic_payment_black_24dp"
-        android:title="Pay" />
+        android:title="Pay"
+        android:icon="@drawable/ic_payment_black_24dp" />
 
     <item
         android:id="@+id/navigation_location"

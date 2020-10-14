@@ -2,7 +2,6 @@ package com.e.navactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.e.navactivity.ui.location.LocationFragment;
-import com.e.navactivity.ui.newsfeed.NewsfeedFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,20 +20,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnNewsFeed =findViewById(R.id.btnNewsFeed);
-        btnLocation=findViewById(R.id.btnLocation);
-
         btnNewsFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, Parent.class);
+                Intent intent=new Intent(getApplicationContext(),NewsfeedFragment.class);
                 startActivity(intent);
             }
         });
 
+        btnLocation=findViewById(R.id.btnLocation);
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, Parent.class);
+                Intent intent=new Intent(getApplicationContext(),LocationFragment.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCalendar=findViewById(R.id.btnCalendar);
+        btnCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),CalendarFragment.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPay=findViewById(R.id.btnPayFees);
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),PayFragment.class);
                 startActivity(intent);
             }
         });

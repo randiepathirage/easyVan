@@ -1,48 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".NewsfeedFragment">
 
-    <SearchView
-        android:layout_width="300dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="Enter school"
-        android:iconifiedByDefault="true"
-        android:queryHint="Enter school"
         android:gravity="center"
-        android:background="#EAEDED"
-        android:paddingBottom="10dp"/>
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <SearchView
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:autofillHints="Enter school"
+            android:background="#EAEDED"
+            android:gravity="center"
+            android:iconifiedByDefault="true"
+            android:paddingBottom="10dp"
+            android:queryHint="Enter school" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/van1"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:src="@drawable/van1" />
 
                         <TextView
                             android:id="@+id/textView1"
@@ -50,96 +60,113 @@
                             android:layout_height="wrap_content"
                             android:text="@string/description"
                             android:textSize="14dp" />
-                </LinearLayout>
+                    </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
-                <Button
-                    android:id="@+id/btnCall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundededge"
-                    android:text="Call"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp" />
-
-                <Button
-                    android:id="@+id/btnRequest"
-                    android:layout_width="129dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="208dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/roundededge"
-                    android:text="Request"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </LinearLayout>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                    <ImageView
+                    <Button
+                        android:id="@+id/btnCall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/van2"
-                        android:layout_gravity="center"/>
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/roundededge"
+                        android:text="Call"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/btnRequest"
+                        android:layout_width="129dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/description"
-                        android:textSize="14dp"
+                        android:layout_marginEnd="208dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/roundededge"
+                        android:text="Request"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="20dp" />
-
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
-                <Button
-                    android:id="@+id/btnCall2"
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/van1" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/description"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_editor_absoluteX="20dp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/roundededge"
-                    android:text="Call"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"/>
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                <Button
-                    android:id="@+id/btnRequest2"
-                    android:layout_width="129dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="208dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/roundededge"
-                    android:text="Request"
-                    android:textColor="#fff"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/btnCall2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/roundededge"
+                        android:text="Call"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnRequest2"
+                        android:layout_width="129dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="208dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/roundededge"
+                        android:text="Request"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F7931e"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>
