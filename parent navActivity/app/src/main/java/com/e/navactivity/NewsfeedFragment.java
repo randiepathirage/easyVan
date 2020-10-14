@@ -19,6 +19,7 @@ public class NewsfeedFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_news_feed);
+        getSupportActionBar().setTitle("News Feed");
 
         btnRequest=findViewById(R.id.btnRequest);
         btnRequest.setOnClickListener(new View.OnClickListener() {
