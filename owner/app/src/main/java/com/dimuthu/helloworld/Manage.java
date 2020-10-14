@@ -7,12 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Manage extends AppCompatActivity {
 
     private Menu menu;
+    Button driverBtn, vanBtn;
 
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
@@ -39,6 +42,22 @@ public class Manage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage);
+
+        /*Van and Driver Button*/
+
+        driverBtn = findViewById(R.id.driverBt);
+        vanBtn = findViewById(R.id.vanBt);
+
+        driverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mang = new Intent(Manage.this,drivers.class);
+                startActivity(mang);
+
+            }});
+
+
+
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
 
