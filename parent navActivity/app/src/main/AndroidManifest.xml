@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LocationFragment"></activity>
+        <activity android:name=".CalendarFragment" />
+        <activity android:name=".NewsfeedFragment" />
+        <activity android:name=".PayFragment" />
         <activity android:name=".Account" />
         <activity android:name=".Details" />
         <activity android:name=".Edit" />

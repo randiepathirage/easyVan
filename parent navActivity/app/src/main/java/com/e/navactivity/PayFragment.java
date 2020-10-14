@@ -17,6 +17,7 @@ public class PayFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_pay);
+        getSupportActionBar().setTitle("Pay fees");
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_Pay);

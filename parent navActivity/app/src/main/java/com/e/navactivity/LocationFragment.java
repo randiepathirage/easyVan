@@ -17,6 +17,7 @@ public class LocationFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_location);
+        getSupportActionBar().setTitle("Location");
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_location);

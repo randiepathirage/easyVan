@@ -19,6 +19,7 @@ public class CalendarFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_calendar);
+        getSupportActionBar().setTitle("Calendar");
 
         btnMarkAttend=findViewById(R.id.btnMarkAttend);
         btnMarkAttend.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +32,7 @@ public class CalendarFragment extends AppCompatActivity {
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_calendar);
+
 
         bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

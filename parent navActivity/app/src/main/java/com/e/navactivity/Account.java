@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Account extends AppCompatActivity {
 
-    Button btnMore,btnEdit;
+   Button btnMore,btnEdit;
 
 
     @Override
