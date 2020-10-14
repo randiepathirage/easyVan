@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BottomNavigationDemo"></activity>
+        <activity android:name=".appbar"></activity>
+        <activity android:name=".BottomNavigationDemo" />
         <activity android:name=".request" />
         <activity android:name=".calender" />
         <activity android:name=".Expenses" />
