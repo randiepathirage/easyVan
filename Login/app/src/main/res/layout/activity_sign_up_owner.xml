@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,79 +21,152 @@
         app:titleTextColor="#000000"
         app:title="Signup-owner"/>
 
-    <EditText
-        android:id="@+id/txtset_user_name"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:drawable/editbox_background"
-        android:ems="10"
-        android:hint="  user name"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
 
-    <EditText
-        android:id="@+id/txtset_password"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:ems="10"
-        android:hint="  password"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtset_user_name" />
+        <LinearLayout
+            android:id="@+id/l_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/txtsetcomfirm_p"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:ems="10"
-        android:hint="  comfirm password"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtset_password" />
+            <EditText
+                android:id="@+id/txt_firstname"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="18dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  first name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
 
-    <EditText
-        android:id="@+id/txtset_email"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:ems="10"
-        android:hint="  email"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtsetcomfirm_p" />
+            <EditText
+                android:id="@+id/txtset_middlename"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  middle name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
 
-    <EditText
-        android:id="@+id/txtset_nic"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:ems="10"
-        android:hint="  nic number"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtset_email" />
+            <EditText
+                android:id="@+id/txt_lastname"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  last name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/txt_nic"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  NIC number"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_username"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  user name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txtset_password"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  password"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_address"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  address"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_contactnumber"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  contact number"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txtset_email"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  email address"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_location"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  location"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_userrole"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  user role"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
