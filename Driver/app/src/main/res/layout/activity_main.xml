@@ -11,28 +11,27 @@
         android:id="@+id/imageView2"
         android:layout_width="164dp"
         android:layout_height="157dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/logo2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintTop_toBottomOf="@+id/top_toolbar"
+        app:layout_constraintVertical_bias="0.047" />
 
-    <TextView
-        android:id="@+id/txtdashboard"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text=" Dashboard"
+        android:layout_height="wrap_content"
         android:background="#F7931e"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:menu="@menu/top_menu"
+        app:title="Dashboard"
+        app:titleTextColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnc_details"
@@ -40,20 +39,20 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@android:dimen/app_icon_size"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/round_button"
         android:text="child details"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/btncalendar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="44dp"
         android:background="@drawable/round_button"
         android:text="calendar"
@@ -62,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/btnc_details"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/btnexpanses"

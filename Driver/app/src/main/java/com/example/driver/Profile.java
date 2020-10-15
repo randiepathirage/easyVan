@@ -2,17 +2,16 @@ package com.example.driver;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.appcompat.widget.Toolbar;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Attendance extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
     Toolbar top_bar;
@@ -20,13 +19,12 @@ public class Attendance extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendance);
+        setContentView(R.layout.activity_profile);
 
         top_bar = findViewById(R.id.top_toolbar);
         setSupportActionBar(top_bar);
 
         bottom_nav = findViewById(R.id.bottom_navigation);
-        bottom_nav.setSelectedItemId(R.id.nav_attendance);
 
         bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -39,6 +37,9 @@ public class Attendance extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_attendance:
+                        Intent n = new Intent(getApplicationContext(),Attendance.class);
+                        startActivity(n);
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_alert:
@@ -62,6 +63,7 @@ public class Attendance extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     @Override

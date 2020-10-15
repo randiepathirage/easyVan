@@ -89,7 +89,8 @@ public class Expense extends AppCompatActivity {
                 /*notification open*/
                 return true;
             case R.id.top_profile:
-                /*profile open*/
+                Intent k = new Intent(getApplicationContext(),Profile.class);
+                startActivity(k);
                 return true;
             case R.id.top_calendar:
                 Intent i = new Intent(getApplicationContext(),Calendar.class);
