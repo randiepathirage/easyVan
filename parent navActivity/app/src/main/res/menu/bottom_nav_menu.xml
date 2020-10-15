@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_newsfeed"
+        android:title="News Feed"
+        android:icon="@drawable/ic_newsfeed" />
+
+    <item
+        android:id="@+id/navigation_Pay"
+        android:title="Pay"
+        android:icon="@drawable/ic_payment_black_24dp" />
+
+    <item
+        android:id="@+id/navigation_location"
+        android:icon="@drawable/ic_location_on_black_24dp"
+        android:title="Location" />
+
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_date_range_black_24dp"
+        android:title="Calendar" />
+</menu>

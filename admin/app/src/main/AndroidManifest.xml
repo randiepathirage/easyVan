@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".notification"></activity>
-        <activity android:name=".account" />
+        <activity android:name=".account"></activity>
         <activity android:name=".newArticle" />
         <activity android:name=".Drivers" />
         <activity android:name=".addnewOwner" />
