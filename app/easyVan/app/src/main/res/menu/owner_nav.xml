@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/manage"
+        android:title="Manage"
+        android:icon="@drawable/ic_receipt"/>
+
+
+    <item
+        android:id="@+id/report"
+        android:title="Report"
+        android:icon="@drawable/ic_report"/>
+
+
+    <item
+        android:id="@+id/expenses"
+        android:title="Expenses"
+        android:icon="@drawable/ic_attach_money"/>
+    <item
+        android:id="@+id/calender"
+        android:title="Callender"
+        android:icon="@drawable/ic_calendar"/>
+
+    <item
+        android:id="@+id/location"
+        android:title="Location"
+        android:icon="@drawable/ic_location" />
+
+
+
+</menu>

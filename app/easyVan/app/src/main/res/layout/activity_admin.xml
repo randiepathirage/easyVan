@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnVer"
+        android:layout_width="131dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/roundededge"
+        android:text="Verify"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="230dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/btnMng"
+        android:layout_width="131dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/roundededge"
+        android:text="Manage"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btnGen"
+        android:layout_width="131dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/roundededge"
+        android:text="Generate Reports"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnNws"
+        android:layout_width="131dp"
+        android:layout_height="128dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/roundededge"
+        android:text="Newsfeed"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,13 +17,13 @@
 
     <item
         android:id="@+id/top_profile"
-        android:title="Expense"
+        android:title="Account"
         android:icon="@drawable/ic_account"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/top_notification"
-        android:title="Expense"
+        android:title="Notification"
         android:icon="@drawable/ic_notifications"
         app:showAsAction="always"/>
 </menu>

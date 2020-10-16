@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1,btn2;
+    Button btn1,btn2,btn3,btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(getApplicationContext(),Driver.class);
+                startActivity(i);
+            }
+        });
+
+        btn=findViewById(R.id.button1);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),Owner.class);
+                startActivity(i);
+            }
+        });
+
+        btn3=findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),Admin.class);
                 startActivity(i);
             }
         });

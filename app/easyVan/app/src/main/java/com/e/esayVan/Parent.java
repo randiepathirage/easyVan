@@ -18,6 +18,7 @@ public class Parent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent);
+        getSupportActionBar().setTitle("Home");
 
         btnNewsFeed =findViewById(R.id.btnNewsFeed);
         btnNewsFeed.setOnClickListener(new View.OnClickListener() {

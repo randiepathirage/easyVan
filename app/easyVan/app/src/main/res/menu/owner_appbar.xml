@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/ic_notifications"
+        app:showAsAction="always"
+        android:title="Notification" />
+
+    <item
+        android:id="@+id/reqest"
+        android:icon="@drawable/ic_markunrea"
+        app:showAsAction="always"
+        android:title="Request" />
+
+    <item
+        android:id="@+id/top_profile"
+        android:title="Account"
+        android:icon="@drawable/ic_account"
+        app:showAsAction="always"/>
+
+</menu>
