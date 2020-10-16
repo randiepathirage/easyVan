@@ -18,7 +18,7 @@ public class Driver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
-        getSupportActionBar().setTitle("Driver");
+        getSupportActionBar().setTitle("Home");
 
         child_details = findViewById(R.id.btnc_details);
         child_details.setOnClickListener(new View.OnClickListener() {
