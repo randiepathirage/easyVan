@@ -21,6 +21,28 @@ public class OwnerManage extends AppCompatActivity {
 
     private Menu menu;
     Button driverBtn, vanBtn;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,OwnerRequest.class));
+                return true;
+
+            case R.id.account:
+                startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
