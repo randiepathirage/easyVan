@@ -15,6 +15,7 @@
         <activity android:name=".SignUpOwner" />
         <activity android:name=".SelectUser" />
         <activity android:name=".Login" />
+        <activity android:name=".OwnerReport"></activity>
         <activity android:name=".AdminNewArticle" />
         <activity android:name=".AdminVerifyDrivers" />
         <activity android:name=".AdminVerifySchoolVans" />
@@ -31,7 +32,6 @@
         <activity android:name=".Admin" />
         <activity android:name=".OwnerLocation" />
         <activity android:name=".OwnerCalendar" />
-        <activity android:name=".OwnerReport" />
         <activity android:name=".OwnerExpenses" />
         <activity android:name=".OwnerVans" />
         <activity android:name=".OwnerDrivers" />
