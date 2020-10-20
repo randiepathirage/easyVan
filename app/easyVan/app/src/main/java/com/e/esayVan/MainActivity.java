@@ -1,53 +1,49 @@
 package com.e.esayVan;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-    Button btn1,btn2,btn3,btn;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class MainActivity extends AppCompatActivity {
+    Button btnRequest,login,signup;;
+    BottomNavigationView bottom_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("News Feed");
 
-        btn1=findViewById(R.id.button);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btnRequest=findViewById(R.id.btnRequest);
+        btnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),Parent.class);
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ParentRequest.class);
                 startActivity(i);
             }
         });
 
-        btn2=findViewById(R.id.button2);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        login = findViewById(R.id.btnLogin);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),Driver.class);
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Login.class);
                 startActivity(i);
             }
         });
 
-        btn=findViewById(R.id.button1);
-        btn.setOnClickListener(new View.OnClickListener() {
+        signup = findViewById(R.id.btnSignUp);
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),Owner.class);
-                startActivity(i);
-            }
-        });
-
-        btn3=findViewById(R.id.button3);
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),Admin.class);
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),SelectUser.class);
                 startActivity(i);
             }
         });
