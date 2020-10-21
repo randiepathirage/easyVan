@@ -10,16 +10,15 @@
         android:id="@+id/spinexpense"
         android:layout_width="305dp"
         android:layout_height="72dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtselect" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtselect"
         android:layout_width="140dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="204dp"
         android:text="Select expense:"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -27,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_toolbar"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button"

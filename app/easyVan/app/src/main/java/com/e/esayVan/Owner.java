@@ -17,7 +17,6 @@ public class Owner extends AppCompatActivity {
     private Menu menu;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +71,6 @@ public class Owner extends AppCompatActivity {
                 Intent lc = new Intent(Owner.this,OwnerLocation.class);
                 startActivity(lc);
 
-            }
-        });
-
-  
-
-                return false;
             }
         });
         getSupportActionBar().setTitle("Home");
