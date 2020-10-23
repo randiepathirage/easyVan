@@ -10,18 +10,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.e.esayVan.OwnerNotification;
+import com.e.esayVan.OwnerRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Owner extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     Button manage1 , report1 ,expenses1 , calender1, request1 , location1 ;
     private Menu menu;
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this, OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this, OwnerRequest.class));
+                return true;
+        }
+        return true;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner);
+        setContentView(R.layout.activity_main);
 
 
         manage1=findViewById(R.id.manage);
@@ -36,7 +57,7 @@ public class Owner extends AppCompatActivity {
         manage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mang = new Intent(Owner.this,OwnerManage.class);
+                Intent mang = new Intent(MainActivity.this,OwnerManage.class);
                 startActivity(mang);
 
             }
@@ -44,15 +65,15 @@ public class Owner extends AppCompatActivity {
         report1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rpt = new Intent(Owner.this,OwnerReport.class);
+                Intent rpt = new Intent(MainActivity.this,OwnerReport.class);
                 startActivity(rpt);
 
             }
         });
-       expenses1.setOnClickListener(new View.OnClickListener() {
+        expenses1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rpt = new Intent(Owner.this,OwnerExpenses.class);
+                Intent rpt = new Intent(MainActivity.this,OwnerExpenses.class);
                 startActivity(rpt);
 
             }
@@ -60,24 +81,25 @@ public class Owner extends AppCompatActivity {
         calender1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent clc = new Intent(Owner.this,OwnerCalendar.class);
+                Intent clc = new Intent(MainActivity.this,OwnerCalendar.class);
                 startActivity(clc);
 
             }
         });
-
-        location1.setOnClickListener(new View.OnClickListener() {
+        request1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent lc = new Intent(Owner.this,OwnerLocation.class);
-                startActivity(lc);
+                Intent rq = new Intent(MainActivity.this,OwnerRequest.class);
+                startActivity(rq);
 
             }
         });
+        location1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lc = new Intent(MainActivity.this,OwnerLocation.class);
+                startActivity(lc);
 
-  
-
-                return false;
             }
         });
         getSupportActionBar().setTitle("Home");
