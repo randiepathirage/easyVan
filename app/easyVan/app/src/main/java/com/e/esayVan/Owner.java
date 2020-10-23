@@ -14,7 +14,7 @@ import com.e.esayVan.OwnerNotification;
 import com.e.esayVan.OwnerRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class Owner extends AppCompatActivity {
     Button manage1 , report1 ,expenses1 , calender1, request1 , location1 ;
     private Menu menu;
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         manage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mang = new Intent(MainActivity.this,OwnerManage.class);
+                Intent mang = new Intent(Owner.this,OwnerManage.class);
                 startActivity(mang);
 
             }
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         report1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rpt = new Intent(MainActivity.this,OwnerReport.class);
+                Intent rpt = new Intent(Owner.this,OwnerReport.class);
                 startActivity(rpt);
 
             }
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         expenses1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rpt = new Intent(MainActivity.this,OwnerExpenses.class);
+                Intent rpt = new Intent(Owner.this,OwnerExpenses.class);
                 startActivity(rpt);
 
             }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         calender1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent clc = new Intent(MainActivity.this,OwnerCalendar.class);
+                Intent clc = new Intent(Owner.this,OwnerCalendar.class);
                 startActivity(clc);
 
             }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         request1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rq = new Intent(MainActivity.this,OwnerRequest.class);
+                Intent rq = new Intent(Owner.this,OwnerRequest.class);
                 startActivity(rq);
 
             }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         location1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent lc = new Intent(MainActivity.this,OwnerLocation.class);
+                Intent lc = new Intent(Owner.this,OwnerLocation.class);
                 startActivity(lc);
 
             }
