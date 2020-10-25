@@ -10,38 +10,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.e.esayVan.OwnerNotification;
-import com.e.esayVan.OwnerRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Owner extends AppCompatActivity {
     Button manage1 , report1 ,expenses1 , calender1, request1 , location1 ;
     private Menu menu;
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
-        getMenuInflater().inflate(R.menu.owner_appbar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.notification:
-                startActivity(new Intent(this, OwnerNotification.class));
-                return true;
-
-            case R.id.reqest:
-                startActivity(new Intent(this, OwnerRequest.class));
-                return true;
-        }
-        return true;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_owner);
 
 
         manage1=findViewById(R.id.manage);
@@ -85,14 +64,7 @@ public class Owner extends AppCompatActivity {
 
             }
         });
-        request1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent rq = new Intent(Owner.this,OwnerRequest.class);
-                startActivity(rq);
 
-            }
-        });
         location1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
