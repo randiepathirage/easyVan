@@ -10,8 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".DriverProfile"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".AddNewUser"></activity>
+        <activity android:name=".DriverProfile" />
         <activity android:name=".SignUpDriver" />
         <activity android:name=".SignUpParent" />
         <activity android:name=".SignUpOwner" />
@@ -21,8 +23,6 @@
         <activity android:name=".AdminNewArticle" />
         <activity android:name=".AdminVerifyDrivers" />
         <activity android:name=".AdminVerifySchoolVans" />
-        <activity android:name=".AdminAddnewOwner" />
-        <activity android:name=".AdminAddNewParent" />
         <activity android:name=".AdminSchoolVans" />
         <activity android:name=".AdminDrivers" />
         <activity android:name=".AdminOwners" />

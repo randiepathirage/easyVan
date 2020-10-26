@@ -20,7 +20,7 @@ public class AdminParents extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addIntent = new Intent(AdminParents.this,AdminAddNewParent.class);
+                Intent addIntent = new Intent(AdminParents.this,AddNewUser.class);
                 startActivity(addIntent);
             }
         });
