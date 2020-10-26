@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpDriver"
+    android:layout_gravity="center_horizontal">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F7931e"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="#FFFFFF"
+        app:title="Signup-driver"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
+
+        <LinearLayout
+            android:id="@+id/l_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txt_firstname"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="18dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  first name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txtset_middlename"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  middle name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_lastname"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  last name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_nic"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  NIC number"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_username"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  user name"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txtset_password"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  password"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_address"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  address"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_contactnumber"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  contact number"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txtset_email"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  email address"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_licencenumber"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  licence number"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/txt_userrole"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="  user role"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
