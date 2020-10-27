@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/et_lname"
         android:layout_width="140dp"
         android:layout_height="51dp"
         android:layout_marginTop="10dp"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/et_nic"
         android:layout_width="140dp"
         android:layout_height="51dp"
         android:layout_marginTop="80dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/et_contact"
         android:layout_width="140dp"
         android:layout_height="51dp"
         android:layout_marginTop="150dp"

@@ -28,12 +28,34 @@
                 tools:layout_editor_absoluteY="5dp">
 
                 <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="580dp"
+                    android:text="Role"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="370dp"
-                    android:text="Role"
+                    android:layout_marginTop="510dp"
+                    android:text="Password"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="440dp"
+                    android:text="Username"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +64,7 @@
                     android:id="@+id/button15"
                     android:layout_width="100dp"
                     android:layout_height="46dp"
-                    android:layout_marginBottom="140dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/roundededge"
                     android:text="Save"
                     android:textColor="@color/design_default_color_background"
@@ -50,10 +72,23 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:onClick="onReg"/>
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName5"
+                    android:id="@+id/et_lname"
+                    android:layout_width="140dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_fname"
                     android:layout_width="140dp"
                     android:layout_height="51dp"
                     android:layout_marginTop="10dp"
@@ -65,18 +100,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName6"
-                    android:layout_width="140dp"
-                    android:layout_height="51dp"
-                    android:layout_marginTop="80dp"
-                    android:layout_marginEnd="60dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName7"
+                    android:id="@+id/et_nic"
                     android:layout_width="140dp"
                     android:layout_height="51dp"
                     android:layout_marginTop="150dp"
@@ -87,7 +111,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName8"
+                    android:id="@+id/et_contact"
                     android:layout_width="140dp"
                     android:layout_height="51dp"
                     android:layout_marginTop="220dp"
@@ -98,10 +122,43 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName"
+                    android:id="@+id/et_email"
                     android:layout_width="140dp"
                     android:layout_height="51dp"
                     android:layout_marginTop="290dp"
+                    android:layout_marginEnd="60dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="140dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="430dp"
+                    android:layout_marginEnd="60dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="140dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="360dp"
+                    android:layout_marginEnd="60dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="140dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="500dp"
                     android:layout_marginEnd="60dp"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -114,7 +171,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="20dp"
-                    android:text="Name"
+                    android:text="First Name"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="90dp"
+                    android:text="Last Name"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -124,7 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="160dp"
+                    android:layout_marginTop="230dp"
                     android:text="Contact Number"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -135,8 +203,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="90dp"
-                    android:text="ID"
+                    android:layout_marginTop="160dp"
+                    android:text="NIC no"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -146,8 +214,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="300dp"
-                    android:text="Location"
+                    android:layout_marginTop="370dp"
+                    android:text="Address"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -157,7 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginTop="300dp"
                     android:text="E-mail"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +235,7 @@
                     android:id="@+id/spinner4"
                     android:layout_width="210dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="360dp"
+                    android:layout_marginTop="580dp"
                     android:layout_marginEnd="40dp"
                     android:entries="@array/roles"
                     android:spinnerMode="dropdown"

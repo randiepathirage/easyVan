@@ -1,82 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.e.esayVan">
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+        <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+                <activity android:name=".SignUpDriver" />
+                <activity android:name=".SignUpParent" />
+                <activity android:name=".SignUpOwner" />
+                <activity android:name=".SelectUser" />
+                <activity android:name=".Login" />
+                <activity android:name=".OwnerReport"></activity>
+                <activity android:name=".AdminNewArticle" />
+                <activity android:name=".AdminVerifyDrivers" />
+                <activity android:name=".AdminVerifySchoolVans" />
+                <activity android:name=".AddNewUser" />
+                <activity android:name=".AdminSchoolVans" />
+                <activity android:name=".AdminDrivers" />
+                <activity android:name=".AdminOwners" />
+                <activity android:name=".AdminParents" />
+                <activity android:name=".AdminNewsfeed" />
+                <activity android:name=".AdminReportGenerator" />
+                <activity android:name=".AdminManage" />
+                <activity android:name=".AdminVerify" />
+                <activity android:name=".Admin" />
+                <activity android:name=".OwnerLocation" />
+                <activity android:name=".OwnerCalendar" />
+                <activity android:name=".OwnerExpenses" />
+                <activity android:name=".OwnerVans" />
+                <activity android:name=".OwnerDrivers" />
+                <activity android:name=".OwnerManage" />
+                <activity android:name=".OwnerAccount" />
+                <activity android:name=".OwnerRequest" />
+                <activity android:name=".OwnerNotification" />
+                <activity android:name=".Owner" />
+                <activity android:name=".DriverPayment" />
+                <activity android:name=".DriverRoute" />
+                <activity android:name=".DriverAttendance" />
+                <activity android:name=".DriverViewChildDetails" />
+                <activity android:name=".DriverChildDetails" />
+                <activity android:name=".DriverExpense" />
+                <activity android:name=".DriverCalendar" />
+                <activity android:name=".DriverAlert" />
+                <activity android:name=".Driver" />
+                <activity android:name=".Parent" />
+                <activity android:name=".ParentLocationFragment" />
+                <activity android:name=".ParentCalendarFragment" />
+                <activity android:name=".ParentNewsfeedFragment" />
+                <activity android:name=".ParentPayFragment" />
+                <activity android:name=".ParentAccount" />
+                <activity android:name=".ParentDetails" />
+                <activity android:name=".ParentEdit" />
+                <activity android:name=".ParentNotification" />
+                <activity android:name=".ParentAttendance" />
+                <activity android:name=".ParentRequest" />
+                <activity
+                    android:name=".MainActivity"
+                    android:label="@string/app_name">
+                        <intent-filter>
+                                <action android:name="android.intent.action.MAIN" />
 
-    <application
-        android:usesCleartextTraffic="true"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-<<<<<<< HEAD
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".AddNewUser"></activity>
-=======
-        android:theme="@style/AppTheme">
-        <activity android:name=".sample"></activity>
->>>>>>> 1724e3ac3d2d75d7d95420496b54d6dd0fbc19d0
-        <activity android:name=".DriverProfile" />
-        <activity android:name=".SignUpDriver" />
-        <activity android:name=".SignUpParent" />
-        <activity android:name=".SignUpOwner" />
-        <activity android:name=".SelectUser" />
-        <activity android:name=".Login" />
-        <activity android:name=".OwnerReport" />
-        <activity android:name=".AdminNewArticle" />
-        <activity android:name=".AdminVerifyDrivers" />
-        <activity android:name=".AdminVerifySchoolVans" />
-        <activity android:name=".AdminSchoolVans" />
-        <activity android:name=".AdminDrivers" />
-        <activity android:name=".AdminOwners" />
-        <activity android:name=".AdminParents" />
-        <activity android:name=".AdminNewsfeed" />
-        <activity android:name=".AdminReportGenerator" />
-        <activity android:name=".AdminManage" />
-        <activity android:name=".AdminVerify" />
-        <activity android:name=".Admin" />
-        <activity android:name=".OwnerLocation" />
-        <activity android:name=".OwnerCalendar" />
-        <activity android:name=".OwnerExpenses" />
-        <activity android:name=".OwnerVans" />
-        <activity android:name=".OwnerDrivers" />
-        <activity android:name=".OwnerManage" />
-        <activity android:name=".OwnerAccount" />
-        <activity android:name=".OwnerRequest" />
-        <activity android:name=".OwnerNotification" />
-        <activity android:name=".Owner" />
-        <activity android:name=".DriverPayment" />
-        <activity android:name=".DriverRoute" />
-        <activity android:name=".DriverAttendance" />
-        <activity android:name=".DriverViewChildDetails" />
-        <activity android:name=".DriverChildDetails" />
-        <activity android:name=".DriverExpense" />
-        <activity android:name=".DriverCalendar" />
-        <activity android:name=".DriverAlert" />
-        <activity android:name=".Driver" />
-        <activity android:name=".Parent" />
-        <activity android:name=".ParentLocationFragment" />
-        <activity android:name=".ParentCalendarFragment" />
-        <activity android:name=".ParentNewsfeedFragment" />
-        <activity android:name=".ParentPayFragment" />
-        <activity android:name=".ParentAccount" />
-        <activity android:name=".ParentDetails" />
-        <activity android:name=".ParentEdit" />
-        <activity android:name=".ParentNotification" />
-        <activity android:name=".ParentAttendance" />
-        <activity android:name=".ParentRequest" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+                                <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
+                </activity>
+        </application>
 
 </manifest>

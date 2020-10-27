@@ -16,7 +16,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.security.acl.Owner;
 
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
@@ -44,7 +43,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream=httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
                         +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
 
                 bufferedWriter.write(post_data);
@@ -82,24 +81,36 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
 
-        if (result.equals("Login Success driver")){
-            alertDialog.setMessage("Login Success");
+        /*
+        if (result.equals("Login Fail")){
+            alertDialog.setMessage("Login Fail");
             alertDialog.show();
-            Intent i  = new Intent(context,Driver.class);
-            context.startActivity(i);
         }
 
-        if (result.equals("Login Success owner")){
-            alertDialog.setMessage("Login Success");
+        if (result.equals("Insert Successful")){
+            alertDialog.setMessage(result);
             alertDialog.show();
+        }*/
+        alertDialog.setMessage(result);
+        alertDialog.show();
+        if (result.equals("Login Success owner")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
             Intent i  = new Intent(context, Owner.class);
             context.startActivity(i);
         }
 
-        if (result.equals("Login Success Driver")){
-            alertDialog.setMessage("Login Success");
-            alertDialog.show();
+        if (result.equals("Login Success driver")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
             Intent i  = new Intent(context,Driver.class);
+            context.startActivity(i);
+        }
+
+        if (result.equals("Login Success parent")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context,Admin.class);
             context.startActivity(i);
         }
     }
