@@ -48,7 +48,7 @@ public class Owner extends AppCompatActivity {
 
             }
         });
-       expenses1.setOnClickListener(new View.OnClickListener() {
+        expenses1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent rpt = new Intent(Owner.this,OwnerExpenses.class);

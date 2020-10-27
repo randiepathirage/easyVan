@@ -1,24 +1,14 @@
 <?php
  require  "conn.php";
-//  if ($_SERVER['REQUEST_METHOD']=='POST'){
-//         $name=$_POST['name'];
-//         $add=$_POST['address'];
-//         $email=$_POST['email'];
-//         $user=$_POST['username'];
-//         $pass=$_POST['password'];
-//         $query="INSERT INTO `androidreg`(`name`, `address`, `email`, `username`, `password`) VALUES ('$name','$add','$email','$user','$pass')";
 
-//         if(mysqli_query($conn,$query)){
-//             echo 'Successfully registerd';
-//         }else{
-//             echo 'Error in registration';
-//         }
 
-//     }else{
-        
-//         printf("\n");
-//         echo "\n"."error in request method"; 
-//     }
+         if(mysqli_query($conn,$query)){
+             echo 'Successfully registerd';
+         }
+		 else{
+             echo 'Error in registration';         
+			 }
+
 
  $user_name=$_POST["username"];
  $user_pass=$_POST["password"];
