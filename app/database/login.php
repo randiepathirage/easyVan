@@ -1,15 +1,6 @@
 <?php
  require  "conn.php";
 
-
-         if(mysqli_query($conn,$query)){
-             echo 'Successfully registerd';
-         }
-		 else{
-             echo 'Error in registration';         
-			 }
-
-
  $user_name=$_POST["username"];
  $user_pass=$_POST["password"];
 
