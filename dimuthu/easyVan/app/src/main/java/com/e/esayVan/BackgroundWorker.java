@@ -29,8 +29,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://10.0.2.2/easyvan/login.php";
-        String register_url = "http://10.0.2.2/easyvan/register.php";
+        String login_url = "http://192.168.1.4/easyvan/login.php";
+        String register_url = "http://192.168.1.4/easyvan/register.php";
         if(type.equals("login")){
             try {
 
@@ -44,7 +44,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream=httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
                         +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
 
                 bufferedWriter.write(post_data);
@@ -134,21 +134,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     
     @Override
     protected void onPostExecute(String result) {
-
-        if (result.equals("Login Success driver")){
-            alertDialog.setMessage("Login Success");
-            alertDialog.show();
-            Intent i  = new Intent(context,Driver.class);
-            context.startActivity(i);
-        }
-
-        if (result.equals("Login Success owner")){
-            alertDialog.setMessage("Login Success");
-            alertDialog.show();
-            Intent i  = new Intent(context,Owner.class);
-            context.startActivity(i);
-        }
-
+        /*
         if (result.equals("Login Fail")){
             alertDialog.setMessage("Login Fail");
             alertDialog.show();
@@ -157,7 +143,30 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if (result.equals("Insert Successful")){
             alertDialog.setMessage(result);
             alertDialog.show();
+        }*/
+        alertDialog.setMessage(result);
+        alertDialog.show();
+        if (result.equals("Login Success owner")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context,Owner.class);
+            context.startActivity(i);
         }
+
+        if (result.equals("Login Success driver")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context,Driver.class);
+            context.startActivity(i);
+        }
+
+        if (result.equals("Login Success parent")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context,Parent.class);
+            context.startActivity(i);
+        }
+
     }
 
     @Override

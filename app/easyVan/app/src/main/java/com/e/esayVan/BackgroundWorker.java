@@ -29,8 +29,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://10.0.2.2/easyvan/login.php";
-        String register_url = "http://10.0.2.2/easyvan/register.php";
+        String login_url = "http://10.0.2.2/esayvan/login.php";
         if(type.equals("login")){
             try {
 
@@ -44,63 +43,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream=httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
                         +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
-
-                bufferedWriter.write(post_data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-                InputStream inputStream=httpURLConnection.getInputStream();
-                BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String result="";
-                String line="";
-                while((line=bufferedReader.readLine())!=null){
-                    result+=line;
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-
-                return result;
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else if(type.equals("register")){
-            try {
-                String firstName = params[1];
-                String middleName = params[2];
-                String lastName = params[3];
-                String NICNo = params[4];
-                String username = params[5];
-                String password = params[6];
-                String address = params[7];
-                String contactNo = params[8];
-                String email = params[9];
-                String userRole=params[10];
-
-                URL url = new URL(register_url);
-                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream=httpURLConnection.getOutputStream();
-
-                BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String post_data =
-                         URLEncoder.encode("firstName","UTF-8")+"="+URLEncoder.encode(firstName,"UTF-8")+"&"
-                        +URLEncoder.encode("middleName","UTF-8")+"="+URLEncoder.encode(middleName,"UTF-8")+"&"
-                        +URLEncoder.encode("lastName","UTF-8")+"="+URLEncoder.encode(lastName,"UTF-8")+"&"
-                        +URLEncoder.encode("NICNo","UTF-8")+"="+URLEncoder.encode(NICNo,"UTF-8")+"&"
-                        +URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
-                        +URLEncoder.encode("address","UTF-8")+"="+URLEncoder.encode(address,"UTF-8")+"&"
-                        +URLEncoder.encode("contactNo","UTF-8")+"="+URLEncoder.encode(contactNo,"UTF-8")+"&"
-                                 +URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"
-                        +URLEncoder.encode("userRole","UTF-8")+"="+URLEncoder.encode(userRole,"UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -137,27 +81,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
 
-        if (result.equals("Login Success driver")){
-            alertDialog.setMessage("Login Success");
-            alertDialog.show();
-            Intent i  = new Intent(context,Driver.class);
-            context.startActivity(i);
-        }
-
-        if (result.equals("Login Success owner")){
-            alertDialog.setMessage("Login Success");
-            alertDialog.show();
-            Intent i  = new Intent(context,Owner.class);
-            context.startActivity(i);
-        }
-
-        if (result.equals("Login Success parent")){
-            alertDialog.setMessage("Login Success");
-            alertDialog.show();
-            Intent i  = new Intent(context,Parent.class);
-            context.startActivity(i);
-        }
-
+        /*
         if (result.equals("Login Fail")){
             alertDialog.setMessage("Login Fail");
             alertDialog.show();
@@ -166,7 +90,27 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if (result.equals("Insert Successful")){
             alertDialog.setMessage(result);
             alertDialog.show();
-            Intent i  = new Intent(context,Login.class);
+        }*/
+        alertDialog.setMessage(result);
+        alertDialog.show();
+        if (result.equals("Login Success owner")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context, Owner.class);
+            context.startActivity(i);
+        }
+
+        if (result.equals("Login Success driver")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context,Driver.class);
+            context.startActivity(i);
+        }
+
+        if (result.equals("Login Success parent")){
+            //alertDialog.setMessage("Login Success");
+            //alertDialog.show();
+            Intent i  = new Intent(context,Admin.class);
             context.startActivity(i);
         }
     }

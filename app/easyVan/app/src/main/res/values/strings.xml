@@ -13,9 +13,10 @@
         Schools:sc1,sc2,sc3
         location:placeAbc
     </string>
-    <string name="invalid_name">Please enter valid name</string>
-    <string name="invalid_password">Enter 6 digit password</string>
-    <string name="invalid_confirm_password">Password does not match</string>
 
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Child1</string>
+    <string name="title_activity_attendance">Attendance</string>
+    <string name="tab_text_1">child1</string>
+    <string name="tab_text_2">child2</string>
 </resources>
