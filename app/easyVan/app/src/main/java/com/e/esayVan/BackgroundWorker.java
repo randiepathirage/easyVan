@@ -151,6 +151,13 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             context.startActivity(i);
         }
 
+        if (result.equals("Login Success parent")){
+            alertDialog.setMessage("Login Success");
+            alertDialog.show();
+            Intent i  = new Intent(context,Parent.class);
+            context.startActivity(i);
+        }
+
         if (result.equals("Login Fail")){
             alertDialog.setMessage("Login Fail");
             alertDialog.show();
@@ -159,6 +166,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if (result.equals("Insert Successful")){
             alertDialog.setMessage(result);
             alertDialog.show();
+            Intent i  = new Intent(context,Login.class);
+            context.startActivity(i);
         }
     }
 

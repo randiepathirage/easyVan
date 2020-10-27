@@ -6,16 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 public class SignUpParent extends AppCompatActivity {
-    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,userRole;
+    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email;
+    RadioGroup radioGroup;
+    RadioButton radioParent,radioOwner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_parent);
-        getSupportActionBar().setTitle("Sign Up-parent");
+        getSupportActionBar().setTitle("Sign Up");
 
         firstName=(EditText)findViewById(R.id.txt_firstname);
         middleName=(EditText)findViewById(R.id.txtset_middlename);
@@ -26,11 +31,21 @@ public class SignUpParent extends AppCompatActivity {
         address=(EditText)findViewById(R.id.txt_address);
         contactNo=(EditText)findViewById(R.id.txt_contactnumber);
         email=(EditText)findViewById(R.id.txtset_email);
-        userRole=(EditText)findViewById(R.id.txtset_user_role);
 
+        radioParent=(RadioButton)findViewById(R.id.radioParent);
+        radioOwner=(RadioButton)findViewById(R.id.radioOwner);
+        radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
 }
-
     public void onReg(View view){
+
+        String user_role;
+        if(radioParent.isChecked()){
+            user_role="parent";
+        } else{
+            user_role="driver";
+        }
+
+
         String Str_firstName= username.getText().toString();
         String str_middleName= middleName.getText().toString();
         String str_lastName= lastName.getText().toString();
@@ -40,7 +55,7 @@ public class SignUpParent extends AppCompatActivity {
         String str_address= address.getText().toString();
         String str_contactNo= contactNo.getText().toString();
         String str_email=email.getText().toString();
-        String user_role=userRole.getText().toString();
+
         String type = "register";
 
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
