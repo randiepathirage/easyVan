@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),SelectUser.class);
+                Intent i = new Intent(getApplicationContext(),SignUpParent.class);
                 startActivity(i);
             }
         });
+        //TODO remove select user
 
     }
 }

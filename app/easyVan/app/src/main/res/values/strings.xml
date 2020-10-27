@@ -14,9 +14,14 @@
         location:placeAbc
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Child1</string>
-    <string name="title_activity_attendance">Attendance</string>
-    <string name="tab_text_1">child1</string>
-    <string name="tab_text_2">child2</string>
+        <string-array name="planets_array">
+            <item>Mercury</item>
+            <item>Venus</item>
+            <item>Earth</item>
+            <item>Mars</item>
+            <item>Jupiter</item>
+            <item>Saturn</item>
+            <item>Uranus</item>
+            <item>Neptune</item>
+        </string-array>
 </resources>
