@@ -3,6 +3,7 @@ package com.e.esayVan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.service.autofill.RegexValidator;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -10,10 +11,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+
 public class SignUpParent extends AppCompatActivity {
-    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email;
+    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword;
     RadioGroup radioGroup;
     RadioButton radioParent,radioOwner;
+    AwesomeValidation awesomeValidation;
 
 
     @Override
@@ -22,19 +28,39 @@ public class SignUpParent extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_parent);
         getSupportActionBar().setTitle("Sign Up");
 
-        firstName=(EditText)findViewById(R.id.txt_firstname);
-        middleName=(EditText)findViewById(R.id.txtset_middlename);
-        lastName=(EditText)findViewById(R.id.txt_lastname);
-        NICNo=(EditText)findViewById(R.id.txt_nic);
-        username=(EditText)findViewById(R.id.txt_username);
-        password=(EditText)findViewById(R.id.txtset_password);
-        address=(EditText)findViewById(R.id.txt_address);
-        contactNo=(EditText)findViewById(R.id.txt_contactnumber);
-        email=(EditText)findViewById(R.id.txtset_email);
+        firstName=(EditText)findViewById(R.id.edtFirstname);
+        middleName=(EditText)findViewById(R.id.edtMiddlename);
+        lastName=(EditText)findViewById(R.id.edtLastname);
+        NICNo=(EditText)findViewById(R.id.edtNic);
+        username=(EditText)findViewById(R.id.edtUsername);
+        password=(EditText)findViewById(R.id.edtPassword);
+        confirmPassword=(EditText)findViewById(R.id.edtConfirmPassword);
+        address=(EditText)findViewById(R.id.edtAddress);
+        contactNo=(EditText)findViewById(R.id.edtContactNumber);
+        email=(EditText)findViewById(R.id.edtEmail);
+
 
         radioParent=(RadioButton)findViewById(R.id.radioParent);
         radioOwner=(RadioButton)findViewById(R.id.radioOwner);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+
+        //validation
+       /* awesomeValidation=new AwesomeValidation(ValidationStyle.BASIC);
+
+        awesomeValidation.addValidation(this,R.id.edtFirstname,
+                RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+
+        awesomeValidation.addValidation(this,R.id.edtMiddlename,
+                RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+
+        awesomeValidation.addValidation(this,R.id.edtLastname,
+                RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+
+        awesomeValidation.addValidation(this,R.id.edtPassword,
+                ".{6,}",R.string.invalid_password);
+
+        awesomeValidation.addValidation(this,R.id.edtConfirmPassword,
+                R.id.edtPassword,R.string.invalid_confirm_password);*/
 }
     public void onReg(View view){
 
@@ -42,7 +68,7 @@ public class SignUpParent extends AppCompatActivity {
         if(radioParent.isChecked()){
             user_role="parent";
         } else{
-            user_role="driver";
+            user_role="owner";
         }
 
 
