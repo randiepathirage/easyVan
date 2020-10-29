@@ -16,7 +16,7 @@ public class ParentPayFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_pay);
+        setContentView(R.layout.activity_parent_pay);
         getSupportActionBar().setTitle("Pay fees");
 
         bottom_nav = findViewById(R.id.bottom_navigation);

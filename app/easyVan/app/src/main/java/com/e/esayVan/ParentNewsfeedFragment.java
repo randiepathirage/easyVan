@@ -18,7 +18,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_news_feed);
+        setContentView(R.layout.activity_parent_news_feed);
         getSupportActionBar().setTitle("News Feed");
 
         btnRequest=findViewById(R.id.btnRequest);

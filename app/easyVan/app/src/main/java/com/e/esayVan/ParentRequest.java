@@ -9,7 +9,7 @@ public class ParentRequest extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.request);
+        setContentView(R.layout.activity_parent_request);
         getSupportActionBar().setTitle("Request");
     }
 }
