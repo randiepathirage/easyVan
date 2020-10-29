@@ -13,6 +13,8 @@
  $email=$_POST['email'];
  $user_role=$_POST['userRole'];
 
+ //$password=base64_encode($password);
+
  $parent=0;
  $driver=0;
  $owner=0;
@@ -24,7 +26,8 @@
  }else if($user_role=="owner"){
     $owner=1;
  }
- /*$user_firstname="name";
+ /*
+ $user_firstname="name";
  $user_middlename="middleName";
  $user_lastname="lastName";
  $nic_no="NICNo";
@@ -34,7 +37,7 @@
  $contact_no=2345678;
  $email="email";*/
 
-$query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username',' $password',' $email')";
+$query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username','$password',' $email')";
 
 $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,middle_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$user_middlename','$address')";
 
