@@ -24,7 +24,6 @@ public class SignUp extends AppCompatActivity {
         getSupportActionBar().setTitle("Sign Up");
 
         firstName=(EditText)findViewById(R.id.edtFirstname);
-        middleName=(EditText)findViewById(R.id.edtMiddlename);
         lastName=(EditText)findViewById(R.id.edtLastname);
         NICNo=(EditText)findViewById(R.id.edtNic);
         username=(EditText)findViewById(R.id.edtUsername);
@@ -57,6 +56,10 @@ public class SignUp extends AppCompatActivity {
         awesomeValidation.addValidation(this,R.id.edtConfirmPassword,
                 R.id.edtPassword,R.string.invalid_confirm_password);*/
 }
+
+    private void validateFirstName(){
+
+    }
     public void onReg(View view){
 
         String user_role;
@@ -67,8 +70,7 @@ public class SignUp extends AppCompatActivity {
         }
 
 
-        String Str_firstName= username.getText().toString();
-        String str_middleName= middleName.getText().toString();
+        String Str_firstName= firstName.getText().toString();
         String str_lastName= lastName.getText().toString();
         String str_NICNo= NICNo.getText().toString();
         String str_username= username.getText().toString();
@@ -80,7 +82,7 @@ public class SignUp extends AppCompatActivity {
         String type = "register";
 
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
-        backgroundWorker.execute(type,Str_firstName,str_middleName,
+        backgroundWorker.execute(type,Str_firstName,
                 str_lastName,str_NICNo,str_username,str_password,str_address,
                 str_contactNo,str_email,user_role);
     }
