@@ -18,7 +18,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_calendar);
+        setContentView(R.layout.activity_parent_calendar);
         getSupportActionBar().setTitle("Calendar");
 
         btnMarkAttend=findViewById(R.id.btnMarkAttend);

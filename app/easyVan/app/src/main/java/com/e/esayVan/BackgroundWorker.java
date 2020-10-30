@@ -72,15 +72,14 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         }else if(type.equals("register")){
             try {
                 String firstName = params[1];
-                String middleName = params[2];
-                String lastName = params[3];
-                String NICNo = params[4];
-                String username = params[5];
-                String password = params[6];
-                String address = params[7];
-                String contactNo = params[8];
-                String email = params[9];
-                String userRole=params[10];
+                String lastName = params[2];
+                String NICNo = params[3];
+                String username = params[4];
+                String password = params[5];
+                String address = params[6];
+                String contactNo = params[7];
+                String email = params[8];
+                String userRole=params[9];
 
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -92,7 +91,6 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String post_data =
                          URLEncoder.encode("firstName","UTF-8")+"="+URLEncoder.encode(firstName,"UTF-8")+"&"
-                        +URLEncoder.encode("middleName","UTF-8")+"="+URLEncoder.encode(middleName,"UTF-8")+"&"
                         +URLEncoder.encode("lastName","UTF-8")+"="+URLEncoder.encode(lastName,"UTF-8")+"&"
                         +URLEncoder.encode("NICNo","UTF-8")+"="+URLEncoder.encode(NICNo,"UTF-8")+"&"
                         +URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"

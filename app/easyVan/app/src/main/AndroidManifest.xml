@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Admin_ParentList"></activity>
+=======
+>>>>>>> 1f1e444ac638af507e4ff9a9a5691578a68ba765
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".OwnerReport" />
