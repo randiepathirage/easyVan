@@ -151,7 +151,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if (result.equals("Login Success parent")){
             alertDialog.setMessage("Login Success");
             alertDialog.show();
-            Intent i  = new Intent(context,Parent.class);
+            Intent i  = new Intent(context,Admin.class);
             context.startActivity(i);
         }
 
