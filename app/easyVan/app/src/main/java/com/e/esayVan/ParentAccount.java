@@ -15,7 +15,7 @@ public class ParentAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_parent_account);
         getSupportActionBar().setTitle("Account");
 
         btnMore=(Button)findViewById(R.id.btnMore);
