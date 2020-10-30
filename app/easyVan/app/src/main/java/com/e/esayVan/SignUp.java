@@ -3,19 +3,14 @@ package com.e.esayVan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.service.autofill.RegexValidator;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
-import com.basgeekball.awesomevalidation.ValidationStyle;
-import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
-public class SignUpParent extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
     EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword;
     RadioGroup radioGroup;
     RadioButton radioParent,radioOwner;
@@ -25,7 +20,7 @@ public class SignUpParent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_parent);
+        setContentView(R.layout.activity_sign_up);
         getSupportActionBar().setTitle("Sign Up");
 
         firstName=(EditText)findViewById(R.id.edtFirstname);

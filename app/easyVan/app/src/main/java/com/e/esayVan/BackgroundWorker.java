@@ -95,8 +95,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                         +URLEncoder.encode("middleName","UTF-8")+"="+URLEncoder.encode(middleName,"UTF-8")+"&"
                         +URLEncoder.encode("lastName","UTF-8")+"="+URLEncoder.encode(lastName,"UTF-8")+"&"
                         +URLEncoder.encode("NICNo","UTF-8")+"="+URLEncoder.encode(NICNo,"UTF-8")+"&"
-                        +URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
+                        +URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
                         +URLEncoder.encode("address","UTF-8")+"="+URLEncoder.encode(address,"UTF-8")+"&"
                         +URLEncoder.encode("contactNo","UTF-8")+"="+URLEncoder.encode(contactNo,"UTF-8")+"&"
                                  +URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"
@@ -154,7 +153,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if (result.equals("Login Success parent")){
             alertDialog.setMessage("Login Success");
             alertDialog.show();
-            Intent i  = new Intent(context,Parent.class);
+            Intent i  = new Intent(context,Admin.class);
             context.startActivity(i);
         }
 

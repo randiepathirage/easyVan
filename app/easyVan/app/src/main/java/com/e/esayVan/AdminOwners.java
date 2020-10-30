@@ -20,7 +20,7 @@ public class AdminOwners extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addIntent = new Intent(AdminOwners.this,AdminAddnewOwner.class);
+                Intent addIntent = new Intent(AdminOwners.this,SignUp.class);
                 startActivity(addIntent);
             }
         });
