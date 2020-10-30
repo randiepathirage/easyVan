@@ -10,14 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class CustomListView extends ArrayAdapter<String>{
+public class Admin_CustomListView extends ArrayAdapter<String>{
 
     private String[] pname;
     private Activity context;
     Bitmap bitmap;
 
-    public CustomListView(Activity context,String[] pname) {
-        super(context, R.layout.layout,pname);
+    public Admin_CustomListView(Activity context, String[] pname) {
+        super(context, R.layout.admin_layout,pname);
         this.context=context;
         this.pname=pname;
     }
@@ -29,7 +29,7 @@ public class CustomListView extends ArrayAdapter<String>{
         ViewHolder viewHolder=null;
         if(r==null){
             LayoutInflater layoutInflater=context.getLayoutInflater();
-            r=layoutInflater.inflate(R.layout.layout,null,true);
+            r=layoutInflater.inflate(R.layout.admin_layout,null,true);
             viewHolder=new ViewHolder(r);
             r.setTag(viewHolder);
         }
