@@ -191,7 +191,7 @@ public class SignUp extends AppCompatActivity {
             confirmPassword.setError("This field cannot be empty");
             return false;
         }
-        else if(val_confirmPassword!=val_password){
+        else if(!val_confirmPassword.equals(val_password)){
             confirmPassword.setError("Password doesn't match");
             return false;
         }
