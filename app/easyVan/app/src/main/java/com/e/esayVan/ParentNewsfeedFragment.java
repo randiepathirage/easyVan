@@ -35,6 +35,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
     VansAdapter adapter;
     //the recyclerview
     RecyclerView recyclerView;
+    BottomNavigationView bottom_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,40 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
             vehicleList = new ArrayList<>();
 
             loadVehicles();
+
+
+
+        bottom_nav = findViewById(R.id.bottom_navigation);
+        bottom_nav.setSelectedItemId(R.id.navigation_newsfeed);
+
+        bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.navigation_newsfeed:
+                        return true;
+
+                    case R.id.navigation_location:
+                        Intent i = new Intent(getApplicationContext(), ParentLocationFragment.class);
+                        startActivity(i);
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.navigation_calendar:
+                        Intent k = new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                        startActivity(k);
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.navigation_Pay:
+                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        startActivity(l);
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         }
 
@@ -97,4 +132,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
             Volley.newRequestQueue(this).add(stringRequest);
         }
+
+
+
 }
