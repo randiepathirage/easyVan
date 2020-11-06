@@ -29,7 +29,7 @@ public class VansAdapter extends RecyclerView.Adapter<com.e.esayVan.VansAdapter.
         public com.e.esayVan.VansAdapter.VansViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             //inflating and returning our view holder
             LayoutInflater inflater = LayoutInflater.from(mCtx);
-            View view = inflater.inflate(R.layout.layout, null);
+            View view = inflater.inflate(R.layout.parent_layout, null);
             return new com.e.esayVan.VansAdapter.VansViewHolder(view);
         }
 
