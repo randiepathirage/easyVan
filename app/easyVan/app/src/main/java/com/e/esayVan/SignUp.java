@@ -1,14 +1,12 @@
 package com.e.esayVan;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.basgeekball.awesomevalidation.AwesomeValidation;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUp extends AppCompatActivity {
     EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword;
@@ -40,22 +38,17 @@ public class SignUp extends AppCompatActivity {
 
         //validation
        /* awesomeValidation=new AwesomeValidation(ValidationStyle.BASIC);
-
         awesomeValidation.addValidation(this,R.id.edtFirstname,
                 RegexTemplate.NOT_EMPTY,R.string.invalid_name);
-
         awesomeValidation.addValidation(this,R.id.edtMiddlename,
                 RegexTemplate.NOT_EMPTY,R.string.invalid_name);
-
         awesomeValidation.addValidation(this,R.id.edtLastname,
                 RegexTemplate.NOT_EMPTY,R.string.invalid_name);
-
         awesomeValidation.addValidation(this,R.id.edtPassword,
                 ".{6,}",R.string.invalid_password);
-
         awesomeValidation.addValidation(this,R.id.edtConfirmPassword,
                 R.id.edtPassword,R.string.invalid_confirm_password);*/
-}
+    }
 
     private Boolean validateName(){
         String val_firstName= firstName.getText().toString();
@@ -85,7 +78,6 @@ public class SignUp extends AppCompatActivity {
 
   /*  private Boolean validateNIC(){
         String str_NICNo= NICNo.getText().toString();
-
         if(val_firstName.isEmpty() & val_lastName.isEmpty()){
             firstName.setError("This field cannot be empty");
             lastName.setError("This field cannot be empty");

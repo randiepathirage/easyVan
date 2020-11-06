@@ -40,4 +40,5 @@ public class OwnerDrivers extends AppCompatActivity {
         setContentView(R.layout.activity_owner_drivers);
         getSupportActionBar().setTitle("Driver");
     }
+    
 }
