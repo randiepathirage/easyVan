@@ -3,9 +3,13 @@ package com.e.esayVan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.concurrent.ExecutionException;
 
 public class Login extends AppCompatActivity {
 
@@ -28,7 +32,14 @@ public class Login extends AppCompatActivity {
 
 
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
-        backgroundWorker.execute(type,username,password);
-
+        try {
+            String a=backgroundWorker.execute(type,username,password).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+
+    }
 }

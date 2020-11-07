@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ParentNewsfeedFragment extends AppCompatActivity {
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/crud.php";
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
     //a list to store all the vehicles
     List<Vans> vehicleList;
