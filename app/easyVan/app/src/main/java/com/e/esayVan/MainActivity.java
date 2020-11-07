@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     Button btnRequest,login,signup;;
-    BottomNavigationView bottom_nav;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,5 +47,22 @@ public class MainActivity extends AppCompatActivity {
         });
         //TODO remove select user
 
+    }
+
+    protected void onStart() {
+        super.onStart();
+
+        //check if user is logged in
+        //if user is logged in --> move to home
+
+        SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
+        String username = sessionManagement.getSession();
+
+        if(username != null){
+            //user id logged in and so move to home
+            Intent intent = new Intent(MainActivity.this,Parent.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 }
