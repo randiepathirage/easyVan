@@ -23,76 +23,68 @@ import java.util.List;
 
 public class OwnerDrivers extends AppCompatActivity {
 
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
 
-        String PRODUCT_URL = "http://10.0.2.2/easyvan/Api.php";
-        //a list to store all the products
-        List<OwnerDriversProduct> productList;
-        //the recyclerview
-        RecyclerView recyclerView;
+    //a list to store all the vehicles
+    List<OwnerDriversProduct> DriverList;
+    OwnerDriverProductAdapter adapter;
+    //the recyclerview
+    RecyclerView recyclerView;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_owner_drivers);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_owner_drivers);
 
-            //getting the recyclerview from xml
-            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-            //initializing the productlist
-            productList = new ArrayList<>();
+        //getting the recyclerview from xml
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-            loadProduct();
 
-            //creating recyclerview adapter
-            OwnerDriverProductAdapter adapter = new OwnerDriverProductAdapter(this, productList);
+        //initializing the vehiclelist
+        DriverList = new ArrayList<>();
 
-            //setting adapter to recyclerview
-            recyclerView.setAdapter( adapter);
+       loadVehicles();
+    }
+    private void loadVehicles() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray array=new JSONArray(response);
 
-        }
-        private void loadProduct(){
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, PRODUCT_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                //converting the string to json array object
-                                JSONArray array=new JSONArray(response);
+                            for(int i=0;i<array.length();i++){
+                                JSONObject products=array.getJSONObject(i);
 
-                                //traversing through all the object
-                                for (int i = 0; i < array.length(); i++) {
+                                DriverList.add(new OwnerDriversProduct(
+                                       products.getString("username"),
+                                        products.getString("password")
+                                ));
 
-                                    //getting product object from json array
-                                    JSONObject product = array.getJSONObject(i);
-
-                                    //adding the product to product list
-                                    productList.add(new OwnerDriversProduct(
-                                            product.getString("username"),
-                                            product.getString("password")
-
-                                    ) );
-                                }
-
-                                //creating adapter object and setting it to recyclerview
-                                OwnerDriverProductAdapter adapter = new OwnerDriverProductAdapter(OwnerDrivers.this, productList);
-                                recyclerView.setAdapter(adapter);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(OwnerDrivers.this, error.getMessage(),Toast.LENGTH_SHORT).show();
 
+                            //creating recyclerview adapter
+                            OwnerDriverProductAdapter adapter = new OwnerDriverProductAdapter(OwnerDrivers.this, DriverList);
+                            //setting adapter to recyclerview
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }
-            );
-            Volley.newRequestQueue(this).add(stringRequest);
-        }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OwnerDrivers.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
     }
 
 

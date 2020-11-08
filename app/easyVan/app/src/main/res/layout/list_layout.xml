@@ -17,7 +17,7 @@
 
             <TextView
                 android:id="@+id/username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
@@ -26,7 +26,7 @@
 
             <TextView
                 android:id="@+id/password"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/username"
                 android:layout_marginLeft="5dp"
