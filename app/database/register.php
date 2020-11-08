@@ -1,6 +1,6 @@
 <?php
     require  "conn.php";
-    /*
+    
     $license_no=0;
     $user_firstname=$_POST['firstName'];
     $user_lastname=$_POST['lastName'];
@@ -10,10 +10,10 @@
     $address=$_POST['address'];
     $contact_no=$_POST['contactNo'];
     $email=$_POST['email'];
-    $user_role=$_POST['userRole'];*/
+    $user_role=$_POST['userRole'];
 
-    //$password=base64_encode($password);
-
+    
+    /*
     $user_firstname="A";
     $user_lastname="A";
     $nic_no="fdefe";
@@ -23,8 +23,10 @@
     $contact_no=555555515556;
     $email="feedfe";
     $user_role="parent";
-    $license_no=0;
+    $license_no=0;*/
 
+    $password=md5($password);
+    
     $parent=0;
     $driver=0;
     $owner=0;
