@@ -30,43 +30,16 @@ public class Login extends AppCompatActivity {
         String password=passwordEt.getText().toString();
         String type="login";
 
+
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         try {
-            String result=backgroundWorker.execute(type,username,password).get();
-
-                if (result.equals("Login Fail")){
-
-                }
-                //if login successful
-                else{
-                    String userRole;
-
-                    if (result.equals("Login Success driver")){
-
-                        userRole="driver";
-                        User user = new User(username,userRole);
-                        SessionManagement sessionManagement = new SessionManagement(Login.this);
-                        sessionManagement.saveSession(user);
-                    }
-
-                    if (result.equals("Login Success owner")){
-                        userRole="owner";
-                        User user = new User(username,userRole);
-                        SessionManagement sessionManagement = new SessionManagement(Login.this);
-                        sessionManagement.saveSession(user);
-                    }
-
-                    if (result.equals("Login Success parent")){
-                        userRole="parent";
-                        User user = new User(username,userRole);
-                        SessionManagement sessionManagement = new SessionManagement(Login.this);
-                        sessionManagement.saveSession(user);
-                    }
-                }
+            String a=backgroundWorker.execute(type,username,password).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 }

@@ -7,12 +7,13 @@
         android:id="@+id/top_calendar"
         android:title="Calendar"
         android:icon="@drawable/ic_calendar"
-        app:showAsAction="never"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/top_expense"
         android:title="Expense"
-        app:showAsAction="never"/>
+        android:icon="@drawable/ic_expense"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/top_profile"
@@ -25,9 +26,4 @@
         android:title="Notification"
         android:icon="@drawable/ic_notifications"
         app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/logout"
-        app:showAsAction="never"
-        android:title="Log Out" />
 </menu>
