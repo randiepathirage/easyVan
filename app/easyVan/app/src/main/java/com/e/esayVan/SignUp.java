@@ -36,6 +36,18 @@ public class SignUp extends AppCompatActivity {
         radioOwner=(RadioButton)findViewById(R.id.radioOwner);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
 
+        //validation
+       /* awesomeValidation=new AwesomeValidation(ValidationStyle.BASIC);
+        awesomeValidation.addValidation(this,R.id.edtFirstname,
+                RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+        awesomeValidation.addValidation(this,R.id.edtMiddlename,
+                RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+        awesomeValidation.addValidation(this,R.id.edtLastname,
+                RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+        awesomeValidation.addValidation(this,R.id.edtPassword,
+                ".{6,}",R.string.invalid_password);
+        awesomeValidation.addValidation(this,R.id.edtConfirmPassword,
+                R.id.edtPassword,R.string.invalid_confirm_password);*/
     }
 
     private Boolean validateName(){
@@ -63,6 +75,30 @@ public class SignUp extends AppCompatActivity {
             return true;
         }
     }
+
+  /*  private Boolean validateNIC(){
+        String str_NICNo= NICNo.getText().toString();
+        if(val_firstName.isEmpty() & val_lastName.isEmpty()){
+            firstName.setError("This field cannot be empty");
+            lastName.setError("This field cannot be empty");
+            return false;
+        }
+        else if(val_lastName.isEmpty()){
+            lastName.setError("This field cannot be empty");
+            firstName.setError(null);
+            return false;
+        }
+        else if(val_firstName.isEmpty()){
+            firstName.setError("This field cannot be empty");
+            lastName.setError(null);
+            return false;
+        }
+        else{
+            firstName.setError(null);
+            lastName.setError(null);
+            return true;
+        }
+    }*/
 
     private Boolean validateUsername(){
         String val_username= username.getText().toString();
@@ -147,7 +183,7 @@ public class SignUp extends AppCompatActivity {
             confirmPassword.setError("This field cannot be empty");
             return false;
         }
-        else if(!val_confirmPassword.equals(val_password)){
+        else if(val_confirmPassword!=val_password){
             confirmPassword.setError("Password doesn't match");
             return false;
         }

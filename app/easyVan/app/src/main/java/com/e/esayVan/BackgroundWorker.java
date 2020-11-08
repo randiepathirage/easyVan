@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -20,6 +20,7 @@ import java.net.URLEncoder;
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     Context context;
+    AlertDialog alertDialog;
 
     BackgroundWorker(Context ctx){
         context=ctx;
@@ -30,7 +31,6 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String type = params[0];
         String login_url = "http://10.0.2.2/easyvan/login.php";
         String register_url = "http://10.0.2.2/easyvan/register.php";
-
         if(type.equals("login")){
             try {
 
@@ -43,7 +43,6 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream=httpURLConnection.getOutputStream();
-
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
                         +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
@@ -64,6 +63,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.disconnect();
 
                 return result;
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -127,41 +127,44 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPreExecute() {
+        alertDialog=new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Status");
     }
-
+    
+    @Override
     protected void onPostExecute(String result) {
 
-        //if login fails
-        if (result.equals("Login Fail")){
-            Toast.makeText(context,result,Toast.LENGTH_LONG).show();
-        }
-        //if insert successful
-        else if(result.equals("Insert Successful")){
-            Toast.makeText(context,result,Toast.LENGTH_LONG).show();
-            Intent i  = new Intent(context,Login.class);
+        if (result.equals("Login Success driver")){
+            alertDialog.setMessage("Login Success");
+            alertDialog.show();
+            Intent i  = new Intent(context,Driver.class);
             context.startActivity(i);
         }
-        //if login successful
-        else{
-            Toast.makeText(context,"Login Success",Toast.LENGTH_LONG).show();
 
-            if (result.equals("Login Success driver")){
-                Intent i  = new Intent(context,Driver.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
+        if (result.equals("Login Success owner")){
+            alertDialog.setMessage("Login Success");
+            alertDialog.show();
+            Intent i  = new Intent(context,Owner.class);
+            context.startActivity(i);
+        }
 
-            if (result.equals("Login Success owner")){
-                Intent i  = new Intent(context,Owner.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
+        if (result.equals("Login Success parent")){
+            alertDialog.setMessage("Login Success");
+            alertDialog.show();
+            Intent i  = new Intent(context,Admin.class);
+            context.startActivity(i);
+        }
 
-            if (result.equals("Login Success parent")){
-                Intent i  = new Intent(context,Parent.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
+        if (result.equals("Login Fail")){
+            alertDialog.setMessage("Login Fail");
+            alertDialog.show();
+        }
+
+        if (result.equals("Insert Successful")){
+            alertDialog.setMessage(result);
+            alertDialog.show();
+            Intent i  = new Intent(context,Login.class);
+            context.startActivity(i);
         }
     }
 
