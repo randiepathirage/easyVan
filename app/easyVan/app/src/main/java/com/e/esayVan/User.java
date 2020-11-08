@@ -1,8 +1,8 @@
 package com.e.esayVan;
 
 public class User {
-    String username;
 
+    String username;
     String userRole;
 
     public User(String username, String userRole) {
@@ -21,6 +21,7 @@ public class User {
     public String getUserRole() {
         return userRole;
     }
+
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
