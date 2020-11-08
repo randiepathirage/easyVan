@@ -94,6 +94,14 @@ public class Driver extends AppCompatActivity {
                 Intent j = new Intent(getApplicationContext(),DriverPayment.class);
                 startActivity(j);
                 return true;
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(Driver.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(Driver.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
         }
         return false;
     }
