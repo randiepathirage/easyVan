@@ -34,15 +34,24 @@ public class Login extends AppCompatActivity {
         try {
             String result=backgroundWorker.execute(type,username,password).get();
 
-                if (result.equals("Login Fail")){
+            //if login successful
+            String userRole;
+            if (result.equals("Login Success driver")){
 
-                }
-                //if login successful
-                else{
-                    String userRole;
+                userRole="driver";
+                User user = new User(username,userRole);
+                SessionManagement sessionManagement = new SessionManagement(Login.this);
+                sessionManagement.saveSession(user);
+            }
 
-                    if (result.equals("Login Success driver")){
+            else if (result.equals("Login Success owner")){
+                userRole="owner";
+                User user = new User(username,userRole);
+                SessionManagement sessionManagement = new SessionManagement(Login.this);
+                sessionManagement.saveSession(user);
+            }
 
+<<<<<<< HEAD
                         userRole="driver";
                         User user = new User(username,userRole);
                         SessionManagement sessionManagement = new SessionManagement(Login.this);
@@ -65,6 +74,14 @@ public class Login extends AppCompatActivity {
                     }
 
                 }
+=======
+            else if (result.equals("Login Success parent")){
+                userRole="parent";
+                User user = new User(username,userRole);
+                SessionManagement sessionManagement = new SessionManagement(Login.this);
+                sessionManagement.saveSession(user);
+            }
+>>>>>>> 4280839039760b46d15f847407d7e06f8c842a83
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
