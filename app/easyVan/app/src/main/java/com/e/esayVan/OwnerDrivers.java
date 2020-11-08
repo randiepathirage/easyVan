@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -30,6 +33,7 @@ public class OwnerDrivers extends AppCompatActivity {
     OwnerDriverProductAdapter adapter;
     //the recyclerview
     RecyclerView recyclerView;
+   // private View view;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +87,14 @@ public class OwnerDrivers extends AppCompatActivity {
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+
+
+
     }
+    public void btn_add_Driver (View view) {
+        startActivity(new Intent(getApplicationContext(),DriverSignUp.class));
+    }
+
 
     }
 

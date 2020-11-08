@@ -61,7 +61,9 @@ public class Login extends AppCompatActivity {
                         User user = new User(username,userRole);
                         SessionManagement sessionManagement = new SessionManagement(Login.this);
                         sessionManagement.saveSession(user);
+
                     }
+
                 }
         } catch (ExecutionException e) {
             e.printStackTrace();
