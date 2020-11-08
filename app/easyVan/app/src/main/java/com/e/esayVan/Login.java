@@ -34,35 +34,29 @@ public class Login extends AppCompatActivity {
         try {
             String result=backgroundWorker.execute(type,username,password).get();
 
-                if (result.equals("Login Fail")){
+            //if login successful
+            String userRole;
+            if (result.equals("Login Success driver")){
 
-                }
-                //if login successful
-                else{
-                    String userRole;
+                userRole="driver";
+                User user = new User(username,userRole);
+                SessionManagement sessionManagement = new SessionManagement(Login.this);
+                sessionManagement.saveSession(user);
+            }
 
-                    if (result.equals("Login Success driver")){
+            else if (result.equals("Login Success owner")){
+                userRole="owner";
+                User user = new User(username,userRole);
+                SessionManagement sessionManagement = new SessionManagement(Login.this);
+                sessionManagement.saveSession(user);
+            }
 
-                        userRole="driver";
-                        User user = new User(username,userRole);
-                        SessionManagement sessionManagement = new SessionManagement(Login.this);
-                        sessionManagement.saveSession(user);
-                    }
-
-                    if (result.equals("Login Success owner")){
-                        userRole="owner";
-                        User user = new User(username,userRole);
-                        SessionManagement sessionManagement = new SessionManagement(Login.this);
-                        sessionManagement.saveSession(user);
-                    }
-
-                    if (result.equals("Login Success parent")){
-                        userRole="parent";
-                        User user = new User(username,userRole);
-                        SessionManagement sessionManagement = new SessionManagement(Login.this);
-                        sessionManagement.saveSession(user);
-                    }
-                }
+            else if (result.equals("Login Success parent")){
+                userRole="parent";
+                User user = new User(username,userRole);
+                SessionManagement sessionManagement = new SessionManagement(Login.this);
+                sessionManagement.saveSession(user);
+            }
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
