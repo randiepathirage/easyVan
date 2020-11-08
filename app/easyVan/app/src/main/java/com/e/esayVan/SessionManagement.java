@@ -16,7 +16,7 @@ public class SessionManagement {
 
     public void saveSession(User user){
         //save session of user whenever user  is logged in
-        String username = user.getUsername();
+        String username = user.getUserRole();
         editor.putString(SESSION_KEY,username).commit();
     }
 
