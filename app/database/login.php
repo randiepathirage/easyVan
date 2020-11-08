@@ -1,14 +1,8 @@
 <?php
  require  "conn.php";
 
-$user_name=$_POST["username"];
+ $user_name=$_POST["username"];
  $user_pass=$_POST["password"];
-
-
- $user_pass=md5($user_pass);
-
-//$query_parent="SELECT * FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass'";
-//$parent_result = mysqli_query($conn,$query_parent);
 
 $query_parent="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass') AND parent_flag LIKE 1";
 $parent_result = mysqli_query($conn,$query_parent);

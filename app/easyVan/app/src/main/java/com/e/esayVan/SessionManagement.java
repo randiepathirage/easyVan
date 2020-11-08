@@ -15,12 +15,17 @@ public class SessionManagement {
     }
 
     public void saveSession(User user){
-            //save session of user whenever user  is logged in
+        //save session of user whenever user  is logged in
+        String username = user.getUserRole();
+        editor.putString(SESSION_KEY,username).commit();
     }
 
     public String getSession(){
-
-        return null;
+        //return user id whose session is saved
+        return sharedPreferences.getString(SESSION_KEY,null);
     }
 
+    public void removeSession(){
+        editor.putString(SESSION_KEY,null).commit();
+    }
 }
