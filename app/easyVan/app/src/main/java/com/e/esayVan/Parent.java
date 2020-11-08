@@ -73,7 +73,17 @@ public class Parent extends AppCompatActivity {
             case R.id.account:
                 startActivity(new Intent(getApplicationContext(), ParentAccount.class));
                 return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(Parent.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(Parent.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
         }
+
         return true;
     }
 }
