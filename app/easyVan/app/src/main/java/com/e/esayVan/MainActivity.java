@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void onStart() {
+    protected void onStart(){
         super.onStart();
 
         //check if user is logged in
