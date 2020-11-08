@@ -49,20 +49,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void onStart() {
+    protected void onStart(){
         super.onStart();
 
         //check if user is logged in
         //if user is logged in --> move to home
 
         SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
-        String username = sessionManagement.getSession();
+        String userRole = sessionManagement.getSession();
 
-        if(username != null){
-            //user id logged in and so move to home
-            Intent intent = new Intent(MainActivity.this,Parent.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+        if(userRole != null){
+            if(userRole.equals("driver")) {
+                //user role logged in and so move to home
+                Intent intent = new Intent(MainActivity.this,Driver.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+            if(userRole.equals("parent")) {
+                //user role logged in and so move to home
+                Intent intent = new Intent(MainActivity.this,Parent.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+            if(userRole.equals("owner")) {
+                //user role logged in and so move to home
+                Intent intent = new Intent(MainActivity.this,Admin.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+
+            if(userRole.equals("owner")) {
+                //user role logged in and so move to home
+                Intent intent = new Intent(MainActivity.this,Owner.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+;
         }
     }
 }

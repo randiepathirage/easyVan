@@ -7,19 +7,3 @@
 2020.10.27 11:15:15 INFO  started: Metals version 0.9.4 in workspace 'C:\xampp\htdocs\easyvan' for client vscode.
 2020.10.27 11:15:16 INFO  time: initialize in 1.68s
 2020.10.27 11:15:27 WARN  no build tool detected in workspace 'C:\xampp\htdocs\easyvan'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
-2020.10.29 22:36:12 INFO  started: Metals version 0.9.4 in workspace 'C:\xampp\htdocs\easyvan' for client vscode.
-2020.10.29 22:36:16 INFO  time: initialize in 3.93s
-2020.10.29 22:36:27 WARN  no build tool detected in workspace 'C:\xampp\htdocs\easyvan'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
-2020.10.30 10:57:17 INFO  shutting down Metals
-2020.10.30 15:44:44 INFO  started: Metals version 0.9.4 in workspace 'C:\xampp\htdocs\easyvan' for client vscode.
-2020.10.30 15:44:45 INFO  time: initialize in 0.83s
-2020.10.30 15:44:52 WARN  no build tool detected in workspace 'C:\xampp\htdocs\easyvan'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
-2020.11.03 10:41:13 INFO  started: Metals version 0.9.4 in workspace 'C:\xampp\htdocs\easyvan' for client vscode.
-2020.11.03 10:41:15 INFO  time: initialize in 2.02s
-2020.11.03 10:41:29 WARN  no build tool detected in workspace 'C:\xampp\htdocs\easyvan'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
-2020.11.06 08:37:03 INFO  started: Metals version 0.9.4 in workspace 'C:\xampp\htdocs\easyvan' for client vscode.
-2020.11.06 08:37:05 INFO  time: initialize in 1.46s
-2020.11.06 08:37:12 WARN  no build tool detected in workspace 'C:\xampp\htdocs\easyvan'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
-2020.11.06 21:48:02 INFO  started: Metals version 0.9.4 in workspace 'C:\xampp\htdocs\easyvan' for client vscode.
-2020.11.06 21:48:03 INFO  time: initialize in 0.89s
-2020.11.06 21:48:11 WARN  no build tool detected in workspace 'C:\xampp\htdocs\easyvan'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
