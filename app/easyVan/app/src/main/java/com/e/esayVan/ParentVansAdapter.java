@@ -12,32 +12,32 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class VansAdapter extends RecyclerView.Adapter<com.e.esayVan.VansAdapter.VansViewHolder> {
+public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.VansViewHolder> {
         //this context we will use to inflate the layout
         private Context mCtx;
 
         //we are storing all the products in a list
-        private List<Vans> vehicleList;
+        private List<ParentVans> vehicleList;
 
         //getting the context and product list with constructor
-        public VansAdapter(Context mCtx, List<Vans> vehicleList) {
+        public ParentVansAdapter(Context mCtx, List<ParentVans> vehicleList) {
             this.mCtx = mCtx;
             this.vehicleList = vehicleList;
         }
 
         @Override
-        public com.e.esayVan.VansAdapter.VansViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ParentVansAdapter.VansViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             //inflating and returning our view holder
             LayoutInflater inflater = LayoutInflater.from(mCtx);
             View view = inflater.inflate(R.layout.parent_layout, null);
-            return new com.e.esayVan.VansAdapter.VansViewHolder(view);
+            return new ParentVansAdapter.VansViewHolder(view);
         }
 
 
         @Override
-        public void onBindViewHolder(com.e.esayVan.VansAdapter.VansViewHolder holder, int position) {
+        public void onBindViewHolder(ParentVansAdapter.VansViewHolder holder, int position) {
             //getting the product of the specified position
-            Vans vans = vehicleList.get(position);
+            ParentVans vans = vehicleList.get(position);
 
             //binding the data with the viewholder views
             holder.textViewNumber.setText(vans.getNumber());
@@ -48,7 +48,7 @@ public class VansAdapter extends RecyclerView.Adapter<com.e.esayVan.VansAdapter.
             holder.textViewPermitNo.setText(vans.getPermit_no());
 
             Glide.with(mCtx)
-                    .load(Vans.getImage())
+                    .load(ParentVans.getImage())
                     .into(holder.imageView);
 
         }
