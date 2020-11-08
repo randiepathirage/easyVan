@@ -3,6 +3,8 @@ package com.e.esayVan;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,8 +31,8 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
     //a list to store all the vehicles
-    List<ParentVans> vehicleList;
-    ParentVansAdapter adapter;
+    List<Vans> vehicleList;
+    VansAdapter adapter;
     //the recyclerview
     RecyclerView recyclerView;
     BottomNavigationView bottom_nav;
@@ -99,7 +101,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                 for(int i=0;i<array.length();i++){
                                     JSONObject vehicle=array.getJSONObject(i);
 
-                                    vehicleList.add(new ParentVans(
+                                    vehicleList.add(new Vans(
                                             vehicle.getString("number"),
                                             vehicle.getInt("no_of_seats_available"),
                                             vehicle.getInt("total_no_of_seats"),
@@ -112,7 +114,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                 }
 
                                 //creating recyclerview adapter
-                               ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
+                               VansAdapter adapter = new VansAdapter(ParentNewsfeedFragment.this, vehicleList);
                                 //setting adapter to recyclerview
                                 recyclerView.setAdapter(adapter);
 

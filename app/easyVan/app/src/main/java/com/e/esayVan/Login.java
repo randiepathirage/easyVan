@@ -30,8 +30,10 @@ public class Login extends AppCompatActivity {
         String password=passwordEt.getText().toString();
         String type="login";
 
+
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         try {
+
             String result=backgroundWorker.execute(type,username,password).get();
 
             //if login successful
@@ -57,10 +59,13 @@ public class Login extends AppCompatActivity {
                 SessionManagement sessionManagement = new SessionManagement(Login.this);
                 sessionManagement.saveSession(user);
             }
+
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 }

@@ -1,6 +1,6 @@
 package com.e.esayVan;
 
-public class ParentVans {
+public class Vans {
     private static String image;
     private String number;
         private int no_of_seats_available;
@@ -9,7 +9,7 @@ public class ParentVans {
         private String type;
         private String permit_no;
 
-    public ParentVans(String number, int no_of_seats_available, int total_no_of_seats, String model, String type, String permit_no, String image) {
+    public Vans(String number, int no_of_seats_available, int total_no_of_seats, String model, String type, String permit_no, String image) {
         this.number = number;
         this.no_of_seats_available = no_of_seats_available;
         this.total_no_of_seats = total_no_of_seats;
