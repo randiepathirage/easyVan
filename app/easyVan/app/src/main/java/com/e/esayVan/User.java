@@ -1,7 +1,7 @@
 package com.e.esayVan;
 
 public class User {
-   /* String password;
+    String password;
     String user;
 
     public String getPassword() {
@@ -23,5 +23,5 @@ public class User {
     public User(String password, String name) {
         this.password = password;
         this.name = name;
-    }*/
+    }
 }
