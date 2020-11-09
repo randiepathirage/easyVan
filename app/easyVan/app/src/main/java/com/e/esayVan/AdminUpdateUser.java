@@ -34,7 +34,6 @@ public class AdminUpdateUser extends AppCompatActivity {
         edcontact = findViewById(R.id.ed_contact);
         edusername = findViewById(R.id.ed_username);
         edaddress = findViewById(R.id.ed_address);
-        edpassword = findViewById(R.id.ed_password);
         edemail = findViewById(R.id.ed_email);
 
         Intent intent = getIntent();
@@ -44,7 +43,9 @@ public class AdminUpdateUser extends AppCompatActivity {
         edfname.setText(AdminOwners.adminOwnerArrayList.get(position).getFname());
         edlname.setText(AdminOwners.adminOwnerArrayList.get(position).getLname());
         edcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
-        edaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
+        edaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getAddress());
+        edusername.setText(AdminOwners.adminOwnerArrayList.get(position).getUsername());
+        edemail.setText(AdminOwners.adminOwnerArrayList.get(position).getEmail());
 
 
 
@@ -58,11 +59,7 @@ public class AdminUpdateUser extends AppCompatActivity {
         final String address = edaddress.getText().toString();
         final String contact_no = edcontact.getText().toString();
         final String username = edusername.getText().toString();
-        final String password = edpassword.getText().toString();
         final String email = edemail.getText().toString();
-
-
-
 
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -94,12 +91,12 @@ public class AdminUpdateUser extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<String,String>();
 
+                //params.put("NIC_no",NIC_no);
                 params.put("contact_no",contact_no);
                 params.put("first_name",first_name);
                 params.put("last_name",last_name);
                 params.put("address",address);
                 params.put("username",username);
-                params.put("password",password);
                 params.put("email",email);
 
                 return params;

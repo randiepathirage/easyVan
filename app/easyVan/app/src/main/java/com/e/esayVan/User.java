@@ -1,7 +1,6 @@
 package com.e.esayVan;
 
 public class User {
-
     String username;
     String userRole;
 
