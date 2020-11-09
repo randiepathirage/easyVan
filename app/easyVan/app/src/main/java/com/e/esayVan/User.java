@@ -2,7 +2,7 @@ package com.e.esayVan;
 
 public class User {
     String password;
-    String user;
+    String name;
 
     public String getPassword() {
         return password;
