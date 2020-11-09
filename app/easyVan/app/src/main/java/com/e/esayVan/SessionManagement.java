@@ -22,12 +22,12 @@ public class SessionManagement {
         String userName=user.getUsername();
         editor.putString(KEY_ROLE,userRole).commit();
         editor.putString(KEY_USERNAME,userName).commit();
-        //editor.apply();
+        editor.apply();
     }
 
     public String getSession(){
         //return user id whose session is saved
-        return sharedPreferences.getString(KEY_USERNAME,null);
+        return sharedPreferences.getString(KEY_ROLE,null);
     }
 
     public void removeSession(){
