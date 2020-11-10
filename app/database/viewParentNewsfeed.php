@@ -1,5 +1,5 @@
 <?php 
-
+    //randie..........................................................
     require  "conn.php";
      
     $stmt = $conn->prepare("SELECT `number`, `no_of_seats_available`, `total_no_of_seats`, `model`, `type`, `permit_no`, `image` FROM `vehicle` ");//creating a query

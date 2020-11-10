@@ -30,6 +30,10 @@ public class SessionManagement {
         return sharedPreferences.getString(KEY_ROLE,null);
     }
 
+    public String getUserName(){
+        return sharedPreferences.getString(KEY_USERNAME,null);
+    }
+
     public void removeSession(){
         editor.putString(KEY_USERNAME,null).commit();
         editor.putString(KEY_ROLE,null).commit();
