@@ -1,4 +1,5 @@
 <?php
+    //randie................................................................
     require  "conn.php";
     
     $license_no=0;
@@ -13,16 +14,16 @@
     $user_role=$_POST['userRole'];
 
     
-    /*
+   /* 
     $user_firstname="A";
     $user_lastname="A";
-    $nic_no="fdefe";
-    $username="efdewfe";
+    $nic_no="98765ere5v";
+    $username="reeresasdfvb";
     $password="123";
     $address="A";
-    $contact_no=555555515556;
-    $email="feedfe";
-    $user_role="parent";
+    $contact_no=55523165456;
+    $email="rfgvvffsvvcd";
+    $user_role="owner";
     $license_no=0;*/
 
     $password=md5($password);
@@ -30,6 +31,7 @@
     $parent=0;
     $driver=0;
     $owner=0;
+    $admin=0;
 
     if($user_role=="parent"){
         $parent=1;
@@ -37,8 +39,9 @@
         $driver=1;
     }else if($user_role=="owner"){
         $owner=1;
+    }else if($user_role=="admin"){
+        $admin=1;
     }
-    
 
     //avoid adding duplicate values 
     $check_email="SELECT * FROM login WHERE email='$email'";
@@ -73,11 +76,9 @@
 
         $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$address')";
 
-        $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";
+        $query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,parent_flag,driver_flag,owner_flag,admin_flag,license_no) VALUES ('$nic_no','$parent','$driver','$owner','$admin','$license_no')";
 
-        $query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,parent_flag,driver_flag,owner_flag,license_no) VALUES ('$nic_no','$parent','$driver','$owner','$license_no')";
-
-        if($conn->query($query_login)===TRUE && $conn->query($query_user)===TRUE && $conn->query($query_user_role)===TRUE && $conn->query($query_parent_owner_driver)===TRUE){
+        if($conn->query($query_login)===TRUE && $conn->query($query_user)===TRUE && $conn->query($query_parent_owner_driver)===TRUE){
             echo "Insert Successful";
                 
         }
