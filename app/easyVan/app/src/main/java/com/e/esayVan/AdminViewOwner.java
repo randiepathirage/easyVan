@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class AdminViewOwner extends AppCompatActivity {
 
-    TextView tvnic,tvfname,tvlname,tvcontact,tvaddress;
+    TextView tvnic,tvfname,tvlname,tvcontact,tvaddress,tvusername,tvemail;
     int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ public class AdminViewOwner extends AppCompatActivity {
         tvlname = findViewById(R.id.txtlname);
         tvcontact = findViewById(R.id.txtcontact);
         tvaddress = findViewById(R.id.txtaddress);
+        tvusername = findViewById(R.id.txtusern);
+        tvemail = findViewById(R.id.txtemail);
 
         Intent intent =getIntent();
         position = intent.getExtras().getInt("position");
@@ -31,6 +33,8 @@ public class AdminViewOwner extends AppCompatActivity {
         tvlname.setText(AdminOwners.adminOwnerArrayList.get(position).getLname());
         tvcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
         tvaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getAddress());
+        tvusername.setText(AdminOwners.adminOwnerArrayList.get(position).getUsername());
+        tvemail.setText(AdminOwners.adminOwnerArrayList.get(position).getEmail());
 
 
 

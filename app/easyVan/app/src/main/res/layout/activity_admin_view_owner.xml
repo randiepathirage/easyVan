@@ -8,10 +8,20 @@
     tools:context=".AdminViewOwner">
 
     <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="460dp"
+        android:text="E-mail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txtnic"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="25dp"
         android:text="ID:"
         android:textSize="20sp"
@@ -22,7 +32,7 @@
         android:id="@+id/txtfname"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="105dp"
         android:layout_marginEnd="25dp"
         android:text="First Name:"
         android:textSize="20sp"
@@ -33,7 +43,7 @@
         android:id="@+id/txtlname"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="175dp"
         android:layout_marginEnd="25dp"
         android:text="Last Name"
         android:textSize="20sp"
@@ -44,7 +54,7 @@
         android:id="@+id/txtcontact"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="245dp"
         android:layout_marginEnd="25dp"
         android:text="Contact:"
         android:textSize="20sp"
@@ -55,9 +65,31 @@
         android:id="@+id/txtaddress"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="315dp"
         android:layout_marginEnd="25dp"
         android:text="Address:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtusern"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginEnd="25dp"
+        android:text="Username"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtemail"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginEnd="25dp"
+        android:text="Email"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,6 +111,16 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="320dp"
         android:text="Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="390dp"
+        android:text="Username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
