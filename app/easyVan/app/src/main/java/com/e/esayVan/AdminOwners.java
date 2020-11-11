@@ -76,7 +76,6 @@ public class AdminOwners extends AppCompatActivity {
                             case 2:
 
                                 deleteData(adminOwnerArrayList.get(position).getNic());
-
                                 break;
 
 

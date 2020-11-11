@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminViewOwner"></activity>
+        <activity android:name=".ForgotPassword"></activity>
+        <activity android:name=".AdminViewOwner" />
         <activity android:name=".AdminUpdateUser" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
