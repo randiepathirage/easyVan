@@ -76,35 +76,12 @@ public class ParentAccount extends AppCompatActivity {
         });
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //load account details
     public void sendJsonrequest(){
 
         //String url =URL + userName.trim();
 
-        StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
