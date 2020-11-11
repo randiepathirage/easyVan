@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    >
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/txt_fname"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_vertical|center"
         android:text="First Name"
-        android:textSize="20sp" />
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/txt_lname"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_vertical"
         android:text="Last Name"
-        android:textSize="20sp" />
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="25sp" />
 
 
 </LinearLayout>
