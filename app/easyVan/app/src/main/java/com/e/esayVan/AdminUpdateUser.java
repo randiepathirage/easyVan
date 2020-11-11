@@ -22,7 +22,8 @@ import java.util.Map;
 
 public class AdminUpdateUser extends AppCompatActivity {
 
-    EditText edfname,edlname,edcontact,edusername,edaddress,edpassword,edemail;
+    EditText edfname,edlname,edcontact,edusername,edaddress,edemail;
+    String nic;
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class AdminUpdateUser extends AppCompatActivity {
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
 
-
+        nic = AdminOwners.adminOwnerArrayList.get(position).getNic() ;
         edfname.setText(AdminOwners.adminOwnerArrayList.get(position).getFname());
         edlname.setText(AdminOwners.adminOwnerArrayList.get(position).getLname());
         edcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
@@ -54,6 +55,7 @@ public class AdminUpdateUser extends AppCompatActivity {
 
     public void btn_updateData(View view) {
 
+        final String NIC_no = nic;
         final String first_name = edfname.getText().toString();
         final String last_name = edlname.getText().toString();
         final String address = edaddress.getText().toString();
@@ -91,7 +93,7 @@ public class AdminUpdateUser extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<String,String>();
 
-                //params.put("NIC_no",NIC_no);
+                params.put("NIC_no",NIC_no);
                 params.put("contact_no",contact_no);
                 params.put("first_name",first_name);
                 params.put("last_name",last_name);
