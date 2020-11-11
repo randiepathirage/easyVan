@@ -20,6 +20,9 @@
     $query_driver="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass') AND driver_flag LIKE 1";
     $driver_result = mysqli_query($conn,$query_driver);
 
+    $query_admin="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass') AND admin_flag LIKE 1";
+    $admin_result = mysqli_query($conn,$query_admin);
+
     if(mysqli_num_rows($driver_result)>0){
         echo "Login Success driver";
     }
@@ -28,6 +31,9 @@
     }
     else if(mysqli_num_rows($parent_result)>0){
         echo "Login Success parent";
+    }
+    else if(mysqli_num_rows($admin_result)>0){
+        echo "Login Success admin";
     }
     else{
         echo "Login Fail";
