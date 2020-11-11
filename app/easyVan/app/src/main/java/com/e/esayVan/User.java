@@ -1,27 +1,28 @@
 package com.e.esayVan;
 
 public class User {
-    String password;
-    String name;
+    String username;
+    String userRole;
 
-    public String getPassword() {
-        return password;
+    public User(String username, String userRole) {
+        this.username = username;
+        this.userRole = userRole;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getUsername() {
+        return username;
     }
 
-    public String getName() {
-        return name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserRole() {
+        return userRole;
     }
 
-    public User(String password, String name) {
-        this.password = password;
-        this.name = name;
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 }

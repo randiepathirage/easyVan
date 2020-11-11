@@ -28,9 +28,9 @@ public class DriverExpense extends AppCompatActivity {
 
 
         spin = findViewById(R.id.spinexpense);
-        //ArrayAdapter myadapter = new ArrayAdapter(DriverExpense.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_expense));
-       // myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        //spin.setAdapter(myadapter);
+      //  ArrayAdapter myadapter = new ArrayAdapter(DriverExpense.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_expense));
+      //  myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+      //  spin.setAdapter(myadapter);
 
         bottom_nav = findViewById(R.id.bottom_navigation);
 

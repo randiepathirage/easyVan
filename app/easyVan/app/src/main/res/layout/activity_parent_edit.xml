@@ -7,17 +7,11 @@
     tools:context=".ParentEdit"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_account_circle_black"
-        android:layout_margin="30dp"
-        android:layout_gravity="center_horizontal"/>
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,53 +22,88 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/txtUsername"
                 android:text="Username:"
-                android:layout_marginLeft="30dp"
-                android:textSize="16dp" />
+                android:layout_marginLeft="10dp"
+                android:textColor="#979A9A"
+                android:layout_marginTop="30dp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/edtUsername"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID:"
-                android:layout_marginLeft="30dp"
-                android:textSize="16dp"
-                android:layout_margin="10dp"/>
+                android:id="@+id/txtNic"
+                android:layout_marginLeft="10dp"
+                android:textColor="#979A9A"
+                android:text="NIC No:" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/edtNic"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Contact No:"
+                android:id="@+id/dspContactNo"
+                android:layout_marginLeft="10dp"
+                android:textColor="#979A9A"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/edtContactNo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#979A9A"
                 android:text="Email:"
-                android:layout_marginLeft="30dp"
-                android:textSize="16dp"
-                android:layout_margin="10dp"/>
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textColor="#000"
+                android:id="@+id/edtEmail"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location:"
-                android:layout_marginLeft="30dp"
-                android:textSize="16dp"
-                android:layout_margin="10dp"/>
+                android:textColor="#979A9A"
+                android:text="Address:"
+                android:id="@+id/dspAddress"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:textColor="#000"
+                android:id="@+id/edtAddress"/>
+
+            <Button
+                android:id="@+id/btnChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/roundededge"
+                android:text="Change Password"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:paddingHorizontal="40dp"
+                android:layout_marginBottom="30dp"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -88,6 +117,6 @@
         android:textColor="#fff"
         android:textStyle="bold"
         android:layout_margin="30dp"
-        android:layout_marginBottom="60dp"/>
+        android:onClick="updateDetails"/>
 
 </LinearLayout>
