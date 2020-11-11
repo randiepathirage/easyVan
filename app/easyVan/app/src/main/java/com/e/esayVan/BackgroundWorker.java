@@ -157,7 +157,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         else if (result.equals("Login Success parent")){
 
                 Toast.makeText(context,"Login Success",Toast.LENGTH_LONG).show();
-                Intent i  = new Intent(context,Admin.class);
+                Intent i  = new Intent(context,Parent.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }

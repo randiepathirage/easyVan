@@ -2,6 +2,7 @@ package com.e.esayVan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,6 +22,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ParentAccount extends AppCompatActivity {
 
@@ -70,8 +75,29 @@ public class ParentAccount extends AppCompatActivity {
             }
         });
 
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //load account details
     public void sendJsonrequest(){
@@ -107,46 +133,19 @@ public class ParentAccount extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
-                });
+                }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("username",userName);
+                return params;
+            }
+        };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
     }
 }
-
-
-        /*
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, URL, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray=response.getJSONArray("data");
-
-                                JSONObject user=jsonArray.getJSONObject(0);
-                                strNic=user.getString("NIC_no");
-                                strContactNo=user.getString("contact_no");;
-                                strAddress=user.getString("address");
-                                strEmail=user.getString("email");
-
-                                nic.setText(strNic);
-                                address.setText(strAddress);
-                                contactNo.setText(strContactNo);
-                                email.setText(strEmail);
-
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-
-            }
-        });
-        requestQueue.add(request);*/
