@@ -59,7 +59,7 @@ public class ParentEdit extends AppCompatActivity {
 
             //String url =URL + userName.trim();
 
-            StringRequest stringRequest = new StringRequest(URL_VIEW, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST,URL_VIEW, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
@@ -71,7 +71,6 @@ public class ParentEdit extends AppCompatActivity {
 
                         strNic = collegeData.getString("NIC_no");
                         strContactNo = collegeData.getString("contact_no");
-                        ;
                         strAddress = collegeData.getString("address");
                         strEmail = collegeData.getString("email");
 
@@ -90,7 +89,16 @@ public class ParentEdit extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText(ParentEdit.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                 }
-            });
+            }){
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String,String>();
+
+                    params.put("username",userName);
+                    return params;
+                }
+            };
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
