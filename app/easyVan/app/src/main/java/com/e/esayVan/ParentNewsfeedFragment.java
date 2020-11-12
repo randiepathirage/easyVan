@@ -30,7 +30,6 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
     //a list to store all the vehicles
     List<ParentVans> vehicleList;
-    ParentVansAdapter adapter;
     //the recyclerview
     RecyclerView recyclerView;
     BottomNavigationView bottom_nav;
@@ -95,6 +94,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             try {
+
                                 JSONArray array=new JSONArray(response);
 
                                 for(int i=0;i<array.length();i++){
@@ -105,16 +105,16 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                             vehicle.getInt("total_no_of_seats"),
                                             vehicle.getString("model"),
                                             vehicle.getString("type"),
-                                            vehicle.getString("start_location"),
-                                            vehicle.getBoolean("AC_nonAC"),
-                                            vehicle.getBoolean("caretaker")
+                                            vehicle.getInt("AC_nonAC"),
+                                            vehicle.getInt("caretaker"),
+                                            vehicle.getString("start_location")
 
                                     ));
 
                                 }
 
                                 //creating recyclerview adapter
-                               ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
+                                ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
                                 //setting adapter to recyclerview
                                 recyclerView.setAdapter(adapter);
 
