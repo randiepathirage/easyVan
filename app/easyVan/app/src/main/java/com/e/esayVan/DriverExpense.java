@@ -25,14 +25,16 @@ public class DriverExpense extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_expense);
+        getSupportActionBar().setTitle("Expenses");
 
 
         spin = findViewById(R.id.spinexpense);
-      //  ArrayAdapter myadapter = new ArrayAdapter(DriverExpense.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_expense));
-      //  myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-      //  spin.setAdapter(myadapter);
+        ArrayAdapter myadapter = new ArrayAdapter(DriverExpense.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_expense));
+        myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spin.setAdapter(myadapter);
 
         bottom_nav = findViewById(R.id.bottom_navigation);
+        bottom_nav.setSelectedItemId(R.id.nav_expense);
 
         bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -62,10 +64,7 @@ public class DriverExpense extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.nav_payment:
-                        Intent m = new Intent(getApplicationContext(),DriverPayment.class);
-                        startActivity(m);
-                        overridePendingTransition(0,0);
+                    case R.id.nav_expense:
                         return true;
                 }
                 return false;

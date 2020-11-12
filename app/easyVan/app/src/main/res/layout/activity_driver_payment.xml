@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="#ACE16F"
+                    android:backgroundTint="#D1CECA"
                     android:textAlignment="center"
                     android:background="@android:drawable/editbox_background"
                     android:textStyle="bold"
@@ -40,7 +40,7 @@
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="#ACE16F"
+                    android:backgroundTint="#D1CECA"
                     android:textAlignment="center"
                     android:background="@android:drawable/editbox_background"
                     android:textStyle="bold"
@@ -49,7 +49,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:backgroundTint="#ACE16F"
+                    android:backgroundTint="#D1CECA"
                     android:textAlignment="center"
                     android:background="@android:drawable/editbox_background"
                     android:textStyle="bold"

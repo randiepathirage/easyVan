@@ -22,8 +22,8 @@
         android:icon="@drawable/ic_location"/>
 
     <item
-        android:id="@+id/nav_payment"
-        android:title="Payment"
-        android:icon="@drawable/ic_payment"/>
+        android:id="@+id/nav_expense"
+        android:title="Expenses"
+        android:icon="@drawable/ic_expense"/>
 
 </menu>
