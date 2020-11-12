@@ -26,11 +26,13 @@ import java.util.List;
 
 public class OwnerVans extends AppCompatActivity {
     private Menu menu;
+    //View van detail
+    // OwnerVanAdapter + OwnerVanProduct + OwnerVanProductAdapter
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
 
     //a list to store all the vehicles
     List<OwnerVanProduct> vehicleList;
-    VansAdapter adapter;
+    OwnerVanProductAdapter adapter;
     //the recyclerview
     RecyclerView recyclerView;
 
