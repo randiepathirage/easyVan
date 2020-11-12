@@ -17,6 +17,7 @@ public class DriverPayment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_payment);
+        getSupportActionBar().setTitle("Payments");
 
     }
 }
