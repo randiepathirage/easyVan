@@ -44,15 +44,20 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
             holder.textViewTotalNoOfSeats.setText("Total no of seats: "+String.valueOf(vans.getTotal_no_of_seats()));
             holder.textViewModel.setText("Vehicle model: "+vans.getModel());
             holder.textViewType.setText("Type: "+vans.getType());
-
-            if(vans.isAC_nonAC()){
-                holder.textViewAC.setText("Fully air condition");
-            }
-            if(vans.isCaretaker()){
-                holder.textViewCaretaker.setText("with a caretaker");
-            }
-
             holder.textViewStartLocation.setText(vans.getStart_location());
+
+         if(vans.getAC_nonAC()==1){
+                holder.textViewAC.setText("Fully air condition");
+            }else{
+             holder.textViewAC.setText("not air conditioned");
+         }
+         if(vans.getCaretaker()==1){
+                holder.textViewCaretaker.setText(",with a caretaker");
+         }else{
+             holder.textViewCaretaker.setText(",without caretaker");
+         }
+
+
 
            // Glide.with(mCtx)
            //         .load(ParentVans.getImage())
