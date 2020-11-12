@@ -107,7 +107,9 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                             vehicle.getString("type"),
                                             vehicle.getInt("AC_nonAC"),
                                             vehicle.getInt("caretaker"),
-                                            vehicle.getString("start_location")
+                                            vehicle.getString("start_location"),
+                                            vehicle.getString("school"),
+                                            vehicle.getString("town")
 
                                     ));
 
