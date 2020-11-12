@@ -19,5 +19,6 @@ public class DriverCalendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_calendar);
+        getSupportActionBar().setTitle("Calendar");
     }
 }
