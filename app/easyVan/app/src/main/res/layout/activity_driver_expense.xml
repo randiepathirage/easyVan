@@ -71,25 +71,4 @@
         android:textSize="18dp"
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="663dp" />
-
-
-<<<<<<< Updated upstream
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/driver_nav" />
-=======
->>>>>>> Stashed changes
-
-
 </RelativeLayout>

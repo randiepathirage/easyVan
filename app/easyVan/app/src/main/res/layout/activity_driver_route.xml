@@ -63,7 +63,6 @@
         android:text="Go" />
 
 
-<<<<<<< Updated upstream
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -77,8 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_go"
         app:layout_constraintVertical_bias="1.0" />
-=======
->>>>>>> Stashed changes
 
 </RelativeLayout>
 
