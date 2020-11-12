@@ -4,11 +4,11 @@ public class ParentVans {
         private int no_of_seats_available;
         private int total_no_of_seats;
         private String model,start_location;
-        private String type;
+        private String type,school,town;
         private int AC_nonAC,caretaker;
 
 
-    public ParentVans(int no_of_seats_available, int total_no_of_seats, String model, String type,int AC_nonAC,int caretaker, String start_location) {
+    public ParentVans(int no_of_seats_available, int total_no_of_seats, String model, String type,int AC_nonAC,int caretaker, String start_location,String school,String town) {
         this.no_of_seats_available = no_of_seats_available;
         this.total_no_of_seats = total_no_of_seats;
         this.model = model;
@@ -16,6 +16,8 @@ public class ParentVans {
         this.start_location=start_location;
         this.AC_nonAC=AC_nonAC;
         this.caretaker=caretaker;
+        this.school=school;
+        this.town=town;
 
     }
 
@@ -27,12 +29,20 @@ public class ParentVans {
         return AC_nonAC;
     }
 
+    public String getTown() {
+        return town;
+    }
+
     public int getCaretaker() {
         return caretaker;
     }
 
     public int getTotal_no_of_seats() {
         return total_no_of_seats;
+    }
+
+    public String getSchool() {
+        return school;
     }
 
     public String getStart_location() {

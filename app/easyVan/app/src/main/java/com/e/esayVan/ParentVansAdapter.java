@@ -45,6 +45,8 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
             holder.textViewModel.setText("Vehicle model: "+vans.getModel());
             holder.textViewType.setText("Type: "+vans.getType());
             holder.textViewStartLocation.setText(vans.getStart_location());
+            holder.textViewSchools.setText("-"+ vans.getSchool());
+            holder.textViewTowns.setText("("+ vans.getTown()+")");
 
          if(vans.getAC_nonAC()==1){
                 holder.textViewAC.setText("Fully air condition");
@@ -74,7 +76,7 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
 
         class VansViewHolder extends RecyclerView.ViewHolder {
 
-            TextView textViewNoOfSeatsAvailable,textViewTotalNoOfSeats,textViewModel,textViewType,textViewAC,textViewCaretaker,textViewStartLocation;
+            TextView textViewNoOfSeatsAvailable,textViewTotalNoOfSeats,textViewModel,textViewType,textViewAC,textViewCaretaker,textViewStartLocation,textViewSchools,textViewTowns;
 
             public VansViewHolder(View itemView) {
                 super(itemView);
@@ -86,6 +88,8 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
                 textViewAC=itemView.findViewById(R.id.textViewAC);
                 textViewCaretaker=itemView.findViewById(R.id.textViewCaretaker);
                 textViewStartLocation=itemView.findViewById(R.id.textViewStartLocation);
+                textViewSchools=itemView.findViewById(R.id.textViewSchools);
+                textViewTowns=itemView.findViewById(R.id.textViewTowns);
             }
         }
 }
