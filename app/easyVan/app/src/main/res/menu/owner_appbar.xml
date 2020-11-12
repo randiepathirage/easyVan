@@ -19,4 +19,9 @@
         android:icon="@drawable/ic_account"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/logout"
+        app:showAsAction="never"
+        android:title="Log Out" />
+
 </menu>

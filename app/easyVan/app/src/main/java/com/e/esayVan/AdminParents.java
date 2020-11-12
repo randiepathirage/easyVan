@@ -46,8 +46,8 @@ public class AdminParents extends AppCompatActivity {
 
         StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
         collectData();
-        CustomListView customListView=new CustomListView(this,name);
-        listView.setAdapter(customListView);
+        Admin_CustomListView adminCustomListView =new Admin_CustomListView(this,name);
+        listView.setAdapter(adminCustomListView);
     }
 
     private void collectData()

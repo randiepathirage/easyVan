@@ -11,12 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1400dp"
-<<<<<<< Updated upstream
-        android:background="#F7931e"
-=======
         android:background="#fff"
         android:layout_alignParentBottom="true"
->>>>>>> Stashed changes
+        android:background="#fff"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintEnd_toEndOf="parent"

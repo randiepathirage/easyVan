@@ -13,8 +13,8 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Owner extends AppCompatActivity {
+
     Button manage1 , report1 ,expenses1 , calender1, request1 , location1 ;
-    private Menu menu;
 
 
     @Override
@@ -74,7 +74,39 @@ public class Owner extends AppCompatActivity {
             }
         });
         getSupportActionBar().setTitle("Home");
+    }
 
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,OwnerRequest.class));
+                return true;
+
+            case R.id.account:
+                startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(Owner.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(Owner.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+        return true;
     }
 }
