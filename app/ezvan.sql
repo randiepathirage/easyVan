@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 07:20 PM
+-- Generation Time: Nov 11, 2020 at 02:43 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ezvan`
 --
-CREATE DATABASE IF NOT EXISTS `ezvan` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ezvan`;
 
 -- --------------------------------------------------------
 
@@ -37,10 +35,6 @@ CREATE TABLE `absence_date` (
   `absence_in_the_morning` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELATIONSHIPS FOR TABLE `absence_date`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -52,10 +46,6 @@ CREATE TABLE `assign` (
   `owner_NIC_no` varchar(10) NOT NULL,
   `vehicle_no` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `assign`:
---
 
 -- --------------------------------------------------------
 
@@ -72,14 +62,9 @@ CREATE TABLE `child` (
   `last_name` varchar(20) NOT NULL,
   `pickup_location` varchar(50) NOT NULL,
   `dropoff_location` varchar(50) NOT NULL,
-  `vehicle_no` varchar(15) NOT NULL
+  `vehicle_no` varchar(15) NOT NULL,
+  `start_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `child`:
---   `vehicle_no`
---       `vehicle` -> `number`
---
 
 -- --------------------------------------------------------
 
@@ -95,12 +80,6 @@ CREATE TABLE `expense` (
   `vehicle_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELATIONSHIPS FOR TABLE `expense`:
---   `vehicle_no`
---       `vehicle` -> `number`
---
-
 -- --------------------------------------------------------
 
 --
@@ -115,12 +94,6 @@ CREATE TABLE `insurance` (
   `vehicle_no` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELATIONSHIPS FOR TABLE `insurance`:
---   `vehicle_no`
---       `vehicle` -> `number`
---
-
 -- --------------------------------------------------------
 
 --
@@ -129,17 +102,10 @@ CREATE TABLE `insurance` (
 
 CREATE TABLE `license` (
   `license_no` varchar(20) NOT NULL,
-  `renewal_fee` varchar(5) NOT NULL,
   `valid_from` date NOT NULL,
   `valid_to` date NOT NULL,
   `vehicle_no` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `license`:
---   `vehicle_no`
---       `vehicle` -> `number`
---
 
 -- --------------------------------------------------------
 
@@ -150,13 +116,18 @@ CREATE TABLE `license` (
 CREATE TABLE `login` (
   `NIC_no` varchar(10) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `email` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `login`:
+-- Dumping data for table `login`
 --
+
+INSERT INTO `login` (`NIC_no`, `username`, `password`, `email`) VALUES
+('345', 'akalanka', '554ee7797d4b8e3958a7049a5681a742', 'aky@gmail.com'),
+('3453', 'akaldanka', '0775a3feb59a9ea5ef65b39aa5a68a16', 'wewra@gmail.com'),
+('986760296v', 'randie', 'dfc0d64b587784fb2de6a4d14bede2a2', 'randiepathirage@gmai');
 
 -- --------------------------------------------------------
 
@@ -172,10 +143,6 @@ CREATE TABLE `notify` (
   `time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- RELATIONSHIPS FOR TABLE `notify`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -187,13 +154,19 @@ CREATE TABLE `parent_owner_driver` (
   `parent_flag` tinyint(1) NOT NULL,
   `driver_flag` tinyint(1) NOT NULL,
   `owner_flag` tinyint(1) NOT NULL,
-  `license_no` varchar(20) DEFAULT NULL,
-  `location` varchar(100) NOT NULL
+  `admin_flag` tinyint(1) NOT NULL,
+  `license_no` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `parent_owner_driver`:
+-- Dumping data for table `parent_owner_driver`
 --
+
+INSERT INTO `parent_owner_driver` (`NIC_no`, `parent_flag`, `driver_flag`, `owner_flag`, `admin_flag`, `license_no`) VALUES
+('345', 1, 0, 0, 0, '0'),
+('3453', 0, 0, 1, 0, '0'),
+('8675743v', 1, 0, 0, 0, ' 0'),
+('986760296v', 1, 0, 0, 0, ' 0');
 
 -- --------------------------------------------------------
 
@@ -209,15 +182,27 @@ CREATE TABLE `request` (
   `owner_NIC_no` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- RELATIONSHIPS FOR TABLE `request`:
---   `owner_NIC_no`
---       `parent_owner_driver` -> `NIC_no`
---   `vehicle_no`
---       `vehicle` -> `number`
---   `parent_NIC_no`
---       `parent_owner_driver` -> `NIC_no`
+-- Table structure for table `school`
 --
+
+CREATE TABLE `school` (
+  `school` varchar(50) NOT NULL,
+  `vehicle_no` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `town`
+--
+
+CREATE TABLE `town` (
+  `town` varchar(50) NOT NULL,
+  `vehicle_no` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -230,28 +215,17 @@ CREATE TABLE `user` (
   `contact_no` int(10) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
-  `middle_name` varchar(20) NOT NULL,
-  `address` varchar(50) NOT NULL
+  `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `user`:
+-- Dumping data for table `user`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user_role`
---
-
-CREATE TABLE `user_role` (
-  `NIC_no` varchar(10) NOT NULL,
-  `user_role` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `user_role`:
---
+INSERT INTO `user` (`NIC_no`, `contact_no`, `last_name`, `first_name`, `address`) VALUES
+('345', 54321, 'mihisara', 'akalanka', 'ertyujkjnhbgvfc'),
+('3453', 546784343, 'mihisara', 'akalanka', 'uytrew'),
+('986760296v', 714446662, 'pathirage', 'randie', 'homagama,godagama\n');
 
 -- --------------------------------------------------------
 
@@ -268,14 +242,17 @@ CREATE TABLE `vehicle` (
   `permit_no` varchar(20) NOT NULL,
   `A/C_non-A/C` tinyint(1) NOT NULL,
   `caretaker` tinyint(1) NOT NULL,
+  `start_location` varchar(300) NOT NULL,
   `owner_NIC_no` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `vehicle`:
---   `owner_NIC_no`
---       `parent_owner_driver` -> `NIC_no`
+-- Dumping data for table `vehicle`
 --
+
+INSERT INTO `vehicle` (`number`, `no_of_seats_available`, `total_no_of_seats`, `model`, `type`, `permit_no`, `A/C_non-A/C`, `caretaker`, `start_location`, `owner_NIC_no`) VALUES
+('CBF-7375', 8, 20, 'nissan', 'van', '089654v', 1, 0, '', '986760296v'),
+('DF-9864', 10, 30, 'rosa', 'bus', '23v', 1, 0, '', '8675743v');
 
 --
 -- Indexes for dumped tables
@@ -351,15 +328,23 @@ ALTER TABLE `request`
   ADD KEY `vehicle_no` (`vehicle_no`);
 
 --
+-- Indexes for table `school`
+--
+ALTER TABLE `school`
+  ADD PRIMARY KEY (`school`,`vehicle_no`),
+  ADD KEY `vehicle_no` (`vehicle_no`);
+
+--
+-- Indexes for table `town`
+--
+ALTER TABLE `town`
+  ADD PRIMARY KEY (`town`,`vehicle_no`),
+  ADD KEY `vehicle_no` (`vehicle_no`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`NIC_no`);
-
---
--- Indexes for table `user_role`
---
-ALTER TABLE `user_role`
   ADD PRIMARY KEY (`NIC_no`);
 
 --
@@ -414,6 +399,18 @@ ALTER TABLE `request`
   ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`owner_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE,
   ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE,
   ADD CONSTRAINT `request_ibfk_3` FOREIGN KEY (`parent_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `school`
+--
+ALTER TABLE `school`
+  ADD CONSTRAINT `school_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `town`
+--
+ALTER TABLE `town`
+  ADD CONSTRAINT `town_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `vehicle`

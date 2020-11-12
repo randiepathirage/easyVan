@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ public class Login extends AppCompatActivity {
 
     EditText usernameEt,passwordEt;
     String result;
+    private Button btnforgot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,15 @@ public class Login extends AppCompatActivity {
 
         usernameEt=(EditText)findViewById(R.id.txtusername);
         passwordEt=(EditText)findViewById(R.id.txtpassword);
+
+        btnforgot=(Button)findViewById(R.id.btnfg);
+        btnforgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotIntent = new Intent(Login.this,ForgotPassword.class);
+                startActivity(forgotIntent);
+            }
+        });
     }
 
     public void onLogin(View view){
@@ -62,6 +74,13 @@ public class Login extends AppCompatActivity {
                         SessionManagement sessionManagement = new SessionManagement(Login.this);
                         sessionManagement.saveSession(user);
 
+                    }
+
+                    if (result.equals("Login Success admin")){
+                        userRole="admin";
+                        User user = new User(username,userRole);
+                        SessionManagement sessionManagement = new SessionManagement(Login.this);
+                        sessionManagement.saveSession(user);
                     }
 
                 }

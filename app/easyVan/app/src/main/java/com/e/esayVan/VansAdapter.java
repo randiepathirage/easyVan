@@ -68,12 +68,12 @@ public class VansAdapter extends RecyclerView.Adapter<com.e.esayVan.VansAdapter.
             public VansViewHolder(View itemView) {
                 super(itemView);
 
-                textViewNumber = itemView.findViewById(R.id.textViewNumber);
+              //  textViewNumber = itemView.findViewById(R.id.textViewNumber);
                 textViewNoOfSeatsAvailable = itemView.findViewById(R.id.textViewNoOfSeatsAvailable);
                 textViewTotalNoOfSeats = itemView.findViewById(R.id.textViewTotalNoOfSeats);
                 textViewModel = itemView.findViewById(R.id.textViewModel);
                 textViewType= itemView.findViewById(R.id.textViewType);
-                textViewPermitNo= itemView.findViewById(R.id.textViewPermitNo);
+              //  textViewPermitNo= itemView.findViewById(R.id.textViewPermitNo);
                 imageView = itemView.findViewById(R.id.imageView);
             }
         }

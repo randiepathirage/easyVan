@@ -76,7 +76,6 @@ public class AdminOwners extends AppCompatActivity {
                             case 2:
 
                                 deleteData(adminOwnerArrayList.get(position).getNic());
-
                                 break;
 
 
@@ -162,8 +161,12 @@ public class AdminOwners extends AppCompatActivity {
                                     String lname = object.getString("last_name");
                                     String fname = object.getString("first_name");
                                     String address = object.getString("address");
+                                    String username = object.getString("username");
+                                    String email = object.getString("email");
 
-                                    owner = new AdminOwnerArray(nic,contact,lname,fname,address);
+
+
+                                    owner = new AdminOwnerArray(nic,contact,lname,fname,address,username,email);
                                     adminOwnerArrayList.add(owner);
                                     adapter.notifyDataSetChanged();
 

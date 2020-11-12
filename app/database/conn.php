@@ -1,5 +1,5 @@
 <?php
-
+    //randie.............................................................
     $servername="localhost";
     $mysql_user="root";
     $mysql_pass="";

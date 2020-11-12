@@ -53,7 +53,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
             loadVehicles();
 
 
-
+        //bottom navigation
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_newsfeed);
 
@@ -88,6 +88,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
         }
 
+        //loading vehicles
         private void loadVehicles() {
             StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                     new Response.Listener<String>() {
@@ -100,13 +101,14 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                     JSONObject vehicle=array.getJSONObject(i);
 
                                     vehicleList.add(new ParentVans(
-                                            vehicle.getString("number"),
                                             vehicle.getInt("no_of_seats_available"),
                                             vehicle.getInt("total_no_of_seats"),
                                             vehicle.getString("model"),
                                             vehicle.getString("type"),
-                                            vehicle.getString("permit_no"),
-                                            vehicle.getString("image")
+                                            vehicle.getString("start_location"),
+                                            vehicle.getBoolean("AC_nonAC"),
+                                            vehicle.getBoolean("caretaker")
+
                                     ));
 
                                 }
