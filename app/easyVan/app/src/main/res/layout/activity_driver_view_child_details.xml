@@ -6,16 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".DriverViewChildDetails">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/driver_nav"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp">
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="70dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -24,13 +34,12 @@
                 android:id="@+id/textView1"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Student name:"
+                android:text="First name:"
                 android:textColor="#000000"
                 android:textSize="22dp" />
 
-            <EditText
-                android:id="@+id/v_name"
+            <TextView
+                android:id="@+id/v_firstname"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -47,12 +56,12 @@
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Student number:"
+                android:text="Last name:"
                 android:textColor="#000000"
                 android:textSize="22dp" />
 
-            <EditText
-                android:id="@+id/v_number"
+            <TextView
+                android:id="@+id/v_lastnumber"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -69,12 +78,12 @@
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Address:"
+                android:text="School:"
                 android:textColor="#000000"
                 android:textSize="22dp" />
 
-            <EditText
-                android:id="@+id/v_address"
+            <TextView
+                android:id="@+id/v_school"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -91,12 +100,12 @@
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="School:"
+                android:text="Grade:"
                 android:textColor="#000000"
                 android:textSize="22dp" />
 
-            <EditText
-                android:id="@+id/v_school"
+            <TextView
+                android:id="@+id/v_grade"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -113,12 +122,12 @@
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Grade:"
+                android:text="Pickip location:"
                 android:textColor="#000000"
                 android:textSize="22dp" />
 
-            <EditText
-                android:id="@+id/v_grade"
+            <TextView
+                android:id="@+id/v_pickup"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -139,12 +148,12 @@
                 android:textColor="#000000"
                 android:textSize="22dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/v_contactnumber"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="80dp"
+
                 android:background="@android:drawable/editbox_background"
                 android:padding="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -155,4 +164,7 @@
 
         </LinearLayout>
     </ScrollView>
+
+
+
 </RelativeLayout>
