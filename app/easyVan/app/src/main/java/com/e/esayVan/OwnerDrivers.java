@@ -26,6 +26,8 @@ import java.util.List;
 
 public class OwnerDrivers extends AppCompatActivity {
 
+    //View for driver list
+
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
 
     //a list to store all the vehicles

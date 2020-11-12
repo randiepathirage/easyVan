@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-
+// for View van detail
 
 public class OwnerVanProductAdapter extends RecyclerView.Adapter<OwnerVanProductAdapter.VansViewHolder> {
     //this context we will use to inflate the layout

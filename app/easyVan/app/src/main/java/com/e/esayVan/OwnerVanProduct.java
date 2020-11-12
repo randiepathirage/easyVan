@@ -1,6 +1,8 @@
 package com.e.esayVan;
 
 public class OwnerVanProduct {
+    //Foor View van detail
+
     private String username;
     private String password;
 
