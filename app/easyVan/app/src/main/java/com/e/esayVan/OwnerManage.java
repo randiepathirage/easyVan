@@ -38,13 +38,14 @@ public class OwnerManage extends AppCompatActivity {
                 startActivity(mang);
 
             }});
-        vanBtn.setOnClickListener(new View.OnClickListener() {
+
+        /*vanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent vn = new Intent(OwnerManage.this,OwnerVans.class);
                 startActivity(vn);
 
-            }});
+            }});*/
 
 
 

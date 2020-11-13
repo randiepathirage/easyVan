@@ -76,6 +76,13 @@ public class Login extends AppCompatActivity {
 
                     }
 
+                    if (result.equals("Login Success admin")){
+                        userRole="admin";
+                        User user = new User(username,userRole);
+                        SessionManagement sessionManagement = new SessionManagement(Login.this);
+                        sessionManagement.saveSession(user);
+                    }
+
                 }
         } catch (ExecutionException e) {
             e.printStackTrace();

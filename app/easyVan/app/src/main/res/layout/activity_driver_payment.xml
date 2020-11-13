@@ -1,173 +1,386 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DriverPayment">
 
-    <TableRow
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="125dp"
-            android:backgroundTint="#ACE16F"
-            android:textStyle="bold"
-            android:text="Name"
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="125dp"
-            android:backgroundTint="#ACE16F"
-            android:textStyle="bold"
-            android:text="Amount"
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="125dp"
-            android:backgroundTint="#ACE16F"
-            android:textStyle="bold"
-            android:text="Mark"
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18dp"/>
-    </TableRow>
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="70dp">
 
-</TableLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#D1CECA"
+                    android:textAlignment="center"
+                    android:background="@android:drawable/editbox_background"
+                    android:textStyle="bold"
+                    android:text="Name"
+                    android:textSize="26dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#D1CECA"
+                    android:textAlignment="center"
+                    android:background="@android:drawable/editbox_background"
+                    android:textStyle="bold"
+                    android:text="Amount"
+                    android:textSize="26dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#D1CECA"
+                    android:textAlignment="center"
+                    android:background="@android:drawable/editbox_background"
+                    android:textStyle="bold"
+                    android:text="Mark"
+                    android:textSize="26dp"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="18dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp" />
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

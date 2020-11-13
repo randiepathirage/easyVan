@@ -30,7 +30,6 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
     //a list to store all the vehicles
     List<ParentVans> vehicleList;
-    ParentVansAdapter adapter;
     //the recyclerview
     RecyclerView recyclerView;
     BottomNavigationView bottom_nav;
@@ -53,7 +52,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
             loadVehicles();
 
 
-
+        //bottom navigation
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_newsfeed);
 
@@ -88,31 +87,36 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
         }
 
+        //loading vehicles
         private void loadVehicles() {
             StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             try {
+
                                 JSONArray array=new JSONArray(response);
 
                                 for(int i=0;i<array.length();i++){
                                     JSONObject vehicle=array.getJSONObject(i);
 
                                     vehicleList.add(new ParentVans(
-                                            vehicle.getString("number"),
                                             vehicle.getInt("no_of_seats_available"),
                                             vehicle.getInt("total_no_of_seats"),
                                             vehicle.getString("model"),
                                             vehicle.getString("type"),
-                                            vehicle.getString("permit_no"),
-                                            vehicle.getString("image")
+                                            vehicle.getInt("AC_nonAC"),
+                                            vehicle.getInt("caretaker"),
+                                            vehicle.getString("start_location"),
+                                            vehicle.getString("school"),
+                                            vehicle.getString("town")
+
                                     ));
 
                                 }
 
                                 //creating recyclerview adapter
-                               ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
+                                ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
                                 //setting adapter to recyclerview
                                 recyclerView.setAdapter(adapter);
 

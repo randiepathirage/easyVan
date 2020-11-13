@@ -17,5 +17,12 @@
     <string name="invalid_password">Enter 6 digit password</string>
     <string name="invalid_confirm_password">Password does not match</string>
 
+    <string-array name="select_expense">
+        <item>Vehicle part</item>
+        <item>Fuel</item>
+        <item>Food</item>
+        <item>Other</item>
+    </string-array>
+
 
 </resources>
