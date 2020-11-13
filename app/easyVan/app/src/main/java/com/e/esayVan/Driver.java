@@ -67,9 +67,7 @@ public class Driver extends AppCompatActivity {
             }
         });
     }
-
-
-
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
