@@ -10,8 +10,9 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/top_payment"
-        android:title="Payment"
+
+        android:id="@+id/top_expense"
+        android:title="Payments"
         app:showAsAction="never"/>
 
     <item

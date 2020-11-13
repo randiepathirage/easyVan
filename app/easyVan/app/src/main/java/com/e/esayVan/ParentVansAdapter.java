@@ -40,16 +40,30 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
             ParentVans vans = vehicleList.get(position);
 
             //binding the data with the viewholder views
-            holder.textViewNumber.setText(vans.getNumber());
-            holder.textViewNoOfSeatsAvailable.setText(String.valueOf(vans.getNo_of_seats_available()));
-            holder.textViewTotalNoOfSeats.setText(String.valueOf(vans.getTotal_no_of_seats()));
-            holder.textViewModel.setText(vans.getModel());
-            holder.textViewType.setText(vans.getType());
-            holder.textViewPermitNo.setText(vans.getPermit_no());
+            holder.textViewNoOfSeatsAvailable.setText("Number of seats Available: "+String.valueOf(vans.getNo_of_seats_available()));
+            holder.textViewTotalNoOfSeats.setText("Total no of seats: "+String.valueOf(vans.getTotal_no_of_seats()));
+            holder.textViewModel.setText("Vehicle model: "+vans.getModel());
+            holder.textViewType.setText("Type: "+vans.getType());
+            holder.textViewStartLocation.setText(vans.getStart_location());
+            holder.textViewSchools.setText("-"+ vans.getSchool());
+            holder.textViewTowns.setText("("+ vans.getTown()+")");
 
-            Glide.with(mCtx)
-                    .load(ParentVans.getImage())
-                    .into(holder.imageView);
+         if(vans.getAC_nonAC()==1){
+                holder.textViewAC.setText("Fully air condition");
+            }else{
+             holder.textViewAC.setText("not air conditioned");
+         }
+         if(vans.getCaretaker()==1){
+                holder.textViewCaretaker.setText(",with a caretaker");
+         }else{
+             holder.textViewCaretaker.setText(",without caretaker");
+         }
+
+
+
+           // Glide.with(mCtx)
+           //         .load(ParentVans.getImage())
+           //         .into(holder.imageView);
 
         }
 
@@ -62,19 +76,20 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
 
         class VansViewHolder extends RecyclerView.ViewHolder {
 
-            TextView textViewNumber, textViewNoOfSeatsAvailable,textViewTotalNoOfSeats,textViewModel,textViewType,textViewPermitNo;
-            ImageView imageView;
+            TextView textViewNoOfSeatsAvailable,textViewTotalNoOfSeats,textViewModel,textViewType,textViewAC,textViewCaretaker,textViewStartLocation,textViewSchools,textViewTowns;
 
             public VansViewHolder(View itemView) {
                 super(itemView);
 
-                textViewNumber = itemView.findViewById(R.id.textViewNumber);
                 textViewNoOfSeatsAvailable = itemView.findViewById(R.id.textViewNoOfSeatsAvailable);
                 textViewTotalNoOfSeats = itemView.findViewById(R.id.textViewTotalNoOfSeats);
                 textViewModel = itemView.findViewById(R.id.textViewModel);
                 textViewType= itemView.findViewById(R.id.textViewType);
-                textViewPermitNo= itemView.findViewById(R.id.textViewPermitNo);
-                imageView = itemView.findViewById(R.id.imageView);
+                textViewAC=itemView.findViewById(R.id.textViewAC);
+                textViewCaretaker=itemView.findViewById(R.id.textViewCaretaker);
+                textViewStartLocation=itemView.findViewById(R.id.textViewStartLocation);
+                textViewSchools=itemView.findViewById(R.id.textViewSchools);
+                textViewTowns=itemView.findViewById(R.id.textViewTowns);
             }
         }
 }
