@@ -81,16 +81,18 @@ public class Driver extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.top_notification:
-                /*notification open*/
+                Intent m = new Intent(getApplicationContext(),DriverNotification.class);
+                startActivity(m);
                 return true;
             case R.id.top_profile:
-                /*profile open*/
+                Intent k = new Intent(getApplicationContext(),DriverProfile.class);
+                startActivity(k);
                 return true;
             case R.id.top_calendar:
                 Intent i = new Intent(getApplicationContext(),DriverCalendar.class);
                 startActivity(i);
                 return true;
-            case R.id.top_expense:
+            case R.id.top_payment:
                 Intent j = new Intent(getApplicationContext(),DriverPayment.class);
                 startActivity(j);
                 return true;

@@ -61,8 +61,8 @@ public class DriverChildDetails extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.nav_payment:
-                        Intent m = new Intent(getApplicationContext(),DriverPayment.class);
+                    case R.id.nav_expense:
+                        Intent m = new Intent(getApplicationContext(),DriverExpense.class);
                         startActivity(m);
                         overridePendingTransition(0,0);
                         return true;
