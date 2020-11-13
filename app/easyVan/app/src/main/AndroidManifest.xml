@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".DriverNotification"></activity>
+        <activity android:name=".DriverProfile" />
         <activity android:name=".ParentChangePassword"></activity>
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
