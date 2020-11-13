@@ -38,6 +38,7 @@ public class OwnerManage extends AppCompatActivity {
                 startActivity(mang);
 
             }});
+
         /*vanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
