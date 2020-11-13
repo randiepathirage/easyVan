@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#717D7E">
+        android:background="#F7F9F9">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtUsername"
             android:text="Username:"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtNic"
             android:layout_marginLeft="30dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:text="ID:"
             android:textSize="16dp"/>
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtContactNo"
             android:layout_marginLeft="30dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:text="Contact No:"
             android:textSize="16dp"/>
 
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtEmail"
             android:layout_marginLeft="30dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:text="Email:"
             android:textSize="16dp"/>
 
@@ -57,237 +57,34 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtAddress"
             android:layout_marginLeft="30dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:text="Address:"
             android:textSize="16dp"/>
 
         <Button
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/roundededge"
-            android:text="Edit"
+            android:text="Edit Profile"
+            android:paddingHorizontal="30dp"
             android:textColor="#fff"
-            android:textStyle="bold"
             android:layout_margin="20dp"
             android:layout_marginBottom="30dp"/>
-
     </LinearLayout>
 
-    <ScrollView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="Your Children Details:"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:padding="10dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Child 01"
-                        android:layout_margin="30dp"
-                        android:textSize="25dp"
-                        android:textColor="#000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="School:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Grade:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pickup location:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dropoff location:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fees per month:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Service:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="20dp"
-                        android:textColor="#000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Driver:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vehicle number:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Owner:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Contact no:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Child 01"
-                        android:layout_margin="30dp"
-                        android:textSize="25dp"
-                        android:textColor="#000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="School:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Grade:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pickup location:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dropoff location:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fees per month:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Service:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="20dp"
-                        android:textColor="#000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Driver:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vehicle number:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Owner:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Contact no:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <Button
-                android:id="@+id/btnMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/roundededge"
-                android:text="More"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_margin="30dp"
-                android:layout_marginBottom="60dp"/>
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

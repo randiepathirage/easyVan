@@ -1,6 +1,8 @@
 package com.e.esayVan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,7 +25,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParentAccount extends AppCompatActivity {
@@ -34,8 +38,14 @@ public class ParentAccount extends AppCompatActivity {
     String userName;
     private String strContactNo;
 
+    //a list to store all the child details
+    List<ParentChild> childlist;
+
+    //the recyclerview
+    RecyclerView recyclerView;
 
    String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
+   private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +59,28 @@ public class ParentAccount extends AppCompatActivity {
         contactNo=findViewById(R.id.txtContactNo);
         email=findViewById(R.id.txtEmail);
 
+        //get the session username
         SessionManagement sessionManagement = new SessionManagement(this);
         userName = sessionManagement.getUserName();
         username.setText(userName);
 
+        //load account details
         sendJsonrequest();
 
 
-        btnMore=(Button)findViewById(R.id.btnMore);
+        //view children details
+        //getting the recyclerview from xml
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //initializing the childrenlist
+        childlist = new ArrayList<>();
+
+        loadChildren();
+
+
         btnEdit=(Button)findViewById(R.id.btnEdit);
-
-        btnMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ParentAccount.this, ParentDetails.class);
-                startActivity(intent);
-            }
-        });
-
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +90,53 @@ public class ParentAccount extends AppCompatActivity {
         });
 
     }
+
+    private void loadChildren() {
+
+        StringRequest stringRequest=new StringRequest(Request.Method.GET,VIEW_CHILD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray array=new JSONArray(response);
+
+                            for(int i=0;i<array.length();i++){
+                                JSONObject child=array.getJSONObject(i);
+                                childlist.add(new ParentChild(
+                                        child.getString("grade"),
+                                        child.getString("school"),
+                                        child.getString("firstName"),
+                                        child.getString("lastName"),
+                                        child.getString("pickupLocation"),
+                                        child.getString("dropoffLocation"),
+                                        child.getString("vehicleNo"),
+                                        child.getString("startDate"),
+                                        child.getString("monthlyFee")
+
+                                ));
+
+                            }
+
+                            //creating recyclerview adapter
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist);
+                            //setting adapter to recyclerview
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentAccount.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
     //load account details
     public void sendJsonrequest(){
 
