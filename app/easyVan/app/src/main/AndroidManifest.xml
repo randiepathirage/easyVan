@@ -13,12 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".ForgotPassword"></activity>
-=======
 
+        <activity android:name=".ForgotPassword"></activity>
         <activity android:name=".DriverSignUp"></activity>
->>>>>>> 4605d2a9777d87dde9f0c121aa5a7aa74e439c5f
         <activity android:name=".AdminViewOwner" />
         <activity android:name=".AdminUpdateUser" />
         <activity android:name=".SignUp" />
