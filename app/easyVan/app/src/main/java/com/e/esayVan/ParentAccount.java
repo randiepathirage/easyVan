@@ -110,8 +110,7 @@ public class ParentAccount extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
-                })
-        {
+                }){
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

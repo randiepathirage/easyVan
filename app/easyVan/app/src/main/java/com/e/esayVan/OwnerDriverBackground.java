@@ -16,8 +16,6 @@ import java.net.URLEncoder;
 
 public class OwnerDriverBackground extends User {
 
-    //View for driver list
-
     public OwnerDriverBackground(String username, String userRole) {
         super(username, userRole);
     }

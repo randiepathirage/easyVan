@@ -30,26 +30,13 @@ public class DriverSignUp extends AppCompatActivity {
                 address=(EditText)findViewById(R.id.edtAddress);
                 contactNo=(EditText)findViewById(R.id.edtContactNumber);
                 email=(EditText)findViewById(R.id.edtEmail);
-                licenceNo = (EditText)findViewById(R.id.licence_no);
+                licenceNo = findViewById(R.id.licence_no);
 
 
                 radioParent=(RadioButton)findViewById(R.id.radioParent);
                 radioOwner=(RadioButton)findViewById(R.id.radioOwner);
                 radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
 
-        }
-
-        private Boolean validatelicence_no (){
-                String val_address= address.getText().toString();
-
-                if(val_address.isEmpty()){
-                        address.setError("This field cannot be empty");
-                        return false;
-                }
-                else{
-                        address.setError(null);
-                        return true;
-                }
         }
 
         private Boolean validateName(){
@@ -187,7 +174,7 @@ public class DriverSignUp extends AppCompatActivity {
         public void onReg(View view){
 
                 if(!validateName()|!validateUsername()|!validatePassword()
-                        |!validateContactNo()|!validateEmail()|!validateConfirmPassword()|!validateAddress()|!validatelicence_no()){
+                        |!validateContactNo()|!validateEmail()|!validateConfirmPassword()|!validateAddress()){
                         return;
                 }
 
@@ -207,7 +194,7 @@ public class DriverSignUp extends AppCompatActivity {
                 String str_user_role = user_role;
                 String type = "register";
 
-                DriverSignUpBackgroundWorker backgroundWorker=new DriverSignUpBackgroundWorker(this);
+                BackgroundWorker backgroundWorker=new BackgroundWorker(this);
                 backgroundWorker.execute(type,Str_firstName,
                         str_lastName,str_NICNo,str_username,str_password,str_address,
                         str_contactNo,str_email,str_user_role,str_licenceNo);

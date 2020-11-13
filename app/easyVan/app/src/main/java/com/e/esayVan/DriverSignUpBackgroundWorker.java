@@ -2,7 +2,6 @@ package com.e.esayVan;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -88,23 +87,5 @@ public class DriverSignUpBackgroundWorker extends AsyncTask<String,Void,String> 
 
         return null;
     }
-
-    @Override
-    protected void onPreExecute() {
-
-    }
-    @Override
-    protected void onPostExecute(String result) {
-
-        Toast.makeText(context,result,Toast.LENGTH_LONG).show();
-        
-    }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
-
-
 
 }

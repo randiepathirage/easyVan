@@ -11,47 +11,33 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:padding="4dp" />
 
             <TextView
-                android:id="@+id/textViewStartLocation"
+                android:id="@+id/textViewNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="location"
+                android:layout_toRightOf="@id/imageView"
+                android:text="CBF-7375"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/textViewSchools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="schools"
-                android:layout_toRightOf="@id/textViewStartLocation"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/textViewTowns"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewStartLocation"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="towns"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textViewNoOfSeatsAvailable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewTowns"
+                android:layout_below="@id/textViewNumber"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imageView"
                 android:text="100"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
@@ -62,54 +48,42 @@
                 android:layout_below="@id/textViewNoOfSeatsAvailable"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:text="8" />
-
-            <TextView
-                android:id="@+id/textViewType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewTotalNoOfSeats"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="van"
-                android:textStyle="bold" />
+                android:layout_toRightOf="@id/imageView"
+                android:text="8"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
                 android:id="@+id/textViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewType"
+                android:layout_below="@id/textViewTotalNoOfSeats"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imageView"
                 android:text="Honda"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewFacilities"
+                android:id="@+id/textViewType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/textViewModel"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="150dp"
-                android:text="Facilities: "
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imageView"
+                android:text="van"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewAC"
+                android:id="@+id/textViewPermitNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/textViewType"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="150dp"
-                android:layout_toRightOf="@id/textViewFacilities"
-                android:text="ac" />
-
-            <TextView
-                android:id="@+id/textViewCaretaker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="150dp"
-                android:layout_toRightOf="@id/textViewAC"
-                android:text=",with a care taker" />
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imageView"
+                android:text="INR 56990"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

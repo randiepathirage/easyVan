@@ -13,7 +13,6 @@ import java.util.List;
 
 public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverProductAdapter.ProductViewHolder> {
 
-    //View for driver list
 
     //this context we will use to inflate the layout
     private Context mCtx;

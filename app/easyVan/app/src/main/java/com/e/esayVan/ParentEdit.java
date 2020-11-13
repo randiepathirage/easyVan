@@ -50,15 +50,6 @@ public class ParentEdit extends AppCompatActivity {
         SessionManagement sessionManagement = new SessionManagement(this);
         userName = sessionManagement.getUserName();
 
-        btnChangePass=findViewById(R.id.btnChangePassword);
-        btnChangePass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), ParentChangePassword.class);
-                startActivity(intent);
-            }
-        });
-
         //existing details from the database
         sendJsonrequest();
 

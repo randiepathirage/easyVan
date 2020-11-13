@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,15 +21,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class OwnerDrivers extends AppCompatActivity {
-
-    //View for driver list
-    String Name;
 
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
 
@@ -52,10 +45,6 @@ public class OwnerDrivers extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        SessionManagement sessionManagement = new SessionManagement(OwnerDrivers.this);
-        Name = sessionManagement.getUserName();
-
-        Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
 
         //initializing the vehiclelist
         DriverList = new ArrayList<>();
@@ -63,7 +52,7 @@ public class OwnerDrivers extends AppCompatActivity {
        loadVehicles();
     }
     private void loadVehicles() {
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -77,7 +66,6 @@ public class OwnerDrivers extends AppCompatActivity {
                                        products.getString("username"),
                                         products.getString("password")
                                 ));
-
 
                             }
 
@@ -93,27 +81,13 @@ public class OwnerDrivers extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // Toast.makeText(OwnerDrivers.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(OwnerDrivers.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
-        })
-        {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-            Map<String, String> params = new HashMap<String,String>();
-
-            params.put("username",Name);
-               // Toast.makeText(OwnerDrivers.this,userName,Toast.LENGTH_LONG).show();
-           // params.put("username",userName);
-              //  Toast.makeText(OwnerDrivers.this,userName,Toast.LENGTH_SHORT);
-            return params;
-        }
-
-
-        };
+        });
 
         Volley.newRequestQueue(this).add(stringRequest);
+
 
 
     }
