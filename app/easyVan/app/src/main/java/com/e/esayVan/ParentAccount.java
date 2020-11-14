@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ParentAccount extends AppCompatActivity {
+public class ParentAccount extends AppCompatActivity implements ParentChildrenAdapter.OnChildListener {
 
    Button btnMore,btnEdit;
    private TextView username,nic,address,contactNo,email;
@@ -80,6 +81,10 @@ public class ParentAccount extends AppCompatActivity {
         loadChildren();
 
 
+
+
+
+
         btnEdit=(Button)findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +98,7 @@ public class ParentAccount extends AppCompatActivity {
 
     private void loadChildren() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,VIEW_CHILD_URL,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST,VIEW_CHILD_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -108,17 +113,14 @@ public class ParentAccount extends AppCompatActivity {
                                         child.getString("firstName"),
                                         child.getString("lastName"),
                                         child.getString("pickupLocation"),
-                                        child.getString("dropoffLocation"),
-                                        child.getString("vehicleNo"),
-                                        child.getString("startDate"),
-                                        child.getString("monthlyFee")
+                                        child.getString("dropoffLocation")
 
                                 ));
 
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist);
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,ParentAccount.this);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
@@ -132,15 +134,23 @@ public class ParentAccount extends AppCompatActivity {
                 Toast.makeText(ParentAccount.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
-        });
+        })
+        {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
 
-        Volley.newRequestQueue(this).add(stringRequest);
+                params.put("username",userName);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     //load account details
     public void sendJsonrequest(){
-
-        //String url =URL + userName.trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
             @Override
@@ -185,6 +195,15 @@ public class ParentAccount extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        //childlist.get(position);
+        Intent intent=new Intent(this,sample.class);
+        intent.putExtra("some_object","somthing_else");
+        startActivity(intent);
 
     }
 }

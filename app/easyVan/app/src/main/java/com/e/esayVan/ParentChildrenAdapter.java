@@ -1,9 +1,11 @@
 package com.e.esayVan;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,11 +19,13 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     //we are storing all the products in a list
    private List<ParentChild> childlist;
+   private OnChildListener monChildListener;
 
     //getting the context and product list with constructor
-    public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist) {
+    public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, OnChildListener onChildListener) {
         this.mCtx = mCtx;
         this.childlist = childlist;
+        this.monChildListener= onChildListener;
     }
 
     @Override
@@ -30,11 +34,11 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.parent_child_details_layout, null);
-        return new ParentChildrenAdapter.ChildrenViewHolder(view);
+        return new ParentChildrenAdapter.ChildrenViewHolder(view,monChildListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ParentChildrenAdapter.ChildrenViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ParentChildrenAdapter.ChildrenViewHolder holder, final int position) {
 
         ParentChild children = childlist.get(position);
 
@@ -44,9 +48,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         holder.textViewSchool.setText(String.valueOf("School: "+children.getSchool()));
         holder.textViewPickupLocation.setText(String.valueOf("Pick up location: "+children.getPickupLocation()));
         holder.textViewDropoffLocation.setText(String.valueOf("Drop off location: "+children.getDropoffLocation()));
-        holder.textViewStartDate.setText(String.valueOf("Start date: "+children.getStartDate()));
-        holder.textViewMonthlyFee.setText(String.valueOf("Monthly fee: "+children.getMonthlyFee()));
-        holder.textViewVehicleNo.setText(String.valueOf("Vehicle No: "+children.getVehicleNo()));
+
     }
 
     @Override
@@ -54,11 +56,12 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         return childlist.size();
     }
 
-    class ChildrenViewHolder extends RecyclerView.ViewHolder {
+    class ChildrenViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
-        TextView  textViewGrade, textViewSchool,textViewFirstName,textViewPickupLocation,textViewDropoffLocation,textViewVehicleNo,textViewStartDate,textViewMonthlyFee;;
+        TextView  textViewGrade, textViewSchool,textViewFirstName,textViewPickupLocation,textViewDropoffLocation;
+        OnChildListener onChildListener;
 
-        public ChildrenViewHolder(View itemView) {
+        public ChildrenViewHolder(View itemView, OnChildListener onChildListener) {
             super(itemView);
 
             textViewGrade=itemView.findViewById(R.id.dspGrade);
@@ -66,9 +69,23 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
             textViewFirstName = itemView.findViewById(R.id.dspName);
             textViewPickupLocation = itemView.findViewById(R.id.dspPickup);
             textViewDropoffLocation = itemView.findViewById(R.id.dspDropOff);
-            textViewVehicleNo=itemView.findViewById(R.id.dspVehicleNo);
-            textViewStartDate=itemView.findViewById(R.id.dspStartDate);
-            textViewMonthlyFee=itemView.findViewById(R.id.dspFees);
+
+
+            this.onChildListener=onChildListener;
+
+            //attached onclick listener to entire view holder
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+
+            onChildListener.onNoteClick(getAdapterPosition());
+
+        }
+    }
+
+    public interface OnChildListener{
+        void onNoteClick(int position);
     }
 }
