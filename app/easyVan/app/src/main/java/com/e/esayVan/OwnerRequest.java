@@ -27,8 +27,17 @@ public class OwnerRequest extends AppCompatActivity {
                 startActivity(new Intent(this,OwnerRequest.class));
                 return true;
 
-            case R.id.account:
+            case R.id.top_profile:
                 startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(OwnerRequest.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(OwnerRequest.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 return true;
         }
         return true;
@@ -39,4 +48,5 @@ public class OwnerRequest extends AppCompatActivity {
         setContentView(R.layout.activity_owner_request);
         getSupportActionBar().setTitle("Request");
     }
+
 }
