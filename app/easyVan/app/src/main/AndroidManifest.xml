@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
+        <activity android:name=".sample"></activity>
+        <activity android:name=".DriverNotification" />
         <activity android:name=".ForgotPassword"></activity>
         <activity android:name=".DriverSignUp"></activity>
-
         <activity android:name=".DriverNotification"></activity>
         <activity android:name=".DriverProfile" />
-        <activity android:name=".ParentChangePassword"></activity>
+        <activity android:name=".ParentChangePassword" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
 
