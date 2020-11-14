@@ -96,5 +96,15 @@ public class OwnerManage extends AppCompatActivity {
         });
 
         getSupportActionBar().setTitle("Manage");
+
+    }
+    
+
+
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
     }
 }

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -61,6 +62,11 @@ public class OwnerDrivers extends AppCompatActivity {
         DriverList = new ArrayList<>();
 
        loadVehicles();
+
+        getSupportActionBar().setTitle("Drivers");
+
+
+
     }
     private void loadVehicles() {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
@@ -119,6 +125,13 @@ public class OwnerDrivers extends AppCompatActivity {
     }
     public void btn_add_Driver (View view) {
         startActivity(new Intent(getApplicationContext(),DriverSignUp.class));
+    }
+
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
     }
 
 
