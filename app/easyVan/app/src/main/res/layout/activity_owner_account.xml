@@ -11,9 +11,9 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -23,6 +23,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
         android:padding="10dp"
+        android:layout_below="@id/imageView4"
         android:text="Username:"
         android:textColor="#000"
         android:textSize="25dp"
@@ -70,18 +71,16 @@
             android:text="Address:"
             android:textSize="16dp"/>
 
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
-
-
-            android:layout_height="30dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/roundededge"
-            android:text="Edit Profile"
-            android:paddingHorizontal="30dp"
-            android:textColor="#fff"
-            android:layout_margin="20dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/roundededge"
+        android:paddingHorizontal="30dp"
+        android:text="Edit Profile"
+        android:textColor="#fff" />
+</LinearLayout>
