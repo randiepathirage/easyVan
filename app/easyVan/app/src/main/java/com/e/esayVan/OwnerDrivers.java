@@ -35,7 +35,7 @@ public class OwnerDrivers extends AppCompatActivity {
     //View for driver list
     String Name;
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/driverlist.php";
 
     //a list to store all the vehicles
     List<OwnerDriversProduct> DriverList;
@@ -82,7 +82,11 @@ public class OwnerDrivers extends AppCompatActivity {
 
                                 DriverList.add(new OwnerDriversProduct(
                                        products.getString("username"),
-                                        products.getString("password")
+                                        products.getString("vehicleNo"),
+                                        products.getString("licenceNo"),
+                                        products.getString("contactNO"),
+                                        products.getString("email")
+
                                 ));
 
 
