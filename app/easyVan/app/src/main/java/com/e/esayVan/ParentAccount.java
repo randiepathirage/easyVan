@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ParentAccount extends AppCompatActivity implements ParentChildrenAdapter.OnChildListener {
+public class ParentAccount extends AppCompatActivity {
 
    Button btnMore,btnEdit;
    private TextView username,nic,address,contactNo,email;
@@ -113,14 +113,15 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
                                         child.getString("firstName"),
                                         child.getString("lastName"),
                                         child.getString("pickupLocation"),
-                                        child.getString("dropoffLocation")
+                                        child.getString("dropoffLocation"),
+                                        child.getString("childNo")
 
                                 ));
 
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,ParentAccount.this);
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
@@ -198,12 +199,4 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
 
     }
 
-    @Override
-    public void onNoteClick(int position) {
-        //childlist.get(position);
-        Intent intent=new Intent(this,sample.class);
-        intent.putExtra("some_object","somthing_else");
-        startActivity(intent);
-
-    }
 }
