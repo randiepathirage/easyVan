@@ -39,13 +39,13 @@ public class OwnerManage extends AppCompatActivity {
 
             }});
 
-        /*vanBtn.setOnClickListener(new View.OnClickListener() {
+        vanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent vn = new Intent(OwnerManage.this,OwnerVans.class);
                 startActivity(vn);
 
-            }});*/
+            }});
 
 
 
@@ -96,5 +96,42 @@ public class OwnerManage extends AppCompatActivity {
         });
 
         getSupportActionBar().setTitle("Manage");
+
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,OwnerRequest.class));
+                return true;
+
+            case R.id.top_profile:
+                startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(OwnerManage.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(OwnerManage.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+        return true;
+    }
+
+
+
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
     }
 }
