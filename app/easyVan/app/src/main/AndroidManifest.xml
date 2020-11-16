@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".OwnerVansAdd"></activity>
         <activity android:name=".sample" />
         <activity android:name=".DriverNotification" />
@@ -45,7 +46,6 @@
         <activity android:name=".OwnerLocation" />
         <activity android:name=".OwnerCalendar" />
         <activity android:name=".OwnerExpenses" />
-        <activity android:name=".OwnerVans" />
         <activity android:name=".OwnerDrivers" />
         <activity android:name=".OwnerManage" />
         <activity android:name=".OwnerAccount" />
