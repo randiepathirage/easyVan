@@ -72,7 +72,7 @@
         android:layout_marginStart="177dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="177dp"
-        android:text="Vans"
+        android:text="Drivers"
         app:layout_constraintBottom_toTopOf="@+id/driverBt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
