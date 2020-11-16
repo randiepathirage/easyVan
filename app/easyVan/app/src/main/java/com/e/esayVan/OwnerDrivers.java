@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,7 +35,7 @@ public class OwnerDrivers extends AppCompatActivity {
     //View for driver list
     String Name;
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/driverlist.php";
 
     //a list to store all the vehicles
     List<OwnerDriversProduct> DriverList;
@@ -61,6 +63,11 @@ public class OwnerDrivers extends AppCompatActivity {
         DriverList = new ArrayList<>();
 
        loadVehicles();
+
+        getSupportActionBar().setTitle("Drivers");
+
+
+
     }
     private void loadVehicles() {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
@@ -75,7 +82,11 @@ public class OwnerDrivers extends AppCompatActivity {
 
                                 DriverList.add(new OwnerDriversProduct(
                                        products.getString("username"),
-                                        products.getString("password")
+                                        products.getString("vehicleNo"),
+                                        products.getString("licenceNo"),
+                                        products.getString("contactNO"),
+                                        products.getString("email")
+
                                 ));
 
 
@@ -120,6 +131,14 @@ public class OwnerDrivers extends AppCompatActivity {
     public void btn_add_Driver (View view) {
         startActivity(new Intent(getApplicationContext(),DriverSignUp.class));
     }
+
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
+
 
 
     }
