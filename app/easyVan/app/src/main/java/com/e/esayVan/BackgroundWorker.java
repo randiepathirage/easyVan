@@ -1,10 +1,12 @@
 package com.e.esayVan;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.e.esayVan.Owner.Owner;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -153,7 +155,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         }
         else if (result.equals("Login Success owner")){
             Toast.makeText(context,"Login Success",Toast.LENGTH_LONG).show();
-            Intent i  = new Intent(context,Owner.class);
+            Intent i  = new Intent(context, Owner.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         }

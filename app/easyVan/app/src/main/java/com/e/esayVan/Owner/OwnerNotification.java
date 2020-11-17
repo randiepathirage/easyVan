@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.e.esayVan.R;
 
 public class OwnerNotification extends AppCompatActivity {
     private Menu menu;

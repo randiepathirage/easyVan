@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.e.esayVan.Login;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OwnerCalendar extends AppCompatActivity {
@@ -61,5 +64,37 @@ public class OwnerCalendar extends AppCompatActivity {
             }
         });
         getSupportActionBar().setTitle("Calender");
+    }
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,OwnerRequest.class));
+                return true;
+
+            case R.id.top_profile:
+                startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(OwnerCalendar.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(OwnerCalendar.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+        return true;
     }
 }

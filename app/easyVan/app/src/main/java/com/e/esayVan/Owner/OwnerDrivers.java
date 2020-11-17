@@ -1,12 +1,12 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,9 +14,10 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +34,7 @@ public class OwnerDrivers extends AppCompatActivity {
     //View for driver list
     String Name;
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/Api.php";
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/driverlist.php";
 
     //a list to store all the vehicles
     List<OwnerDriversProduct> DriverList;
@@ -55,12 +56,17 @@ public class OwnerDrivers extends AppCompatActivity {
         SessionManagement sessionManagement = new SessionManagement(OwnerDrivers.this);
         Name = sessionManagement.getUserName();
 
-        Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
 
         //initializing the vehiclelist
         DriverList = new ArrayList<>();
 
        loadVehicles();
+
+        getSupportActionBar().setTitle("Drivers");
+
+
+
     }
     private void loadVehicles() {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
@@ -75,7 +81,11 @@ public class OwnerDrivers extends AppCompatActivity {
 
                                 DriverList.add(new OwnerDriversProduct(
                                        products.getString("username"),
-                                        products.getString("password")
+                                        products.getString("vehicleNo"),
+                                        products.getString("licenceNo"),
+                                        products.getString("contactNO"),
+                                        products.getString("email")
+
                                 ));
 
 
@@ -118,8 +128,16 @@ public class OwnerDrivers extends AppCompatActivity {
 
     }
     public void btn_add_Driver (View view) {
-        startActivity(new Intent(getApplicationContext(),DriverSignUp.class));
+        startActivity(new Intent(getApplicationContext(), DriverSignUp.class));
     }
+
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
+
 
 
     }

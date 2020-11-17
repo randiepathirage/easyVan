@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.e.esayVan.Login;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 
 public class OwnerRequest extends AppCompatActivity {
     private Menu menu;
@@ -27,8 +31,17 @@ public class OwnerRequest extends AppCompatActivity {
                 startActivity(new Intent(this,OwnerRequest.class));
                 return true;
 
-            case R.id.account:
+            case R.id.top_profile:
                 startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(OwnerRequest.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(OwnerRequest.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 return true;
         }
         return true;
@@ -39,4 +52,5 @@ public class OwnerRequest extends AppCompatActivity {
         setContentView(R.layout.activity_owner_request);
         getSupportActionBar().setTitle("Request");
     }
+
 }
