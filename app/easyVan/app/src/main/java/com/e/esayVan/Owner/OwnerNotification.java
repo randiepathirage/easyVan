@@ -1,31 +1,23 @@
-package com.e.esayVan;
-
-import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
+package com.e.esayVan.Owner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class OwnerAppbar extends AppCompatActivity {
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.e.esayVan.R;
+
+public class OwnerNotification extends AppCompatActivity {
     private Menu menu;
-
-    public OwnerAppbar(Menu menu) {
-        this.menu = menu;
-    }
-
-    public OwnerAppbar(int contentLayoutId, Menu menu) {
-        super(contentLayoutId);
-        this.menu = menu;
-    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.owner_appbar, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -40,16 +32,15 @@ public class OwnerAppbar extends AppCompatActivity {
             case R.id.account:
                 startActivity(new Intent(this,OwnerAccount.class));
                 return true;
-
-            case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(OwnerAppbar.this);
-                sessionManagement.removeSession();
-
-                Intent intent = new Intent(OwnerAppbar.this, Login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                return true;
         }
         return true;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_owner_notification);
+
+        getSupportActionBar().setTitle("Notification");
     }
 }

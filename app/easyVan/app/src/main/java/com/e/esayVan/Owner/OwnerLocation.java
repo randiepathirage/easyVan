@@ -1,8 +1,4 @@
-package com.e.esayVan;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+package com.e.esayVan.Owner;
 
 
 import androidx.annotation.NonNull;
@@ -12,56 +8,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
+import com.e.esayVan.Login;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class OwnerManage extends AppCompatActivity {
-
-    Button driverBtn, vanBtn;
+public class OwnerLocation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_manage);
-
-        /*Van and Driver Button*/
-
-        driverBtn = findViewById(R.id.driverBt);
-        vanBtn = findViewById(R.id.vanBt);
-
-        driverBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mang = new Intent(OwnerManage.this,OwnerDrivers.class);
-                startActivity(mang);
-
-            }});
-
-        vanBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent vn = new Intent(OwnerManage.this,OwnerVans.class);
-                startActivity(vn);
-
-            }});
-
-
-
+        setContentView(R.layout.activity_owner_location);
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
-
-        /*selected */
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         /*Set manage*/
-        bottomNavigationView.setSelectedItemId(R.id.manage);
+        bottomNavigationView.setSelectedItemId(R.id.location);
         /*performe*/
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.manage:
+                    case R.id.location:
                         return true;
 
                     case R.id.expenses:
@@ -70,8 +39,8 @@ public class OwnerManage extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.report:
-                        Intent l = new Intent(getApplicationContext(),OwnerReport.class);
+                    case R.id.manage:
+                        Intent l = new Intent(getApplicationContext(),OwnerManage.class);
                         startActivity(l);
                         overridePendingTransition(0,0);
                         return true;
@@ -82,10 +51,8 @@ public class OwnerManage extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-
-
-                    case R.id.location:
-                        Intent m = new Intent(getApplicationContext(),OwnerLocation.class);
+                    case R.id.report:
+                        Intent m = new Intent(getApplicationContext(),OwnerReport.class);
                         startActivity(m);
                         overridePendingTransition(0,0);
                         return true;
@@ -94,10 +61,14 @@ public class OwnerManage extends AppCompatActivity {
                 return false;
             }
         });
+        getSupportActionBar().setTitle("Location");
 
-        getSupportActionBar().setTitle("Manage");
-
-
+    }
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -115,10 +86,10 @@ public class OwnerManage extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(OwnerManage.this);
+                SessionManagement sessionManagement = new SessionManagement(OwnerLocation.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(OwnerManage.this, Login.class);
+                Intent intent = new Intent(OwnerLocation.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;
@@ -126,12 +97,4 @@ public class OwnerManage extends AppCompatActivity {
         return true;
     }
 
-
-
-    private Menu menu;
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
-        getMenuInflater().inflate(R.menu.owner_appbar, menu);
-        return true;
-    }
 }

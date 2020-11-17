@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.e.esayVan.R;
 
 public class DriverSignUp extends AppCompatActivity {
         EditText firstName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword, licenceNo;
