@@ -2,7 +2,11 @@ package com.e.esayVan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,48 +26,99 @@ import java.util.Map;
 
 public class ParentDetails extends AppCompatActivity {
 
-    String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
-    String childNumber=getIntent().getStringExtra("childNumber");
+    String URL="http://10.0.2.2/easyvan/viewMoreDetails.php";
+
+    private String strfirstName, strlastName ,strvehicleNo,strstartDate,strmonthlyFee,strownerNIC,strownerContact,strownerLastName,strownerFirstName,strdriverNIC,
+    strdriverContact, strdriverLastName, strdriverFirstName, strlicenseNo;
+    String childNumber;
+    Button editDates;
+    private TextView startDate,MonthlyFee,driverName,driverContact,driverNic,driverLicence,ownerName,ownerContact,ownerNic,name,vehicleNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_details);
-        getSupportActionBar().setTitle("Details");
+        getSupportActionBar().setTitle("Child Details");
 
+        childNumber=getIntent().getStringExtra("childNumber");
+
+        name=findViewById(R.id.txtName);
+        vehicleNo=findViewById(R.id.txtVehicleNo);
+        startDate=findViewById(R.id.txtStartDate);
+        MonthlyFee=findViewById(R.id.txtFee);
+        driverName=findViewById(R.id.txtDriverName);
+        driverContact=findViewById(R.id.txtDriverContact);
+        driverNic=findViewById(R.id.txtDriverNic);
+        driverLicence=findViewById(R.id.txtDriverLicence);
+        ownerName=findViewById(R.id.txtOwnerName);
+        ownerContact=findViewById(R.id.txtOnwerContact);
+        ownerNic=findViewById(R.id.txtOnwerNic);
+
+        //load child details
         loadDetails();
+
+        //edit days button
+        editDates=(Button)findViewById(R.id.btnEditDays);
+        editDates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ParentDetails.this,ParentEditDays.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 
     private void loadDetails() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
+         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray result = jsonObject.getJSONArray("data");
-                    JSONObject collegeData = result.getJSONObject(0);
+                    JSONObject data = result.getJSONObject(0);
 
+                    strfirstName=data.getString("firstName");
+                    strlastName=data.getString("lastName");;
+                    strvehicleNo=data.getString("vehicleNo");
+                    strstartDate=data.getString("startDate");
+                    strmonthlyFee=data.getString("monthlyFee");
+                    strownerNIC=data.getString("ownerNIC");
+                    strownerContact=data.getString("ownerContact");
+                    strownerLastName=data.getString("ownerLastName");
+                    strownerFirstName=data.getString("ownerFirstName");
+                    strdriverNIC=data.getString("driverNIC");
+                    strdriverContact=data.getString("driverContact");
+                    strdriverLastName=data.getString("driverLastName");
+                    strdriverFirstName=data.getString("driverFirstName");
+                    strlicenseNo=data.getString("licenseNo");
 
-                    strNic=collegeData.getString("NIC_no");
-                    strContactNo=collegeData.getString("contact_no");;
-                    strAddress=collegeData.getString("address");
-                    strEmail=collegeData.getString("email");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                nic.setText("NIC no: "+strNic);
-                address.setText("Address: "+strAddress);
-                contactNo.setText("Contact no: "+strContactNo);
-                email.setText("Email: "+strEmail);
+                name.setText(strfirstName+" "+strlastName);
+                vehicleNo.setText("Vehicle No: "+strvehicleNo);
+                startDate.setText("Start date: "+strstartDate);
+                MonthlyFee.setText("Monthly Fee: "+strmonthlyFee);
+                driverName.setText("Name: "+strdriverFirstName+" "+strdriverLastName);
+                driverContact.setText("Contact no: "+strdriverContact);
+                driverNic.setText("NIC no: "+strdriverNIC);
+                driverLicence.setText("License no: "+strlicenseNo);
+                ownerName.setText("Name: "+strownerFirstName+" "+strownerLastName);
+                ownerContact.setText("Contact no: "+strownerContact);
+                ownerNic.setText("NIC no: "+strownerNIC);
+
             }
         },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ParentDetails.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         })
         {
