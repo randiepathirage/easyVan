@@ -80,11 +80,6 @@ public class ParentAccount extends AppCompatActivity {
 
         loadChildren();
 
-
-
-
-
-
         btnEdit=(Button)findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +158,7 @@ public class ParentAccount extends AppCompatActivity {
                     JSONObject collegeData = result.getJSONObject(0);
 
 
-                    strNic=collegeData.getString("NIC_no");
+                    strNic =collegeData.getString("NIC_no");
                     strContactNo=collegeData.getString("contact_no");;
                     strAddress=collegeData.getString("address");
                     strEmail=collegeData.getString("email");

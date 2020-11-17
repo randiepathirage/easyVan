@@ -7,6 +7,9 @@
     tools:context=".ParentDetails"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +31,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtName"
                         android:text="Name"
                         android:layout_marginLeft="30dp"
                         android:textSize="20dp"
@@ -37,12 +41,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="start date:"
+                        android:id="@+id/txtStartDate"
                         android:textSize="16dp"
                         android:layout_marginLeft="30dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Vehicle No:"
+                        android:id="@+id/txtVehicleNo"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="30dp" />
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtFee"
                         android:text="monthly Fee:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -50,19 +66,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="monthly Fee:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="monthly Fee:"
+                        android:text="Days not coming in the school van:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
 
                     <Button
-                        android:id="@+id/btEditDays"
+                        android:id="@+id/btnEditDays"
                         android:layout_width="350dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="50dp"
@@ -101,6 +110,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverName"
                         android:text="Name:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -108,6 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverContact"
                         android:text="Contact no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -115,6 +126,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverNic"
                         android:text="NIC no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -122,6 +134,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverLicence"
                         android:text="Licence no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -164,6 +177,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtOwnerName"
                         android:text="Name:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -171,6 +185,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtOnwerContact"
                         android:text="Contact no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -178,6 +193,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txtOnwerNic"
                         android:text="NIC no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp" />
@@ -185,4 +201,5 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+    </ScrollView>
 </LinearLayout>
