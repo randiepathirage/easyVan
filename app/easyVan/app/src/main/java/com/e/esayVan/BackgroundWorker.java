@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.e.esayVan.Owner.Owner;
+import com.e.esayVan.Parent.Parent;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -162,7 +163,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         else if (result.equals("Login Success parent")){
 
                 Toast.makeText(context,"Login Success",Toast.LENGTH_LONG).show();
-                Intent i  = new Intent(context,Parent.class);
+                Intent i  = new Intent(context, Parent.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
         }

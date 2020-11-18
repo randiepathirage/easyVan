@@ -1,14 +1,16 @@
-package com.e.esayVan;
+package com.e.esayVan.Parent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ParentEditDays extends AppCompatActivity {
+import com.e.esayVan.R;
+
+public class ParentAttendance extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parent_edit_days);
+        setContentView(R.layout.activity_parent_attendance);
     }
 }
