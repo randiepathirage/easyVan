@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(userRole.equals("owner")) {
                 //user role logged in and so move to home
-                Intent intent = new Intent(MainActivity.this,Owner.class);
+                Intent intent = new Intent(MainActivity.this,OwnerManage.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
