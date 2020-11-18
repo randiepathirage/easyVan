@@ -1,6 +1,10 @@
 <?php
 require 'conn.php';
-$email = $_GET["key"];
+//$email = $_GET["key"];
+
+if(isset($_GET['email'])){
+ $email = $_GET['email'];
+}
 
 $sql = "SELECT * FROM login where email='$email'";
 $result = mysqli_query($conn,$sql);
