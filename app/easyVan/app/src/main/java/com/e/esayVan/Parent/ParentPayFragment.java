@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Parent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.e.esayVan.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ParentPayFragment extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Parent;
 
 public class ParentVans {
         private int no_of_seats_available;

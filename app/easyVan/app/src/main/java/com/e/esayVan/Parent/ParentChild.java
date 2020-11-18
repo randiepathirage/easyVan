@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Parent;
 
 public class ParentChild {
     private String grade, school,firstName,lastName,pickupLocation,dropoffLocation,childNo;

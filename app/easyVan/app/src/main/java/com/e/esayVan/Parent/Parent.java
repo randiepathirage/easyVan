@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Parent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.e.esayVan.Login;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 
 public class Parent extends AppCompatActivity {
 

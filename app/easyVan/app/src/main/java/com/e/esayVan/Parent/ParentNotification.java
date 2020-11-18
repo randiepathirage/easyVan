@@ -1,8 +1,10 @@
-package com.e.esayVan;
+package com.e.esayVan.Parent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.e.esayVan.R;
 
 public class ParentNotification extends AppCompatActivity {
 
