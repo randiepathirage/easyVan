@@ -1,6 +1,5 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,9 +14,10 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,7 +56,7 @@ public class OwnerDrivers extends AppCompatActivity {
         SessionManagement sessionManagement = new SessionManagement(OwnerDrivers.this);
         Name = sessionManagement.getUserName();
 
-        Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
 
         //initializing the vehiclelist
         DriverList = new ArrayList<>();
@@ -129,7 +128,7 @@ public class OwnerDrivers extends AppCompatActivity {
 
     }
     public void btn_add_Driver (View view) {
-        startActivity(new Intent(getApplicationContext(),DriverSignUp.class));
+        startActivity(new Intent(getApplicationContext(), DriverSignUp.class));
     }
 
     private Menu menu;

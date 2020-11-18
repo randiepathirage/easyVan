@@ -1,4 +1,4 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
 public class OwnerVansProduct {
     private String vehicle_No;

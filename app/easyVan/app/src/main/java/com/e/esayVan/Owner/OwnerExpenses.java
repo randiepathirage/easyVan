@@ -1,6 +1,4 @@
-package com.e.esayVan;
-
-
+package com.e.esayVan.Owner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,29 +7,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.e.esayVan.Login;
+import com.e.esayVan.R;
+import com.e.esayVan.SessionManagement;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class OwnerLocation extends AppCompatActivity {
+public class OwnerExpenses extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_location);
+        setContentView(R.layout.activity_owner_expenses);
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         /*Set manage*/
-        bottomNavigationView.setSelectedItemId(R.id.location);
+        bottomNavigationView.setSelectedItemId(R.id.expenses);
         /*performe*/
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.location:
+                    case R.id.expenses:
                         return true;
 
-                    case R.id.expenses:
-                        Intent j = new Intent(getApplicationContext(),OwnerExpenses.class);
+                    case R.id.report:
+                        Intent j = new Intent(getApplicationContext(),OwnerReport.class);
                         startActivity(j);
                         overridePendingTransition(0,0);
                         return true;
@@ -48,8 +51,10 @@ public class OwnerLocation extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.report:
-                        Intent m = new Intent(getApplicationContext(),OwnerReport.class);
+
+
+                    case R.id.location:
+                        Intent m = new Intent(getApplicationContext(),OwnerLocation.class);
                         startActivity(m);
                         overridePendingTransition(0,0);
                         return true;
@@ -58,14 +63,7 @@ public class OwnerLocation extends AppCompatActivity {
                 return false;
             }
         });
-        getSupportActionBar().setTitle("Location");
-
-    }
-    private Menu menu;
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
-        getMenuInflater().inflate(R.menu.owner_appbar, menu);
-        return true;
+        getSupportActionBar().setTitle("Expenses");
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -83,15 +81,20 @@ public class OwnerLocation extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(OwnerLocation.this);
+                SessionManagement sessionManagement = new SessionManagement(OwnerExpenses.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(OwnerLocation.this, Login.class);
+                Intent intent = new Intent(OwnerExpenses.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;
         }
         return true;
     }
-
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.owner_appbar, menu);
+        return true;
+    }
 }

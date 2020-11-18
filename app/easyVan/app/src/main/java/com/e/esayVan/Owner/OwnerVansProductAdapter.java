@@ -1,18 +1,18 @@
-package com.e.esayVan;
+package com.e.esayVan.Owner;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.e.esayVan.R;
+
 import java.util.List;
 
-public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverProductAdapter.ProductViewHolder>  {
+public class OwnerVansProductAdapter extends RecyclerView.Adapter<OwnerVansProductAdapter.ProductViewHolder>  {
 
     //View for driver list
 
@@ -20,10 +20,10 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
     private Context mCtx;
 
     //we are storing all the products in a list
-    private List<OwnerDriversProduct> productList;
+    private List<OwnerVansProduct> productList;
 
     //getting the context and product list with constructor
-    public OwnerDriverProductAdapter(Context mCtx, List<OwnerDriversProduct> productList) {
+    public OwnerVansProductAdapter(Context mCtx, List<OwnerVansProduct> productList) {
         this.mCtx = mCtx;
         this.productList = productList;
     }
@@ -33,21 +33,18 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.list_layout, null);
+        View view = inflater.inflate(R.layout.activity_owner_vans_list_layout, null);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         //getting the product of the specified position
-        OwnerDriversProduct product = productList.get(position);
+        OwnerVansProduct product = productList.get(position);
 
         //binding the data with the viewholder views
-        holder.username.setText(product.getUsername() );
-        holder.vehicleNo.setText(product.getVehicleNo());
-        holder.LicenseNO.setText(product.getLicenseNo());
-        holder.contact.setText(product.getContactNo());
-        holder.email.setText(product.getEmail());
+        holder.vehicleNo.setText(product.getVehicle_No());
+        holder.NoOfSeatsAV.setText(product.getNoOfSeatsAV());
     }
 
 
@@ -59,17 +56,12 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView username, vehicleNo , LicenseNO , contact , email;
+        TextView vehicleNo , NoOfSeatsAV;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-
-            username = itemView.findViewById(R.id.List_username);
-           vehicleNo= itemView.findViewById(R.id.List_vehicleNo);
-           LicenseNO = itemView.findViewById(R.id.List_LicenseNO);
-           contact = itemView.findViewById(R.id.List_contact);
-           email = itemView.findViewById(R.id.List_email);
-
+            vehicleNo = itemView.findViewById(R.id.VehicleNO);
+            NoOfSeatsAV= itemView.findViewById(R.id.NoOfSeat);
 
         }
     }
