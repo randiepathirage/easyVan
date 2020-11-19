@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdminUpdateUser extends AppCompatActivity {
+public class AdminUpdateParent extends AppCompatActivity {
 
     EditText edfname,edlname,edcontact,edusername,edaddress,edemail;
     String nic;
@@ -28,25 +28,25 @@ public class AdminUpdateUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_update_user);
+        setContentView(R.layout.activity_admin_update_parent);
 
-        edfname = findViewById(R.id.ed_fn);
-        edlname = findViewById(R.id.ed_ln);
-        edcontact = findViewById(R.id.ed_contact);
-        edusername = findViewById(R.id.ed_username);
-        edaddress = findViewById(R.id.ed_address);
-        edemail = findViewById(R.id.ed_email);
+        edfname = findViewById(R.id.ed_pfn);
+        edlname = findViewById(R.id.ed_pln);
+        edcontact = findViewById(R.id.ed_pcontact);
+        edusername = findViewById(R.id.ed_pusername);
+        edaddress = findViewById(R.id.ed_paddress);
+        edemail = findViewById(R.id.ed_pemail);
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
 
-        nic = AdminOwners.adminOwnerArrayList.get(position).getNic() ;
-        edfname.setText(AdminOwners.adminOwnerArrayList.get(position).getFname());
-        edlname.setText(AdminOwners.adminOwnerArrayList.get(position).getLname());
-        edcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
-        edaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getAddress());
-        edusername.setText(AdminOwners.adminOwnerArrayList.get(position).getUsername());
-        edemail.setText(AdminOwners.adminOwnerArrayList.get(position).getEmail());
+        nic = AdminParents.adminParentArrayList.get(position).getNic() ;
+        edfname.setText(AdminParents.adminParentArrayList.get(position).getFname());
+        edlname.setText(AdminParents.adminParentArrayList.get(position).getLname());
+        edcontact.setText(AdminParents.adminParentArrayList.get(position).getContact());
+        edaddress.setText(AdminParents.adminParentArrayList.get(position).getAddress());
+        edusername.setText(AdminParents.adminParentArrayList.get(position).getUsername());
+        edemail.setText(AdminParents.adminParentArrayList.get(position).getEmail());
 
 
 
@@ -73,8 +73,8 @@ public class AdminUpdateUser extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(AdminUpdateUser.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),AdminOwners.class));
+                        Toast.makeText(AdminUpdateParent.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),AdminParents.class));
                         finish();
                         progressDialog.dismiss();
                     }
@@ -82,7 +82,7 @@ public class AdminUpdateUser extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(AdminUpdateUser.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminUpdateParent.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
 
             }
@@ -105,7 +105,7 @@ public class AdminUpdateUser extends AppCompatActivity {
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(AdminUpdateUser.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(AdminUpdateParent.this);
         requestQueue.add(request);
 
 

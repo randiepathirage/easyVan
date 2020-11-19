@@ -12,17 +12,17 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class AdminAdapter extends ArrayAdapter<AdminOwnerArray> {
+public class AdminParentAdapter extends ArrayAdapter<AdminParentArray> {
 
     Context context;
-    List<AdminOwnerArray> owners;
+    List<AdminParentArray> parents;
 
 
-    public AdminAdapter(@NonNull Context context, List<AdminOwnerArray> owners) {
-        super(context, R.layout.admin_custom_list_item,owners);
+    public AdminParentAdapter(@NonNull Context context, List<AdminParentArray> parents) {
+        super(context, R.layout.admin_custom_list_item,parents);
 
         this.context = context;
-        this.owners = owners;
+        this.parents = parents;
 
     }
 
@@ -35,8 +35,8 @@ public class AdminAdapter extends ArrayAdapter<AdminOwnerArray> {
         TextView tvfname = view.findViewById(R.id.txt_fname);
         TextView tvlname = view.findViewById(R.id.txt_lname);
 
-        tvfname.setText(owners.get(position).getFname());
-        tvlname.setText(owners.get(position).getLname());
+        tvfname.setText(parents.get(position).getFname());
+        tvlname.setText(parents.get(position).getLname());
 
         return view;
     }
