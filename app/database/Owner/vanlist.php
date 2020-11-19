@@ -38,3 +38,4 @@ $user_name = $_POST["username"];
  
  //displaying the result in json format 
 echo json_encode($products);
+?>
