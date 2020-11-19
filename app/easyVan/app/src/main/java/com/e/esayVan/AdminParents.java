@@ -1,215 +1,107 @@
 package com.e.esayVan;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Button;
+import android.content.Intent;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class AdminParents extends AppCompatActivity {
-
+    private Button btnadd;
+    String urladdress="http://10.0.2.2/easyvan/parent.php";
+    String[] name;
     ListView listView;
-    AdminParentAdapter adapter;
-    public static ArrayList<AdminParentArray> adminParentArrayList = new ArrayList<>();
-    String url = "http://10.0.2.2/easyvan/parents.php";
-    AdminParentArray parent;
+    BufferedInputStream is;
+    String line=null;
+    String result=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_parents);
         getSupportActionBar().setTitle("Parents");
 
-        listView = findViewById(R.id.parentListView);
-        adapter = new AdminParentAdapter(this,adminParentArrayList);
-        listView.setAdapter(adapter);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        btnadd=(Button)findViewById(R.id.btnAdd);
+        btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                ProgressDialog progressDialog = new ProgressDialog(view.getContext());
-
-                CharSequence[] dialogItem = {"View Data","Edit Data","Delete Data"};
-                builder.setTitle(adminParentArrayList.get(position).getFname());
-                builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-
-                        switch (i){
-
-                            case 0:
-
-                                startActivity(new Intent(getApplicationContext(),AdminViewParent.class)
-                                        .putExtra("position",position));
-
-                                break;
-
-                            case 1:
-                                startActivity(new Intent(getApplicationContext(), AdminUpdateParent.class)
-                                        .putExtra("position",position));
-
-                                break;
-
-                            case 2:
-
-                                deleteData(adminParentArrayList.get(position).getNic());
-                                break;
-
-
-                        }
-
-
-
-                    }
-                });
-
-
-                builder.create().show();
-
-
+            public void onClick(View v) {
+                Intent addIntent = new Intent(AdminParents.this,SignUp.class);
+                startActivity(addIntent);
             }
         });
 
-        retrieveData();
+        listView=(ListView)findViewById(R.id.lview);
 
-
+        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
+        collectData();
+        Admin_CustomListView adminCustomListView =new Admin_CustomListView(this,name);
+        listView.setAdapter(adminCustomListView);
     }
 
-    private void deleteData(final String NIC_no) {
+    private void collectData()
+    {
+//Connection
+        try{
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deleteuser.php",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+            URL url=new URL(urladdress);
+            HttpURLConnection con=(HttpURLConnection)url.openConnection();
+            con.setRequestMethod("GET");
+            is=new BufferedInputStream(con.getInputStream());
 
-                        if(response.equalsIgnoreCase("Data Deleted")){
-                            Toast.makeText(AdminParents.this, "Data Deleted Successfully", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(AdminParents.this, "Data Not Deleted", Toast.LENGTH_SHORT).show();
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AdminParents.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        //content
+        try{
+            BufferedReader br=new BufferedReader(new InputStreamReader(is));
+            StringBuilder sb=new StringBuilder();
+            while ((line=br.readLine())!=null){
+                sb.append(line+"\n");
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            is.close();
+            result=sb.toString();
 
-                Map<String,String> params = new HashMap<String,String>();
-                params.put("NIC_no", NIC_no);
-                return params;
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+
+        }
+
+//JSON
+        try{
+            JSONArray ja=new JSONArray(result);
+            JSONObject jo=null;
+            name=new String[ja.length()];
+
+            for(int i=0;i<=ja.length();i++){
+                jo=ja.getJSONObject(i);
+                name[i]=jo.getString("username");
             }
-        };
+        }
+        catch (Exception ex)
+        {
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
-
-
-    }
-
-    public void retrieveData(){
-
-        StringRequest request = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        adminParentArrayList.clear();
-                        try{
-
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                            if(success.equals("1")){
-
-
-                                for(int i=0;i<jsonArray.length();i++){
-
-                                    JSONObject object = jsonArray.getJSONObject(i);
-
-                                    String nic = object.getString("NIC_no");
-                                    String contact = object.getString("contact_no");
-                                    String lname = object.getString("last_name");
-                                    String fname = object.getString("first_name");
-                                    String address = object.getString("address");
-                                    String username = object.getString("username");
-                                    String email = object.getString("email");
-
-
-
-                                    parent = new AdminParentArray(nic,contact,lname,fname,address,username,email);
-                                    adminParentArrayList.add(parent);
-                                    adapter.notifyDataSetChanged();
-
-
-                                }
-
-
-
-                            }
-
-
-                        }
-                        catch (JSONException e){
-                            e.printStackTrace();
-                        }
-
-
-
-
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AdminParents.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
-
-
+            ex.printStackTrace();
+        }
 
 
     }
 
-    public void btn_add_activity(View view) {
-        startActivity(new Intent(getApplicationContext(),SignUp.class));
-    }
 
 }
-
-
-
 

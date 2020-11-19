@@ -7,9 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.e.esayVan.Owner.Owner;
-import com.e.esayVan.Parent.Parent;
-import com.e.esayVan.Parent.ParentRequest;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     Button btnRequest,login,signup;;
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if(userRole.equals("parent")) {
                 //user role logged in and so move to home
-                Intent intent = new Intent(MainActivity.this, Parent.class);
+                Intent intent = new Intent(MainActivity.this,ParentDashboard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(userRole.equals("owner")) {
                 //user role logged in and so move to home
-                Intent intent = new Intent(MainActivity.this, Owner.class);
+                Intent intent = new Intent(MainActivity.this,Owner.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
