@@ -3,6 +3,7 @@ package com.e.esayVan;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,18 +21,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ParentAccount extends AppCompatActivity implements ParentChildrenAdapter.OnChildListener {
+public class ParentAccount extends AppCompatActivity {
 
-   Button btnMore,btnEdit;
-   private TextView username,nic,address,contactNo,email;
+    Button btnMore,btnEdit;
+    private TextView username,nic,address,contactNo,email;
     private String strNic,strAddress,strEmail;
     String userName;
     private String strContactNo;
@@ -41,8 +45,8 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
     //the recyclerview
     RecyclerView recyclerView;
 
-   String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
-   private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
+    String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
+    private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +80,6 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
 
         loadChildren();
 
-
-
-
-
-
         btnEdit=(Button)findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,14 +108,15 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
                                         child.getString("firstName"),
                                         child.getString("lastName"),
                                         child.getString("pickupLocation"),
-                                        child.getString("dropoffLocation")
+                                        child.getString("dropoffLocation"),
+                                        child.getString("childNo")
 
                                 ));
 
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,ParentAccount.this);
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
@@ -132,8 +132,8 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
             }
         })
         {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
 
                 params.put("username",userName);
@@ -158,7 +158,7 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
                     JSONObject collegeData = result.getJSONObject(0);
 
 
-                    strNic=collegeData.getString("NIC_no");
+                    strNic =collegeData.getString("NIC_no");
                     strContactNo=collegeData.getString("contact_no");;
                     strAddress=collegeData.getString("address");
                     strEmail=collegeData.getString("email");
@@ -173,11 +173,11 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
                 email.setText("Email: "+strEmail);
             }
         },new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                })
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        })
         {
 
             @Override
@@ -194,12 +194,4 @@ public class ParentAccount extends AppCompatActivity implements ParentChildrenAd
 
     }
 
-    @Override
-    public void onNoteClick(int position) {
-        //childlist.get(position);
-        Intent intent=new Intent(this,sample.class);
-        intent.putExtra("some_object","somthing_else");
-        startActivity(intent);
-
-    }
 }
