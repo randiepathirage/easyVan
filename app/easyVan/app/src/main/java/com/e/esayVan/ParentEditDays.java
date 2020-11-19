@@ -10,5 +10,6 @@ public class ParentEditDays extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_edit_days);
+        getSupportActionBar().setTitle("Edit Days");
     }
 }

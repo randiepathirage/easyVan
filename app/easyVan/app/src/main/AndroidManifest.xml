@@ -70,7 +70,7 @@
         <activity android:name=".ParentAccount" />
         <activity android:name=".ParentDetails" />
         <activity android:name=".ParentEdit" />
-        <activity android:name=".ParentNotification" />
+        <activity android:name=".ParentDashboard" />
         <activity android:name=".ParentAttendance" />
         <activity android:name=".ParentRequest" />
         <activity
