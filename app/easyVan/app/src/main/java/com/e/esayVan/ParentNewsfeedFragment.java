@@ -2,6 +2,7 @@ package com.e.esayVan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -80,12 +81,46 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                         startActivity(l);
                         overridePendingTransition(0,0);
                         return true;
+
+                    case R.id.navigation_dashboard:
+                        Intent j = new Intent(getApplicationContext(), ParentDashboard.class);
+                        startActivity(j);
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
         });
 
         }
+
+        //app bar
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.parent_appbar, menu);
+            return true;
+        }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.account:
+                startActivity(new Intent(getApplicationContext(), ParentAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(ParentNewsfeedFragment.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(ParentNewsfeedFragment.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+
+        return true;
+    }
 
         //loading vehicles
         private void loadVehicles() {
