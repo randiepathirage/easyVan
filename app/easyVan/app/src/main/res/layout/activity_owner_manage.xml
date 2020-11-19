@@ -5,17 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".OwnerManage">
 
 
     <Button
         android:id="@+id/vanBt"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="156dp"
-        android:background="@drawable/roundededge"
-        android:backgroundTint="#f7931e"
-        android:text="Van"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/van"
+
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -27,20 +27,18 @@
 
     <Button
         android:id="@+id/driverBt"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/roundededge"
-        android:backgroundTint="#f7931e"
-        android:text="Drivers"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/driver"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vanBt" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -54,6 +52,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/owner_nav" />
 
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginEnd="177dp"
+        android:text="Vans"
+        app:layout_constraintBottom_toTopOf="@+id/vanBt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="177dp"
+        android:text="Drivers"
+        app:layout_constraintBottom_toTopOf="@+id/driverBt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vanBt"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

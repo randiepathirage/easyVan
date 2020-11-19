@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +33,8 @@ import java.util.Map;
 
 public class ParentAccount extends AppCompatActivity {
 
-   Button btnMore,btnEdit;
-   private TextView username,nic,address,contactNo,email;
+    Button btnMore,btnEdit;
+    private TextView username,nic,address,contactNo,email;
     private String strNic,strAddress,strEmail;
     String userName;
     private String strContactNo;
@@ -44,8 +45,8 @@ public class ParentAccount extends AppCompatActivity {
     //the recyclerview
     RecyclerView recyclerView;
 
-   String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
-   private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
+    String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
+    private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,6 @@ public class ParentAccount extends AppCompatActivity {
 
         loadChildren();
 
-
         btnEdit=(Button)findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +93,7 @@ public class ParentAccount extends AppCompatActivity {
 
     private void loadChildren() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,VIEW_CHILD_URL,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST,VIEW_CHILD_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -109,9 +109,7 @@ public class ParentAccount extends AppCompatActivity {
                                         child.getString("lastName"),
                                         child.getString("pickupLocation"),
                                         child.getString("dropoffLocation"),
-                                        child.getString("vehicleNo"),
-                                        child.getString("startDate"),
-                                        child.getString("monthlyFee")
+                                        child.getString("childNo")
 
                                 ));
 
@@ -132,15 +130,23 @@ public class ParentAccount extends AppCompatActivity {
                 Toast.makeText(ParentAccount.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
-        });
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
 
-        Volley.newRequestQueue(this).add(stringRequest);
+                params.put("username",userName);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     //load account details
     public void sendJsonrequest(){
-
-        //String url =URL + userName.trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
             @Override
@@ -152,7 +158,7 @@ public class ParentAccount extends AppCompatActivity {
                     JSONObject collegeData = result.getJSONObject(0);
 
 
-                    strNic=collegeData.getString("NIC_no");
+                    strNic =collegeData.getString("NIC_no");
                     strContactNo=collegeData.getString("contact_no");;
                     strAddress=collegeData.getString("address");
                     strEmail=collegeData.getString("email");
@@ -167,11 +173,11 @@ public class ParentAccount extends AppCompatActivity {
                 email.setText("Email: "+strEmail);
             }
         },new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                })
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentAccount.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        })
         {
 
             @Override
@@ -187,4 +193,5 @@ public class ParentAccount extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
 }

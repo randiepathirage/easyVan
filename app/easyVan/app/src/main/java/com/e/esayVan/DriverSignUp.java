@@ -19,7 +19,7 @@ public class DriverSignUp extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_driver_sign_up);
-                getSupportActionBar().setTitle("Driver Sign Up");
+                getSupportActionBar().setTitle("Add Driver");
 
                 firstName=(EditText)findViewById(R.id.edtFirstname);
                 lastName=(EditText)findViewById(R.id.edtLastname);

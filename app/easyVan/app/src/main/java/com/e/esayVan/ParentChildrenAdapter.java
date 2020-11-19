@@ -1,9 +1,12 @@
 package com.e.esayVan;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,12 +19,14 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     private Context mCtx;
 
     //we are storing all the products in a list
-   private List<ParentChild> childlist;
+    private List<ParentChild> childlist;
+    String no;
 
     //getting the context and product list with constructor
     public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist) {
         this.mCtx = mCtx;
         this.childlist = childlist;
+        // this.monChildListener= onChildListener;
     }
 
     @Override
@@ -34,9 +39,9 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ParentChildrenAdapter.ChildrenViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ParentChildrenAdapter.ChildrenViewHolder holder, final int position) {
 
-        ParentChild children = childlist.get(position);
+        final ParentChild children = childlist.get(position);
 
         //binding the data with the viewholder views
         holder.textViewFirstName.setText(String.valueOf(children.getFirstName())+" "+String.valueOf(children.getLastName()));
@@ -44,9 +49,18 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         holder.textViewSchool.setText(String.valueOf("School: "+children.getSchool()));
         holder.textViewPickupLocation.setText(String.valueOf("Pick up location: "+children.getPickupLocation()));
         holder.textViewDropoffLocation.setText(String.valueOf("Drop off location: "+children.getDropoffLocation()));
-        holder.textViewStartDate.setText(String.valueOf("Start date: "+children.getStartDate()));
-        holder.textViewMonthlyFee.setText(String.valueOf("Monthly fee: "+children.getMonthlyFee()));
-        holder.textViewVehicleNo.setText(String.valueOf("Vehicle No: "+children.getVehicleNo()));
+        no=String.valueOf(children.getChildNo());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mCtx,ParentDetails.class);
+                intent.putExtra("childNumber",no);//passing child no to the next view
+                mCtx.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -54,9 +68,10 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         return childlist.size();
     }
 
-    class ChildrenViewHolder extends RecyclerView.ViewHolder {
+    class ChildrenViewHolder extends RecyclerView.ViewHolder  {
 
-        TextView  textViewGrade, textViewSchool,textViewFirstName,textViewPickupLocation,textViewDropoffLocation,textViewVehicleNo,textViewStartDate,textViewMonthlyFee;;
+        TextView  textViewGrade, textViewSchool,textViewFirstName,textViewPickupLocation,textViewDropoffLocation;
+        //OnChildListener onChildListener;
 
         public ChildrenViewHolder(View itemView) {
             super(itemView);
@@ -66,9 +81,8 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
             textViewFirstName = itemView.findViewById(R.id.dspName);
             textViewPickupLocation = itemView.findViewById(R.id.dspPickup);
             textViewDropoffLocation = itemView.findViewById(R.id.dspDropOff);
-            textViewVehicleNo=itemView.findViewById(R.id.dspVehicleNo);
-            textViewStartDate=itemView.findViewById(R.id.dspStartDate);
-            textViewMonthlyFee=itemView.findViewById(R.id.dspFees);
+
         }
+
     }
 }

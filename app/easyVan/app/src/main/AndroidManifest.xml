@@ -13,8 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminUpdateParent"></activity>
-        <activity android:name=".AdminViewParent" />
+        <activity android:name=".ParentEditDays"></activity>
+        <activity android:name=".OwnerVansAdd" />
+        <activity android:name=".sample" />
+        <activity android:name=".DriverNotification" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
         <activity android:name=".DriverNotification" />
@@ -23,7 +25,7 @@
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
         <activity android:name=".AdminViewOwner" />
-        <activity android:name=".AdminUpdateOwner" />
+        <activity android:name=".AdminUpdateUser" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".OwnerReport" />
@@ -68,7 +70,7 @@
         <activity android:name=".ParentAccount" />
         <activity android:name=".ParentDetails" />
         <activity android:name=".ParentEdit" />
-        <activity android:name=".ParentNotification" />
+        <activity android:name=".ParentDashboard" />
         <activity android:name=".ParentAttendance" />
         <activity android:name=".ParentRequest" />
         <activity

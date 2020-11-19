@@ -1,6 +1,7 @@
 package com.e.esayVan;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverProductAdapter.ProductViewHolder> {
+public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverProductAdapter.ProductViewHolder>  {
 
     //View for driver list
 
@@ -26,6 +27,7 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
         this.mCtx = mCtx;
         this.productList = productList;
     }
+
 
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,7 +44,10 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
 
         //binding the data with the viewholder views
         holder.username.setText(product.getUsername() );
-        holder.password.setText(product.getPassword());
+        holder.vehicleNo.setText(product.getVehicleNo());
+        holder.LicenseNO.setText(product.getLicenseNo());
+        holder.contact.setText(product.getContactNo());
+        holder.email.setText(product.getEmail());
     }
 
 
@@ -54,13 +59,17 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView username, password;
+        TextView username, vehicleNo , LicenseNO , contact , email;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.username);
-            password= itemView.findViewById(R.id.password);
+            username = itemView.findViewById(R.id.List_username);
+           vehicleNo= itemView.findViewById(R.id.List_vehicleNo);
+           LicenseNO = itemView.findViewById(R.id.List_LicenseNO);
+           contact = itemView.findViewById(R.id.List_contact);
+           email = itemView.findViewById(R.id.List_email);
+
 
         }
     }

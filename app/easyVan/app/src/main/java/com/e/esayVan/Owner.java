@@ -94,7 +94,7 @@ public class Owner extends AppCompatActivity {
                 startActivity(new Intent(this,OwnerRequest.class));
                 return true;
 
-            case R.id.account:
+            case R.id.top_profile:
                 startActivity(new Intent(this,OwnerAccount.class));
                 return true;
 

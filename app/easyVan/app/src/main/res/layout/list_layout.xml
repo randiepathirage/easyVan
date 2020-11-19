@@ -17,38 +17,76 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/List_username"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
+                android:text="Name"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#FF0000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/List_vehicleNo"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/List_username"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Vehicle Number"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#575657" />
+
+            <TextView
+                android:id="@+id/List_LicenseNO"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/List_vehicleNo"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="License Number"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/password"
+                android:id="@+id/List_contact"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/username"
+                android:layout_below="@id/List_LicenseNO"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:text="13.3 Inch, 256 GB"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:text="ContactNumber"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#575657" />
+
+            <TextView
+                android:id="@+id/List_email"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/List_contact"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/updatedriver"
-                android:padding="0dp"
-                android:layout_width="65dp"
-                android:layout_centerInParent="true"
-                android:layout_alignRight="@+id/username"
-                android:layout_height="30dp"
+                android:layout_width="31dp"
+                android:layout_height="29dp"
+                android:layout_alignRight="@+id/List_LicenseNO"
+
                 android:layout_alignParentEnd="true"
-                android:layout_margin="5dp"
-                android:onClick="updateDriver"
-                android:layout_marginEnd="0dp"
-                android:textAllCaps="false"
-                android:text="Update"
-                />
+
+                android:layout_centerInParent="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginRight="-72dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/edit_icon"
+                android:padding="0dp"
+                android:textAllCaps="false" />
 
 
         </RelativeLayout>
