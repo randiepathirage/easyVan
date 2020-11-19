@@ -5,13 +5,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class OwnerVansAdd extends AppCompatActivity {
-    EditText vehicleNo,type,noOfSeats,model,permitNo,caretaker;
+    EditText vehicleNo, type, noOfSeats, model, permitNo, caretaker;
     RadioGroup radioGroup;
-    RadioButton radioAC,radioNonAC;
+    RadioButton radioAC, radioNonAC;
     String userName;
 
     @Override
@@ -20,17 +21,17 @@ public class OwnerVansAdd extends AppCompatActivity {
         setContentView(R.layout.activity_owner_vans_add);
         getSupportActionBar().setTitle("Add Vehicle");
 
-        vehicleNo=(EditText)findViewById(R.id.add_vanNO);
-        type=(EditText)findViewById(R.id.add_type);
-        noOfSeats=(EditText)findViewById(R.id.add_noOfSeats);
-        model=(EditText)findViewById(R.id.add_model);
-        permitNo=(EditText)findViewById(R.id.add_permitNo);
-        caretaker=(EditText)findViewById(R.id.add_caretacker);
+        vehicleNo = (EditText) findViewById(R.id.add_vanNO);
+        type = (EditText) findViewById(R.id.add_type);
+        noOfSeats = (EditText) findViewById(R.id.add_noOfSeats);
+        model = (EditText) findViewById(R.id.add_model);
+        permitNo = (EditText) findViewById(R.id.add_permitNo);
+        caretaker = (EditText) findViewById(R.id.add_caretacker);
 
 
-        radioAC=(RadioButton)findViewById(R.id.add_radioAC);
-        radioNonAC=(RadioButton)findViewById(R.id.add_radioNoneAC);
-        radioGroup=(RadioGroup)findViewById(R.id.add_radioGroup);
+        radioAC = (RadioButton) findViewById(R.id.add_radioAC);
+        radioNonAC = (RadioButton) findViewById(R.id.add_radioNoneAC);
+        radioGroup = (RadioGroup) findViewById(R.id.add_radioGroup);
 
         SessionManagement sessionManagement = new SessionManagement(OwnerVansAdd.this);
         userName = sessionManagement.getUserName();
@@ -186,116 +187,116 @@ public class OwnerVansAdd extends AppCompatActivity {
 
 */
 
-    private Boolean validateVehicleNo (){
-        String val_vehicleNo= vehicleNo.getText().toString();
+    private Boolean validateVehicleNo() {
+        String val_vehicleNo = vehicleNo.getText().toString();
 
-        if(val_vehicleNo.isEmpty()){
+        if (val_vehicleNo.isEmpty()) {
             vehicleNo.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else {
             vehicleNo.setError(null);
             return true;
         }
     }
 
-    private Boolean validateType (){
-        String val_type= type.getText().toString();
+    private Boolean validateType() {
+        String val_type = type.getText().toString();
 
-        if(val_type.isEmpty()){
+        if (val_type.isEmpty()) {
             type.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else {
             type.setError(null);
             return true;
         }
     }
 
-    private Boolean validateModel (){
-        String val_model= model.getText().toString();
+    private Boolean validateModel() {
+        String val_model = model.getText().toString();
 
-        if(val_model.isEmpty()){
+        if (val_model.isEmpty()) {
             model.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else {
             model.setError(null);
             return true;
         }
     }
 
-    private Boolean validateNoOfSeats (){
-        String val_noOfSeats= noOfSeats.getText().toString();
+    private Boolean validateNoOfSeats() {
+        String val_noOfSeats = noOfSeats.getText().toString();
 
-        if(val_noOfSeats.isEmpty()){
+        if (val_noOfSeats.isEmpty()) {
             noOfSeats.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else {
             noOfSeats.setError(null);
             return true;
         }
     }
-    private Boolean validatePermitNo (){
-        String val_permit= permitNo.getText().toString();
 
-        if(val_permit.isEmpty()){
+    private Boolean validatePermitNo() {
+        String val_permit = permitNo.getText().toString();
+
+        if (val_permit.isEmpty()) {
             permitNo.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else {
             permitNo.setError(null);
             return true;
         }
     }
-    private Boolean validateCaretacker (){
-        String val_caretacker= caretaker.getText().toString();
 
-        if(val_caretacker.isEmpty()){
+    private Boolean validateCaretacker() {
+        String val_caretacker = caretaker.getText().toString();
+
+        if (val_caretacker.isEmpty()) {
             caretaker.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else {
             caretaker.setError(null);
             return true;
         }
     }
 
+// save button
 
+    public void onAddVan(View view) {
 
-    public void onAddVan(View view){
-
-        if(!validateNoOfSeats()
-                |!validateType()
-                |!validateModel()
-                |!validatePermitNo()
-                |!validateCaretacker()
-                |!validateVehicleNo()){
+        if (!validateNoOfSeats()
+                | !validateType()
+                | !validateModel()
+                | !validatePermitNo()
+                | !validateCaretacker()
+                | !validateVehicleNo()) {
             return;
         }
 
 
         String condition;
-        if(radioAC.isChecked()){
-            condition="AC";
-        } else{
-            condition="None AC";
+        if (radioAC.isChecked()) {
+            condition = "AC";
+        } else {
+            condition = "None AC";
         }
+       // Toast.makeText(OwnerVansAdd.this, userName, Toast.LENGTH_LONG).show();
 
-        String Str_vehicleNO= vehicleNo.getText().toString();
-        String str_type= type.getText().toString();
-        String str_noOfSeats= noOfSeats.getText().toString();
-        String str_model= model.getText().toString();
-        String str_permitNo= permitNo.getText().toString();
-        String str_caretaker= caretaker.getText().toString();
+        String Str_vehicleNO = vehicleNo.getText().toString();
+        String str_type = type.getText().toString();
+        String str_noOfSeats = noOfSeats.getText().toString();
+        String str_model = model.getText().toString();
+        String str_permitNo = permitNo.getText().toString();
+        String str_caretaker = caretaker.getText().toString();
         String str_condition = condition;
-      //  String str_Ownerusername = userName;
+        String str_Ownerusername = userName;
+       // Toast.makeText(OwnerVansAdd.this, str_condition, Toast.LENGTH_LONG).show();
 
-        DriverSignUpBackgroundWorker backgroundWorker=new DriverSignUpBackgroundWorker(this);
+
+        OwnerVanAddBackgroundWorker backgroundWorker=new OwnerVanAddBackgroundWorker(OwnerVansAdd.this);
         backgroundWorker.execute(Str_vehicleNO,
                 str_type,str_noOfSeats,str_model,str_permitNo,str_caretaker,
-                str_condition);
+                str_condition,str_Ownerusername);
     }
+
 
 }

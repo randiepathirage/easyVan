@@ -57,7 +57,7 @@ public class OwnerDrivers extends AppCompatActivity {
         SessionManagement sessionManagement = new SessionManagement(OwnerDrivers.this);
         Name = sessionManagement.getUserName();
 
-        Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(OwnerDrivers.this, Name,Toast.LENGTH_SHORT).show();
 
         //initializing the vehiclelist
         DriverList = new ArrayList<>();
