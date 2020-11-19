@@ -14,7 +14,7 @@ public class OwnerListLayout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout);
+        setContentView(R.layout.activity_owner_driver_list_layout);
 
         update = findViewById(R.id.updatedriver);
 
