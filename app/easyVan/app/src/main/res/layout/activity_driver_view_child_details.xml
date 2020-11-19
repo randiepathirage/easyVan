@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
-    tools:context=".Parent.ParentNewsfeedFragment">
-=======
     tools:context=".DriverViewChildDetails">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,7 +16,7 @@
         app:menu="@menu/driver_nav"
         android:layout_marginTop="20dp"
         android:layout_alignParentBottom="true"/>
->>>>>>> Stashed changes
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
