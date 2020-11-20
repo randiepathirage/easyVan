@@ -1,11 +1,9 @@
 package com.e.esayVan;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +31,7 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.list_layout, null);
+        View view = inflater.inflate(R.layout.activity_owner_driver_list_layout, null);
         return new ProductViewHolder(view);
     }
 

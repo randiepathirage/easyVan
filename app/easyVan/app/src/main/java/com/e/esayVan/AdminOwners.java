@@ -30,7 +30,7 @@ import java.util.Map;
 public class AdminOwners extends AppCompatActivity {
 
     ListView listView;
-    AdminAdapter adapter;
+    AdminOwnerAdapter adapter;
     public static ArrayList<AdminOwnerArray> adminOwnerArrayList = new ArrayList<>();
     String url = "http://10.0.2.2/easyvan/owners.php";
     AdminOwnerArray owner;
@@ -41,7 +41,7 @@ public class AdminOwners extends AppCompatActivity {
         getSupportActionBar().setTitle("Owners");
 
         listView = findViewById(R.id.myListView);
-        adapter = new AdminAdapter(this,adminOwnerArrayList);
+        adapter = new AdminOwnerAdapter(this,adminOwnerArrayList);
         listView.setAdapter(adapter);
 
 
@@ -68,7 +68,7 @@ public class AdminOwners extends AppCompatActivity {
                                 break;
 
                             case 1:
-                                startActivity(new Intent(getApplicationContext(),AdminUpdateUser.class)
+                                startActivity(new Intent(getApplicationContext(), AdminUpdateOwner.class)
                                         .putExtra("position",position));
 
                                 break;

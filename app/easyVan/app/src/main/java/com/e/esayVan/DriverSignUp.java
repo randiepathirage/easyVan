@@ -207,7 +207,7 @@ public class DriverSignUp extends AppCompatActivity {
                 String str_user_role = user_role;
                 String type = "register";
 
-                DriverSignUpBackgroundWorker backgroundWorker=new DriverSignUpBackgroundWorker(this);
+                DriverSignUpBackgroundWorker backgroundWorker=new DriverSignUpBackgroundWorker(DriverSignUp.this);
                 backgroundWorker.execute(type,Str_firstName,
                         str_lastName,str_NICNo,str_username,str_password,str_address,
                         str_contactNo,str_email,str_user_role,str_licenceNo);

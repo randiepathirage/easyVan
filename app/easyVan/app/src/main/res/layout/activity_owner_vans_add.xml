@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignUp"
-    android:layout_gravity="center_horizontal">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,7 +10,7 @@
         android:layout_marginTop="60dp">
 
         <LinearLayout
-            android:id="@+id/l_layout"
+            android:id="@+id/addVan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -21,237 +18,161 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="First name"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:textColor="#000"/>
+                android:text="Van Number"
+                android:textColor="#000" />
 
             <EditText
-                android:id="@+id/edtFirstname"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/add_vanNO"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last name"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:textColor="#000"/>
+                android:text="Type"
+                android:textColor="#000" />
 
             <EditText
-                android:id="@+id/edtLastname"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/add_type"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NIC number"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:textColor="#000"/>
+                android:text="No Of Seats"
+                android:textColor="#000" />
 
             <EditText
-                android:id="@+id/edtNic"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/add_noOfSeats"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:textColor="#000"/>
+                android:text="Model"
+                android:textColor="#000" />
 
             <EditText
-                android:id="@+id/edtUsername"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/add_model"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:textColor="#000"/>
+                android:text="Permit No"
+                android:textColor="#000" />
 
             <EditText
-                android:id="@+id/edtPassword"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/add_permitNo"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
-                android:inputType="textPassword"
                 android:background="@android:drawable/editbox_background"
-                android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Confirm Password"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:textColor="#000"/>
+                android:text="Caretacker"
+                android:textColor="#000" />
+
 
             <EditText
-                android:id="@+id/edtConfirmPassword"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/add_caretacker"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="24dp"
-                android:inputType="textPassword"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:textColor="#000"/>
-
-            <EditText
-                android:id="@+id/edtAddress"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact no"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:textColor="#000"/>
-
-            <EditText
-                android:id="@+id/edtContactNumber"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:inputType="phone"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:textColor="#000"/>
-
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="24dp"
-                android:inputType="textEmailAddress"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Licence No"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:textColor="#000"/>
-
-            <EditText
-                android:id="@+id/licence_no"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:textSize="18dp"/>
-
-
+                android:textSize="18dp" />
 
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Role"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
+                android:text="Condition"
                 android:textColor="#000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <RadioGroup
+                android:id="@+id/add_radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/radioGroup"
                 android:layout_marginLeft="30dp">
 
                 <RadioButton
+                    android:id="@+id/add_radioAC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Driver"
-                    android:checked="true"
-                    android:enabled="true"
                     android:clickable="true"
-                    android:id="@+id/radioParent"/>
+                    android:enabled="true"
+                    android:text="AC" />
+
+                <RadioButton
+                    android:id="@+id/add_radioNoneAC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:text="None AC" />
 
             </RadioGroup>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"
                 android:layout_marginLeft="300dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/roundededge"
-                android:textColor="#fff"
-                android:onClick="onReg"/>
+                android:onClick="onAddVan"
+                android:text="Add"
+                android:textColor="#fff" />
 
         </LinearLayout>
 
