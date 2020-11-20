@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         if(userRole != null){
             if(userRole.equals("driver")) {
                 //user role logged in and so move to home
-                Intent intent = new Intent(MainActivity.this,Driver.class);
+                Intent intent = new Intent(MainActivity.this,DriverAttendance.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if(userRole.equals("admin")) {
                 //user role logged in and so move to home
-                Intent intent = new Intent(MainActivity.this,Admin.class);
+                Intent intent = new Intent(MainActivity.this,AdminManage.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
