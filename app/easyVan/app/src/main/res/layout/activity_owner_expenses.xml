@@ -92,7 +92,7 @@
     <Button
         android:id="@+id/button1"
         android:layout_width="103dp"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
         android:background="@drawable/roundededge"
         android:text="Save"
