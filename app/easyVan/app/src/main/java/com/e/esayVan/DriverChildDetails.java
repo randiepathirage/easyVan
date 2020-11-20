@@ -23,7 +23,7 @@ public class DriverChildDetails extends AppCompatActivity {
         setContentView(R.layout.activity_driver_child_details);
         getSupportActionBar().setTitle("Child Details");
 
-        ok = findViewById(R.id.btnok);
+        /*ok = findViewById(R.id.btnok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +68,7 @@ public class DriverChildDetails extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        });*/
     }
 
 }
