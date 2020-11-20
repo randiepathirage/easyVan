@@ -63,14 +63,29 @@
             android:textSize="18dp" />
 
     </LinearLayout>
-
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="forgot password?"
-        android:textSize="18dp"
-        android:layout_marginLeft="80dp"
-        android:id="@+id/fgPass"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haven't registered yet? |"
+            android:textSize="16dp"
+            android:id="@+id/reg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" forgot password?"
+            android:textSize="16dp"
+            android:id="@+id/fgPass"/>
+
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/button7"
