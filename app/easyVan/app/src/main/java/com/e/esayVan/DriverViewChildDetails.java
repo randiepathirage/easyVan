@@ -5,16 +5,36 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import androidx.appcompat.widget.Toolbar;
+import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DriverViewChildDetails extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
-    Toolbar top_bar;
+    RecyclerView recyclerView;
+    DriverProductAdapter adapter;
+
+    String Name;
+    private static final String DRIVER_PRODUCT_URL = "http://10.0.2.2/easyvan/driverChild.php";
+
+    List<DriverProduct> driverProductList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +42,22 @@ public class DriverViewChildDetails extends AppCompatActivity {
         setContentView(R.layout.activity_driver_view_child_details);
         getSupportActionBar().setTitle("View");
 
+        driverProductList = new ArrayList<>();
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        /*SessionManagement sessionManagement = new SessionManagement(DriverViewChildDetails.this);
+        Name = sessionManagement.getUserName();
+
+        Toast.makeText(DriverViewChildDetails.this, Name,Toast.LENGTH_SHORT).show();*/
+
+        loadProducts();
+
+
+
+        //bottom navigation bar.....
         bottom_nav = findViewById(R.id.bottom_navigation);
-
-
         bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -60,5 +93,46 @@ public class DriverViewChildDetails extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void loadProducts(){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, DRIVER_PRODUCT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray products = new JSONArray(response);
+
+                            for(int i = 0;i<products.length();i++){
+                                JSONObject productobject = products.getJSONObject(i);
+
+                                String number = productobject.getString("number");
+                                String fname = productobject.getString("fname");
+                                String lname = productobject.getString("lname");
+                                String grade = productobject.getString("grade");
+                                String school = productobject.getString("school");
+                                String pick_loc = productobject.getString("pick_loc");
+                                String dropoff_loc = productobject.getString("dropoff_loc");
+
+                                DriverProduct product = new DriverProduct(number,fname,lname,grade,school,pick_loc,dropoff_loc);
+                                driverProductList.add(product);
+                            }
+                            DriverProductAdapter adapter =new DriverProductAdapter(DriverViewChildDetails.this,driverProductList);
+                            recyclerView.setAdapter(adapter);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DriverViewChildDetails.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 }
