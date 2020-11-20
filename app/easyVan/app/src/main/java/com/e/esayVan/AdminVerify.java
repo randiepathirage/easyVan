@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +77,28 @@ public class AdminVerify extends AppCompatActivity {
                 startActivity(driIntent);
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.admin_appbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(AdminVerify.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(AdminVerify.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+
+        return true;
     }
 
 }

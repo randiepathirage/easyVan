@@ -23,24 +23,29 @@ $condition="AC";*/
 //$owner ='123456789';
 //$username=$_POST['name'];
 
-/*$owner = "SELECT username FROM login WHERE username = $username";*/
-$owner = '123456789';
+$owner = "SELECT NIC_no FROM login WHERE username = '$username' ";
+$results = mysqli_query($conn,$owner);
 
+$result = mysqli_fetch_assoc($results);
+
+$owner =  $result['NIC_no'];
+
+//echo $owner;
 
 $query_add="INSERT INTO vehicle( number ,type,owner_NIC_no,total_no_of_seats,AC_none_AC, caretaker, permit_no, model , no_of_seats_available) 
 
 	VALUES ('$vehicleNo' , '$vehicleType','$owner' , '$totalSeats', '$condition', '$caretaker', '$permitNo', '$model', '$totalSeats')";
 
 /*
-$query_add="INSERT INTO vehicle(type,total_no_of_seats,model,permit_no,caretaker,A/C_non_A/C,owner_NIC_no) VALUES ($vehicleType','$totalSeats','$model','$permitNo','$caretaker',' $condition','1243')";
+$query_add="INSERT INTO vehicle(type,total_no_of_seats,model,permit_no,caretaker,AC_non_A/C,owner_NIC_no) VALUES ($vehicleType','$totalSeats','$model','$permitNo','$caretaker',' $condition','1243')";*/
 
-*/
+
 if($conn->query($query_add)===TRUE){
     //if($conn->query($query_user)===TRUE){
       //  if($conn->query($query_user_role)===TRUE){
           //  if($conn->query($query_parent_owner_driver)===TRUE){
                 echo "Insert Successful Van";
-          /*  }
+           /* }
         }
     }*/
 }
