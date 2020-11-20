@@ -47,7 +47,7 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View view) {
                 email = edEmail.getText().toString().trim();
                 if(email.isEmpty()){
-                    Toast.makeText(ForgotPassword.this, "Enter a E-mail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgotPassword.this, "Enter your email", Toast.LENGTH_SHORT).show();
 
                 }else{
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,

@@ -1,12 +1,12 @@
 <?php
 require 'conn.php';
-//$email = $_GET["key"];
+$email = $_GET["key"];
 
-if(isset($_GET['email'])){
- $email = $_GET['email'];
-}
+/*if(isset($_GET['key'])){
+ $email = $_GET['key'];
+}*/
 
-$sql = "SELECT * FROM login where email='$email'";
+$sql = "SELECT password FROM login where email='$email'";
 $result = mysqli_query($conn,$sql);
 if(mysqli_num_rows($result) === 1){
 
@@ -19,7 +19,7 @@ if(mysqli_num_rows($result) === 1){
             echo "Fields are empty";
         }else{
             if ($password == $cpassword){
-                //$password=md5($password);
+                $password=md5($password);
                 $update = "UPDATE login set password = '$password' WHERE email='$email'";
                 if (mysqli_query($conn,$update)){
                     echo "<h2> Password is changed successfully !!!</h2>";
@@ -43,11 +43,11 @@ if(mysqli_num_rows($result) === 1){
     <title>Forgot Password</title>
 </head>
 <body>
-    <form action  = "resetform.php" method = "POST">
+    <form action  = "" method = "post">
         <h1><?php echo "Welcome ".$email?></h1>
         Enter New Password : <input type = "text" name = "password"> <br>
         Confirm Password : <input type = "text" name = "cpassword"> <br>
-        <input type = "submit" name = "submit" value="Update Password">
+        <input type = "submit" name = "submit">
 
      </form>
 

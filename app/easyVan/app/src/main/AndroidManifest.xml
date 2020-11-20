@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".OwnerAccountUpdate"></activity>
-        <activity android:name=".AdminUpdateParent"></activity>
+        <activity android:name=".ParentLoginBeforeRequest"></activity>
+        <activity android:name=".MoreVanDetails" />
+        <activity android:name=".OwnerAccountUpdate" />
+        <activity android:name=".AdminUpdateParent" />
         <activity android:name=".AdminViewParent" />
         <activity android:name=".ParentEditDays" />
         <activity android:name=".OwnerVansAdd" />
