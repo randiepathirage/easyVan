@@ -1,28 +1,29 @@
 package com.e.esayVan;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ParentPayFragment extends AppCompatActivity {
+public class ParentDashboard extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parent_pay);
-        getSupportActionBar().setTitle("Pay fees");
+        setContentView(R.layout.activity_parent_notification);
+        getSupportActionBar().setTitle("Notifications");
+
 
         //bottom navigation
         bottom_nav = findViewById(R.id.bottom_navigation);
-        bottom_nav.setSelectedItemId(R.id.navigation_Pay);
+        bottom_nav.setSelectedItemId(R.id.navigation_dashboard);
 
         bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -47,12 +48,12 @@ public class ParentPayFragment extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_Pay:
+                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        startActivity(l);
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_dashboard:
-                        Intent l = new Intent(getApplicationContext(), ParentDashboard.class);
-                        startActivity(l);
-                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
@@ -76,10 +77,10 @@ public class ParentPayFragment extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(ParentPayFragment.this);
+                SessionManagement sessionManagement = new SessionManagement(ParentDashboard.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(ParentPayFragment.this, Login.class);
+                Intent intent = new Intent(ParentDashboard.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;

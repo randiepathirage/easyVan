@@ -67,7 +67,7 @@ public class Parent extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.notification:
-                startActivity(new Intent(getApplicationContext(), ParentNotification.class));
+                startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
                 return true;
 
             case R.id.account:
