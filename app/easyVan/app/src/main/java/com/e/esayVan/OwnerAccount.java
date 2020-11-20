@@ -70,7 +70,7 @@ public class OwnerAccount extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OwnerAccount.this, OwnerReport.class);
+                Intent intent = new Intent(OwnerAccount.this, OwnerAccountUpdate.class);
                 startActivity(intent);
             }
         });
@@ -98,6 +98,7 @@ public class OwnerAccount extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
                     nic.setText("ID:"+strNic);
                    contactNo.setText("Contact No:"+strContactNo);
                     email.setText("Email:"+strEmail);
