@@ -10,7 +10,7 @@
         android:id="@+id/btnDri"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="530dp"
         android:background="@drawable/roundededge"
         android:text="Drivers"
         android:textColor="@color/design_default_color_background"
@@ -52,6 +52,19 @@
         android:layout_marginTop="410dp"
         android:background="@drawable/roundededge"
         android:text="School Vans"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnChild"
+        android:layout_width="205dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="290dp"
+        android:background="@drawable/roundededge"
+        android:text="Children"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

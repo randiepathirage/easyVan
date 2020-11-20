@@ -10,13 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class Admin_CustomListView extends ArrayAdapter<String>{
+public class AdminCustomListView extends ArrayAdapter<String>{
 
     private String[] pname;
     private Activity context;
     Bitmap bitmap;
 
-    public Admin_CustomListView(Activity context, String[] pname) {
+    public AdminCustomListView(Activity context, String[] pname) {
         super(context, R.layout.admin_layout,pname);
         this.context=context;
         this.pname=pname;
