@@ -47,9 +47,11 @@ public class ParentEdit extends AppCompatActivity {
         edtUsername = findViewById(R.id.edtUsername);
         edtNic = findViewById(R.id.edtNic);
 
+        //get username from the session
         SessionManagement sessionManagement = new SessionManagement(this);
         userName = sessionManagement.getUserName();
 
+        //adding lick listener for the change password button
         btnChangePass=findViewById(R.id.btnChangePassword);
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,11 +61,11 @@ public class ParentEdit extends AppCompatActivity {
             }
         });
 
-        //existing details from the database
+        //load existing details from the database
         sendJsonrequest();
 
     }
-    //load account details
+
     public void sendJsonrequest(){
 
             //String url =URL + userName.trim();
