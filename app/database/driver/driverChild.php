@@ -32,3 +32,5 @@ array_push($products, $temp);
 
 //displaying the result in json format 
 echo json_encode($products);
+
+?>
