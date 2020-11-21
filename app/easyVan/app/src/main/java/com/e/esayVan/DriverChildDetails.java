@@ -30,7 +30,7 @@ public class DriverChildDetails extends AppCompatActivity {
                 Intent i = new Intent(DriverChildDetails.this,DriverViewChildDetails.class);
                 startActivity(i);
             }
-        });
+        });*/
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.nav_c_details);
@@ -68,7 +68,7 @@ public class DriverChildDetails extends AppCompatActivity {
                 }
                 return false;
             }
-        });*/
+        });
     }
 
 }
