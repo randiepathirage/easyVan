@@ -39,10 +39,11 @@
         </LinearLayout>
 
         <SearchView
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="Enter school"
-            android:background="#EAEDED"
+            android:layout_marginHorizontal="30dp"
+            android:outlineSpotShadowColor="@color/theme"
             android:gravity="center"
             android:iconifiedByDefault="true"
             android:paddingBottom="10dp"
