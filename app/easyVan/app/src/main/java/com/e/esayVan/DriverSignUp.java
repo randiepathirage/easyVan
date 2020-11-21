@@ -12,6 +12,7 @@ public class DriverSignUp extends AppCompatActivity {
         EditText firstName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword, licenceNo;
         RadioGroup radioGroup;
         RadioButton radioParent,radioOwner;
+        String Name;
         //AwesomeValidation awesomeValidation;
 
 
@@ -36,6 +37,10 @@ public class DriverSignUp extends AppCompatActivity {
                 radioParent=(RadioButton)findViewById(R.id.radioParent);
                 radioOwner=(RadioButton)findViewById(R.id.radioOwner);
                 radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+
+                SessionManagement sessionManagement = new SessionManagement(DriverSignUp.this);
+                Name = sessionManagement.getUserName();
+
 
         }
 
@@ -205,12 +210,13 @@ public class DriverSignUp extends AppCompatActivity {
                 String str_email=email.getText().toString();
                 String str_licenceNo=licenceNo.getText().toString();
                 String str_user_role = user_role;
+                String Str_owner_name = Name ;
                 String type = "register";
 
                 DriverSignUpBackgroundWorker backgroundWorker=new DriverSignUpBackgroundWorker(DriverSignUp.this);
                 backgroundWorker.execute(type,Str_firstName,
                         str_lastName,str_NICNo,str_username,str_password,str_address,
-                        str_contactNo,str_email,str_user_role,str_licenceNo);
+                        str_contactNo,str_email,str_user_role,str_licenceNo,Str_owner_name);
         }
 
 }
