@@ -23,7 +23,7 @@ import java.util.Map;
 public class AdminUpdateChild extends AppCompatActivity {
 
     EditText edcfname,edclname,edcgrade,edcschool,edcfee,edcpickup,edcvan;
-    String cnum;
+    int cnum;
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class AdminUpdateChild extends AppCompatActivity {
         edclname.setText(AdminChildren.adminChildArrayList.get(position).getLname());
         edcgrade.setText(AdminChildren.adminChildArrayList.get(position).getGrade());
         edcschool.setText(AdminChildren.adminChildArrayList.get(position).getSchool());
-        edcfee.setText(AdminChildren.adminChildArrayList.get(position).getFee());
+        edcfee.setText((int) AdminChildren.adminChildArrayList.get(position).getFee());
         edcpickup.setText(AdminChildren.adminChildArrayList.get(position).getPickup());
         edcvan.setText(AdminChildren.adminChildArrayList.get(position).getVehiclenum());
 
@@ -57,7 +57,7 @@ public class AdminUpdateChild extends AppCompatActivity {
 
     public void btn_updateData(View view) {
 
-        final String child_no = cnum;
+        final int child_no = cnum;
         final String first_name = edcfname.getText().toString();
         final String last_name = edclname.getText().toString();
         final String grade = edcgrade.getText().toString();
@@ -96,11 +96,12 @@ public class AdminUpdateChild extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<String,String>();
 
-                params.put("child_no",child_no);
+                params.put("child_no", String.valueOf(child_no));
                 params.put("first_name",first_name);
                 params.put("last_name",last_name);
+                params.put("school",school);
                 params.put("grade",grade);
-                params.put("monthly_fee",monthly_fee);
+                params.put("monthly_fee",String.valueOf(monthly_fee));
                 params.put("pickup_location",pickup_location);
                 params.put("vehicle_no",vehicle_no);
 
