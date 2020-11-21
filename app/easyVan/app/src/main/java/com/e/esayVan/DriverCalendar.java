@@ -20,45 +20,5 @@ public class DriverCalendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_calendar);
         getSupportActionBar().setTitle("Calendar");
-
-        bottom_nav = findViewById(R.id.bottom_navigation);
-
-        bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.nav_c_details:
-                        Intent i = new Intent(getApplicationContext(),DriverChildDetails.class);
-                        startActivity(i);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_attendance:
-                        Intent j = new Intent(getApplicationContext(),DriverAttendance.class);
-                        startActivity(j);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_alert:
-                        Intent k = new Intent(getApplicationContext(),DriverAlert.class);
-                        startActivity(k);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_route:
-                        Intent l = new Intent(getApplicationContext(),DriverRoute.class);
-                        startActivity(l);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_expense:
-                        Intent m = new Intent(getApplicationContext(),DriverExpense.class);
-                        startActivity(m);
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
     }
 }

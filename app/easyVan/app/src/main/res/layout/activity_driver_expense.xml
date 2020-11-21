@@ -18,13 +18,14 @@
         tools:layout_editor_absoluteY="675dp" />
 
     <Spinner
-        android:id="@+id/spinexpense"
-        android:layout_width="305dp"
+        android:id="@+id/type"
+        android:layout_width="266dp"
         android:layout_height="72dp"
-        android:layout_below="@+id/txtamount"
+        android:layout_below="@+id/amount"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="39dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="70dp"
         tools:layout_editor_absoluteX="62dp"
         tools:layout_editor_absoluteY="559dp" />
 
@@ -34,45 +35,65 @@
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="89dp"
-        android:layout_marginEnd="206dp"
+        android:layout_marginTop="207dp"
+        android:layout_marginEnd="197dp"
         android:text="Select expense:"
         android:textColor="#000000"
         android:textSize="18sp"
         tools:layout_editor_absoluteY="497dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_send"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="164dp"
+        android:background="@drawable/roundededge"
+        android:onClick="AddExpense"
+        android:text="Send"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="266dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="470dp"
-        android:layout_marginEnd="165dp"
-        android:background="@drawable/roundededge"
-        android:text="Send"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtamount" />
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="71dp"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Date: yyyy-mm-dd"
+        android:padding="15dp"
+        android:textSize="18dp" />
 
     <EditText
-        android:id="@+id/txtamount"
+        android:id="@+id/amount"
         android:layout_width="266dp"
-        android:layout_height="45dp"
-        android:layout_below="@+id/txtselect"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="79dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="72dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
+        android:hint="Amount:"
         android:inputType="textPersonName"
-        android:text="Amount:"
+        android:padding="15dp"
         android:textColor="#000000"
         android:textSize="18dp"
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="663dp" />
+
+
+
+
+
 
 </RelativeLayout>
