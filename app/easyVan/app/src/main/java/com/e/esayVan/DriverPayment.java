@@ -21,6 +21,5 @@ public class DriverPayment extends AppCompatActivity {
         setContentView(R.layout.activity_driver_payment);
         getSupportActionBar().setTitle("Payments");
 
-
     }
 }

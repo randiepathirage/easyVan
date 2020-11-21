@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoreVanDetails"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Owner details"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="20dp"
+                        android:textColor="#000"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtOwnerName"
+                        android:text="Name:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtOnwerContact"
+                        android:text="Contact no:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtOnwerNic"
+                        android:text="NIC no:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"
+                        android:layout_marginBottom="30dp"/>
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Driver details"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="20dp"
+                        android:textColor="#000"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverName"
+                        android:text="Name:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverContact"
+                        android:text="Contact no:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverNic"
+                        android:text="NIC no:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtDriverLicence"
+                        android:text="Licence no:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="rate:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="reviews:"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="request"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="300dp"
+                android:textColor="#fff"
+                android:background="@drawable/roundededge"
+                android:onClick="request"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

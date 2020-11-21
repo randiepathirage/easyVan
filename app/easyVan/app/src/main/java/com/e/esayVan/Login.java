@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
@@ -17,7 +18,7 @@ public class Login extends AppCompatActivity {
 
     EditText usernameEt,passwordEt;
     String result;
-    private Button btnforgot;
+    TextView fgpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,8 @@ public class Login extends AppCompatActivity {
         usernameEt=(EditText)findViewById(R.id.txtusername);
         passwordEt=(EditText)findViewById(R.id.txtpassword);
 
-        btnforgot=(Button)findViewById(R.id.btnfg);
-        btnforgot.setOnClickListener(new View.OnClickListener() {
+        fgpass=findViewById(R.id.fgPass);
+        fgpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent forgotIntent = new Intent(Login.this,ForgotPassword.class);

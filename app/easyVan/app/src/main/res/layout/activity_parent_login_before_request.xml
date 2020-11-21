@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    tools:context=".Login"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        app:srcCompat="@drawable/icon" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="60dp"
+            app:srcCompat="@drawable/ic_baseline_person_24" />
+
+        <EditText
+            android:id="@+id/txtusername"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:ems="10"
+            android:hint=" User name:"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="28dp"
+            app:srcCompat="@drawable/ic_baseline_https_24" />
+
+        <EditText
+            android:id="@+id/txtpassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint=" Password"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haven't registered yet? |"
+            android:textSize="16dp"
+            android:id="@+id/reg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" forgot password?"
+            android:textSize="16dp"
+            android:id="@+id/fgPass"/>
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/roundededge"
+        android:onClick="onLogin"
+        android:text="Login"
+        android:textColor="#fff" />
+</LinearLayout>

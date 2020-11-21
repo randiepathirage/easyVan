@@ -16,6 +16,7 @@ public class AdminManage extends AppCompatActivity {
     private Button btnown;
     private Button btndri;
     private Button btnsvan;
+    private Button btnchild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,5 +93,35 @@ public class AdminManage extends AppCompatActivity {
                 startActivity(svanIntent);
             }
         });
+
+        btnchild=(Button)findViewById(R.id.btnChild);
+        btnchild.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent childIntent = new Intent(AdminManage.this,AdminChildren.class);
+                startActivity(childIntent);
+            }
+        });
+    }
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.admin_appbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(AdminManage.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(AdminManage.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+
+        return true;
     }
 }

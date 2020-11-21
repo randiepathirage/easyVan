@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_c_details"
-        android:title="Child details"
-        android:icon="@drawable/ic_search"/>
-
-    <item
         android:id="@+id/nav_attendance"
         android:title="Attendance"
         android:icon="@drawable/ic_attendance"/>
+
+    <item
+        android:id="@+id/nav_c_details"
+        android:title="Child details"
+        android:icon="@drawable/ic_search"/>
 
     <item
         android:id="@+id/nav_alert"

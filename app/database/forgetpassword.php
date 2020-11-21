@@ -5,9 +5,9 @@
     require 'PHPMailer/class.smtp.php';
     require 'admin.php';
 
-    //$email = $_POST["email"];
+    $email = $_POST["email"];
     //$nic_no = "555";
-    $email = "mruv98@gmail.com";
+    //$email = "mruv98@gmail.com";
 
 
     $sql = "SELECT * FROM login where email LIKE '$email'";
@@ -32,25 +32,25 @@
         $mail->addReplyTo( $adminemail, 'EZvan');
 
 
-        $mail->Subject = 'Forgot Password for EZvan';
+        /*$mail->Subject = 'Forgot Password for EZvan';
         $mail->isHTML(true);
         $mail->Body    = "click here the link below :
-         "http://localhost/easyvan/resetPassword.php?".key=$email;
+         "https://localhost/easyvan/resetPassword.php?".key=$email;*/
 
 
-         /*$url="http://". $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) ."/resetform.php?".key=$email;
-         $url="http://localhost/easyvan/resetPassword.php?".code=$code;
-         $mail->isHTML(true);// Set email format to HTML
+         //$url="http://". $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) ."/resetform.php?".key=$email;
+         $url="http://localhost/easyvan/resetform.php?key=$email";
          $mail->Subject = 'Your password reset link';
+         $mail->isHTML(true);
          $mail->Body    = "<h1>You requested a password reset</h1>
                                      Click <a href='$url'>this link</a> to do so";
-*/
+
 
         if(!$mail->send()) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            $msg["email"] = "send";
+            $msg["mail"] = "send";
             echo json_encode($msg);
         }
     }

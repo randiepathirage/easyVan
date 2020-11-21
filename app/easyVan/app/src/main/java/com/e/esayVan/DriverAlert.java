@@ -29,7 +29,7 @@ public class DriverAlert extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_c_details:
-                        Intent i = new Intent(getApplicationContext(),DriverChildDetails.class);
+                        Intent i = new Intent(getApplicationContext(),DriverViewChildDetails.class);
                         startActivity(i);
                         overridePendingTransition(0,0);
                         return true;
@@ -58,6 +58,43 @@ public class DriverAlert extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.driver_appbar,menu);
+        return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.top_notification:
+                Intent m = new Intent(getApplicationContext(),DriverNotification.class);
+                startActivity(m);
+                return true;
+            case R.id.top_profile:
+                Intent k = new Intent(getApplicationContext(),DriverProfile.class);
+                startActivity(k);
+                return true;
+            case R.id.top_calendar:
+                Intent i = new Intent(getApplicationContext(),DriverCalendar.class);
+                startActivity(i);
+                return true;
+            case R.id.top_payment:
+                Intent j = new Intent(getApplicationContext(),DriverPayment.class);
+                startActivity(j);
+                return true;
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(DriverAlert.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(DriverAlert.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+        return false;
     }
 
 }

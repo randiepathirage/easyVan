@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,14 +23,14 @@ public class DriverChildDetails extends AppCompatActivity {
         setContentView(R.layout.activity_driver_child_details);
         getSupportActionBar().setTitle("Child Details");
 
-        ok = findViewById(R.id.btnok);
+        /*ok = findViewById(R.id.btnok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),DriverViewChildDetails.class);
+                Intent i = new Intent(DriverChildDetails.this,DriverViewChildDetails.class);
                 startActivity(i);
             }
-        });
+        });*/
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.nav_c_details);

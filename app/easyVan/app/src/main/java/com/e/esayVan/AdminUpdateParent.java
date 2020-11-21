@@ -73,7 +73,7 @@ public class AdminUpdateParent extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(AdminUpdateParent.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminUpdateParent.this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(),AdminParents.class));
                         finish();
                         progressDialog.dismiss();
