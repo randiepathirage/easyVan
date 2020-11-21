@@ -20,7 +20,8 @@
     <string-array name="select_expense">
         <item>Vehicle part</item>
         <item>Fuel</item>
-        <item>Food</item>
+        <item>Vehicle service</item>
+        <item>License renew</item>
         <item>Other</item>
     </string-array>
 
