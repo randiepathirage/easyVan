@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnNewsFeed"
         app:layout_constraintEnd_toEndOf="@+id/btnLocation"
         app:layout_constraintStart_toStartOf="@+id/btnNewsFeed"
-        android:src="@drawable/logo" />
+        android:src="@drawable/icon" />
 
     <Button
         android:id="@+id/btnNewsFeed"
