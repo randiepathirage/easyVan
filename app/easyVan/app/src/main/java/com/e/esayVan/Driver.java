@@ -24,7 +24,7 @@ public class Driver extends AppCompatActivity {
         child_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),DriverChildDetails.class);
+                Intent i = new Intent(getApplicationContext(),DriverViewChildDetails.class);
                 startActivity(i);
             }
         });

@@ -28,7 +28,7 @@ public class DriverPayment extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_c_details:
-                        Intent i = new Intent(getApplicationContext(),DriverChildDetails.class);
+                        Intent i = new Intent(getApplicationContext(),DriverViewChildDetails.class);
                         startActivity(i);
                         overridePendingTransition(0,0);
                         return true;
