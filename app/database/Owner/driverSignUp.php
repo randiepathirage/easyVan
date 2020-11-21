@@ -11,8 +11,22 @@
  $contact_no=$_POST['contactNo'];
  $email=$_POST['email'];
  $license_no = $_POST['licenseNo'];
+
+ $ownerName =$_POST['ownerName'];
+ 
  $user_role = "driver";
  $user_middlename = "None";
+
+
+ $owner = "SELECT NIC_no FROM login WHERE username ='$ownerName' ";
+$results = mysqli_query($conn,$owner);
+
+$result = mysqli_fetch_assoc($results);
+
+$owner =  $result['NIC_no'];
+
+
+ //$owner_username =$_POST['Name'];
 
 
 $query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username',' $password',' $email')";
@@ -21,17 +35,22 @@ $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,middle_name
 
 $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";
 
-$query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,driver_flag,license_no) VALUES ('$nic_no','$user_role','$license_no')";
+$query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,driver_flag,license_no) VALUES ('$nic_no','1','$license_no')";
+
+$query_assign = "INSERT INTO assign(driver_NIC_no, owner_NIC_no) VALUES ('$nic_no','$owner')";
 
 if($conn->query($query_login)===TRUE){
     if($conn->query($query_user)===TRUE){
         if($conn->query($query_user_role)===TRUE){
             if($conn->query($query_parent_owner_driver)===TRUE){
-                echo "Insert Successful Driver";
+            	if($conn->query($query_assign)===TRUE){
+                	echo "Insert Successful Driver";
+            	}
             }
         }
     }
 }
+
 else{
     echo "Error".$query_login."<br>".$conn->error;
 }
