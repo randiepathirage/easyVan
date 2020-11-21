@@ -56,16 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="132dp"
-        android:text="To"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
-
     <EditText
         android:id="@+id/editTextDate2"
         android:layout_width="146dp"
@@ -93,14 +83,13 @@
         android:id="@+id/editTextDate3"
         android:layout_width="146dp"
         android:layout_height="42dp"
-        android:layout_marginTop="52dp"
         android:layout_marginEnd="68dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        tools:layout_editor_absoluteY="354dp" />
 
     <TextView
         android:id="@+id/textView3"
