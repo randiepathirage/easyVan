@@ -16,6 +16,7 @@ public class AdminManage extends AppCompatActivity {
     private Button btnown;
     private Button btndri;
     private Button btnsvan;
+    private Button btnchild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,15 @@ public class AdminManage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent svanIntent = new Intent(AdminManage.this,AdminSchoolVans.class);
                 startActivity(svanIntent);
+            }
+        });
+
+        btnchild=(Button)findViewById(R.id.btnChild);
+        btnchild.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent childIntent = new Intent(AdminManage.this,AdminChildren.class);
+                startActivity(childIntent);
             }
         });
     }
