@@ -14,14 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".AdminUpdateChild"></activity>
+        <activity android:name=".AdminUpdateChild"/>
         <activity android:name=".AdminViewChild" />
         <activity android:name=".AdminChildAdapter" />
         <activity android:name=".AdminChildren" />
-
-        <activity android:name=".ParentLoginBeforeRequest"></activity>
+        <activity android:name=".ParentLoginBeforeRequest"/>
         <activity android:name=".MoreVanDetails" />
-
         <activity android:name=".OwnerAccountUpdate" />
         <activity android:name=".AdminUpdateParent" />
         <activity android:name=".AdminViewParent" />
@@ -31,11 +29,8 @@
         <activity android:name=".DriverNotification" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
-        <activity android:name=".DriverNotification" />
         <activity android:name=".DriverProfile" />
         <activity android:name=".ParentChangePassword" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".DriverSignUp" />
         <activity android:name=".AdminViewOwner" />
         <activity android:name=".AdminUpdateUser" />
         <activity android:name=".SignUp" />
