@@ -20,7 +20,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="480dp"
         android:layout_margin="10dp">
 
         <LinearLayout
@@ -45,8 +45,22 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Security code"
-                android:textSize="14dp" />
+                android:text="Expire date"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Security code(CVV)"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -57,8 +71,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Cardholder Name"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Amount"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -70,20 +99,23 @@
                 android:id="@+id/btnSendReq"
                 android:layout_width="142dp"
                 android:layout_height="44dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/roundededge"
                 android:text="Pay Now"
                 android:textColor="#fff"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:background="#fff"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
