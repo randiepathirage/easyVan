@@ -32,15 +32,13 @@
         <activity android:name=".DriverProfile" />
         <activity android:name=".ParentChangePassword" />
         <activity android:name=".AdminViewOwner" />
-        <activity android:name=".AdminUpdateUser" />
+        <activity android:name=".AdminUpdateOwner" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".OwnerReport" />
         <activity android:name=".AdminNewArticle" />
         <activity android:name=".AdminVerifyDrivers" />
         <activity android:name=".AdminVerifySchoolVans" />
-        <activity android:name=".AdminAddnewOwner" />
-        <activity android:name=".AdminAddNewParent" />
         <activity android:name=".AdminSchoolVans" />
         <activity android:name=".AdminDrivers" />
         <activity android:name=".AdminOwners" />

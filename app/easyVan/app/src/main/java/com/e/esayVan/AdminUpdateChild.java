@@ -23,7 +23,7 @@ import java.util.Map;
 public class AdminUpdateChild extends AppCompatActivity {
 
     EditText edcfname,edclname,edcgrade,edcschool,edcfee,edcpickup,edcvan;
-    int cnum;
+    String cnum,parentnic,pname;
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,30 +41,34 @@ public class AdminUpdateChild extends AppCompatActivity {
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
 
-        cnum = AdminChildren.adminChildArrayList.get(position).getChildnum() ;
+        cnum = AdminChildren.adminChildArrayList.get(position).getChildnum();
+        parentnic = AdminChildren.adminChildArrayList.get(position).getParentNIC();
         edcfname.setText(AdminChildren.adminChildArrayList.get(position).getFname());
         edclname.setText(AdminChildren.adminChildArrayList.get(position).getLname());
-        edcgrade.setText(AdminChildren.adminChildArrayList.get(position).getGrade());
         edcschool.setText(AdminChildren.adminChildArrayList.get(position).getSchool());
-        edcfee.setText((int) AdminChildren.adminChildArrayList.get(position).getFee());
+        edcgrade.setText(AdminChildren.adminChildArrayList.get(position).getGrade());
         edcpickup.setText(AdminChildren.adminChildArrayList.get(position).getPickup());
         edcvan.setText(AdminChildren.adminChildArrayList.get(position).getVehiclenum());
-
-
+        edcfee.setText(AdminChildren.adminChildArrayList.get(position).getFee());
+        pname = AdminChildren.adminChildArrayList.get(position).getPname();
 
 
     }
 
     public void btn_updateData(View view) {
 
-        final int child_no = cnum;
+        final String child_no = cnum;
+        final String parent_NIC_no = parentnic;
         final String first_name = edcfname.getText().toString();
         final String last_name = edclname.getText().toString();
-        final String grade = edcgrade.getText().toString();
         final String school = edcschool.getText().toString();
-        final String monthly_fee = edcfee.getText().toString();
+        final String grade = edcgrade.getText().toString();
         final String pickup_location = edcpickup.getText().toString();
         final String vehicle_no = edcvan.getText().toString();
+        final String monthly_fee = edcfee.getText().toString();
+        final String parent_name = pname;
+
+
 
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -76,7 +80,7 @@ public class AdminUpdateChild extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(AdminUpdateChild.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminUpdateChild.this,"Data Updated Successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(),AdminChildren.class));
                         finish();
                         progressDialog.dismiss();
@@ -96,14 +100,17 @@ public class AdminUpdateChild extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<String,String>();
 
-                params.put("child_no", String.valueOf(child_no));
+                params.put("child_no", child_no);
+                params.put("parent_NIC_no", parent_NIC_no);
                 params.put("first_name",first_name);
                 params.put("last_name",last_name);
                 params.put("school",school);
                 params.put("grade",grade);
-                params.put("monthly_fee",String.valueOf(monthly_fee));
                 params.put("pickup_location",pickup_location);
                 params.put("vehicle_no",vehicle_no);
+                params.put("monthly_fee",monthly_fee);
+                params.put("parent_name", parent_name);
+
 
                 return params;
             }

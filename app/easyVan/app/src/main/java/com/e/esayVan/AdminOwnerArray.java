@@ -15,25 +15,25 @@ public class AdminOwnerArray {
 
     }
 
-    public String getNic() {
+    public String getoNic() {
         return nic;
     }
-    public String getFname() {
+    public String getoFname() {
         return fname;
     }
-    public String getLname() {
+    public String getoLname() {
         return lname;
     }
-    public String getContact() {
+    public String getoContact() {
         return contact;
     }
-    public String getAddress() {
+    public String getoAddress() {
         return address;
     }
-    public String getUsername() {
+    public String getoUsername() {
         return username;
     }
-    public String getEmail() {
+    public String getoEmail() {
         return email;
     }
 }
