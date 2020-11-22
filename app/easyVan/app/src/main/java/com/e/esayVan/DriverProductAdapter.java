@@ -62,7 +62,7 @@ public class DriverProductAdapter extends RecyclerView.Adapter<DriverProductAdap
             grade = itemView.findViewById(R.id.grade);
             school = itemView.findViewById(R.id.school);
             pick_loc = itemView.findViewById(R.id.pick_loc);
-            dropoff_loc = itemView.findViewById(R.id.dropof_loc);
+            dropoff_loc = itemView.findViewById(R.id.dropoff_loc);
         }
     }
 }
