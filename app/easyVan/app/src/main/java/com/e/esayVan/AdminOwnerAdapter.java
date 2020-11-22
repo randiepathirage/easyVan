@@ -35,8 +35,8 @@ public class AdminOwnerAdapter extends ArrayAdapter<AdminOwnerArray> {
         TextView tvfname = view.findViewById(R.id.txt_fname);
         TextView tvlname = view.findViewById(R.id.txt_lname);
 
-        tvfname.setText(owners.get(position).getFname());
-        tvlname.setText(owners.get(position).getLname());
+        tvfname.setText(owners.get(position).getoFname());
+        tvlname.setText(owners.get(position).getoLname());
 
         return view;
     }
