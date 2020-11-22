@@ -23,39 +23,39 @@ import java.util.Map;
 public class AdminUpdateOwner extends AppCompatActivity {
 
     EditText edfname,edlname,edcontact,edusername,edaddress,edemail;
-    String nic;
+    String ownernic;
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_update_user);
+        setContentView(R.layout.activity_admin_update_owner);
 
-        edfname = findViewById(R.id.ed_fn);
-        edlname = findViewById(R.id.ed_ln);
-        edcontact = findViewById(R.id.ed_contact);
-        edusername = findViewById(R.id.ed_username);
-        edaddress = findViewById(R.id.ed_address);
-        edemail = findViewById(R.id.ed_email);
+        edfname = findViewById(R.id.ed_ofn);
+        edlname = findViewById(R.id.ed_oln);
+        edcontact = findViewById(R.id.ed_ocontact);
+        edusername = findViewById(R.id.ed_ousername);
+        edaddress = findViewById(R.id.ed_oaddress);
+        edemail = findViewById(R.id.ed_oemail);
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
 
-        nic = AdminOwners.adminOwnerArrayList.get(position).getNic() ;
-        edfname.setText(AdminOwners.adminOwnerArrayList.get(position).getFname());
-        edlname.setText(AdminOwners.adminOwnerArrayList.get(position).getLname());
-        edcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
-        edaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getAddress());
-        edusername.setText(AdminOwners.adminOwnerArrayList.get(position).getUsername());
-        edemail.setText(AdminOwners.adminOwnerArrayList.get(position).getEmail());
+        ownernic = AdminOwners.adminOwnerArrayList.get(position).getoNic();
+        edfname.setText(AdminOwners.adminOwnerArrayList.get(position).getoFname());
+        edlname.setText(AdminOwners.adminOwnerArrayList.get(position).getoLname());
+        edcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getoContact());
+        edaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getoAddress());
+        edusername.setText(AdminOwners.adminOwnerArrayList.get(position).getoUsername());
+        edemail.setText(AdminOwners.adminOwnerArrayList.get(position).getoEmail());
 
 
 
 
     }
 
-    public void btn_updateData(View view) {
+    public void btn_updateowner(View view) {
 
-        final String NIC_no = nic;
+        final String NIC_no = ownernic;
         final String first_name = edfname.getText().toString();
         final String last_name = edlname.getText().toString();
         final String address = edaddress.getText().toString();
@@ -91,17 +91,17 @@ public class AdminUpdateOwner extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String,String> params = new HashMap<String,String>();
+                Map<String,String> ownerparams = new HashMap<String,String>();
 
-                params.put("NIC_no",NIC_no);
-                params.put("contact_no",contact_no);
-                params.put("first_name",first_name);
-                params.put("last_name",last_name);
-                params.put("address",address);
-                params.put("username",username);
-                params.put("email",email);
+                ownerparams.put("NIC_no",NIC_no);
+                ownerparams.put("contact_no",contact_no);
+                ownerparams.put("last_name",last_name);
+                ownerparams.put("first_name",first_name);
+                ownerparams.put("address",address);
+                ownerparams.put("username",username);
+                ownerparams.put("email",email);
 
-                return params;
+                return ownerparams;
             }
         };
 
