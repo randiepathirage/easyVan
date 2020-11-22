@@ -7,8 +7,7 @@ require  "conn.php";
 $user_name=$_POST['username'];
 //$user_name="pqr";
 
-// genarate driver NIC>>>>>>>>>
-
+// genarate driver NIC using username>>>>>>>>>
 
 $NIC = "SELECT NIC_no FROM login  WHERE username = '$user_name' ";
 $query_NIC= mysqli_query($conn,$NIC);
