@@ -1,6 +1,7 @@
 package com.e.esayVan;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -120,8 +121,14 @@ public class DriverSignUp extends AppCompatActivity {
         }
 
         private Boolean validateContactNo() {
+                String val_contactNo = contactNo.getText().toString();
+                if (TextUtils.isEmpty(val_contactNo)) {
+                        return false;
+                } else {
+                        return android.util.Patterns.PHONE.matcher(val_contactNo).matches();
+                }
 
-                String MobilePattern = "[0-9]{10}";
+                /*String MobilePattern = "[0-9]{10}";
                 String val_contactNo = contactNo.getText().toString();
 
                 if (val_contactNo.isEmpty()) {
@@ -133,7 +140,7 @@ public class DriverSignUp extends AppCompatActivity {
                 } else {
                         contactNo.setError(null);
                         return true;
-                }
+                }*/
         }
 
         private Boolean validatePassword(){
@@ -192,13 +199,24 @@ public class DriverSignUp extends AppCompatActivity {
                         return true;
                 }
         }
+        private Boolean validateNIC(){
+                String val_NIC= NICNo.getText().toString();
+                if(val_NIC.isEmpty()){
+                        NICNo.setError("This field cannot be empty");
+                        return false;
+                }
+                else {
+                        NICNo.setError(null);
+                        return true;
+                }
 
+        }
 
 
         public void onReg(View view){
 
                 if(!validateName()|!validateUsername()|!validatePassword()
-                        |!validateContactNo()|!validateConfirmPassword()|!validateAddress()|!validatelicence_no()){
+                        |!validateContactNo()|!validateConfirmPassword()|!validateAddress()|!validatelicence_no() | !validateNIC()){
                         return;
                 }
 
