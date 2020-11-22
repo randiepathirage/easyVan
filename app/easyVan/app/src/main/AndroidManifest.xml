@@ -15,11 +15,9 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".AdminAddChild"></activity>
-
-
-        <activity android:name=".DriverProfileUpdate"></activity>
-        <activity android:name=".EnterCode"></activity>
-
+        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".DriverProfileUpdate" />
+        <activity android:name=".EnterCode" />
         <activity android:name=".AdminUpdateChild" />
         <activity android:name=".AdminViewChild" />
         <activity android:name=".AdminChildAdapter" />

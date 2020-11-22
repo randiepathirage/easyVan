@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class Login extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class Login extends AppCompatActivity {
     EditText usernameEt,passwordEt;
     String result;
     TextView fgpass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,15 @@ public class Login extends AppCompatActivity {
         fgpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 Intent forgotIntent = new Intent(Login.this,ForgotPassword.class);
                 startActivity(forgotIntent);
             }
         });
+
+
     }
 
     public void onLogin(View view){
