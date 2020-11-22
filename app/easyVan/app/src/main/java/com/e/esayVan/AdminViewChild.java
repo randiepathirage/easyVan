@@ -14,6 +14,7 @@ public class AdminViewChild extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_child);
+        getSupportActionBar().setTitle("View Child Details");
 
 
         //Initializing Views

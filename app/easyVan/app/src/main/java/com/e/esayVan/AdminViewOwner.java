@@ -14,6 +14,7 @@ public class AdminViewOwner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_owner);
+        getSupportActionBar().setTitle("View Owner Details");
 
 
         //Initializing Views

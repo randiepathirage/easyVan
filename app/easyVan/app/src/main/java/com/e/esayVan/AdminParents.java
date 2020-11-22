@@ -38,7 +38,7 @@ public class AdminParents extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_parents);
-        getSupportActionBar().setTitle("Parents");
+        getSupportActionBar().setTitle("Parents List");
 
         listView = findViewById(R.id.parentListView);
         adapter = new AdminParentAdapter(this,adminParentArrayList);

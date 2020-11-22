@@ -29,6 +29,7 @@ public class AdminUpdateOwner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_update_owner);
+        getSupportActionBar().setTitle("Update Owner Details");
 
         edfname = findViewById(R.id.ed_ofn);
         edlname = findViewById(R.id.ed_oln);

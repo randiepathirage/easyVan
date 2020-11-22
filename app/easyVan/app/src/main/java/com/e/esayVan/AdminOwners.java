@@ -38,7 +38,7 @@ public class AdminOwners extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_owners);
-        getSupportActionBar().setTitle("Owners");
+        getSupportActionBar().setTitle("Owners List");
 
         ownerlistView = findViewById(R.id.myListView);
         owneradapter = new AdminOwnerAdapter(this,adminOwnerArrayList);
