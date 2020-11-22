@@ -101,18 +101,23 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    private Boolean validateContactNo(){
-        String val_contactNo= contactNo.getText().toString();
+    private Boolean validateContactNo() {
 
-        if(val_contactNo.isEmpty()){
+        String MobilePattern = "[0-9]{10}";
+        String val_contactNo = contactNo.getText().toString();
+
+        if (val_contactNo.isEmpty()) {
             contactNo.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else if (contactNo.getText().toString().matches(MobilePattern)) {
+            contactNo.setError("please inser valied mobile number");
+            return false;
+        } else {
             contactNo.setError(null);
             return true;
         }
     }
+
 
     private Boolean validatePassword(){
         String val_password= password.getText().toString();

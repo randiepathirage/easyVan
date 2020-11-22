@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:text="Van Number"
+                android:text="Vehicle Number"
                 android:textColor="#000" />
 
             <EditText
@@ -50,6 +50,8 @@
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
+                android:text="Van or Bus"
+                android:editable="true"
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
@@ -69,6 +71,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
+                android:inputType="phone"
                 android:textColor="#000000"
                 android:textSize="18dp" />
 

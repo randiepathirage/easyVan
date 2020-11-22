@@ -46,7 +46,7 @@ public class OwnerRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_request);
-        getSupportActionBar().setTitle("Request");
+        getSupportActionBar().setTitle("Send Notification");
     }
 
 }
