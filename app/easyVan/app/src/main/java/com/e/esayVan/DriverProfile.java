@@ -2,94 +2,164 @@ package com.e.esayVan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.TextView;
 
 public class DriverProfile extends AppCompatActivity {
 
-    BottomNavigationView bottom_nav;
-    RecyclerView recyclerView;
+    private  TextView username,nic, contactNo, email, address;
+    String userName;
+    Button btnEdit;
+    private String strNic,strAddress,strEmail, strContactNo;
 
-    private static final String DRIVER_PRODUCT_URL = "http://10.0.2.2/easyvan/driverprofile.php";
-
-    List<DriverProductProfile> driverProductProfileList;
+    String URL="http://10.0.2.2/easyvan/driverprofile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_profile);
-        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle("Account");
 
-        driverProductProfileList = new ArrayList<>();
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        username = findViewById(R.id.txt_Username);
+        nic = findViewById(R.id.txt_Nic);
+        contactNo = findViewById(R.id.txt_ContactNo);
+        email = findViewById(R.id.txt_Email);
+        address = findViewById(R.id.txt_Address);
 
-        /*SessionManagement sessionManagement = new SessionManagement(DriverViewChildDetails.this);
-        Name = sessionManagement.getUserName();
 
-        Toast.makeText(DriverViewChildDetails.this, Name,Toast.LENGTH_SHORT).show();*/
+        //get the session username
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
+        username.setText(userName);
 
-        loadProducts();
+        //load account details
+        sendJsonrequest();
+        btnEdit = (Button) findViewById(R.id.btn_Edit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DriverProfile.this, DriverProfileUpdate.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+    private Menu menu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.driver_appbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,OwnerRequest.class));
+                return true;
+
+            case R.id.top_profile:
+                startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(DriverProfile.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(DriverProfile.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+        }
+        return true;
     }
 
-    private void loadProducts(){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, DRIVER_PRODUCT_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray products = new JSONArray(response);
+    //load account details
+    public void sendJsonrequest() {
 
-                            for(int i = 0;i<products.length();i++){
-                                JSONObject productobject = products.getJSONObject(i);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST , URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-                                String nic = productobject.getString("nic");
-                                String fname = productobject.getString("fname");
-                                String lname = productobject.getString("lname");
-                                String mname = productobject.getString("mname");
-                                String contact = productobject.getString("contact");
-                                String address = productobject.getString("address");
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray result = jsonObject.getJSONArray("data");
+                    JSONObject collegeData = result.getJSONObject(0);
 
 
-                                DriverProductProfile product = new DriverProductProfile(nic,fname,mname,lname,contact,address);
-                                driverProductProfileList.add(product);
-                            }
-                            DriverProductProfileAdapter adapter =new DriverProductProfileAdapter(DriverProfile.this,driverProductProfileList);
-                            recyclerView.setAdapter(adapter);
+                    strNic=collegeData.getString("NIC_no");
+                    strContactNo=collegeData.getString("contact_no");;
+                    strEmail=collegeData.getString("email");
+                    strAddress=collegeData.getString("address");
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                nic.setText("ID:"+strNic);
+                contactNo.setText("Contact No:"+strContactNo);
+                email.setText("Email:"+strEmail);
+                address.setText("Address:"+strAddress);
+            }
+        },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DriverProfile.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        })
+        {
 
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DriverProfile.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
-        Volley.newRequestQueue(this).add(stringRequest);
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("username",userName);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
+
+
+
 }

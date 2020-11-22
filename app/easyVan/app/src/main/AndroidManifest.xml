@@ -13,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".AdminUpdateChild"/>
+        <activity android:name=".DriverProfileUpdate"></activity>
+        <activity android:name=".AdminUpdateChild" />
         <activity android:name=".AdminViewChild" />
         <activity android:name=".AdminChildAdapter" />
         <activity android:name=".AdminChildren" />
-        <activity android:name=".ParentLoginBeforeRequest"/>
+        <activity android:name=".ParentLoginBeforeRequest" />
         <activity android:name=".MoreVanDetails" />
         <activity android:name=".OwnerAccountUpdate" />
         <activity android:name=".AdminUpdateParent" />
