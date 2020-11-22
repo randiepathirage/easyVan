@@ -258,6 +258,24 @@ public class OwnerVansAdd extends AppCompatActivity {
             return true;
         }
     }
+    private Boolean validateSeats() {
+
+        String MobilePattern = "[1-9]{10}";
+        String val_contactNo = noOfSeats.getText().toString();
+
+        if (val_contactNo.isEmpty()) {
+            noOfSeats.setError("This field cannot be empty");
+                if (noOfSeats.getText().toString().matches(MobilePattern)) {
+                noOfSeats.setError("please inser valied number");
+                }
+            return false;
+
+        }
+            else {
+            noOfSeats.setError(null);
+            return true;
+        }
+    }
 
 // save button
 
@@ -268,7 +286,9 @@ public class OwnerVansAdd extends AppCompatActivity {
                 | !validateModel()
                 | !validatePermitNo()
                 | !validateCaretacker()
-                | !validateVehicleNo()) {
+                | !validateVehicleNo()
+                | !validateSeats())
+        {
             return;
         }
 

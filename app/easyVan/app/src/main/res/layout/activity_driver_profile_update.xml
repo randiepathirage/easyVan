@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DriverProfileUpdate"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/acc_txt_firstName"
+        android:text="Name:"
+        android:layout_marginLeft="10dp"
+        android:textColor="#979A9A"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/acc_et_firstName"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact No:"
+        android:id="@+id/acc_txt_ContactNo"
+        android:layout_marginLeft="10dp"
+        android:textColor="#979A9A"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/acc_et_ContactNo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#979A9A"
+        android:text="Email:"
+        android:id="@+id/acc_txt_Email"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:id="@+id/acc_et_Email"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#979A9A"
+        android:text="Address:"
+        android:id="@+id/acc_txt_Address"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:id="@+id/acc_et_Address"/>
+
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/roundededge"
+        android:onClick="updateDriverAccountDetails"
+        android:text="Save"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+</LinearLayout>

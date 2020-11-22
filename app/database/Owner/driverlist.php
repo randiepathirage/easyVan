@@ -3,8 +3,8 @@
 
  require  "conn.php";
  //creating a query
-$user_name = $_POST["username"];
-//$user_name="hasindu";
+//$user_name = $_POST["username"];
+$user_name="hasindu";
 
 //$driver_NIC_no =  mysqli_query($conn,$abc);
 

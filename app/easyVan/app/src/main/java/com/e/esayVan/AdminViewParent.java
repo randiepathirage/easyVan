@@ -14,8 +14,10 @@ public class AdminViewParent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_parent);
+
         getSupportActionBar().setTitle("View Parent Details");
 
+  
 
         //Initializing Views
         tvnic = findViewById(R.id.txtpnic);
