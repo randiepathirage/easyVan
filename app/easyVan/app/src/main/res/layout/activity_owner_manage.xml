@@ -11,11 +11,10 @@
 
     <Button
         android:id="@+id/vanBt"
-        android:layout_width="125dp"
-        android:layout_height="129dp"
-
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="110dp"
         android:background="@drawable/van"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -26,10 +25,10 @@
 
     <Button
         android:id="@+id/driverBt"
-        android:layout_width="104dp"
-        android:layout_height="105dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="60dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="140dp"
         android:background="@drawable/driver"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -56,21 +55,24 @@
         android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="112dp"
-        android:text="Vans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vanBt" />
-
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="100dp"
+        android:textColor="#000"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="Vehicle"
     <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="36dp"
-        android:text="Drivers"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/driverBt" />
+        android:layout_marginBottom="100dp"
+        android:textColor="#000"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Driver"/>
 
     <ImageView
         android:id="@+id/imageView7"

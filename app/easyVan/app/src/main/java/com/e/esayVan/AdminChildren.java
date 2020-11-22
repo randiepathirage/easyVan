@@ -98,7 +98,7 @@ public class AdminChildren extends AppCompatActivity {
 
     }
 
-    private void deleteData(final String child_no) {
+    private void deleteData(final int child_no) {
 
         StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deletechild.php",
                 new Response.Listener<String>() {
@@ -124,7 +124,7 @@ public class AdminChildren extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String,String> params = new HashMap<String,String>();
-                params.put("child_no", child_no);
+                params.put("child_no", String.valueOf(child_no));
                 return params;
             }
         };
@@ -156,7 +156,7 @@ public class AdminChildren extends AppCompatActivity {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String childnum = object.getString("child_no");
+                                    int childnum = object.getInt("child_no");
                                     String parentnic = object.getString("parent_NIC_no");
                                     String fname = object.getString("first_name");
                                     String lname = object.getString("last_name");
@@ -164,7 +164,7 @@ public class AdminChildren extends AppCompatActivity {
                                     String grade = object.getString("grade");
                                     String pickup = object.getString("pickup_location");
                                     String vehiclenum = object.getString("vehicle_no");
-                                    String fee = object.getString("monthly_fee");
+                                    int fee = object.getInt("monthly_fee");
                                     String pname = object.getString("parent_name");
 
 

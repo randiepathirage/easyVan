@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUp extends AppCompatActivity {
-    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword;
+    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword,nic;
     RadioGroup radioGroup;
     RadioButton radioParent,radioOwner;
     //AwesomeValidation awesomeValidation;
@@ -30,6 +30,7 @@ public class SignUp extends AppCompatActivity {
         address=(EditText)findViewById(R.id.edtAddress);
         contactNo=(EditText)findViewById(R.id.edtContactNumber);
         email=(EditText)findViewById(R.id.edtEmail);
+        nic=(EditText)findViewById(R.id.edtNic);
 
 
         radioParent=(RadioButton)findViewById(R.id.radioParent);
@@ -100,18 +101,23 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    private Boolean validateContactNo(){
-        String val_contactNo= contactNo.getText().toString();
+    private Boolean validateContactNo() {
 
-        if(val_contactNo.isEmpty()){
+        String MobilePattern = "[0-9]{10}";
+        String val_contactNo = contactNo.getText().toString();
+
+        if (val_contactNo.isEmpty()) {
             contactNo.setError("This field cannot be empty");
             return false;
-        }
-        else{
+        } else if (contactNo.getText().toString().matches(MobilePattern)) {
+            contactNo.setError("please inser valied mobile number");
+            return false;
+        } else {
             contactNo.setError(null);
             return true;
         }
     }
+
 
     private Boolean validatePassword(){
         String val_password= password.getText().toString();
@@ -170,10 +176,23 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
+    private Boolean validateNic(){
+        String val_nic= nic.getText().toString();
+
+        if(val_nic.isEmpty()){
+            nic.setError("This field cannot be empty");
+            return false;
+        }
+        else{
+            nic.setError(null);
+            return true;
+        }
+    }
+
     public void onReg(View view){
 
         if(!validateName()|!validateUsername()|!validatePassword()
-                |!validateContactNo()|!validateEmail()|!validateConfirmPassword()|!validateAddress()){
+                |!validateContactNo()|!validateEmail()|!validateConfirmPassword()|!validateAddress()|!validateNic()){
             return;
         }
 

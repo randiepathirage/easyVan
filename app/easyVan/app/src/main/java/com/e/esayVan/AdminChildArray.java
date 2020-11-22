@@ -1,9 +1,11 @@
 package com.e.esayVan;
 
 public class AdminChildArray {
-    private String childnum,parentnic,fname,lname,school,grade,pickup,vehiclenum,fee,pname;
+    private String parentnic,fname,lname,school,grade,pickup,vehiclenum,pname;
+    private int childnum,fee;
 
-    public AdminChildArray(String childnum,String parentnic,String fname,String lname,String school,String grade,String pickup,String vehiclenum,String fee,String pname) {
+
+    public AdminChildArray(int childnum,String parentnic,String fname,String lname,String school,String grade,String pickup,String vehiclenum,int fee,String pname) {
         this.childnum = childnum;
         this.parentnic = parentnic;
         this.fname = fname;
@@ -18,7 +20,7 @@ public class AdminChildArray {
 
     }
 
-    public String getChildnum() {
+    public int getChildnum() {
         return childnum;
     }
     public String getParentNIC() {
@@ -42,7 +44,7 @@ public class AdminChildArray {
     public String getVehiclenum() {
         return vehiclenum;
     }
-    public String getFee() {
+    public int getFee() {
         return fee;
     }
     public String getPname() {

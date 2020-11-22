@@ -40,6 +40,7 @@ public class DriverSignUpBackgroundWorker extends AsyncTask<String,Void,String> 
             String email = params[8];
             String userRole=params[9];
             String licenseNo = params[10];
+            String owner_name = params[11];
 
             URL url = new URL(driverSignUp_url);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -59,7 +60,8 @@ public class DriverSignUpBackgroundWorker extends AsyncTask<String,Void,String> 
                             +URLEncoder.encode("contactNo","UTF-8")+"="+URLEncoder.encode(contactNo,"UTF-8")+"&"
                             +URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"
                             +URLEncoder.encode("userRole","UTF-8")+"="+URLEncoder.encode(userRole,"UTF-8") + "&"
-                            +URLEncoder.encode("licenseNo","UTF-8")+"="+URLEncoder.encode(licenseNo,"UTF-8");
+                            +URLEncoder.encode("licenseNo","UTF-8")+"="+URLEncoder.encode(licenseNo,"UTF-8") + "&"
+                            +URLEncoder.encode("ownerName","UTF-8")+"="+URLEncoder.encode(owner_name,"UTF-8");
                     ;
 
             bufferedWriter.write(post_data);
