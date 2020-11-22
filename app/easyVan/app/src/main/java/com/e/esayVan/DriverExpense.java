@@ -27,6 +27,7 @@ public class DriverExpense extends AppCompatActivity {
     Spinner spin;
     BottomNavigationView bottom_nav;
     Toolbar top_bar;
+    String Name;
 
 
     @Override
@@ -34,6 +35,9 @@ public class DriverExpense extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_expense);
         getSupportActionBar().setTitle("Expenses");
+
+        SessionManagement sessionManagement = new SessionManagement(DriverExpense.this);
+        Name = sessionManagement.getUserName();
 
         date = (EditText) findViewById(R.id.date);
         amount = (EditText) findViewById(R.id.amount);
@@ -87,12 +91,13 @@ public class DriverExpense extends AppCompatActivity {
         String str_amount = amount.getText().toString();
         String str_type = spin.getSelectedItem().toString();
         String str_date = date.getText().toString();
+        String str_username = Name ;
 
 
         String match = "addexpense";
 
         DriverBackgroundAdd driverBackgroundAdd = new DriverBackgroundAdd(this);
-        driverBackgroundAdd.execute(match,str_amount,str_type,str_date);
+        driverBackgroundAdd.execute(match,str_amount,str_type,str_date,str_username);
 
     }
     @Override

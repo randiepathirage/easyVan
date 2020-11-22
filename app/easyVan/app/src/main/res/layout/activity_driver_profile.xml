@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DriverProfile">
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="#08000000"
+    android:orientation="vertical"
+    android:id="@+id/linear">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txt_Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="Username:"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/txt_Nic"
+        android:layout_marginLeft="30dp"
+        android:textColor="#000"
+        android:text="ID:"
+        android:textSize="16dp"/>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/txt_ContactNo"
+        android:layout_marginLeft="30dp"
+        android:textColor="#000"
+        android:text="Contact No:"
+        android:textSize="16dp"/>
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/txt_Email"
+        android:layout_marginLeft="30dp"
+        android:textColor="#000"
+        android:text="Email:"
+        android:textSize="16dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/txt_Address"
+        android:layout_marginLeft="30dp"
+        android:textColor="#000"
+        android:text="Address:"
+        android:textSize="16dp"/>
+
+    <Button
+        android:id="@+id/btn_Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/roundededge"
+        android:paddingHorizontal="30dp"
+        android:text="Edit Profile"
+        android:textColor="#fff" />
+</LinearLayout>
