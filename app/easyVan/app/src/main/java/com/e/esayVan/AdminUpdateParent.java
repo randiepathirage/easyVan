@@ -53,7 +53,7 @@ public class AdminUpdateParent extends AppCompatActivity {
 
     }
 
-    public void btn_updateData(View view) {
+    public void btn_updateparent(View view) {
 
         final String NIC_no = nic;
         final String first_name = edfname.getText().toString();

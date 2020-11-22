@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_person_add_24"
-        android:onClick="btn_add_activity"
+        android:onClick="btn_add_owner"
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/theme"
         android:layout_alignParentRight="true"

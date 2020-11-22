@@ -29,8 +29,8 @@ import java.util.Map;
 
 public class AdminOwners extends AppCompatActivity {
 
-    ListView listView;
-    AdminOwnerAdapter adapter;
+    ListView ownerlistView;
+    AdminOwnerAdapter owneradapter;
     public static ArrayList<AdminOwnerArray> adminOwnerArrayList = new ArrayList<>();
     String url = "http://10.0.2.2/easyvan/owners.php";
     AdminOwnerArray owner;
@@ -40,12 +40,12 @@ public class AdminOwners extends AppCompatActivity {
         setContentView(R.layout.activity_admin_owners);
         getSupportActionBar().setTitle("Owners");
 
-        listView = findViewById(R.id.myListView);
-        adapter = new AdminOwnerAdapter(this,adminOwnerArrayList);
-        listView.setAdapter(adapter);
+        ownerlistView = findViewById(R.id.myListView);
+        owneradapter = new AdminOwnerAdapter(this,adminOwnerArrayList);
+        ownerlistView.setAdapter(owneradapter);
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ownerlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
@@ -53,7 +53,7 @@ public class AdminOwners extends AppCompatActivity {
                 ProgressDialog progressDialog = new ProgressDialog(view.getContext());
 
                 CharSequence[] dialogItem = {"View Data","Edit Data","Delete Data"};
-                builder.setTitle(adminOwnerArrayList.get(position).getFname());
+                builder.setTitle(adminOwnerArrayList.get(position).getoFname());
                 builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -75,7 +75,7 @@ public class AdminOwners extends AppCompatActivity {
 
                             case 2:
 
-                                deleteData(adminOwnerArrayList.get(position).getNic());
+                                deleteData(adminOwnerArrayList.get(position).getoNic());
                                 break;
 
 
@@ -168,7 +168,7 @@ public class AdminOwners extends AppCompatActivity {
 
                                     owner = new AdminOwnerArray(nic,contact,lname,fname,address,username,email);
                                     adminOwnerArrayList.add(owner);
-                                    adapter.notifyDataSetChanged();
+                                    owneradapter.notifyDataSetChanged();
 
 
                                 }
@@ -204,7 +204,7 @@ public class AdminOwners extends AppCompatActivity {
 
     }
 
-    public void btn_add_activity(View view) {
+    public void btn_add_owner(View view) {
         startActivity(new Intent(getApplicationContext(),SignUp.class));
     }
 
