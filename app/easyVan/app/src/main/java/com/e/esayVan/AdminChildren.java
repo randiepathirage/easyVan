@@ -38,7 +38,7 @@ public class AdminChildren extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_children);
-        getSupportActionBar().setTitle("Children");
+        getSupportActionBar().setTitle("Children List");
 
         listView = findViewById(R.id.childrenListView);
         adapter = new AdminChildAdapter(this,adminChildArrayList);
@@ -208,7 +208,7 @@ public class AdminChildren extends AppCompatActivity {
     }
 
     public void btn_cadd_activity(View view) {
-        startActivity(new Intent(getApplicationContext(),SignUp.class));
+        startActivity(new Intent(getApplicationContext(),AdminAddChild.class));
     }
 
 }
