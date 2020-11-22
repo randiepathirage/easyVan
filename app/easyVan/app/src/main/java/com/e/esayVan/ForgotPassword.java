@@ -24,12 +24,15 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class ForgotPassword extends AppCompatActivity {
 
     Button btnforgot;
     EditText edEmail;
     String email;
+    Random r;
+    int output;
     String URL = "http://10.0.2.2/easyvan/forgetpassword.php";
 
     @Override
@@ -50,6 +53,16 @@ public class ForgotPassword extends AppCompatActivity {
                     Toast.makeText(ForgotPassword.this, "Enter your email", Toast.LENGTH_SHORT).show();
 
                 }else{
+
+                    //generate random number
+                    r=new Random();
+                    output=r.nextInt((9999-999)+1)+999;
+
+                    Intent i = new Intent(ForgotPassword.this,EnterCode.class);
+                    i.putExtra("code",String.valueOf(output));
+                    i.putExtra("email",email);
+                    startActivity(i);
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                             new Response.Listener<String>() {
                                 @Override
@@ -75,7 +88,9 @@ public class ForgotPassword extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             HashMap<String,String> forgotparams = new HashMap<>();
+
                             forgotparams.put("email",email);
+                            forgotparams.put("random",String.valueOf(output));
                             return forgotparams;
 
                         }
