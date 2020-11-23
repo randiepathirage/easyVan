@@ -13,8 +13,8 @@
         android:id="@+id/vanBt"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/van"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -28,7 +28,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="60dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="76dp"
         android:background="@drawable/driver"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -36,7 +36,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toStartOf="@+id/vanBt"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -61,7 +61,7 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent" />
-        android:text="Vehicle"
+    android:text="Vehicle"
     <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent" />
-        android:text="Driver"/>
+    android:text="Driver"/>
 
     <ImageView
         android:id="@+id/imageView7"
@@ -86,5 +86,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="260dp"
+        android:layout_marginBottom="30dp"
+        android:text="Driver"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="111dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="33dp"
+        android:text="Vehicle"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
