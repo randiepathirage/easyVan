@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,12 +17,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class DriverAlert extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
+    Spinner spin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_alert);
         getSupportActionBar().setTitle("Alert");
+
+        spin = findViewById(R.id.spinner_alert);
+        ArrayAdapter myadapter = new ArrayAdapter(DriverAlert.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_alert));
+        myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spin.setAdapter(myadapter);
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.nav_alert);
