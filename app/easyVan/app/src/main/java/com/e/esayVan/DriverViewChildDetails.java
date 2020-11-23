@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -24,7 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DriverViewChildDetails extends AppCompatActivity {
 
@@ -33,6 +36,7 @@ public class DriverViewChildDetails extends AppCompatActivity {
     DriverProductAdapter adapter;
 
     String Name;
+
     private static final String DRIVER_PRODUCT_URL = "http://10.0.2.2/easyvan/driverChild.php";
 
     List<DriverProduct> driverProductList;
@@ -48,10 +52,10 @@ public class DriverViewChildDetails extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        /*SessionManagement sessionManagement = new SessionManagement(DriverViewChildDetails.this);
+        SessionManagement sessionManagement = new SessionManagement(DriverViewChildDetails.this);
         Name = sessionManagement.getUserName();
 
-        Toast.makeText(DriverViewChildDetails.this, Name,Toast.LENGTH_SHORT).show();*/
+       //Toast.makeText(DriverViewChildDetails.this, Name,Toast.LENGTH_SHORT).show();
 
         loadProducts();
 
@@ -98,7 +102,7 @@ public class DriverViewChildDetails extends AppCompatActivity {
     }
 
     private void loadProducts(){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, DRIVER_PRODUCT_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DRIVER_PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -125,6 +129,7 @@ public class DriverViewChildDetails extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+
                         }
 
                     }
@@ -133,10 +138,31 @@ public class DriverViewChildDetails extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(DriverViewChildDetails.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
                     }
-                });
-        Volley.newRequestQueue(this).add(stringRequest);
+                })
+
+        {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("username",Name);
+                // Toast.makeText(OwnerDrivers.this,userName,Toast.LENGTH_LONG).show();
+                // params.put("username",userName);
+                //  Toast.makeText(OwnerDrivers.this,userName,Toast.LENGTH_SHORT);
+                return params;
+            }
+
+
+        };
+
+
+                ;
+        Volley.newRequestQueue(DriverViewChildDetails.this).add(stringRequest);
     }
+
 
 
     @Override

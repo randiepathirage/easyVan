@@ -14,11 +14,12 @@ public class AdminViewChild extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_child);
+        getSupportActionBar().setTitle("View Child Details");
 
 
         //Initializing Views
         tvcnum = findViewById(R.id.txtcnum);
-        tvpnic = findViewById(R.id.txtpnic);
+        tvpnic = findViewById(R.id.txtcpnic);
         tvcfname = findViewById(R.id.txtcfname);
         tvclname = findViewById(R.id.txtclname);
         tvschool = findViewById(R.id.txtcschool);
@@ -31,7 +32,7 @@ public class AdminViewChild extends AppCompatActivity {
         Intent intent =getIntent();
         position = intent.getExtras().getInt("position");
 
-        tvcnum.setText((int) AdminChildren.adminChildArrayList.get(position).getChildnum());
+        tvcnum.setText(AdminChildren.adminChildArrayList.get(position).getChildnum());
         tvpnic.setText(AdminChildren.adminChildArrayList.get(position).getParentNIC());
         tvcfname.setText(AdminChildren.adminChildArrayList.get(position).getFname());
         tvclname.setText(AdminChildren.adminChildArrayList.get(position).getLname());
@@ -39,7 +40,7 @@ public class AdminViewChild extends AppCompatActivity {
         tvpname.setText(AdminChildren.adminChildArrayList.get(position).getPname());
         tvpickup.setText(AdminChildren.adminChildArrayList.get(position).getPickup());
         tvvan.setText(AdminChildren.adminChildArrayList.get(position).getVehiclenum());
-        tvfee.setText((int) AdminChildren.adminChildArrayList.get(position).getFee());
+        tvfee.setText( AdminChildren.adminChildArrayList.get(position).getFee());
         tvgrade.setText(AdminChildren.adminChildArrayList.get(position).getGrade());
 
 

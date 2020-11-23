@@ -16,151 +16,11 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="70dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
 
 
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:text="Student number:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/number"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="18dp"
-                        android:textSize="15dp"/>
-
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="First name:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/fname"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="15dp" />
-
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Last name:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/lname"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="15dp" />
-
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Grade:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/grade"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="15dp" />
-
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="School:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/school"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="15dp" />
-
-
-                    <TextView
-                        android:id="@+id/pickup"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Pickup location:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/pick_loc"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="15dp" />
-
-                    <TextView
-                        android:id="@+id/drop"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Dropoff location:"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/dropof_loc"
-                        android:layout_width="360dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:drawable/editbox_background"
-                        android:padding="15dp"
-                        android:layout_marginBottom="10dp" />
-
-
-                </LinearLayout>
-            </ScrollView>
-
-            <!--<TextView
-                android:id="@+id/number"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtn7"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Student number"
@@ -168,66 +28,134 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/fname"
-                android:layout_width="match_parent"
+                android:id="@+id/txtn6"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/number"
+                android:layout_below="@id/txtn7"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="first name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
             <TextView
-                android:id="@+id/lname"
-                android:layout_width="match_parent"
+                android:id="@+id/txtn5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fname"
+                android:layout_below="@id/txtn6"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="last name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
             <TextView
-                android:id="@+id/grade"
-                android:layout_width="match_parent"
+                android:id="@+id/txtn4"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lname"
+                android:layout_below="@id/txtn5"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="grade"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
             <TextView
-                android:id="@+id/school"
-                android:layout_width="match_parent"
+                android:id="@+id/txtn3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/grade"
+                android:layout_below="@id/txtn4"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="school"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
             <TextView
-                android:id="@+id/pick_loc"
-                android:layout_width="match_parent"
+                android:id="@+id/txtn2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/school"
+                android:layout_below="@id/txtn3"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="pickup location"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
             <TextView
-                android:id="@+id/dropoff_loc"
-                android:layout_width="match_parent"
+                android:id="@+id/txtn1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/pick_loc"
+                android:layout_below="@id/txtn2"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="dropoff location"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000" />-->
+                android:textColor="#000000" />
 
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="203dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/fname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/number"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="203dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/lname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fname"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="203dp"
+                android:layout_marginTop="5dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lname"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="203dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/grade"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="203dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/pick_loc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/school"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="203dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/dropoff_loc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pick_loc"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="203dp"
+                android:text="TextView" />
 
 
         </RelativeLayout>

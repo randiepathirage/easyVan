@@ -30,11 +30,11 @@ public class DriverRoute extends AppCompatActivity {
         setContentView(R.layout.activity_driver_route);
         getSupportActionBar().setTitle("Route");
 
-        etSource = findViewById(R.id.et_source);
+       /* etSource = findViewById(R.id.et_source);
         etDestination = findViewById(R.id.et_destination);
-        go = findViewById(R.id.btn_go);
+        go = findViewById(R.id.btn_go);*/
 
-        go.setOnClickListener(new View.OnClickListener() {
+       /* go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sSource = etSource.getText().toString().trim();
@@ -46,7 +46,7 @@ public class DriverRoute extends AppCompatActivity {
                     DisplayTrack(sSource,sDestination);
                 }
             }
-        });
+        });*/
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.nav_route);

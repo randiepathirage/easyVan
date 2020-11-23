@@ -140,7 +140,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         }
         //if insert successful
         else if(result.equals("Insert Successful")){
-            Toast.makeText(context,result,Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"registration successful",Toast.LENGTH_LONG).show();
             Intent i  = new Intent(context,Login.class);
             context.startActivity(i);
         }

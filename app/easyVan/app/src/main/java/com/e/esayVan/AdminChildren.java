@@ -38,7 +38,7 @@ public class AdminChildren extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_children);
-        getSupportActionBar().setTitle("Children");
+        getSupportActionBar().setTitle("Children List");
 
         listView = findViewById(R.id.childrenListView);
         adapter = new AdminChildAdapter(this,adminChildArrayList);
@@ -75,7 +75,7 @@ public class AdminChildren extends AppCompatActivity {
 
                             case 2:
 
-                                deleteData(adminChildArrayList.get(position).getChildnum());
+                                deleteData(Integer.parseInt(adminChildArrayList.get(position).getChildnum()));
                                 break;
 
 
@@ -156,7 +156,7 @@ public class AdminChildren extends AppCompatActivity {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
 
-                                    int childnum = object.getInt("child_no");
+                                    String childnum = object.getString("child_no");
                                     String parentnic = object.getString("parent_NIC_no");
                                     String fname = object.getString("first_name");
                                     String lname = object.getString("last_name");
@@ -164,7 +164,7 @@ public class AdminChildren extends AppCompatActivity {
                                     String grade = object.getString("grade");
                                     String pickup = object.getString("pickup_location");
                                     String vehiclenum = object.getString("vehicle_no");
-                                    int fee = object.getInt("monthly_fee");
+                                    String fee = object.getString("monthly_fee");
                                     String pname = object.getString("parent_name");
 
 
@@ -208,7 +208,7 @@ public class AdminChildren extends AppCompatActivity {
     }
 
     public void btn_cadd_activity(View view) {
-        startActivity(new Intent(getApplicationContext(),SignUp.class));
+        startActivity(new Intent(getApplicationContext(),AdminAddChild.class));
     }
 
 }

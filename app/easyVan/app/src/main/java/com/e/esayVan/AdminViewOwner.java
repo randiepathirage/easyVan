@@ -14,27 +14,28 @@ public class AdminViewOwner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_owner);
+        getSupportActionBar().setTitle("View Owner Details");
 
 
         //Initializing Views
-        tvnic = findViewById(R.id.txtnic);
-        tvfname = findViewById(R.id.txtfname);
-        tvlname = findViewById(R.id.txtlname);
-        tvcontact = findViewById(R.id.txtcontact);
-        tvaddress = findViewById(R.id.txtaddress);
-        tvusername = findViewById(R.id.txtusern);
-        tvemail = findViewById(R.id.txtemail);
+        tvnic = findViewById(R.id.txtownernic);
+        tvfname = findViewById(R.id.txtownerfname);
+        tvlname = findViewById(R.id.txtownerlname);
+        tvcontact = findViewById(R.id.txtownercontact);
+        tvaddress = findViewById(R.id.txtowneraddress);
+        tvusername = findViewById(R.id.txtownerusern);
+        tvemail = findViewById(R.id.txtowneremail);
 
         Intent intent =getIntent();
         position = intent.getExtras().getInt("position");
 
-        tvnic.setText(AdminOwners.adminOwnerArrayList.get(position).getNic());
-        tvfname.setText(AdminOwners.adminOwnerArrayList.get(position).getFname());
-        tvlname.setText(AdminOwners.adminOwnerArrayList.get(position).getLname());
-        tvcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getContact());
-        tvaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getAddress());
-        tvusername.setText(AdminOwners.adminOwnerArrayList.get(position).getUsername());
-        tvemail.setText(AdminOwners.adminOwnerArrayList.get(position).getEmail());
+        tvnic.setText(AdminOwners.adminOwnerArrayList.get(position).getoNic());
+        tvfname.setText(AdminOwners.adminOwnerArrayList.get(position).getoFname());
+        tvlname.setText(AdminOwners.adminOwnerArrayList.get(position).getoLname());
+        tvcontact.setText(AdminOwners.adminOwnerArrayList.get(position).getoContact());
+        tvaddress.setText(AdminOwners.adminOwnerArrayList.get(position).getoAddress());
+        tvusername.setText(AdminOwners.adminOwnerArrayList.get(position).getoUsername());
+        tvemail.setText(AdminOwners.adminOwnerArrayList.get(position).getoEmail());
 
 
 
