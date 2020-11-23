@@ -1,85 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DriverProfileUpdate"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/driver_nav"
+        tools:layout_editor_absoluteY="675dp" />
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/acc_txt_firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="354dp"
         android:text="Name:"
-        android:layout_marginLeft="10dp"
-        android:textColor="#979A9A"
-        android:layout_marginTop="30dp" />
+        android:textColor="#979A9A" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
         android:id="@+id/acc_et_firstName"
-        />
-
-
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="23dp"
+        android:padding="10dp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact No:"
         android:id="@+id/acc_txt_ContactNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginLeft="10dp"
-        android:textColor="#979A9A"/>
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="323dp"
+        android:text="Contact No:"
+        android:textColor="#979A9A" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/acc_et_ContactNo"
+        android:layout_width="372dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:id="@+id/acc_et_ContactNo"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="183dp"
+        android:layout_marginEnd="24dp"
+        android:padding="10dp" />
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#979A9A"
-        android:text="Email:"
         android:id="@+id/acc_txt_Email"
-        android:layout_marginLeft="10dp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textColor="#000"
-        android:id="@+id/acc_et_Email"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#979A9A"
-        android:text="Address:"
-        android:id="@+id/acc_txt_Address"
-        android:layout_marginLeft="10dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="350dp"
+        android:text="Email:"
+        android:textColor="#979A9A" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/acc_et_Email"
+        android:layout_width="364dp"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:id="@+id/acc_et_Address"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="387dp"
+        android:layout_marginEnd="24dp"
+        android:padding="10dp"
+        android:textColor="#000" />
 
+    <TextView
+        android:id="@+id/acc_txt_Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="251dp"
+        android:layout_marginEnd="340dp"
+        android:text="Address:"
+        android:textColor="#979A9A" />
+
+    <EditText
+        android:id="@+id/acc_et_Address"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="289dp"
+        android:layout_marginEnd="26dp"
+        android:textColor="#000" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="484dp"
+        android:layout_marginEnd="191dp"
         android:background="@drawable/roundededge"
         android:onClick="updateDriverAccountDetails"
         android:text="Save"
         android:textColor="#fff"
         android:textStyle="bold" />
 
-</LinearLayout>
+</RelativeLayout>

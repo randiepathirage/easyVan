@@ -36,6 +36,7 @@ public class DriverProfileUpdate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_profile_update);
+        getSupportActionBar().setTitle("Profile update");
 
         edtAddress = findViewById(R.id.acc_et_Address);
         edtContactNo = findViewById(R.id.acc_et_ContactNo);
