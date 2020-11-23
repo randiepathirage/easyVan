@@ -20,7 +20,7 @@
                 android:id="@+id/VehicleNO"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="100dp"
                 android:text="Vehicle NO"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#FF0000"
@@ -28,6 +28,26 @@
 
             <TextView
                 android:id="@+id/NoOfSeat"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/VehicleNO"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="5dp"
+                android:text="No Of Seats"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#575657" />
+            <TextView
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Vehicle NO"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#FF0000"
+                android:textSize="16sp" />
+
+            <TextView
+
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/VehicleNO"
