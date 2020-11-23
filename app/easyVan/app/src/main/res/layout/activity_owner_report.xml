@@ -32,35 +32,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="242dp"
         android:layout_height="24dp"
-<<<<<<< Updated upstream
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="4dp"
-=======
         android:layout_marginTop="84dp"
         android:layout_marginEnd="12dp"
->>>>>>> Stashed changes
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-<<<<<<< Updated upstream
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="168dp"
-        android:text="Report Type"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-=======
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,48 +51,27 @@
         android:text="To"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> Stashed changes
 
     <EditText
         android:id="@+id/editTextDate3"
         android:layout_width="146dp"
         android:layout_height="42dp"
-<<<<<<< Updated upstream
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="60dp"
-=======
         android:layout_marginTop="344dp"
         android:layout_marginEnd="68dp"
->>>>>>> Stashed changes
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextDate2"
         android:layout_width="146dp"
         android:layout_height="42dp"
-<<<<<<< Updated upstream
-
-
-        android:layout_marginStart="205dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="60dp"
-=======
         android:layout_marginTop="224dp"
         android:layout_marginEnd="68dp"
->>>>>>> Stashed changes
         android:ems="10"
-
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< Updated upstream
-        app:layout_constraintHorizontal_bias="0.0"
-=======
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -132,52 +93,20 @@
         android:layout_marginTop="84dp"
         android:text="User"
         android:textSize="18sp"
->>>>>>> Stashed changes
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="105dp"
-        android:text="To"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-=======
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="156dp"
-        android:text="Report Type"
-        android:textSize="18sp"
->>>>>>> Stashed changes
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
-
-<<<<<<< Updated upstream
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="264dp"
-        android:text="Time Duration"
-        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="66dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:text="User"
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="156dp"
+        android:text="Report Type"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-=======
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Spinner
         android:id="@+id/spinner2"
         android:layout_width="242dp"
@@ -186,33 +115,7 @@
         android:layout_marginEnd="12dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
->>>>>>> Stashed changes
         app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="127dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="98dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.275"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Driver" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Parent" />
-    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
