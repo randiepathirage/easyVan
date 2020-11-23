@@ -69,7 +69,6 @@
         android:layout_marginEnd="71dp"
         android:background="@android:drawable/editbox_background"
         android:hint="Date: yyyy-mm-dd"
-        android:inputType="number"
         android:padding="15dp"
         android:textSize="18dp" />
 
