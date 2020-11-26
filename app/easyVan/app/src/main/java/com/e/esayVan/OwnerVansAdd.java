@@ -265,7 +265,8 @@ public class OwnerVansAdd extends AppCompatActivity {
             return true;
         }
     }
-    private Boolean validateSeats() {
+    private Boolean validateSeats()
+    {
 
         String MobilePattern = "[1-9]{10}";
         String val_contactNo = noOfSeats.getText().toString();
@@ -283,18 +284,42 @@ public class OwnerVansAdd extends AppCompatActivity {
             return true;
         }
     }
+    private Boolean validateschool(){
+        String val_school = school.getText().toString();
+
+        if (val_school.isEmpty()) {
+            school.setError("This field cannot be empty");
+            return false;
+        } else {
+            school.setError(null);
+            return true;
+        }
+    }
+    private Boolean validatetown(){
+        String val_town = town.getText().toString();
+
+        if (val_town.isEmpty()) {
+            town.setError("This field cannot be empty");
+            return false;
+        } else {
+            town.setError(null);
+            return true;
+        }
+    }
 
 // save button
 
     public void onAddVan(View view) {
 
         if (!validateNoOfSeats()
-               // | !validateType()
+             //   | !validateType()
                 | !validateModel()
                 | !validatePermitNo()
                 | !validateCaretacker()
                 | !validateVehicleNo()
-                | !validateSeats())
+                | !validateSeats()
+                | !validateschool()
+                | !validatetown())
         {
             return;
         }
