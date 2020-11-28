@@ -66,12 +66,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
+                    android:text="Kalana Thathsara"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
+                    android:text="1200"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
@@ -89,12 +91,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="Chamith Wasura"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="1500"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
@@ -112,12 +116,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="Sameera Gamage"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="1000"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
@@ -135,12 +141,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="Manula Hasaranga"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="1400"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
