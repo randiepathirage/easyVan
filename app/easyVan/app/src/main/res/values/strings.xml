@@ -31,5 +31,12 @@
         <item>Other</item>
     </string-array>
 
+    <string-array name="owner_report_1">
+        <item>van</item>
+        <item>driver</item>
+        <item>other</item>
+    </string-array>
+
+
 
 </resources>

@@ -7,17 +7,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OwnerReport extends AppCompatActivity {
 
     //private Menu menu;
+    Spinner spin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
+//spin View
+        spin = findViewById(R.id.spinner_alert);
+        ArrayAdapter myadapter = new ArrayAdapter(OwnerReport.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_1));
+        myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spin.setAdapter(myadapter);
+
+
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
         bottomNavigationView=findViewById(R.id.bottom_navigation);
