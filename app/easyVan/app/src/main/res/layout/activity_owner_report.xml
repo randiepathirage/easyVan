@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/owner_spinner1"
         android:layout_width="242dp"
         android:layout_height="24dp"
         android:layout_marginTop="84dp"
