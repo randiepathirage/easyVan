@@ -39,6 +39,8 @@ public class OwnerVanAddBackgroundWorker extends AsyncTask<String,Void,String> {
             String caretacker = params[5];
             String condition=params[6];
             String ownerusername = params[7];
+            String school =params[8];
+            String town = params[9];
 
             URL url = new URL(vanAdd_url);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -55,8 +57,10 @@ public class OwnerVanAddBackgroundWorker extends AsyncTask<String,Void,String> {
                             +URLEncoder.encode("model","UTF-8")+"="+URLEncoder.encode(model,"UTF-8")+"&"
                             +URLEncoder.encode("permitNo","UTF-8")+"="+URLEncoder.encode(permitNo,"UTF-8")+"&"
                             +URLEncoder.encode("caretaker","UTF-8")+"="+URLEncoder.encode(caretacker,"UTF-8")+"&"
-                            +URLEncoder.encode("condition","UTF-8")+"="+URLEncoder.encode(condition,"UTF-8")
-                           +"&" +URLEncoder.encode("name","UTF-8")+"="+URLEncoder.encode(ownerusername,"UTF-8");
+                            +URLEncoder.encode("condition","UTF-8")+"="+URLEncoder.encode(condition,"UTF-8") +"&"
+                            +URLEncoder.encode("name","UTF-8")+"="+URLEncoder.encode(ownerusername,"UTF-8") +"&"
+                            +URLEncoder.encode("school","UTF-8")+"="+URLEncoder.encode(school,"UTF-8") +"&" 
+                            +URLEncoder.encode("town","UTF-8")+"="+URLEncoder.encode(town,"UTF-8");
 
             bufferedWriter.write(post_data);
             bufferedWriter.flush();

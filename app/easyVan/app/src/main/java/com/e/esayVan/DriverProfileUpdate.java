@@ -110,7 +110,7 @@ public class DriverProfileUpdate extends AppCompatActivity {
         final String contact = edtContactNo.getText().toString();
         final String email = edtEmail.getText().toString();
         final String address = edtAddress.getText().toString();
-        final String nic = "96";
+        final String nic = "961062435v";
         final ProgressDialog progressDialog = new ProgressDialog(DriverProfileUpdate.this);
         progressDialog.setMessage("updating....");
         progressDialog.show();

@@ -129,17 +129,21 @@ public class DriverProfile extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.notification:
-                startActivity(new Intent(this,OwnerNotification.class));
+            case R.id.top_notification:
+                Intent m = new Intent(getApplicationContext(),DriverNotification.class);
+                startActivity(m);
                 return true;
-
-            case R.id.reqest:
-                startActivity(new Intent(this,OwnerRequest.class));
-                return true;
-
             case R.id.top_profile:
-                startActivity(new Intent(this,OwnerAccount.class));
                 return true;
+            case R.id.top_calendar:
+                Intent i = new Intent(getApplicationContext(),DriverCalendar.class);
+                startActivity(i);
+                return true;
+            case R.id.top_payment:
+                Intent j = new Intent(getApplicationContext(),DriverPayment.class);
+                startActivity(j);
+                return true;
+
 
             case R.id.logout:
                 SessionManagement sessionManagement = new SessionManagement(DriverProfile.this);
