@@ -6,17 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OwnerExpenses extends AppCompatActivity {
 
-
+    Spinner spin2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_expenses);
+
+        spin2 = findViewById(R.id.spinner3);
+        ArrayAdapter myadapter2 = new ArrayAdapter(OwnerExpenses.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_2));
+        myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spin2.setAdapter(myadapter2);
+
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
         bottomNavigationView=findViewById(R.id.bottom_navigation);

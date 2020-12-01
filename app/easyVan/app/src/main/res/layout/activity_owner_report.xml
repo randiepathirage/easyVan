@@ -34,10 +34,10 @@
 
     <Spinner
         android:id="@+id/owner_spinner1"
-        android:layout_width="242dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="142dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="72dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,33 +46,33 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="128dp"
         android:text="To"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
 
     <EditText
         android:id="@+id/editTextDate3"
         android:layout_width="146dp"
         android:layout_height="42dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="68dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <EditText
         android:id="@+id/editTextDate2"
         android:layout_width="146dp"
         android:layout_height="42dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="68dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/owner_spinner2" />
 
     <TextView
         android:id="@+id/textView15"
@@ -109,13 +109,13 @@
 
     <Spinner
         android:id="@+id/owner_spinner2"
-        android:layout_width="242dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="134dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="80dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/owner_spinner1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
