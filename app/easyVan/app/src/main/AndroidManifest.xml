@@ -34,7 +34,7 @@
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
         <activity android:name=".DriverProfile" />
-        <activity android:name=".ParentChangePassword" />
+        <activity android:name=".UserChangePassword" />
         <activity android:name=".AdminViewOwner" />
         <activity android:name=".AdminUpdateOwner" />
         <activity android:name=".SignUp" />
