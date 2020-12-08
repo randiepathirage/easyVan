@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,8 @@ public class ParentDetails extends AppCompatActivity {
     private String strfirstName, strlastName ,strvehicleNo,strstartDate,strmonthlyFee,strownerNIC,strownerContact,strownerLastName,strownerFirstName,strdriverNIC,
             strdriverContact, strdriverLastName, strdriverFirstName, strlicenseNo;
     String childNumber;
-    Button editDates;
+    Button editDates, btnPost;
+    RatingBar ratingBar;
     private TextView startDate,MonthlyFee,driverName,driverContact,driverNic,driverLicence,ownerName,ownerContact,ownerNic,name,vehicleNo;
 
     @Override
@@ -53,6 +55,18 @@ public class ParentDetails extends AppCompatActivity {
         ownerName=findViewById(R.id.txtOwnerName);
         ownerContact=findViewById(R.id.txtOnwerContact);
         ownerNic=findViewById(R.id.txtOnwerNic);
+
+        //rating van drivers
+        ratingBar=findViewById(R.id.ratingBar);
+        btnPost=findViewById(R.id.btnPost);
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String r= String.valueOf(ratingBar.getRating());
+                Toast.makeText(getApplicationContext(),r,Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         //load child details
         loadDetails();
