@@ -117,7 +117,7 @@ public class ParentAccount extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist);
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,strNic);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
