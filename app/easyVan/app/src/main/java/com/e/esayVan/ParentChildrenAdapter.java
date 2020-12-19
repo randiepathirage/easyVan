@@ -50,7 +50,6 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         holder.textViewSchool.setText(String.valueOf("School: "+children.getSchool()));
         holder.textViewPickupLocation.setText(String.valueOf("Pick up location: "+children.getPickupLocation()));
         holder.textViewDropoffLocation.setText(String.valueOf("Drop off location: "+children.getDropoffLocation()));
-        no=String.valueOf(children.getChildNo());
 
 
        holder.itemView.setOnClickListener(new View.OnClickListener() {
