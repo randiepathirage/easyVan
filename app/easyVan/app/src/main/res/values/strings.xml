@@ -25,5 +25,26 @@
         <item>Other</item>
     </string-array>
 
+    <string-array name="select_alert">
+        <item>Emergency</item>
+        <item>Breakdown</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="owner_report_2">
+        <item>Vehicle part</item>
+        <item>Fuel</item>
+        <item>Vehicle service</item>
+        <item>License renew</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="owner_report_1">
+        <item>van</item>
+        <item>driver</item>
+        <item>child</item>
+    </string-array>
+
+
 
 </resources>

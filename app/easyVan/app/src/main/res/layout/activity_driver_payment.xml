@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".DriverPayment">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/driver_nav"
+        tools:layout_editor_absoluteY="675dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,12 +66,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
+                    android:text="Kalana Thathsara"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
+                    android:text="1200"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
@@ -78,12 +91,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="Chamith Wasura"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="1500"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
@@ -101,12 +116,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="Sameera Gamage"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="1000"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 
@@ -124,12 +141,14 @@
                     android:layout_width="180dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="Manula Hasaranga"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
+                    android:text="1400"
                     android:background="@android:drawable/editbox_background"
                     android:textSize="18dp"/>
 

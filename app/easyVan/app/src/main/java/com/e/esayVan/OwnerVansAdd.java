@@ -10,9 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class OwnerVansAdd extends AppCompatActivity {
-    EditText vehicleNo, type, noOfSeats, model, permitNo, caretaker;
-    RadioGroup radioGroup;
-    RadioButton radioAC, radioNonAC;
+    EditText vehicleNo, type, noOfSeats, model, permitNo, caretaker , school , town;
+    RadioGroup radioGroup,addVanGroup;
+    RadioButton radioAC, radioNonAC ,  addVan , addBus ;
     String userName;
 
     @Override
@@ -22,11 +22,18 @@ public class OwnerVansAdd extends AppCompatActivity {
         getSupportActionBar().setTitle("Add Vehicle");
 
         vehicleNo = (EditText) findViewById(R.id.add_vanNO);
-        type = (EditText) findViewById(R.id.add_type);
+        //type = (EditText) findViewById(R.id.add_type);
+
+        addVanGroup = (RadioGroup)findViewById(R.id.add_van_type);
+        addVan = (RadioButton)findViewById(R.id.add_van_van);
+        addBus = (RadioButton)findViewById(R.id.add_van_Bus);
+
         noOfSeats = (EditText) findViewById(R.id.add_noOfSeats);
         model = (EditText) findViewById(R.id.add_model);
         permitNo = (EditText) findViewById(R.id.add_permitNo);
         caretaker = (EditText) findViewById(R.id.add_caretacker);
+        school = (EditText) findViewById(R.id.add_school);
+        town = (EditText) findViewById(R.id.add_Town);
 
 
         radioAC = (RadioButton) findViewById(R.id.add_radioAC);
@@ -258,7 +265,8 @@ public class OwnerVansAdd extends AppCompatActivity {
             return true;
         }
     }
-    private Boolean validateSeats() {
+    private Boolean validateSeats()
+    {
 
         String MobilePattern = "[1-9]{10}";
         String val_contactNo = noOfSeats.getText().toString();
@@ -276,18 +284,42 @@ public class OwnerVansAdd extends AppCompatActivity {
             return true;
         }
     }
+    private Boolean validateschool(){
+        String val_school = school.getText().toString();
+
+        if (val_school.isEmpty()) {
+            school.setError("This field cannot be empty");
+            return false;
+        } else {
+            school.setError(null);
+            return true;
+        }
+    }
+    private Boolean validatetown(){
+        String val_town = town.getText().toString();
+
+        if (val_town.isEmpty()) {
+            town.setError("This field cannot be empty");
+            return false;
+        } else {
+            town.setError(null);
+            return true;
+        }
+    }
 
 // save button
 
     public void onAddVan(View view) {
 
         if (!validateNoOfSeats()
-                | !validateType()
+             //   | !validateType()
                 | !validateModel()
                 | !validatePermitNo()
                 | !validateCaretacker()
                 | !validateVehicleNo()
-                | !validateSeats())
+                | !validateSeats()
+                | !validateschool()
+                | !validatetown())
         {
             return;
         }
@@ -299,14 +331,23 @@ public class OwnerVansAdd extends AppCompatActivity {
         } else {
             condition = "None AC";
         }
+        String typeV;
+        if (addVan.isChecked()) {
+            typeV = "Van";
+        } else {
+            typeV = "Bus";
+        }
+
        // Toast.makeText(OwnerVansAdd.this, userName, Toast.LENGTH_LONG).show();
 
         String Str_vehicleNO = vehicleNo.getText().toString();
-        String str_type = type.getText().toString();
+        String str_type = typeV;
         String str_noOfSeats = noOfSeats.getText().toString();
         String str_model = model.getText().toString();
         String str_permitNo = permitNo.getText().toString();
         String str_caretaker = caretaker.getText().toString();
+        String str_school = school.getText().toString();
+        String str_town = town.getText().toString();
         String str_condition = condition;
         String str_Ownerusername = userName;
        // Toast.makeText(OwnerVansAdd.this, str_condition, Toast.LENGTH_LONG).show();
@@ -315,7 +356,7 @@ public class OwnerVansAdd extends AppCompatActivity {
         OwnerVanAddBackgroundWorker backgroundWorker=new OwnerVanAddBackgroundWorker(OwnerVansAdd.this);
         backgroundWorker.execute(Str_vehicleNO,
                 str_type,str_noOfSeats,str_model,str_permitNo,str_caretaker,
-                str_condition,str_Ownerusername);
+                str_condition,str_Ownerusername,str_school,str_town);
     }
 
 

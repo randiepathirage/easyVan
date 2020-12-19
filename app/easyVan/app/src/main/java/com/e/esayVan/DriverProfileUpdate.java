@@ -36,6 +36,7 @@ public class DriverProfileUpdate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_profile_update);
+        getSupportActionBar().setTitle("Profile update");
 
         edtAddress = findViewById(R.id.acc_et_Address);
         edtContactNo = findViewById(R.id.acc_et_ContactNo);
@@ -109,7 +110,7 @@ public class DriverProfileUpdate extends AppCompatActivity {
         final String contact = edtContactNo.getText().toString();
         final String email = edtEmail.getText().toString();
         final String address = edtAddress.getText().toString();
-        final String nic = "96";
+        final String nic = "961062435v";
         final ProgressDialog progressDialog = new ProgressDialog(DriverProfileUpdate.this);
         progressDialog.setMessage("updating....");
         progressDialog.show();

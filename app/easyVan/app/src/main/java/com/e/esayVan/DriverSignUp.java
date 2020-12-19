@@ -60,26 +60,26 @@ public class DriverSignUp extends AppCompatActivity {
 
         private Boolean validateName(){
                 String val_firstName= firstName.getText().toString();
-                String val_lastName= lastName.getText().toString();
+               // String val_lastName= lastName.getText().toString();
 
-                if(val_firstName.isEmpty() & val_lastName.isEmpty()){
+                if(val_firstName.isEmpty() ){
                         firstName.setError("This field cannot be empty");
-                        lastName.setError("This field cannot be empty");
+                      //  lastName.setError("This field cannot be empty");
                         return false;
                 }
-                else if(val_lastName.isEmpty()){
-                        lastName.setError("This field cannot be empty");
-                        firstName.setError(null);
-                        return false;
-                }
+//                else if(val_lastName.isEmpty()){
+//                        lastName.setError("This field cannot be empty");
+//                        firstName.setError(null);
+//                        return false;
+//                }
                 else if(val_firstName.isEmpty()){
                         firstName.setError("This field cannot be empty");
-                        lastName.setError(null);
+                      //  lastName.setError(null);
                         return false;
                 }
                 else{
                         firstName.setError(null);
-                        lastName.setError(null);
+                       // lastName.setError(null);
                         return true;
                 }
         }
@@ -122,11 +122,20 @@ public class DriverSignUp extends AppCompatActivity {
 
         private Boolean validateContactNo() {
                 String val_contactNo = contactNo.getText().toString();
-                if (TextUtils.isEmpty(val_contactNo)) {
+                String MobilePattern = "[0-9]{10}";
+               // String val_contactNo = contactNo.getText().toString();
+                if (val_contactNo.isEmpty()) {
+                        contactNo.setError("This field cannot be empty");
+                        return false;}
+                 else if (!val_contactNo.matches(MobilePattern)){
+                        contactNo.setError("This Not valid");
                         return false;
-                } else {
-                        return android.util.Patterns.PHONE.matcher(val_contactNo).matches();
+                        }
+                 else {
+                        contactNo.setError(null);
+                        return true;
                 }
+
 
                 /*String MobilePattern = "[0-9]{10}";
                 String val_contactNo = contactNo.getText().toString();
@@ -199,6 +208,19 @@ public class DriverSignUp extends AppCompatActivity {
                         return true;
                 }
         }
+        private Boolean validateLicenseNo(){
+                String val_license= licenceNo.getText().toString();
+
+                if(val_license.isEmpty()){
+                        licenceNo.setError("This field cannot be empty");
+                        return false;
+                }
+                else{
+                        licenceNo.setError(null);
+                        return true;
+                }
+        }
+
         private Boolean validateNIC(){
                 String val_NIC= NICNo.getText().toString();
                 if(val_NIC.isEmpty()){
@@ -215,8 +237,8 @@ public class DriverSignUp extends AppCompatActivity {
 
         public void onReg(View view){
 
-                if(!validateName()|!validateUsername()|!validatePassword()
-                        |!validateContactNo()|!validateConfirmPassword()|!validateAddress()|!validatelicence_no() | !validateNIC()){
+                if(!validateName()|!validateUsername()|!validatePassword() |!validateEmail()
+                        |!validateContactNo()|!validateConfirmPassword()|!validateAddress()|!validateLicenseNo() | !validateNIC()){
                         return;
                 }
 
@@ -224,17 +246,17 @@ public class DriverSignUp extends AppCompatActivity {
                 user_role="driver";
 
 
-                String Str_firstName= firstName.getText().toString();
-                String str_lastName= lastName.getText().toString();
-                String str_NICNo= NICNo.getText().toString();
-                String str_username= username.getText().toString();
-                String str_password= password.getText().toString();
-                String str_address= address.getText().toString();
+                String Str_firstName= firstName.getText().toString();//
+                String str_lastName= lastName.getText().toString();//
+                String str_NICNo= NICNo.getText().toString();//
+                String str_username= username.getText().toString();//
+                String str_password= password.getText().toString();//
+                String str_address= address.getText().toString();//
                 String str_contactNo= contactNo.getText().toString();
-                String str_email=email.getText().toString();
-                String str_licenceNo=licenceNo.getText().toString();
-                String str_user_role = user_role;
-                String Str_owner_name = Name ;
+                String str_email=email.getText().toString();//
+                String str_licenceNo=licenceNo.getText().toString();//
+                String str_user_role = user_role;//
+                String Str_owner_name = Name ;//
                 String type = "register";
 
                 DriverSignUpBackgroundWorker backgroundWorker=new DriverSignUpBackgroundWorker(DriverSignUp.this);
