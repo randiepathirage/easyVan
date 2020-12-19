@@ -21,12 +21,13 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     //we are storing all the products in a list
     private List<ParentChild> childlist;
-    String no;
+    String no,parentNIC;
 
     //getting the context and product list with constructor
-    public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist) {
+    public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, String parentNIC) {
         this.mCtx = mCtx;
         this.childlist = childlist;
+        this.parentNIC=parentNIC;
         // this.monChildListener= onChildListener;
     }
 
@@ -58,6 +59,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                 Intent intent=new Intent(mCtx,ParentDetails.class);
                 no=String.valueOf(children.getChildNo());
                 intent.putExtra("childNumber",no);//passing child no to the next view
+                intent.putExtra("parentNIC",parentNIC);//passing parent nic no to the next view
                 mCtx.startActivity(intent);
                 //Toast.makeText(mCtx,children.getFirstName(),Toast.LENGTH_SHORT).show();
             }
