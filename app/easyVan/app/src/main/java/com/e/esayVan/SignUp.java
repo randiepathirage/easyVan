@@ -110,7 +110,7 @@ public class SignUp extends AppCompatActivity {
             contactNo.setError("This field cannot be empty");
             return false;
         } else if (contactNo.getText().toString().matches(MobilePattern)) {
-            contactNo.setError("please inser valied mobile number");
+            contactNo.setError("please insert valid mobile number");
             return false;
         } else {
             contactNo.setError(null);
