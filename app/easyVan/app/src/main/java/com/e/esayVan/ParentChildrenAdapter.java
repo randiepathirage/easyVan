@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,15 +50,16 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         holder.textViewSchool.setText(String.valueOf("School: "+children.getSchool()));
         holder.textViewPickupLocation.setText(String.valueOf("Pick up location: "+children.getPickupLocation()));
         holder.textViewDropoffLocation.setText(String.valueOf("Drop off location: "+children.getDropoffLocation()));
-        no=String.valueOf(children.getChildNo());
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mCtx,ParentDetails.class);
+                no=String.valueOf(children.getChildNo());
                 intent.putExtra("childNumber",no);//passing child no to the next view
                 mCtx.startActivity(intent);
+                //Toast.makeText(mCtx,children.getFirstName(),Toast.LENGTH_SHORT).show();
             }
         });
 
