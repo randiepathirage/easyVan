@@ -2,10 +2,12 @@ package com.e.esayVan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +29,13 @@ import java.util.Map;
 public class ParentDetails extends AppCompatActivity {
 
     String URL="http://10.0.2.2/easyvan/viewMoreDetails.php";
+    String URL_POST="http://10.0.2.2/easyvan/parentRate.php";
 
     private String strfirstName, strlastName ,strvehicleNo,strstartDate,strmonthlyFee,strownerNIC,strownerContact,strownerLastName,strownerFirstName,strdriverNIC,
             strdriverContact, strdriverLastName, strdriverFirstName, strlicenseNo;
-    String childNumber;
-    Button editDates;
+    String childNumber,r,parentNIC;
+    Button editDates, btnPost;
+    RatingBar ratingBar;
     private TextView startDate,MonthlyFee,driverName,driverContact,driverNic,driverLicence,ownerName,ownerContact,ownerNic,name,vehicleNo;
 
     @Override
@@ -41,6 +45,7 @@ public class ParentDetails extends AppCompatActivity {
         getSupportActionBar().setTitle("Child Details");
 
         childNumber=getIntent().getStringExtra("childNumber");
+        parentNIC=getIntent().getStringExtra("parentNIC");
 
         name=findViewById(R.id.txtName);
         vehicleNo=findViewById(R.id.txtVehicleNo);
@@ -53,6 +58,7 @@ public class ParentDetails extends AppCompatActivity {
         ownerName=findViewById(R.id.txtOwnerName);
         ownerContact=findViewById(R.id.txtOnwerContact);
         ownerNic=findViewById(R.id.txtOnwerNic);
+
 
         //load child details
         loadDetails();
@@ -134,6 +140,61 @@ public class ParentDetails extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void onClickPost(View view) {
+
+        //get rate bar details
+        ratingBar=findViewById(R.id.ratingBar);
+        btnPost=findViewById(R.id.btnPost);
+        r= String.valueOf(ratingBar.getRating());
+        /*btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r= String.valueOf(ratingBar.getRating());
+                //Toast.makeText(getApplicationContext(),r,Toast.LENGTH_SHORT).show();
+
+            }
+        });*/
+
+        //final ProgressDialog progressDialog = new ProgressDialog(this);
+        //progressDialog.setMessage("Posting....");
+        //progressDialog.show();
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL_POST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(ParentDetails.this, response, Toast.LENGTH_SHORT).show();
+                        finish();
+                        //progressDialog.dismiss();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentDetails.this, "error", Toast.LENGTH_SHORT).show();
+                //progressDialog.dismiss();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("rate",r);
+                params.put("parent_nic_no",parentNIC);
+                params.put("driver_nic_no",strdriverNIC);
+                //params.put("review",review);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentDetails.this);
+        requestQueue.add(request);
+
+
     }
 
 }
