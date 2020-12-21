@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,10 +34,11 @@ public class ParentDetails extends AppCompatActivity {
 
     private String strfirstName, strlastName ,strvehicleNo,strstartDate,strmonthlyFee,strownerNIC,strownerContact,strownerLastName,strownerFirstName,strdriverNIC,
             strdriverContact, strdriverLastName, strdriverFirstName, strlicenseNo;
-    String childNumber,r,parentNIC;
+    String childNumber,r,parentNIC,review;
     Button editDates, btnPost;
     RatingBar ratingBar;
     private TextView startDate,MonthlyFee,driverName,driverContact,driverNic,driverLicence,ownerName,ownerContact,ownerNic,name,vehicleNo;
+    EditText edtReview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,8 @@ public class ParentDetails extends AppCompatActivity {
         ownerName=findViewById(R.id.txtOwnerName);
         ownerContact=findViewById(R.id.txtOnwerContact);
         ownerNic=findViewById(R.id.txtOnwerNic);
+
+        edtReview = findViewById(R.id.edtReview);
 
 
         //load child details
@@ -148,18 +152,9 @@ public class ParentDetails extends AppCompatActivity {
         ratingBar=findViewById(R.id.ratingBar);
         btnPost=findViewById(R.id.btnPost);
         r= String.valueOf(ratingBar.getRating());
-        /*btnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                r= String.valueOf(ratingBar.getRating());
-                //Toast.makeText(getApplicationContext(),r,Toast.LENGTH_SHORT).show();
 
-            }
-        });*/
-
-        //final ProgressDialog progressDialog = new ProgressDialog(this);
-        //progressDialog.setMessage("Posting....");
-        //progressDialog.show();
+        //get the review
+        review=edtReview.getText().toString();
 
         StringRequest request = new StringRequest(Request.Method.POST, URL_POST,
                 new Response.Listener<String>() {
@@ -186,7 +181,7 @@ public class ParentDetails extends AppCompatActivity {
                 params.put("rate",r);
                 params.put("parent_nic_no",parentNIC);
                 params.put("driver_nic_no",strdriverNIC);
-                //params.put("review",review);
+                params.put("review",review);
 
                 return params;
             }
