@@ -136,6 +136,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                     JSONObject vehicle=array.getJSONObject(i);
 
                                     vehicleList.add(new ParentVans(
+                                            vehicle.getString("number"),
                                             vehicle.getInt("no_of_seats_available"),
                                             vehicle.getInt("total_no_of_seats"),
                                             vehicle.getString("model"),
@@ -147,7 +148,6 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                                             vehicle.getString("town")
 
                                     ));
-
                                 }
 
                                 //creating recyclerview adapter
@@ -169,7 +169,4 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
             Volley.newRequestQueue(this).add(stringRequest);
         }
-
-
-
 }

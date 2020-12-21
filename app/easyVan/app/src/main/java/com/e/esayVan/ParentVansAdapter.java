@@ -13,6 +13,7 @@ import java.util.List;
 public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.VansViewHolder> {
         //this context we will use to inflate the layout
         private Context mCtx;
+        String number;
 
         //we are storing all the products in a list
         private List<ParentVans> vehicleList;
@@ -35,7 +36,7 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
         @Override
         public void onBindViewHolder(ParentVansAdapter.VansViewHolder holder, int position) {
             //getting the product of the specified position
-            ParentVans vans = vehicleList.get(position);
+            final ParentVans vans = vehicleList.get(position);
 
             //binding the data with the viewholder views
             holder.textViewNoOfSeatsAvailable.setText("Number of seats Available: "+String.valueOf(vans.getNo_of_seats_available()));
@@ -67,7 +68,10 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(mCtx,MoreVanDetails.class);
+                    number=String.valueOf(vans.getNumber());
+                    intent.putExtra("number",number);//passing vehicle no to the next view
                     mCtx.startActivity(intent);
+
                 }
             });
 

@@ -13,6 +13,7 @@
         $temp = array();
         
         $number=$row["number"];
+        $temp['number']=$row['number'];
         $temp['no_of_seats_available'] = $row["no_of_seats_available"]; 
         $temp['total_no_of_seats'] = $row["total_no_of_seats"]; 
         $temp['model'] = $row["model"]; 
