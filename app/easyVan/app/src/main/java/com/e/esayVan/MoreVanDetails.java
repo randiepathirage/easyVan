@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,9 @@ public class MoreVanDetails extends AppCompatActivity {
     String number;
     String URL_DETAILS="http://10.0.2.2/easyvan/moreVanDetails.php";
     private String strNic,strContactNo,strFirstName,strLastName,strDriverNIC,strDriverContact,strDriverLastName,strDriverFirstName,strDriverLicense;
-    TextView ownerName,ownerContact,ownerNIC,driverName,driverNIC,driverContact,driverLicence,rate;
+    private float rate = 3.5f;
+    TextView ownerName,ownerContact,ownerNIC,driverName,driverNIC,driverContact,driverLicence;
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +41,21 @@ public class MoreVanDetails extends AppCompatActivity {
 
         number=getIntent().getStringExtra("number");
 
-
+        //owner details
         ownerName=findViewById(R.id.txtOwnerName);
         ownerNIC=findViewById(R.id.txtOnwerNic);
         ownerContact=findViewById(R.id.txtOwnerContact);
+
+        //driver details
         driverName=findViewById(R.id.txtDriverName);
         driverNIC=findViewById(R.id.txtDriverNic);
         driverContact=findViewById(R.id.txtDriverContact);
         driverLicence=findViewById(R.id.txtDriverLicence);
 
-        rate=findViewById(R.id.ratingBar);
+        //average rating of the driver
+        ratingBar=findViewById(R.id.ratingBar);
 
+        //loading details from database
         loadDetails();
     }
 
@@ -77,6 +84,7 @@ public class MoreVanDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                //set values
                 ownerName.setText("Name: "+strFirstName+" "+strLastName);
                 ownerNIC.setText("NIC No: "+strNic);
                 ownerContact.setText("Contact No: "+strContactNo);
@@ -84,6 +92,10 @@ public class MoreVanDetails extends AppCompatActivity {
                 driverNIC.setText("NIC No: "+strDriverNIC);
                 driverContact.setText("Contact No: "+strDriverContact);
                 driverLicence.setText("Licence No: "+strDriverLicense);
+
+
+                //set rating bar value
+                ratingBar.setRating(rate);
             }
         },new Response.ErrorListener() {
             @Override
@@ -97,6 +109,7 @@ public class MoreVanDetails extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
 
+                //send vehicle number to the php file
                 params.put("number",number);
                 return params;
             }

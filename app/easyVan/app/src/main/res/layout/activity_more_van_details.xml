@@ -114,6 +114,7 @@
                     <RatingBar
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/ratingBar"
                         android:progressTint="@color/theme"
                         android:layout_marginLeft="30dp"/>
 
