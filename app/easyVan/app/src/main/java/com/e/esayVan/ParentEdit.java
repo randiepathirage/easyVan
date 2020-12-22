@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -56,7 +55,7 @@ public class ParentEdit extends AppCompatActivity {
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), ParentChangePassword.class);
+                Intent intent=new Intent(getApplicationContext(), UserChangePassword.class);
                 startActivity(intent);
             }
         });

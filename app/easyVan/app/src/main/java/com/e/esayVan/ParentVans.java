@@ -3,12 +3,17 @@ package com.e.esayVan;
 public class ParentVans {
         private int no_of_seats_available;
         private int total_no_of_seats;
-        private String model,start_location;
+        private String model,start_location,number;
         private String type,school,town;
         private int AC_nonAC,caretaker;
 
 
-    public ParentVans(int no_of_seats_available, int total_no_of_seats, String model, String type,int AC_nonAC,int caretaker, String start_location,String school,String town) {
+    public String getNumber() {
+        return number;
+    }
+
+    public ParentVans(String number, int no_of_seats_available, int total_no_of_seats, String model, String type, int AC_nonAC, int caretaker, String start_location, String school, String town) {
+        this.number=number;
         this.no_of_seats_available = no_of_seats_available;
         this.total_no_of_seats = total_no_of_seats;
         this.model = model;

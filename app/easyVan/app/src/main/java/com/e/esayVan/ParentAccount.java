@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -116,7 +117,7 @@ public class ParentAccount extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist);
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,strNic);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 

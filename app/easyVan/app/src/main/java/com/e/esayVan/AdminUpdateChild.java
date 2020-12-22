@@ -29,6 +29,7 @@ public class AdminUpdateChild extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_update_child);
+        getSupportActionBar().setTitle("Update Child Details");
 
         edcfname = findViewById(R.id.ed_cfname);
         edclname = findViewById(R.id.ed_clname);

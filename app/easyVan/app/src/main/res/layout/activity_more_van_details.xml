@@ -47,7 +47,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtOnwerContact"
+                        android:id="@+id/txtOwnerContact"
                         android:text="Contact no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -88,12 +88,12 @@
                         android:textSize="16dp"/>
 
                     <TextView
+                        android:id="@+id/txtDriverNic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtDriverNic"
-                        android:text="NIC no:"
                         android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
+                        android:text="NIC no:"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -114,6 +114,8 @@
                     <RatingBar
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/ratingBar"
+                        android:progressTint="@color/theme"
                         android:layout_marginLeft="30dp"/>
 
                     <TextView

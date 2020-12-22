@@ -149,11 +149,16 @@
                     <RatingBar
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/ratingBar"
+                        android:numStars="5"
+                        android:stepSize="0.5"
+                        android:progressTint="@color/theme"
                         android:layout_marginLeft="30dp"/>
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/edtReview"
                         android:hint="Write a review(optional)"
                         android:layout_marginLeft="30dp"
                         android:layout_marginEnd="30dp"
@@ -161,7 +166,7 @@
                         android:layout_marginBottom="30dp"/>
 
                     <Button
-                        android:id="@+id/btnMore"
+                        android:id="@+id/btnPost"
                         android:layout_width="350dp"
                         android:layout_height="40dp"
                         android:background="@drawable/roundededge"
@@ -169,7 +174,8 @@
                         android:textColor="#fff"
                         android:textStyle="bold"
                         android:layout_marginLeft="30dp"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_marginBottom="20dp"
+                        android:onClick="onClickPost"/>
 
                     <TextView
                         android:layout_width="wrap_content"

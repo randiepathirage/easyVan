@@ -1,231 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminAddChild"
+    android:layout_gravity="center_horizontal">
 
     <ScrollView
+        android:id="@+id/cscroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp">
 
         <LinearLayout
-            android:id="@+id/addVan"
+            android:id="@+id/childlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv900"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:text="Vehicle Number"
+                android:text="First name"
                 android:textColor="#000" />
 
             <EditText
-                android:id="@+id/add_vanNO"
+                android:id="@+id/editcfname"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10"
                 android:textColor="#000000"
-                android:textSize="18dp" />
+                android:textSize="18dp"/>
 
             <TextView
+                android:id="@+id/tv901"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:text="Type"
+                android:text="Last name"
                 android:textColor="#000" />
 
+            <EditText
+                android:id="@+id/editclname"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv903"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:text="Parent NIC number"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/editpnic"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv904"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:text="Grade"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/editgrade"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv905"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="School"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"/>
+
+            <EditText
+                android:id="@+id/editschool"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv906"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pickup Location"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"/>
+
+            <EditText
+                android:id="@+id/editpickup"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv907"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dropoff Location"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"/>
+
+            <EditText
+                android:id="@+id/editdrop"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv908"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vehicle Number"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"/>
+
+            <EditText
+                android:id="@+id/editcvehicle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv909"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Date"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"/>
+
+            <EditText
+                android:id="@+id/editsdate"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:inputType="textEmailAddress"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/tv910"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monthly Fee"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"/>
+            android:textSize="18dp"/>
 
             <RadioGroup
-                android:id="@+id/add_van_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                >
-
-                <RadioButton
-                    android:id="@+id/add_van_Bus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Bus" />
-
-                <RadioButton
-                    android:id="@+id/add_van_van"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Van" />
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="No Of Seats"
-                android:textColor="#000" />
-
-            <EditText
-                android:id="@+id/add_noOfSeats"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:inputType="phone"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="Model"
-                android:textColor="#000" />
-
-            <EditText
-                android:id="@+id/add_model"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="Permit No"
-                android:textColor="#000" />
-
-            <EditText
-                android:id="@+id/add_permitNo"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="Caretacker"
-                android:textColor="#000" />
-
-
-            <EditText
-                android:id="@+id/add_caretacker"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="Condition"
-                android:textColor="#000"
-                android:textSize="18dp" />
-
-            <RadioGroup
-                android:id="@+id/add_radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp">
-
-                <RadioButton
-                    android:id="@+id/add_radioAC"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:enabled="true"
-                    android:text="AC" />
-
-                <RadioButton
-                    android:id="@+id/add_radioNoneAC"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:text="None AC" />
-
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="School"
-                android:textColor="#000" />
+                android:id="@+id/radioGroup"
+                android:layout_marginLeft="30dp"/>
 
             <EditText
-                android:id="@+id/add_school"
+                android:id="@+id/editcfee"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:inputType="textEmailAddress"
                 android:textColor="#000000"
                 android:textSize="18dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:text="Passing town"
-                android:textColor="#000" />
-
-            <EditText
-                android:id="@+id/add_Town"
-                android:layout_width="360dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/editbox_background"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-
-
 
             <Button
+                android:id="@+id/btn_insertc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Insert"
                 android:layout_marginLeft="300dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/roundededge"
-                android:onClick="onAddVan"
-                android:text="Add"
                 android:textColor="#fff" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
         </LinearLayout>
 
