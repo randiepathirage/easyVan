@@ -43,7 +43,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.CommentsVi
         final NewsFeedReview comment = reviewlist.get(position);
 
         //binding the data with the viewholder views
-        holder.ratingBar2.setRating(float)(comment.getRate());
+        //holder.ratingBar2.setRating(float)(comment.getRate());
         holder.textViewDate.setText(String.valueOf(comment.getDate()));
         holder.textViewReview.setText(String.valueOf(comment.getReview()));
 
