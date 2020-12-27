@@ -7,10 +7,6 @@
     tools:context=".MoreVanDetails"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,26 +114,26 @@
                         android:progressTint="@color/theme"
                         android:layout_marginLeft="30dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="reviews:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
+                    <Button
+                        android:layout_width="350dp"
+                        android:layout_height="45dp"
+                        android:text="request"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="#fff"
+                        android:background="@drawable/roundededge"
+                        android:onClick="request"
+                        />
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="request"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="300dp"
-                android:textColor="#fff"
-                android:background="@drawable/roundededge"
-                android:onClick="request"
-                />
         </LinearLayout>
-    </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_marginTop="10dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 </LinearLayout>
