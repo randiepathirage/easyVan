@@ -1,6 +1,8 @@
 package com.e.esayVan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,17 +23,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MoreVanDetails extends AppCompatActivity {
 
     String number;
     String URL_DETAILS="http://10.0.2.2/easyvan/moreVanDetails.php";
+    String REVIEW_URL="http://10.0.2.2/easyvan/newsFeedReview.php";
     private String strNic,strContactNo,strFirstName,strLastName,strDriverNIC,strDriverContact,strDriverLastName,strDriverFirstName,strDriverLicense;
     private float rate;
     TextView ownerName,ownerContact,ownerNIC,driverName,driverNIC,driverContact,driverLicence;
     RatingBar ratingBar;
+    List<NewsFeedReview> reviewlist;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +62,17 @@ public class MoreVanDetails extends AppCompatActivity {
         //average rating of the driver
         ratingBar=findViewById(R.id.ratingBar);
 
+        //getting the recyclerview from xml
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //initializing the childrenlist
+        reviewlist = new ArrayList<>();
+
         //loading details from database
         loadDetails();
+        loadReviews();
     }
 
     private void loadDetails() {
@@ -117,6 +133,48 @@ public class MoreVanDetails extends AppCompatActivity {
                 return params;
             }
         };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void loadReviews() {
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST,REVIEW_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+                                JSONArray array=new JSONArray(response);
+                                for(int i=0;i<array.length();i++){
+
+                                    JSONObject reviews=array.getJSONObject(i);
+                                    reviewlist.add(new NewsFeedReview(
+                                            reviews.getString("review"),
+                                            reviews.getString("date"),
+                                            reviews.getString("rate")
+                                    ));
+                            }
+
+                            //creating recyclerview adapter
+                            ReviewAdapter adapter = new ReviewAdapter(MoreVanDetails.this,reviewlist);
+                            //setting adapter to recyclerview
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MoreVanDetails.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
