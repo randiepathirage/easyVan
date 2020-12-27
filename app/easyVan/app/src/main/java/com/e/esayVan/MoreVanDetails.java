@@ -29,7 +29,7 @@ public class MoreVanDetails extends AppCompatActivity {
     String number;
     String URL_DETAILS="http://10.0.2.2/easyvan/moreVanDetails.php";
     private String strNic,strContactNo,strFirstName,strLastName,strDriverNIC,strDriverContact,strDriverLastName,strDriverFirstName,strDriverLicense;
-    private float rate = 3.5f;
+    private float rate;
     TextView ownerName,ownerContact,ownerNIC,driverName,driverNIC,driverContact,driverLicence;
     RatingBar ratingBar;
 
@@ -79,6 +79,7 @@ public class MoreVanDetails extends AppCompatActivity {
                     strDriverLastName=collegeData.getString("driverLastName");
                     strDriverFirstName=collegeData.getString("driverFirstName");
                     strDriverLicense=collegeData.getString("licenseNo");
+                    rate= (float) collegeData.getDouble("avgRate");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -92,6 +93,8 @@ public class MoreVanDetails extends AppCompatActivity {
                 driverNIC.setText("NIC No: "+strDriverNIC);
                 driverContact.setText("Contact No: "+strDriverContact);
                 driverLicence.setText("Licence No: "+strDriverLicense);
+
+
 
 
                 //set rating bar value
