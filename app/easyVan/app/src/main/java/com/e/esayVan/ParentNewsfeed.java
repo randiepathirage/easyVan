@@ -11,9 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -25,13 +23,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static android.widget.Toast.LENGTH_LONG;
-
-public class ParentNewsfeedFragment extends AppCompatActivity {
+public class ParentNewsfeed extends AppCompatActivity {
 
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
@@ -134,7 +128,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
+                            ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeed.this, vehicleList);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
@@ -145,7 +139,7 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentNewsfeedFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentNewsfeed.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -170,10 +164,10 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(ParentNewsfeedFragment.this);
+                SessionManagement sessionManagement = new SessionManagement(ParentNewsfeed.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(ParentNewsfeedFragment.this, Login.class);
+                Intent intent = new Intent(ParentNewsfeed.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;

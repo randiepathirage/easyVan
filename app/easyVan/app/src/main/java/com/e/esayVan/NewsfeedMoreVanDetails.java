@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MoreVanDetails extends AppCompatActivity {
+public class NewsfeedMoreVanDetails extends AppCompatActivity {
 
     String number;
     String URL_DETAILS="http://10.0.2.2/easyvan/moreVanDetails.php";
@@ -119,7 +119,7 @@ public class MoreVanDetails extends AppCompatActivity {
         },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MoreVanDetails.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(NewsfeedMoreVanDetails.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         })
         {
@@ -155,12 +155,12 @@ public class MoreVanDetails extends AppCompatActivity {
                                     reviewlist.add(new NewsFeedReview(
                                             reviews.getString("review"),
                                             reviews.getString("date"),
-                                            reviews.getString("rate")
+                                            (float) reviews.getDouble("rate")
                                     ));
                             }
 
                             //creating recyclerview adapter
-                            ReviewAdapter adapter = new ReviewAdapter(MoreVanDetails.this,reviewlist);
+                            NewsfeedReviewAdapter adapter = new NewsfeedReviewAdapter(NewsfeedMoreVanDetails.this,reviewlist);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
@@ -171,7 +171,7 @@ public class MoreVanDetails extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MoreVanDetails.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewsfeedMoreVanDetails.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -183,7 +183,7 @@ public class MoreVanDetails extends AppCompatActivity {
 
     public void request(View view) {
 
-        SessionManagement sessionManagement = new SessionManagement(MoreVanDetails.this);
+        SessionManagement sessionManagement = new SessionManagement(NewsfeedMoreVanDetails.this);
         String userRole = sessionManagement.getSession();
 
         if(userRole!=null){

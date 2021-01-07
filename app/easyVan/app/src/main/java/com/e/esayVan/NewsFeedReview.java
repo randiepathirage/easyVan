@@ -2,9 +2,9 @@ package com.e.esayVan;
 
 public class NewsFeedReview {
     private String review,date;
-    private String rate;
+    private float rate;
 
-    public NewsFeedReview(String review,String date,String rate) {
+    public NewsFeedReview(String review,String date,float rate) {
         this.review = review;
         this.date = date;
         this.rate = rate;
@@ -26,11 +26,11 @@ public class NewsFeedReview {
         this.date = date;
     }
 
-   public String getRate() {
+   public float getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 }
