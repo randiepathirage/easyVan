@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoreVanDetails"
+    tools:context=".NewsfeedMoreVanDetails"
     android:orientation="vertical">
 
         <LinearLayout
@@ -119,6 +119,7 @@
                         android:layout_height="45dp"
                         android:text="request"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_gravity="center_horizontal"
                         android:textColor="#fff"
                         android:background="@drawable/roundededge"
@@ -135,5 +136,6 @@
             android:layout_marginTop="10dp"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"/>
 </LinearLayout>

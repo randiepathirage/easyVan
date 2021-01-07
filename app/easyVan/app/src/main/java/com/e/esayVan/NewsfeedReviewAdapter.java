@@ -1,7 +1,6 @@
 package com.e.esayVan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.CommentsViewHolder> {
+public class NewsfeedReviewAdapter extends RecyclerView.Adapter<NewsfeedReviewAdapter.CommentsViewHolder> {
 
     //this context we will use to inflate the layout
     private Context mCtx;
@@ -22,7 +21,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.CommentsVi
     private List<NewsFeedReview> reviewlist;
     String no,parentNIC;
 
-    public ReviewAdapter(Context mCtx, List<NewsFeedReview> reviewlist) {
+    public NewsfeedReviewAdapter(Context mCtx, List<NewsFeedReview> reviewlist) {
         this.mCtx = mCtx;
         this.reviewlist = reviewlist;
     }
@@ -33,7 +32,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.CommentsVi
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.newsfeed_reviews_layout, null);
-        return new ReviewAdapter.CommentsViewHolder(view);
+        return new NewsfeedReviewAdapter.CommentsViewHolder(view);
 
     }
 
@@ -47,6 +46,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.CommentsVi
         holder.textViewDate.setText(String.valueOf(comment.getDate()));
         holder.textViewReview.setText(String.valueOf(comment.getReview()));
 
+        //set rating bar value
+        holder.ratingBar2.setRating(comment.getRate());
     }
 
     @Override
