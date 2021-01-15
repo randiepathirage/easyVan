@@ -13,16 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".AdminAddChild"></activity>
-<<<<<<< HEAD
-        <activity android:name=".DriverProfileUpdate"></activity>
-        <activity android:name=".EnterCode"></activity>
-=======
-        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".AdminAddUser"></activity>
+        <activity android:name=".AdminViewSchoolVan" />
+        <activity android:name=".AdminUpdateDriver" />
+        <activity android:name=".AdminViewDriver" />
+        <activity android:name=".AdminDriverAdapter" />
+        <activity android:name=".AdminSchoolVanAdapter" />
+        <activity android:name=".AdminAddChild" />
         <activity android:name=".DriverProfileUpdate" />
         <activity android:name=".EnterCode" />
->>>>>>> 42fcf4e3d9392acb80ff167d1bdaaa6d85ab9de8
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".DriverProfileUpdate" />
+        <activity android:name=".EnterCode" />
         <activity android:name=".AdminUpdateChild" />
         <activity android:name=".AdminViewChild" />
         <activity android:name=".AdminChildAdapter" />

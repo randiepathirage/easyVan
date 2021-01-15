@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminDrivers">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Owners"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Enter name"
+        android:gravity="center"
+        android:iconifiedByDefault="true"
+        android:outlineSpotShadowColor="@color/theme"
+        android:paddingBottom="10dp"
+        android:queryHint="Enter name"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </SearchView>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myListView"
+        android:layout_marginTop="60dp"
+        android:background="#fff"/>
+
+
+
+
+</RelativeLayout>
+

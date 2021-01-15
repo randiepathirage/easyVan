@@ -93,14 +93,7 @@ public class AdminNewsfeed extends AppCompatActivity {
 
 
 
-        btnnew=(Button)findViewById(R.id.btnNew);
-        btnnew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(AdminNewsfeed.this,AdminNewArticle.class);
-                startActivity(newIntent);
-            }
-        });
+       
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
