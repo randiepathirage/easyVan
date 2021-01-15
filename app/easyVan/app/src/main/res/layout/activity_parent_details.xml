@@ -158,6 +158,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/edtReview"
                         android:hint="Write a review(optional)"
                         android:layout_marginLeft="30dp"
                         android:layout_marginEnd="30dp"

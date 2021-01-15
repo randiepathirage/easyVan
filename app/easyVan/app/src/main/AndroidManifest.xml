@@ -30,7 +30,7 @@
         <activity android:name=".AdminChildAdapter" />
         <activity android:name=".AdminChildren" />
         <activity android:name=".ParentLoginBeforeRequest" />
-        <activity android:name=".MoreVanDetails" />
+        <activity android:name=".NewsfeedMoreVanDetails" />
         <activity android:name=".OwnerAccountUpdate" />
         <activity android:name=".AdminUpdateParent" />
         <activity android:name=".AdminViewParent" />
@@ -81,7 +81,7 @@
         <activity android:name=".Parent" />
         <activity android:name=".ParentLocationFragment" />
         <activity android:name=".ParentCalendarFragment" />
-        <activity android:name=".ParentNewsfeedFragment" />
+        <activity android:name=".ParentNewsfeed" />
         <activity android:name=".ParentPayFragment" />
         <activity android:name=".ParentAccount" />
         <activity android:name=".ParentDetails" />

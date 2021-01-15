@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoreVanDetails"
+    tools:context=".NewsfeedMoreVanDetails"
     android:orientation="vertical">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +43,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtOnwerContact"
+                        android:id="@+id/txtOwnerContact"
                         android:text="Contact no:"
                         android:layout_marginLeft="30dp"
                         android:textSize="16dp"/>
@@ -88,12 +84,12 @@
                         android:textSize="16dp"/>
 
                     <TextView
+                        android:id="@+id/txtDriverNic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtDriverNic"
-                        android:text="NIC no:"
                         android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
+                        android:text="NIC no:"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -114,28 +110,32 @@
                     <RatingBar
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/ratingBar"
+                        android:progressTint="@color/theme"
                         android:layout_marginLeft="30dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="reviews:"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="16dp"/>
+                    <Button
+                        android:layout_width="350dp"
+                        android:layout_height="45dp"
+                        android:text="request"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="#fff"
+                        android:background="@drawable/roundededge"
+                        android:onClick="request"
+                        />
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="request"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="300dp"
-                android:textColor="#fff"
-                android:background="@drawable/roundededge"
-                android:onClick="request"
-                />
         </LinearLayout>
-    </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_marginTop="10dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"/>
 </LinearLayout>

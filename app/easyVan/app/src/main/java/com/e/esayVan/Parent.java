@@ -24,7 +24,7 @@ public class Parent extends AppCompatActivity {
         btnNewsFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), ParentNewsfeedFragment.class);
+                Intent intent=new Intent(getApplicationContext(), ParentNewsfeed.class);
                 startActivity(intent);
             }
         });

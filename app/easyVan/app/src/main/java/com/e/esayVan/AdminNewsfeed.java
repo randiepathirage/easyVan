@@ -131,6 +131,7 @@ public class AdminNewsfeed extends AppCompatActivity {
                                 JSONObject vehicle=array.getJSONObject(i);
 
                                 vehicleList.add(new ParentVans(
+                                        vehicle.getString("number"),
                                         vehicle.getInt("no_of_seats_available"),
                                         vehicle.getInt("total_no_of_seats"),
                                         vehicle.getString("model"),

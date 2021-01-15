@@ -7,14 +7,24 @@
     tools:context=".ParentRequest">
 
     <ScrollView
-        android:layout_width="388dp"
-        android:layout_height="688dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
-        <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+
+    <LinearLayout
             android:layout_width="389dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
             android:padding="20dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,7 +42,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/edtChildName"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,7 +54,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/edtSchool"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -54,7 +66,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/edtGrade"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,7 +78,20 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/edtPickupLoc"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pickup location link(Get the link from google maps)"
+                android:textSize="14dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/edtPickupLink"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -76,9 +102,21 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:id="@+id/editDropLoc"/>
 
-            <Button
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Drop off location link(Get the link from google maps)"
+            android:textSize="14dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/edtDropLink"/>
+        <Button
                 android:id="@+id/btnSendReq"
                 android:layout_width="142dp"
                 android:layout_height="44dp"
@@ -86,9 +124,9 @@
                 android:layout_marginTop="50dp"
                 android:text="Send Request"
                 android:textColor="#fff"
-                android:textStyle="bold" />
-
-
+                android:textStyle="bold"
+                android:onClick="sendReq"/>
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
     </ScrollView>
 </LinearLayout>

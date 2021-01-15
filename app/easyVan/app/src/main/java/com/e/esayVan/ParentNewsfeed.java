@@ -25,15 +25,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParentNewsfeedFragment extends AppCompatActivity {
+public class ParentNewsfeed extends AppCompatActivity {
 
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
+
 
     //a list to store all the vehicles
     List<ParentVans> vehicleList;
     //the recyclerview
     RecyclerView recyclerView;
     BottomNavigationView bottom_nav;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,57 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
         }
 
+
+
+    //loading vehicles
+    private void loadVehicles() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONArray array=new JSONArray(response);
+
+                            for(int i=0;i<array.length();i++){
+                                JSONObject vehicle=array.getJSONObject(i);
+
+                                vehicleList.add(new ParentVans(
+                                        vehicle.getString("number"),
+                                        vehicle.getInt("no_of_seats_available"),
+                                        vehicle.getInt("total_no_of_seats"),
+                                        vehicle.getString("model"),
+                                        vehicle.getString("type"),
+                                        vehicle.getInt("AC_nonAC"),
+                                        vehicle.getInt("caretaker"),
+                                        vehicle.getString("start_location"),
+                                        vehicle.getString("school"),
+                                        vehicle.getString("town")
+
+                                ));
+                            }
+
+                            //creating recyclerview adapter
+                            ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeed.this, vehicleList);
+                            //setting adapter to recyclerview
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentNewsfeed.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+
         //app bar
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,10 +164,10 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(ParentNewsfeedFragment.this);
+                SessionManagement sessionManagement = new SessionManagement(ParentNewsfeed.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(ParentNewsfeedFragment.this, Login.class);
+                Intent intent = new Intent(ParentNewsfeed.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;
@@ -121,55 +175,5 @@ public class ParentNewsfeedFragment extends AppCompatActivity {
 
         return true;
     }
-
-        //loading vehicles
-        private void loadVehicles() {
-            StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-
-                                JSONArray array=new JSONArray(response);
-
-                                for(int i=0;i<array.length();i++){
-                                    JSONObject vehicle=array.getJSONObject(i);
-
-                                    vehicleList.add(new ParentVans(
-                                            vehicle.getInt("no_of_seats_available"),
-                                            vehicle.getInt("total_no_of_seats"),
-                                            vehicle.getString("model"),
-                                            vehicle.getString("type"),
-                                            vehicle.getInt("AC_nonAC"),
-                                            vehicle.getInt("caretaker"),
-                                            vehicle.getString("start_location"),
-                                            vehicle.getString("school"),
-                                            vehicle.getString("town")
-
-                                    ));
-
-                                }
-
-                                //creating recyclerview adapter
-                                ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeedFragment.this, vehicleList);
-                                //setting adapter to recyclerview
-                                recyclerView.setAdapter(adapter);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(ParentNewsfeedFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
-            Volley.newRequestQueue(this).add(stringRequest);
-        }
-
-
 
 }
