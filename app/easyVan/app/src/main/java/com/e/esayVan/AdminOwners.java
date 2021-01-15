@@ -205,7 +205,7 @@ public class AdminOwners extends AppCompatActivity {
     }
 
     public void btn_add_owner(View view) {
-        startActivity(new Intent(getApplicationContext(),SignUp.class));
+        startActivity(new Intent(getApplicationContext(),AdminAddUser.class));
     }
 
 }

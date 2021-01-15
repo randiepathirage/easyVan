@@ -93,7 +93,7 @@ public class AdminNewsfeed extends AppCompatActivity {
 
 
 
-       
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
