@@ -205,7 +205,7 @@ public class AdminParents extends AppCompatActivity {
     }
 
     public void btn_add_activity(View view) {
-        startActivity(new Intent(getApplicationContext(),SignUp.class));
+        startActivity(new Intent(getApplicationContext(),AdminAddUser.class));
     }
 
 }

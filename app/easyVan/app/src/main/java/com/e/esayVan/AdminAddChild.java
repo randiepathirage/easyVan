@@ -31,7 +31,7 @@ public class AdminAddChild extends AppCompatActivity {
         getSupportActionBar().setTitle("Add Child Details ");
 
         txtcfname = findViewById(R.id.editcfname);
-        txtclname    = findViewById(R.id.editclname);
+        txtclname  = findViewById(R.id.editclname);
         txtcpnic  = findViewById(R.id.editpnic);
         txtcgrade  = findViewById(R.id.editgrade);
         txtcschool  = findViewById(R.id.editschool);
@@ -53,6 +53,8 @@ public class AdminAddChild extends AppCompatActivity {
         });
     }
 
+
+
     private void insertData() {
 
         final String fname = txtcfname.getText().toString().trim();
@@ -68,6 +70,8 @@ public class AdminAddChild extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
+
+
 
         if(fname.isEmpty()){
             Toast.makeText(this, "Enter First Name", Toast.LENGTH_SHORT).show();
