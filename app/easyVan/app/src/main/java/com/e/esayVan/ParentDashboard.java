@@ -30,7 +30,7 @@ public class ParentDashboard extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.navigation_newsfeed:
-                        Intent j = new Intent(getApplicationContext(), ParentNewsfeedFragment.class);
+                        Intent j = new Intent(getApplicationContext(), ParentNewsfeed.class);
                         startActivity(j);
                         overridePendingTransition(0,0);
                         return true;
