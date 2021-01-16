@@ -214,7 +214,7 @@ public class AdminAddUser extends AppCompatActivity {
         String str_contactNo= contactNo.getText().toString();
         String str_email=email.getText().toString();
 
-        String type = "register";
+        String type = "adduser";
 
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute(type,Str_firstName,
