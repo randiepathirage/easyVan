@@ -9,10 +9,10 @@
     <TextView
         android:id="@+id/text_calender"
         android:layout_width="match_parent"
+        android:text="today event"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="20dp"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +25,7 @@
         android:layout_height="48dp"
         android:background="@drawable/roundededge"
         android:text="Mark Attendance"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -34,14 +35,26 @@
         android:textColor="#fff"
         android:textStyle="bold"/>
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/btnMarkAttend"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_calender" />
+        app:layout_constraintTop_toTopOf="@+id/text_calender">
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:focusedMonthDateColor="@color/theme"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="#fff"
+            android:layout_marginTop="60dp"
+            android:selectedWeekBackgroundColor="@color/theme" />
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -13,9 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".AdminAddChild"></activity>
-        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".AdminAddUser"></activity>
+        <activity android:name=".AdminViewSchoolVan" />
+        <activity android:name=".AdminUpdateDriver" />
+        <activity android:name=".AdminViewDriver" />
+        <activity android:name=".AdminDriverAdapter" />
+        <activity android:name=".AdminSchoolVanAdapter" />
+        <activity android:name=".AdminAddChild" />
+        <activity android:name=".DriverProfileUpdate" />
+        <activity android:name=".EnterCode" />
+        <activity android:name=".ChangePassword" />
         <activity android:name=".DriverProfileUpdate" />
         <activity android:name=".EnterCode" />
         <activity android:name=".AdminUpdateChild" />
@@ -23,7 +30,7 @@
         <activity android:name=".AdminChildAdapter" />
         <activity android:name=".AdminChildren" />
         <activity android:name=".ParentLoginBeforeRequest" />
-        <activity android:name=".MoreVanDetails" />
+        <activity android:name=".NewsfeedMoreVanDetails" />
         <activity android:name=".OwnerAccountUpdate" />
         <activity android:name=".AdminUpdateParent" />
         <activity android:name=".AdminViewParent" />
@@ -74,7 +81,7 @@
         <activity android:name=".Parent" />
         <activity android:name=".ParentLocationFragment" />
         <activity android:name=".ParentCalendarFragment" />
-        <activity android:name=".ParentNewsfeedFragment" />
+        <activity android:name=".ParentNewsfeed" />
         <activity android:name=".ParentPayFragment" />
         <activity android:name=".ParentAccount" />
         <activity android:name=".ParentDetails" />
