@@ -30,7 +30,7 @@
         <item>Breakdown</item>
         <item>Other</item>
     </string-array>
-    
+
     <string-array name="owner_report_2">
         <item>Vehicle part</item>
         <item>Fuel</item>
@@ -44,7 +44,6 @@
         <item>driver</item>
         <item>child</item>
     </string-array>
-
 
 
 </resources>

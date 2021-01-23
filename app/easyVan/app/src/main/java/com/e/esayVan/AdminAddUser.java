@@ -8,8 +8,8 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUp extends AppCompatActivity {
-    EditText firstName,middleName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword,nic;
+public class AdminAddUser extends AppCompatActivity {
+    EditText firstName,lastName,NICNo,username,password,address,contactNo,email,confirmPassword,nic;
     RadioGroup radioGroup;
     RadioButton radioParent,radioOwner;
     //AwesomeValidation awesomeValidation;
@@ -18,24 +18,24 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        getSupportActionBar().setTitle("Sign Up");
+        setContentView(R.layout.activity_admin_add_user);
+        getSupportActionBar().setTitle("Add User");
 
-        firstName=(EditText)findViewById(R.id.edtFirstname);
-        lastName=(EditText)findViewById(R.id.edtLastname);
-        NICNo=(EditText)findViewById(R.id.edtNic);
-        username=(EditText)findViewById(R.id.edtUsername);
-        password=(EditText)findViewById(R.id.edtPassword);
-        confirmPassword=(EditText)findViewById(R.id.edtConfirmPassword);
-        address=(EditText)findViewById(R.id.edtAddress);
-        contactNo=(EditText)findViewById(R.id.edtContactNumber);
-        email=(EditText)findViewById(R.id.edtEmail);
-        nic=(EditText)findViewById(R.id.edtNic);
+        firstName=(EditText)findViewById(R.id.ufname);
+        lastName=(EditText)findViewById(R.id.ulname);
+        NICNo=(EditText)findViewById(R.id.unic);
+        username=(EditText)findViewById(R.id.uusername);
+        password=(EditText)findViewById(R.id.upw);
+        confirmPassword=(EditText)findViewById(R.id.ucpw);
+        address=(EditText)findViewById(R.id.uaddress);
+        contactNo=(EditText)findViewById(R.id.ucontact);
+        email=(EditText)findViewById(R.id.uemail);
+        nic=(EditText)findViewById(R.id.unic);
 
 
-        radioParent=(RadioButton)findViewById(R.id.radioParent);
-        radioOwner=(RadioButton)findViewById(R.id.radioOwner);
-        radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+        radioParent=(RadioButton)findViewById(R.id.radParent);
+        radioOwner=(RadioButton)findViewById(R.id.radOwner);
+        radioGroup=(RadioGroup)findViewById(R.id.radGroup);
 
     }
 
@@ -214,7 +214,7 @@ public class SignUp extends AppCompatActivity {
         String str_contactNo= contactNo.getText().toString();
         String str_email=email.getText().toString();
 
-        String type = "register";
+        String type = "adduser";
 
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute(type,Str_firstName,

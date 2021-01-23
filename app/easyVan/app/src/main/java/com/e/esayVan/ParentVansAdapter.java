@@ -67,7 +67,7 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(mCtx,MoreVanDetails.class);
+                    Intent intent=new Intent(mCtx, NewsfeedMoreVanDetails.class);
                     number=String.valueOf(vans.getNumber());
                     intent.putExtra("number",number);//passing vehicle no to the next view
                     mCtx.startActivity(intent);

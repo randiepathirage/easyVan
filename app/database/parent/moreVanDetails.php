@@ -54,7 +54,26 @@
     
         }
 
+        //get average rating
+        $stmt_rate = "SELECT sum(rate),count(rate) FROM rate WHERE driver_NIC='$driverNic'";
+        $result_rate=mysqli_query($conn,$stmt_rate);//executing the query
 
+        $avg_rate=0;
+        $rate_sum=0;
+        $count=0;
+
+
+        while($row=mysqli_fetch_assoc($result_rate)){
+            
+            $rate_sum=$row['sum(rate)'];
+            $count=$row['count(rate)'];
+    
+        }
+
+        $avg_rate=$rate_sum/$count;
+        $index['avgRate']=$avg_rate;
+
+        //echo $avg_rate;
         array_push($result['data'], $index);
     }
 
