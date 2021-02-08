@@ -187,7 +187,7 @@ public class NewsfeedMoreVanDetails extends AppCompatActivity {
         String userRole = sessionManagement.getSession();
 
         if(userRole!=null){
-            Intent i =new Intent(this,ParentRequest.class);
+            Intent i =new Intent(this,ParentSelectChild.class);
             startActivity(i);
         }
         else{
