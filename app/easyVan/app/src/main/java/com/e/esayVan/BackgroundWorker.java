@@ -30,6 +30,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String type = params[0];
         String login_url = "http://10.0.2.2/easyvan/login.php";
         String register_url = "http://10.0.2.2/easyvan/register.php";
+        String adduser_url = "http://10.0.2.2/easyvan/adduser.php";
 
         if(type.equals("login")){
             try {
@@ -72,7 +73,61 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else if(type.equals("register")){
+        }else if(type.equals("adduser")){
+            try {
+                String firstName = params[1];
+                String lastName = params[2];
+                String NICNo = params[3];
+                String username = params[4];
+                String password = params[5];
+                String address = params[6];
+                String contactNo = params[7];
+                String email = params[8];
+                String userRole=params[9];
+
+                URL url = new URL(adduser_url);
+                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream=httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String post_data =
+                        URLEncoder.encode("firstName","UTF-8")+"="+URLEncoder.encode(firstName,"UTF-8")+"&"
+                                +URLEncoder.encode("lastName","UTF-8")+"="+URLEncoder.encode(lastName,"UTF-8")+"&"
+                                +URLEncoder.encode("NICNo","UTF-8")+"="+URLEncoder.encode(NICNo,"UTF-8")+"&"
+                                +URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
+                                +URLEncoder.encode("address","UTF-8")+"="+URLEncoder.encode(address,"UTF-8")+"&"
+                                +URLEncoder.encode("contactNo","UTF-8")+"="+URLEncoder.encode(contactNo,"UTF-8")+"&"
+                                +URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"
+                                +URLEncoder.encode("userRole","UTF-8")+"="+URLEncoder.encode(userRole,"UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream=httpURLConnection.getInputStream();
+                BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while((line=bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        else if(type.equals("register")){
             try {
                 String firstName = params[1];
                 String lastName = params[2];
@@ -137,6 +192,11 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         //if login fails
         if (result.equals("Login Fail")){
             Toast.makeText(context,result,Toast.LENGTH_LONG).show();
+        }
+        else if(result.equals("User Added Successfully")){
+            Toast.makeText(context,"registration successful",Toast.LENGTH_LONG).show();
+            Intent i  = new Intent(context,AdminManage.class);
+            context.startActivity(i);
         }
         //if insert successful
         else if(result.equals("Insert Successful")){
