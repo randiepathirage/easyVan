@@ -34,6 +34,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     private List<ParentChild> childlist;
     String no,parentNIC,mode,childNo;
     String URL_DELETE="http://10.0.2.2/easyvan/removeChildVan.php";
+    String URL_CHECK="http://10.0.2.2/easyvan/checkChildStatus.php";
 
     //getting the context and product list with constructor
     public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, String parentNIC, String mode) {
@@ -70,27 +71,18 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
             @Override
             public void onClick(View v) {
 
+                //when viewing more child details
                 if(mode.equals("view")) {
                     Intent intent = new Intent(mCtx, ParentDetails.class);
                     no = String.valueOf(children.getChildNo());
                     intent.putExtra("childNumber", no);//passing child no to the next view
                     intent.putExtra("parentNIC", parentNIC);//passing parent nic no to the next view
                     mCtx.startActivity(intent);
-                }else if(mode.equals("request")){
-
-                    //ask to delete child's existing school van
-                    AlertDialog.Builder builder= new AlertDialog.Builder(mCtx);
-                    builder.setMessage("Your child is already assigned to a school van.Do you want to remove child from the school van?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            //remove child from the school van
-                            removeChildVan();
-                        }
-                    }).setNegativeButton("cancel",null);
-
-                    AlertDialog alert =builder.create();
-                    alert.show();
-
+                }
+                //when requesting for a school van
+                else if(mode.equals("request")){
+                    //if child already got a van
+                    check();
                 }
                 //Toast.makeText(mCtx,children.getFirstName(),Toast.LENGTH_SHORT).show();
             }
@@ -127,8 +119,55 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         };
         RequestQueue requestQueue = Volley.newRequestQueue(mCtx);
         requestQueue.add(request);
+    }
 
+    public  void check(){
+        StringRequest request = new StringRequest(Request.Method.POST,URL_CHECK,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.equals("has a van")){
 
+                            //ask to delete child's existing school van
+                            AlertDialog.Builder builder= new AlertDialog.Builder(mCtx);
+                            builder.setMessage("Your child is already assigned to a school van.Do you want to remove child from the school van?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //remove child from the school van
+                                    removeChildVan();
+
+                                }
+                            }).setNegativeButton("cancel",null);
+
+                            AlertDialog alert =builder.create();
+                            alert.show();
+                        }else{
+
+                            Intent intent = new Intent(mCtx,ParentRequest.class);
+                            intent.putExtra("childNo",childNo);
+                            mCtx.startActivity(intent);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                //show child details
+                Toast.makeText(mCtx,"error",Toast.LENGTH_SHORT).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("no",childNo);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(mCtx);
+        requestQueue.add(request);
     }
 
 
