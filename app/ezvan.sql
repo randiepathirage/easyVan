@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 08, 2021 at 10:19 AM
+-- Generation Time: Feb 08, 2021 at 05:03 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -82,10 +82,27 @@ CREATE TABLE `child` (
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `pickup_location` varchar(50) NOT NULL,
-  `dropoff_location` varchar(50) NOT NULL,
-  `vehicle_no` varchar(15) NOT NULL,
+  `dropoff_location` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `child`
+--
+
+INSERT INTO `child` (`child_no`, `parent_NIC_no`, `grade`, `school`, `first_name`, `last_name`, `pickup_location`, `dropoff_location`) VALUES
+(1, '986760296p', '4', 'Musaeus collage', 'Himaya', 'Pathirage', 'homagama', 'homagama');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_assign`
+--
+
+CREATE TABLE `child_assign` (
+  `child_no` int(50) NOT NULL,
+  `vehicle_no` varchar(10) NOT NULL,
   `start_date` date NOT NULL,
-  `monthly_fee` decimal(10,2) NOT NULL
+  `fees` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -422,8 +439,14 @@ ALTER TABLE `attendance`
 --
 ALTER TABLE `child`
   ADD PRIMARY KEY (`child_no`,`parent_NIC_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`),
   ADD KEY `parent_NIC_no` (`parent_NIC_no`);
+
+--
+-- Indexes for table `child_assign`
+--
+ALTER TABLE `child_assign`
+  ADD PRIMARY KEY (`child_no`),
+  ADD KEY `vehicle_no` (`vehicle_no`);
 
 --
 -- Indexes for table `emergency_message`
@@ -529,7 +552,7 @@ ALTER TABLE `vehicle`
 -- AUTO_INCREMENT for table `child`
 --
 ALTER TABLE `child`
-  MODIFY `child_no` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `child_no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `expense`
@@ -553,8 +576,14 @@ ALTER TABLE `assign`
 -- Constraints for table `child`
 --
 ALTER TABLE `child`
-  ADD CONSTRAINT `child_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE,
   ADD CONSTRAINT `child_ibfk_2` FOREIGN KEY (`parent_NIC_no`) REFERENCES `login` (`NIC_no`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `child_assign`
+--
+ALTER TABLE `child_assign`
+  ADD CONSTRAINT `child_assign_ibfk_1` FOREIGN KEY (`child_no`) REFERENCES `child` (`child_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `child_assign_ibfk_2` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`);
 
 --
 -- Constraints for table `expense`
