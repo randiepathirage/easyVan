@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 30, 2020 at 06:13 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Host: localhost
+-- Generation Time: Feb 08, 2021 at 10:19 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,8 +52,8 @@ CREATE TABLE `assign` (
 --
 
 INSERT INTO `assign` (`driver_NIC_no`, `owner_NIC_no`, `vehicle_no`) VALUES
-('3', '2', 'DF-9864'),
-('6760296v', '986760294v', 'CBF-7375');
+('3d', '2', 'DF-9864'),
+('6760296d', '986760294v', 'CBF-7375');
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE `attendance` (
 --
 
 CREATE TABLE `child` (
-  `child_no` int(11) NOT NULL,
+  `child_no` int(100) NOT NULL,
   `parent_NIC_no` varchar(20) NOT NULL,
   `grade` varchar(5) NOT NULL,
   `school` varchar(20) NOT NULL,
@@ -87,15 +87,6 @@ CREATE TABLE `child` (
   `start_date` date NOT NULL,
   `monthly_fee` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `child`
---
-
-INSERT INTO `child` (`child_no`, `parent_NIC_no`, `grade`, `school`, `first_name`, `last_name`, `pickup_location`, `dropoff_location`, `vehicle_no`, `start_date`, `monthly_fee`) VALUES
-(1, '986760296v', '4', 'Royal collage', 'mihisara', 'wijethunga', 'homagama', 'homagama', 'CBF-7375', '2020-07-06', '5000.00'),
-(2, '986760296v', '9', 'Musaeus collage', 'hemna', 'pathirage', 'meegoda', 'homagama', 'CBF-7375', '2019-09-09', '4500.00'),
-(3, '4', '6', 'Devi balika', 'nethmi', 'perera', 'wallawatta', 'wallawatta', 'DF-9864', '2020-09-08', '3500.00');
 
 -- --------------------------------------------------------
 
@@ -169,6 +160,20 @@ CREATE TABLE `license` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `vehicle_no` varchar(10) NOT NULL,
+  `longitude` decimal(10,0) NOT NULL,
+  `latitude` decimal(10,0) NOT NULL,
+  `time` time(4) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -185,15 +190,18 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`NIC_no`, `username`, `password`, `email`) VALUES
 ('1', 'admin', '202cb962ac59075b964b07152d234b70', 'admin@gmail.com'),
-('2', 'owner', '202cb962ac59075b964b07152d234b70', 'owner@gmail.com'),
-('3', 'driver', '202cb962ac59075b964b07152d234b70', 'driver@gmail.com'),
-('34352v', 'erre', 'dfc0d64b587784fb2de6a4d14bede2a2', 'werhhgfd@gmail.com'),
-('4', 'parent', '202cb962ac59075b964b07152d234b70', 'parent@gmail.com'),
-('976760266v', 'devinda', 'd7a4272f8c32203354b040db6d4ffbb9', 'devinda@gmail.com'),
-('9860546v', 'anuki', 'b1c301b0a40676b400ef4c417dcb94db', 'anuki@gmail.com'),
-('986760294v', 'nimal', 'c177c76fa135dffda6d86ff076a8ddbb', 'nimal@gmail.com'),
-('986760296v', 'randie', 'dfc0d64b587784fb2de6a4d14bede2a2', 'randiepathirage@gmail.com'),
-('9876543v', 'sdfghj', ' Randie@123', ' oerere@gmail.com');
+('2o', 'owner', '202cb962ac59075b964b07152d234b70', 'owner@gmail.com'),
+('34352o', 'erre', 'dfc0d64b587784fb2de6a4d14bede2a2', 'werhhgfd@gmail.com'),
+('3453o', 'mihisara', '202cb962ac59075b964b07152d234b70', 'ertr@gmail.com'),
+('345p', 'reema', '202cb962ac59075b964b07152d234b70', 'reada@gmail.com'),
+('3d', 'driver', '202cb962ac59075b964b07152d234b70', 'driver@gmail.com'),
+('4p', 'parent', '202cb962ac59075b964b07152d234b70', 'parent@gmail.com'),
+('6760296d', 'jagath', '202cb962ac59075b964b07152d234b70', 're@gm.com'),
+('8675743p', 'miydd', '202cb962ac59075b964b07152d234b70', '23456udf@,com'),
+('976760266o', 'devinda', 'd7a4272f8c32203354b040db6d4ffbb9', 'devinda@gmail.com'),
+('9860546o', 'anuki', 'b1c301b0a40676b400ef4c417dcb94db', 'anuki@gmail.com'),
+('986760294o', 'nimal', 'c177c76fa135dffda6d86ff076a8ddbb', 'nimal@gmail.com'),
+('986760296p', 'randie', 'dfc0d64b587784fb2de6a4d14bede2a2', 'randiepathirage@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -231,18 +239,17 @@ CREATE TABLE `parent_owner_driver` (
 INSERT INTO `parent_owner_driver` (`NIC_no`, `parent_flag`, `driver_flag`, `owner_flag`, `admin_flag`, `license_no`) VALUES
 ('1', 0, 0, 0, 1, NULL),
 ('2', 0, 0, 1, 0, NULL),
-('3', 0, 1, 0, 0, NULL),
-('34352v', 0, 0, 1, 0, '0'),
-('345', 1, 0, 0, 0, '42252'),
-('3453', 0, 0, 1, 0, '0'),
-('4', 1, 0, 0, 0, NULL),
-('5', 0, 0, 0, 1, '0'),
-('6760296v', 0, 1, 0, 0, '45-8665'),
-('8675743v', 1, 0, 0, 0, ' 0'),
-('976760266v', 0, 0, 1, 0, '0'),
-('9860546v', 0, 0, 1, 0, '0'),
+('34352o', 0, 0, 1, 0, '0'),
+('3453o', 0, 0, 1, 0, '0'),
+('345p', 1, 0, 0, 0, '42252'),
+('3d', 0, 1, 0, 0, NULL),
+('4p', 1, 0, 0, 0, NULL),
+('6760296d', 0, 1, 0, 0, '45-8665'),
+('8675743p', 1, 0, 0, 0, ' 0'),
+('976760266o', 0, 0, 1, 0, '0'),
+('9860546o', 0, 0, 1, 0, '0'),
 ('986760294v', 0, 0, 1, 0, '0'),
-('986760296v', 1, 0, 0, 0, ' 0');
+('986760296p', 1, 0, 0, 0, ' 0');
 
 -- --------------------------------------------------------
 
@@ -269,8 +276,11 @@ CREATE TABLE `request` (
   `req_id` int(10) NOT NULL,
   `status` varchar(15) NOT NULL,
   `parent_NIC_no` varchar(10) NOT NULL,
+  `child_no` int(100) NOT NULL,
   `vehicle_no` varchar(15) NOT NULL,
-  `owner_NIC_no` varchar(10) NOT NULL
+  `owner_NIC_no` varchar(10) NOT NULL,
+  `date` date NOT NULL,
+  `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -291,7 +301,6 @@ CREATE TABLE `school` (
 INSERT INTO `school` (`school`, `vehicle_no`) VALUES
 ('Ananda collage', 'HQ-3431'),
 ('Devi balika', 'DF-9864'),
-('Devi balika', 'PE-6544'),
 ('DS collage', 'CBF-7375'),
 ('Royal collage', 'CBF-7375'),
 ('Royal collage', 'DF-9864'),
@@ -315,10 +324,8 @@ CREATE TABLE `town` (
 INSERT INTO `town` (`town`, `vehicle_no`) VALUES
 ('bathtaramulla', 'DF-9864'),
 ('bathtaramulla', 'GF-6754'),
-('kandana', 'PE-6544'),
 ('maharagama', 'CBF-7375'),
 ('maharagama', 'DF-9864'),
-('meegamuwa', 'PE-6544'),
 ('meegoda', 'HQ-3431'),
 ('meepe', 'CBF-7375'),
 ('pannipitiya', 'HQ-3431'),
@@ -344,14 +351,18 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`NIC_no`, `contact_no`, `last_name`, `first_name`, `address`) VALUES
 ('1', 713731752, 'wijethunga', 'edivid', 'maththegoda'),
-('3', 423535, 'driver', 'driver', 'wqrqrccvrge'),
-('34352v', 123456789, 'sdfsf', 'dssdf', 'wertyjkjhgfacv'),
-('3453', 546784343, 'mihisara', 'akalanka', 'uytrew'),
-('6760296v', 715554443, 'abethunga', 'jagath', 'madulawa,padukka'),
-('976760266v', 712344322, 'kularathna', 'devinda', '23,madulawa ,padukka'),
-('9860546v', 2147483647, 'perera', 'anuki', '61/2,palpolawatte,godagama'),
-('986760294v', 712751254, 'perera', 'nimal', '61/2,palpolawatta,godagama'),
-('986760296v', 713731752, 'pathirage', 'randie', '61,homagama,godagama');
+('2o', 714324335, 'heel', 'pererea', '76/3,grrfd,weed'),
+('34352o', 123456789, 'sdfsf', 'dssdf', 'wertyjkjhgfacv'),
+('3453o', 546784343, 'mihisara', 'akalanka', 'uytrew'),
+('345p', 98064234, 'reema', 'jye', '43/6,rtrds,deefgog'),
+('3d', 423535, 'driver', 'driver', 'wqrqrccvrge'),
+('4p', 98765432, 'devin ', 'wijesinghe', '23,fgdwaaa,deed,godoada'),
+('6760296d', 715554443, 'abethunga', 'jagath', 'madulawa,padukka'),
+('8675743p', 423535, 'errer', 'miydd', '34,trew ,streer'),
+('976760266o', 712344322, 'kularathna', 'devinda', '23,madulawa ,padukka'),
+('9860546o', 765431232, 'ramanie', 'goone', '89,teed rd,hh'),
+('986760294o', 712751254, 'perera', 'nimal', '61/2,palpolawatta,godagama'),
+('986760296p', 713731752, 'pathirage', 'randie', '61,homagama,godagama');
 
 -- --------------------------------------------------------
 
@@ -377,11 +388,10 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`number`, `no_of_seats_available`, `total_no_of_seats`, `model`, `type`, `permit_no`, `AC_nonAC`, `caretaker`, `start_location`, `owner_NIC_no`) VALUES
-('CBF-7375', 8, 20, 'nissan', 'van', '089654v', 1, 0, 'Malabe', '986760296v'),
-('DF-9864', 10, 30, 'rosa', 'bus', '23v', 1, 0, 'Nugegoda', '8675743v'),
-('GF-6754', 7, 15, 'nissan', 'van', '23v', 1, 0, 'koswatta', '345'),
-('HQ-3431', 10, 25, 'tata', 'bus', '089654v', 0, 1, 'Homagama', '8675743v'),
-('PE-6544', 8, 25, 'tata', 'van', '3242V33', 1, 1, 'wattala', '5');
+('CBF-7375', 8, 20, 'nissan', 'van', '089654v', 1, 0, 'Malabe', '986760294v'),
+('DF-9864', 10, 30, 'rosa', 'bus', '23v', 1, 0, 'Nugegoda', '8675743p'),
+('GF-6754', 7, 15, 'nissan', 'van', '23v', 1, 0, 'koswatta', '345p'),
+('HQ-3431', 10, 25, 'tata', 'bus', '089654v', 0, 1, 'Homagama', '8675743p');
 
 --
 -- Indexes for dumped tables
@@ -481,7 +491,8 @@ ALTER TABLE `request`
   ADD PRIMARY KEY (`req_id`),
   ADD KEY `parent_NIC_no` (`parent_NIC_no`,`vehicle_no`,`owner_NIC_no`),
   ADD KEY `owner_NIC_no` (`owner_NIC_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`);
+  ADD KEY `vehicle_no` (`vehicle_no`),
+  ADD KEY `child_no` (`child_no`);
 
 --
 -- Indexes for table `school`
@@ -518,7 +529,7 @@ ALTER TABLE `vehicle`
 -- AUTO_INCREMENT for table `child`
 --
 ALTER TABLE `child`
-  MODIFY `child_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `child_no` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `expense`
@@ -569,7 +580,8 @@ ALTER TABLE `license`
 ALTER TABLE `request`
   ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`owner_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE,
   ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `request_ibfk_3` FOREIGN KEY (`parent_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `request_ibfk_3` FOREIGN KEY (`parent_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `request_ibfk_4` FOREIGN KEY (`child_no`) REFERENCES `child` (`child_no`);
 
 --
 -- Constraints for table `school`
