@@ -69,16 +69,6 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         holder.textViewPickupLocation.setText(String.valueOf("Pick up location: "+children.getPickupLocation()));
         holder.textViewDropoffLocation.setText(String.valueOf("Drop off location: "+children.getDropoffLocation()));
 
-        childNo=String.valueOf(children.getChildNo());
-
-        firstName=String.valueOf(children.getFirstName());
-        lastName=String.valueOf(children.getLastName());
-        grade=String.valueOf(children.getGrade());
-        school=String.valueOf(children.getSchool());
-        pick=String.valueOf(children.getPickupLocation());
-        drop=String.valueOf(children.getDropoffLocation());
-
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +83,13 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                 }
                 //when requesting for a school van
                 else if(mode.equals("request")){
-
+                    childNo=String.valueOf(children.getChildNo());
+                    firstName=String.valueOf(children.getFirstName());
+                    lastName=String.valueOf(children.getLastName());
+                    grade=String.valueOf(children.getGrade());
+                    school=String.valueOf(children.getSchool());
+                    pick=String.valueOf(children.getPickupLocation());
+                    drop=String.valueOf(children.getDropoffLocation());
                     //check if child already got a van
                     check();
                 }
@@ -156,6 +152,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
                             Intent intent = new Intent(mCtx,ParentRequest.class);
 
+                            intent.putExtra("nic",parentNIC);
                             intent.putExtra("childNo",childNo);
                             intent.putExtra("firstName",firstName);
                             intent.putExtra("lastName",lastName);

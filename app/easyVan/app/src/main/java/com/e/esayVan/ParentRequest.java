@@ -28,7 +28,7 @@ import java.util.Map;
 public class ParentRequest extends AppCompatActivity {
 
     EditText edtchildFirstName,edtchildLastName,edtschool,edtgrade,edtpickupLoc,edtdropOffLoc;
-    String childNo,firstName,lastName,grade,school,pick,drop;;
+    String childNo,firstName,lastName,grade,school,pick,drop,nic;;
     String URL_REQ="";
     String URL_VIEW="";
     @Override
@@ -56,6 +56,7 @@ public class ParentRequest extends AppCompatActivity {
             //if child is registered in the system
 
 
+            nic=getIntent().getStringExtra("nic");
             firstName=getIntent().getStringExtra("firstName");
             lastName=getIntent().getStringExtra("lastName");
             grade=getIntent().getStringExtra("grade");
@@ -70,12 +71,10 @@ public class ParentRequest extends AppCompatActivity {
             edtschool.setText(school);
             edtgrade.setText(grade);
 
-            Toast.makeText(ParentRequest.this,firstName,Toast.LENGTH_LONG).show();
-
         }
         
     }
-    
+
     public void sendReq(View view) {
 
         final String strFirstName = edtchildFirstName.getText().toString();
@@ -112,11 +111,12 @@ public class ParentRequest extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
 
+                params.put("nic",nic);
                 params.put("fristName",strFirstName);
                 params.put("lastName",strLastName);
                 params.put("school",strSchool);
                 params.put("grade",strGrade);
-                params.put("pick_up",strPickupLoc);
+                params.put("pick",strPickupLoc);
                 params.put("drop",strDropOffLoc);
 
                 return params;
