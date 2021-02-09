@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -56,6 +59,16 @@ public class ParentSelectChild extends AppCompatActivity {
 
         //initializing the childrenlist
         childlist = new ArrayList<>();
+
+        Button btn=findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(ParentSelectChild.this,ParentRequest.class);
+                intent.putExtra("childNo","0");
+                startActivity(intent);
+            }
+        });
 
         loadChildren();
     }

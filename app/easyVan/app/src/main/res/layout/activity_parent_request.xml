@@ -36,14 +36,26 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Child's  name"
+                android:text="Child's  first name"
                 android:textSize="14dp"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:id="@+id/edtChildName"/>
+                android:id="@+id/edtChildFirstName"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Child's  last name"
+            android:textSize="14dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/edtChildLastName"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -84,18 +96,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pickup location link(Get the link from google maps)"
-                android:textSize="14dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:id="@+id/edtPickupLink"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Drop off location"
                 android:textSize="14dp"/>
 
@@ -105,17 +105,6 @@
                 android:padding="10dp"
                 android:id="@+id/editDropLoc"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Drop off location link(Get the link from google maps)"
-            android:textSize="14dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:id="@+id/edtDropLink"/>
         <Button
                 android:id="@+id/btnSendReq"
                 android:layout_width="142dp"
