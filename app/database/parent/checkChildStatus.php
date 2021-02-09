@@ -3,8 +3,7 @@
     require  "conn.php";
 
     
-   // $id = $_POST["no"];
-        $id ='1';
+    $id = $_POST["no"];
  
     $check_van="SELECT * FROM child_assign WHERE child_no=$id";
     $result = mysqli_query($conn,$check_van);

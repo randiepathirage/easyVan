@@ -39,6 +39,8 @@ public class ParentAccount extends AppCompatActivity {
     private String strNic,strAddress,strEmail;
     String userName;
     private String strContactNo;
+    String vehicleNo="0";
+    String ownerID="0";
 
     //a list to store all the child details
     List<ParentChild> childlist;
@@ -117,7 +119,7 @@ public class ParentAccount extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,strNic,"view");
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentAccount.this,childlist,strNic,vehicleNo,ownerID,"view");
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
