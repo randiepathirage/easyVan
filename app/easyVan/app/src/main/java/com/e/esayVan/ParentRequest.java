@@ -118,6 +118,7 @@ public class ParentRequest extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
 
+                params.put("childNo",childNo);
                 params.put("nic",nic);
                 params.put("firstName",strFirstName);
                 params.put("lastName",strLastName);

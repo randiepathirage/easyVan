@@ -35,7 +35,7 @@ public class ParentSelectChild extends AppCompatActivity {
     //a list to store all the child details
     List<ParentChild> childlist;
     String userName;
-    private String strNic;
+    String strNic;
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -53,6 +53,8 @@ public class ParentSelectChild extends AppCompatActivity {
         //load account details
         getParentId();
 
+
+
         //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -65,11 +67,13 @@ public class ParentSelectChild extends AppCompatActivity {
         vehicleNo=getIntent().getStringExtra("vehicleNo");
         ownerID=getIntent().getStringExtra("ownerID");
 
+        loadChildren();
 
         Button btn=findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent =new Intent(ParentSelectChild.this,ParentRequest.class);
                 intent.putExtra("childNo","0");
                 intent.putExtra("nic",strNic);
@@ -78,8 +82,6 @@ public class ParentSelectChild extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        loadChildren();
     }
 
     private void getParentId() {
@@ -94,6 +96,8 @@ public class ParentSelectChild extends AppCompatActivity {
 
 
                     strNic =collegeData.getString("NIC_no");
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

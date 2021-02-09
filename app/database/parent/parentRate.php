@@ -8,9 +8,9 @@
   $driver_nic_no=$_POST['driver_nic_no'];
   $review=$_POST['review'];
 
-  //$rate='2.5';
-  //$parent_nic_no='8675743v';
-  //$driver_nic_no='3';
+   /* $rate='2.5';
+  $parent_nic_no='8675743p';
+  $driver_nic_no='3';*/
 
   $day=date("Y-m-d");
   date_default_timezone_set("Asia/Colombo");
@@ -23,7 +23,7 @@
  if($result_post){
         echo 'Posted';
 }else{
-        echo 'You have already rated';
+      echo 'You have already rated';
 }
  mysqli_close($conn);
 ?>
