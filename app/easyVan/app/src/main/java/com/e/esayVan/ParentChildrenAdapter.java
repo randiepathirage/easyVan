@@ -33,6 +33,9 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     //we are storing all the products in a list
     private List<ParentChild> childlist;
     String no,parentNIC,mode,childNo;
+    String firstName,lastName, grade, school,pick,drop;
+
+
     String URL_DELETE="http://10.0.2.2/easyvan/removeChildVan.php";
     String URL_CHECK="http://10.0.2.2/easyvan/checkChildStatus.php";
 
@@ -56,8 +59,8 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     @Override
     public void onBindViewHolder(@NonNull ParentChildrenAdapter.ChildrenViewHolder holder, final int position) {
-
         final ParentChild children = childlist.get(position);
+
 
         //binding the data with the viewholder views
         holder.textViewFirstName.setText(String.valueOf(children.getFirstName())+" "+String.valueOf(children.getLastName()));
@@ -65,9 +68,18 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         holder.textViewSchool.setText(String.valueOf("School: "+children.getSchool()));
         holder.textViewPickupLocation.setText(String.valueOf("Pick up location: "+children.getPickupLocation()));
         holder.textViewDropoffLocation.setText(String.valueOf("Drop off location: "+children.getDropoffLocation()));
-        childNo=children.getChildNo();
 
-       holder.itemView.setOnClickListener(new View.OnClickListener() {
+        childNo=String.valueOf(children.getChildNo());
+
+        firstName=String.valueOf(children.getFirstName());
+        lastName=String.valueOf(children.getLastName());
+        grade=String.valueOf(children.getGrade());
+        school=String.valueOf(children.getSchool());
+        pick=String.valueOf(children.getPickupLocation());
+        drop=String.valueOf(children.getDropoffLocation());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -81,7 +93,8 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                 }
                 //when requesting for a school van
                 else if(mode.equals("request")){
-                    //if child already got a van
+
+                    //check if child already got a van
                     check();
                 }
                 //Toast.makeText(mCtx,children.getFirstName(),Toast.LENGTH_SHORT).show();
@@ -99,7 +112,6 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
                         Toast.makeText(mCtx, "Your child is removed from the school van",Toast.LENGTH_SHORT).show();
 
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -113,7 +125,6 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                 Map<String, String> params = new HashMap<>();
 
                 params.put("no",childNo);
-
                 return params;
             }
         };
@@ -144,7 +155,15 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                         }else{
 
                             Intent intent = new Intent(mCtx,ParentRequest.class);
+
                             intent.putExtra("childNo",childNo);
+                            intent.putExtra("firstName",firstName);
+                            intent.putExtra("lastName",lastName);
+                            intent.putExtra("grade",grade);
+                            intent.putExtra("school",school);
+                            intent.putExtra("pick",pick);
+                            intent.putExtra("drop",drop);
+
                             mCtx.startActivity(intent);
                         }
                     }
@@ -194,3 +213,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     }
 }
+
+/*
+
+ */

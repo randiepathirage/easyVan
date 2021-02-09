@@ -8,30 +8,15 @@
     android:layout_margin="50dp"
     android:orientation="vertical">
 
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
-            android:layout_height="50dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Request school van for new child"
-                android:textSize="18dp"
-                android:textColor="#000"
-                android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/roundededge"
+        android:text="Register a new child"
+        android:textColor="#fff"
+        android:paddingHorizontal="15dp"
+        android:id="@+id/btn"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +24,8 @@
         android:text="Select your registered child"
         android:textSize="18dp"
         android:textColor="#000"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
