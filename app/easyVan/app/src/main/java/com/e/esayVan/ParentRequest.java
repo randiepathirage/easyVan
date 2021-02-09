@@ -28,9 +28,8 @@ import java.util.Map;
 public class ParentRequest extends AppCompatActivity {
 
     EditText edtchildFirstName,edtchildLastName,edtschool,edtgrade,edtpickupLoc,edtdropOffLoc;
-    String childNo,firstName,lastName,grade,school,pick,drop,nic;;
-    String URL_REQ="";
-    String URL_VIEW="";
+    String childNo,firstName,lastName,grade,school,pick,drop,nic,vehicleNo,ownerID;
+    String URL_REQ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +44,9 @@ public class ParentRequest extends AppCompatActivity {
         edtdropOffLoc=findViewById(R.id.editDropLoc);
 
         childNo=getIntent().getStringExtra("childNo");
-
+        nic=getIntent().getStringExtra("nic");
+        vehicleNo=getIntent().getStringExtra("vehicleNo");
+        ownerID=getIntent().getStringExtra("ownerID");
 
 
         if(childNo.equals("0")){
@@ -55,8 +56,6 @@ public class ParentRequest extends AppCompatActivity {
         }else{
             //if child is registered in the system
 
-
-            nic=getIntent().getStringExtra("nic");
             firstName=getIntent().getStringExtra("firstName");
             lastName=getIntent().getStringExtra("lastName");
             grade=getIntent().getStringExtra("grade");
@@ -77,6 +76,14 @@ public class ParentRequest extends AppCompatActivity {
 
     public void sendReq(View view) {
 
+        if(childNo.equals("0")){
+            //if child is not registered before
+            URL_REQ="http://10.0.2.2/easyvan/parentSendReq.php";
+
+        }else{
+            URL_REQ="http://10.0.2.2/easyvan/parentSendReqUpdate.php";
+        }
+
         final String strFirstName = edtchildFirstName.getText().toString();
         final String strLastName=edtchildLastName.getText().toString();
         final String strSchool = edtschool.getText().toString();
@@ -94,7 +101,7 @@ public class ParentRequest extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         Toast.makeText(ParentRequest.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ParentAccount.class));
+                        startActivity(new Intent(getApplicationContext(), ParentNewsfeed.class));
                         finish();
                         progressDialog.dismiss();
 
@@ -112,12 +119,16 @@ public class ParentRequest extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String,String>();
 
                 params.put("nic",nic);
-                params.put("fristName",strFirstName);
+                params.put("firstName",strFirstName);
                 params.put("lastName",strLastName);
                 params.put("school",strSchool);
                 params.put("grade",strGrade);
                 params.put("pick",strPickupLoc);
                 params.put("drop",strDropOffLoc);
+                params.put("ownerID",ownerID);
+                params.put("vehicleNo",vehicleNo);
+
+
 
                 return params;
             }

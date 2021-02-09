@@ -33,18 +33,20 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     //we are storing all the products in a list
     private List<ParentChild> childlist;
     String no,parentNIC,mode,childNo;
-    String firstName,lastName, grade, school,pick,drop;
+    String firstName,lastName, grade, school,pick,drop,vehicleNo,ownerID;
 
 
     String URL_DELETE="http://10.0.2.2/easyvan/removeChildVan.php";
     String URL_CHECK="http://10.0.2.2/easyvan/checkChildStatus.php";
 
     //getting the context and product list with constructor
-    public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, String parentNIC, String mode) {
+    public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, String parentNIC,String vehicleNo,String ownerID, String mode) {
         this.mCtx = mCtx;
         this.childlist = childlist;
         this.parentNIC=parentNIC;
         this.mode=mode;
+        this.vehicleNo=vehicleNo;
+        this.ownerID=ownerID;
         // this.monChildListener= onChildListener;
     }
 
@@ -160,6 +162,8 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                             intent.putExtra("school",school);
                             intent.putExtra("pick",pick);
                             intent.putExtra("drop",drop);
+                            intent.putExtra("vehicleNo",vehicleNo);
+                            intent.putExtra("ownerID",ownerID);
 
                             mCtx.startActivity(intent);
                         }

@@ -31,6 +31,7 @@ public class ParentSelectChild extends AppCompatActivity {
 
     private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
     String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
+    String ownerID,vehicleNo;
     //a list to store all the child details
     List<ParentChild> childlist;
     String userName;
@@ -60,12 +61,20 @@ public class ParentSelectChild extends AppCompatActivity {
         //initializing the childrenlist
         childlist = new ArrayList<>();
 
+        //van number and owner id
+        vehicleNo=getIntent().getStringExtra("vehicleNo");
+        ownerID=getIntent().getStringExtra("ownerID");
+
+
         Button btn=findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(ParentSelectChild.this,ParentRequest.class);
                 intent.putExtra("childNo","0");
+                intent.putExtra("nic",strNic);
+                intent.putExtra("vehicleNo",vehicleNo);
+                intent.putExtra("ownerID",ownerID);
                 startActivity(intent);
             }
         });
@@ -135,7 +144,7 @@ public class ParentSelectChild extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentSelectChild.this,childlist,strNic,"request");
+                            ParentChildrenAdapter adapter = new ParentChildrenAdapter(ParentSelectChild.this,childlist,strNic,vehicleNo,ownerID,"request");
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
