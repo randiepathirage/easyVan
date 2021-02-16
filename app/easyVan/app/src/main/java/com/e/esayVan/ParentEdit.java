@@ -22,8 +22,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
 
 public class ParentEdit extends AppCompatActivity {
 
@@ -31,8 +47,8 @@ public class ParentEdit extends AppCompatActivity {
     private EditText edtContactNo, edtAddress, edtEmail, edtNic, edtUsername;
     private String strNic, strAddress, strEmail, strContactNo, userName;
 
-    String URL_VIEW = "http://10.0.2.2/easyvan/viewParentDetails.php";
-    String URL_UPDATE = "http://10.0.2.2/easyvan/updateParentDetails.php";
+    String URL_VIEW = "https://10.0.2.2/easyvan/viewParentDetails.php";
+    String URL_UPDATE = "https://10.0.2.2/easyvan/updateParentDetails.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +83,7 @@ public class ParentEdit extends AppCompatActivity {
 
     public void sendJsonrequest(){
 
-            //String url =URL + userName.trim();
-
+        HttpsTrustManager.allowAllSSL();
             StringRequest stringRequest = new StringRequest(Request.Method.POST,URL_VIEW, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
