@@ -78,10 +78,10 @@ public class ParentRequest extends AppCompatActivity {
 
         if(childNo.equals("0")){
             //if child is not registered before
-            URL_REQ="https://10.0.2.2/easyvan/parentSendReq.php";
+            URL_REQ="http://10.0.2.2/easyvan/parentSendReq.php";
 
         }else{
-            URL_REQ="https://10.0.2.2/easyvan/parentSendReqUpdate.php";
+            URL_REQ="http://10.0.2.2/easyvan/parentSendReqUpdate.php";
         }
 
         final String strFirstName = edtchildFirstName.getText().toString();
@@ -95,7 +95,6 @@ public class ParentRequest extends AppCompatActivity {
         progressDialog.setMessage("sending....");
         progressDialog.show();
 
-        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_REQ,
                 new Response.Listener<String>() {
                     @Override

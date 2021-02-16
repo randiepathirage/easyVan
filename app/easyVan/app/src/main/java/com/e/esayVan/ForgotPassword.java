@@ -33,7 +33,7 @@ public class ForgotPassword extends AppCompatActivity {
     String email;
     Random r;
     int output;
-    String URL = "https://10.0.2.2/easyvan/forgetpassword.php";
+    String URL = "http://10.0.2.2/easyvan/forgetpassword.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,6 @@ public class ForgotPassword extends AppCompatActivity {
                     i.putExtra("email",email);
                     startActivity(i);
 
-                    HttpsTrustManager.allowAllSSL();
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                             new Response.Listener<String>() {
                                 @Override

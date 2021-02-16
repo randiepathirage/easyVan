@@ -31,8 +31,8 @@ import java.util.Map;
 public class NewsfeedMoreVanDetails extends AppCompatActivity {
 
     String number;
-    String URL_DETAILS="https://10.0.2.2/easyvan/moreVanDetails.php";
-    String REVIEW_URL="https://10.0.2.2/easyvan/newsFeedReview.php";
+    String URL_DETAILS="http://10.0.2.2/easyvan/moreVanDetails.php";
+    String REVIEW_URL="http://10.0.2.2/easyvan/newsFeedReview.php";
     private String strNic,strContactNo,strFirstName,strLastName,strDriverNIC,strDriverContact,strDriverLastName,strDriverFirstName,strDriverLicense;
     private float rate;
     TextView ownerName,ownerContact,ownerNIC,driverName,driverNIC,driverContact,driverLicence;
@@ -76,7 +76,6 @@ public class NewsfeedMoreVanDetails extends AppCompatActivity {
     }
 
     private void loadDetails() {
-        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL_DETAILS, new Response.Listener<String>() {
             @Override
          public void onResponse(String response) {
@@ -142,7 +141,6 @@ public class NewsfeedMoreVanDetails extends AppCompatActivity {
 
     private void loadReviews() {
 
-        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST,REVIEW_URL,
                 new Response.Listener<String>() {
                     @Override
