@@ -17,6 +17,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.net.ssl.HttpsURLConnection;
+
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     Context context;
@@ -39,7 +41,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String password = params[2];
 
                 URL url = new URL(login_url);
-                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+                HttpURLConnection httpURLConnection= (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
