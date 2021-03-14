@@ -32,90 +32,68 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/owner_spinner1"
-        android:layout_width="242dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="12dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/add_van_type"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="128dp"
-        android:text="To"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="78dp">
 
-    <EditText
-        android:id="@+id/editTextDate3"
-        android:layout_width="146dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="344dp"
-        android:layout_marginEnd="68dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="20dp"
+            android:text="vehicle part"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton8" />
 
-    <EditText
-        android:id="@+id/editTextDate2"
-        android:layout_width="146dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="68dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="302dp"
+            android:text="Fuel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="224dp"
-        android:text="Time Duration"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="20dp"
+            android:text="vehicle Service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton5" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="66dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="84dp"
-        android:text="User"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radioButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="20dp"
+            android:text="licence"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton6" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="156dp"
-        android:text="Report Type"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radioButton9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="20dp"
+            android:text="Full report"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton7" />
 
-    <Spinner
-        android:id="@+id/owner_spinner2"
-        android:layout_width="242dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="12dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
