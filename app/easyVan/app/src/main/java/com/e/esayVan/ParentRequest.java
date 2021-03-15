@@ -18,38 +18,78 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParentRequest extends AppCompatActivity {
 
-    EditText childName,school,grade,pickupLoc,pickupLink,dropOffLoc,dropOffLink;
-    String URL_REQ="";
+    EditText edtchildFirstName,edtchildLastName,edtschool,edtgrade,edtpickupLoc,edtdropOffLoc;
+    String childNo,firstName,lastName,grade,school,pick,drop,nic,vehicleNo,ownerID;
+    String URL_REQ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_request);
         getSupportActionBar().setTitle("Request");
 
-        childName=findViewById(R.id.edtChildName);
-        school=findViewById(R.id.edtSchool);
-        grade=findViewById(R.id.edtGrade);
-        pickupLoc=findViewById(R.id.edtPickupLoc);
-        pickupLink=findViewById(R.id.edtPickupLink);
-        dropOffLoc=findViewById(R.id.editDropLoc);
-        dropOffLink=findViewById(R.id.edtDropLink);
+        edtchildFirstName=findViewById(R.id.edtChildFirstName);
+        edtchildLastName=findViewById(R.id.edtChildLastName);
+        edtschool=findViewById(R.id.edtSchool);
+        edtgrade=findViewById(R.id.edtGrade);
+        edtpickupLoc=findViewById(R.id.edtPickupLoc);
+        edtdropOffLoc=findViewById(R.id.editDropLoc);
 
+        childNo=getIntent().getStringExtra("childNo");
+        nic=getIntent().getStringExtra("nic");
+        vehicleNo=getIntent().getStringExtra("vehicleNo");
+        ownerID=getIntent().getStringExtra("ownerID");
+
+
+        if(childNo.equals("0")){
+
+            //if child is not registered before
+
+        }else{
+            //if child is registered in the system
+
+            firstName=getIntent().getStringExtra("firstName");
+            lastName=getIntent().getStringExtra("lastName");
+            grade=getIntent().getStringExtra("grade");
+            school=getIntent().getStringExtra("school");
+            pick=getIntent().getStringExtra("pick");
+            drop=getIntent().getStringExtra("drop");
+
+            edtchildFirstName.setText(firstName);
+            edtchildLastName.setText(lastName);
+            edtdropOffLoc.setText(drop);
+            edtpickupLoc.setText(pick);
+            edtschool.setText(school);
+            edtgrade.setText(grade);
+
+        }
+        
     }
 
     public void sendReq(View view) {
 
-        final String strName = childName.getText().toString();
-        final String strSchool = school.getText().toString();
-        final String strGrade = grade.getText().toString();
-        final String strPickupLoc = pickupLoc.getText().toString();
-        final String strPickupLink = pickupLink.getText().toString();
-        final String strDropOffLoc = dropOffLoc.getText().toString();
-        final String strDropOffLink = dropOffLink.getText().toString();
+        if(childNo.equals("0")){
+            //if child is not registered before
+            URL_REQ="http://10.0.2.2/easyvan/parentSendReq.php";
+
+        }else{
+            URL_REQ="http://10.0.2.2/easyvan/parentSendReqUpdate.php";
+        }
+
+        final String strFirstName = edtchildFirstName.getText().toString();
+        final String strLastName=edtchildLastName.getText().toString();
+        final String strSchool = edtschool.getText().toString();
+        final String strGrade = edtgrade.getText().toString();
+        final String strPickupLoc = edtpickupLoc.getText().toString();
+        final String strDropOffLoc = edtdropOffLoc.getText().toString();
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("sending....");
@@ -61,7 +101,7 @@ public class ParentRequest extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         Toast.makeText(ParentRequest.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ParentAccount.class));
+                        startActivity(new Intent(getApplicationContext(), ParentNewsfeed.class));
                         finish();
                         progressDialog.dismiss();
 
@@ -78,13 +118,18 @@ public class ParentRequest extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
 
-                params.put("name",strName);
+                params.put("childNo",childNo);
+                params.put("nic",nic);
+                params.put("firstName",strFirstName);
+                params.put("lastName",strLastName);
                 params.put("school",strSchool);
                 params.put("grade",strGrade);
-                params.put("pick_up",strPickupLoc);
-                params.put("pick_link",strPickupLink);
+                params.put("pick",strPickupLoc);
                 params.put("drop",strDropOffLoc);
-                params.put("drop_link",strDropOffLink);
+                params.put("ownerID",ownerID);
+                params.put("vehicleNo",vehicleNo);
+
+
 
                 return params;
             }

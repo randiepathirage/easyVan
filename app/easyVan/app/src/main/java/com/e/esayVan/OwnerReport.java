@@ -21,16 +21,6 @@ public class OwnerReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
-//spin View
-        spin1 = findViewById(R.id.owner_spinner1);
-        ArrayAdapter myadapter = new ArrayAdapter(OwnerReport.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_1));
-        myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spin1.setAdapter(myadapter);
-
-        spin2 = findViewById(R.id.owner_spinner2);
-        ArrayAdapter myadapter2 = new ArrayAdapter(OwnerReport.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_2));
-        myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spin2.setAdapter(myadapter2);
 
 
         /*declar variable*/
