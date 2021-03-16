@@ -1,6 +1,11 @@
 <?php
  require  "conn.php";
 
+$file = fopen('ApplicationLogs.txt','a');
+
+date_default_timezone_set("Asia/Colombo");
+$day=date("Y-m-d");
+$time=date("h:i:sa");
 
  $user_firstname=$_POST['firstName'];
  $user_lastname=$_POST['lastName'];
@@ -15,9 +20,22 @@
  $ownerName =$_POST['ownerName'];
  
  $user_role = "driver";
- $user_middlename = "None";
 
+    $salt=generateRandomString();
 
+    function generateRandomString($length = 20) {
+       $characters='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|[]/?~`';
+       $charactersLength = strlen($characters);
+       $randomString = '';
+       for ($i = 0; $i < $length; $i++) {
+           $randomString .= $characters[rand(0, $charactersLength - 1)];
+       }
+       return $randomString;
+    }
+
+    //$password=md5($password);
+    $password=$password.$salt;
+    $password=hash('sha256',$password);
 
 
 
@@ -35,13 +53,16 @@
 
 
 if(mysqli_num_rows($nic_result)>0){
-        echo "This NIC is already registered";  
+        echo "This NIC is already registered";
+        fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR");  
     }
     else if(mysqli_num_rows($contact_result)>0){
-        echo "This Contact_no is already taken"; 
+        echo "This Contact_no is already taken";
+        fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR"); 
     }
      else if(mysqli_num_rows($username_result)>0){
-        echo "This username is already taken"; 
+        echo "This username is already taken";
+        fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR"); 
     }
 
 else{
@@ -58,9 +79,9 @@ else{
 
 
         //update DB
-        $query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username',' $password',' $email')";
+        $query_login="INSERT INTO login(NIC_no,username,password,salt,email) VALUES ('$nic_no','$username',' $password','$salt',' $email')";
 
-        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,middle_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$user_middlename','$address')";
+        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$user_middlename','$address')";
 
         $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";
 
@@ -74,6 +95,7 @@ else{
                     if($conn->query($query_parent_owner_driver)===TRUE){
                     	if($conn->query($query_assign)===TRUE){
                         	echo "Insert Successful Driver";
+                            fwrite($file,"\n$day  $time   $nic_no      REGISTRATION $user_role    ALERT");
                     	}
                     }
                 }
@@ -82,8 +104,10 @@ else{
 
         else{
             echo "Error".$query_login."<br>".$conn->error;
+            fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail       ERROR");
         }
 }
     $conn->close();
+    fclose($file);
 
 ?>
