@@ -7,7 +7,7 @@
     $day=date("Y-m-d");
     $time=date("h:i:sa");
     
-    /*
+
     $license_no=0;
     $user_firstname=$_POST['firstName'];
     $user_lastname=$_POST['lastName'];
@@ -17,10 +17,10 @@
     $address=$_POST['address'];
     $contact_no=$_POST['contactNo'];
     $email=$_POST['email'];
-    $user_role=$_POST['userRole'];*/
+    $user_role=$_POST['userRole'];
 
     
-   
+     /*  
     $user_firstname="A";
     $user_lastname="A";
     $nic_no="33765ere5v";
@@ -30,7 +30,7 @@
     $contact_no=432265456;
     $email="rfsvvcd";
     $user_role="owner";
-    $license_no=0;
+    $license_no=0;*/
 
     //$password=md5($password);
 
