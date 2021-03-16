@@ -12,9 +12,24 @@
     $user_name=$_POST["username"];
     $user_pass=$_POST["password"];
 
+    //$user_name="please9";
+    //$user_pass="123";
 
-    $user_pass=md5($user_pass);
+    $salt="";
 
+    $query_salt="SELECT salt FROM login WHERE username='$user_name'";
+    $salt_result = mysqli_query($conn,$query_salt);
+
+    while($row=mysqli_fetch_assoc($salt_result)){
+        $salt = $row["salt"];
+
+    }
+
+    
+    //$user_pass=md5($user_pass);
+    $user_pass=$user_pass.$salt;
+    $user_pass=hash('sha256',$user_pass);
+    //echo $password;
 
     //$query_parent="SELECT * FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass'";
     //$parent_result = mysqli_query($conn,$query_parent);
@@ -25,7 +40,7 @@
     $query_owner="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass') AND owner_flag LIKE 1";
     $owner_result = mysqli_query($conn,$query_owner);
 
-    $query_driver="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass') AND driver_flag LIKE 1";
+$query_driver="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name'AND password LIKE '$user_pass') AND driver_flag LIKE 1";
     $driver_result = mysqli_query($conn,$query_driver);
 
     $query_admin="SELECT * FROM parent_owner_driver WHERE NIC_no IN(SELECT NIC_no FROM login WHERE username LIKE '$user_name' AND password LIKE '$user_pass') AND admin_flag LIKE 1";
