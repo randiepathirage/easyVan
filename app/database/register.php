@@ -9,6 +9,7 @@
     $day=date("Y-m-d");
     $time=date("h:i:sa");
     
+
     $license_no=0;
     $user_firstname=$_POST['firstName'];
     $user_lastname=$_POST['lastName'];
@@ -20,19 +21,35 @@
     $email=$_POST['email'];
     $user_role=$_POST['userRole'];
 
-    /* 
+    /*
     $user_firstname="A";
     $user_lastname="AB";
-    $nic_no="875914946v";
-    $username="please4";
+    $nic_no="PPPPPPPP";
+    $username="please9";
     $password="123";
     $address="A";
-    $contact_no=212365433;
-    $email="please4";
+    $contact_no=21654732;
+    $email="please9";
     $user_role="driver";
     $license_no=0;*/
 
-    $password=md5($password);
+
+
+    $salt=generateRandomString();
+
+    function generateRandomString($length = 20) {
+       $characters='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|[]/?~`';
+       $charactersLength = strlen($characters);
+       $randomString = '';
+       for ($i = 0; $i < $length; $i++) {
+           $randomString .= $characters[rand(0, $charactersLength - 1)];
+       }
+       return $randomString;
+    }
+
+    //$password=md5($password);
+    $password=$password.$salt;
+    $password=hash('sha256',$password);
     
     $parent=0;
     $driver=0;
@@ -82,7 +99,7 @@
         fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR");
     }
     else{
-        $query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username','$password','$email')";
+        $query_login="INSERT INTO login(NIC_no,username,password,salt,email) VALUES ('$nic_no','$username','$password','$salt','$email')";
 
         $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$address')";
 
