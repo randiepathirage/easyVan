@@ -4,8 +4,9 @@
 
     
     $id = $_POST["no"];
+    //$id='3';
  
-    $check_van="SELECT * FROM child_assign WHERE child_no=$id";
+    $check_van="SELECT * FROM child WHERE child_no='$id' AND vehicle_no!='NULL'";
     $result = mysqli_query($conn,$check_van);
 
 
