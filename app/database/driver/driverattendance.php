@@ -27,9 +27,14 @@ $VN_result = mysqli_fetch_assoc($query_VehicelNO);
 $Result_VehicelNO= $VN_result ['vehicle_no'];
 //...............................................
 
+//Genarate child details.........................
+
+$stmt = $conn->prepare("SELECT first_name,last_name 
+FROM child WHERE child_no IN (SELECT child_no FROM child_assign WHERE vehicle_no = '$Result_VehicelNO'); ");
+
+//...........................................
 
 
-$stmt = $conn->prepare("SELECT first_name,last_name FROM child WHERE vehicle_no = '$Result_VehicelNO' ");
 
 //executing the query 
 $stmt->execute();
