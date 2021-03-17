@@ -189,7 +189,7 @@ public class NewsfeedMoreVanDetails extends AppCompatActivity {
         if(userRole!=null){
 
             Intent i =new Intent(this,ParentSelectChild.class);
-            i.putExtra("ownerID",strNic);
+            //i.putExtra("ownerID",strNic);
             i.putExtra("vehicleNo",number);
             startActivity(i);
         }
