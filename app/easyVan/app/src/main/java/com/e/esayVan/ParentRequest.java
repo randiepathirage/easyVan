@@ -28,7 +28,7 @@ import java.util.Map;
 public class ParentRequest extends AppCompatActivity {
 
     EditText edtchildFirstName,edtchildLastName,edtschool,edtgrade,edtpickupLoc,edtdropOffLoc;
-    String childNo,firstName,lastName,grade,school,pick,drop,nic,vehicleNo,ownerID;
+    String childNo,firstName,lastName,grade,school,pick,drop,parentUsername,vehicleNo;
     String URL_REQ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,10 @@ public class ParentRequest extends AppCompatActivity {
         edtdropOffLoc=findViewById(R.id.editDropLoc);
 
         childNo=getIntent().getStringExtra("childNo");
-        nic=getIntent().getStringExtra("nic");
+        parentUsername=getIntent().getStringExtra("ParentUsername");
         vehicleNo=getIntent().getStringExtra("vehicleNo");
-        ownerID=getIntent().getStringExtra("ownerID");
+        //ownerID=getIntent().getStringExtra("ownerID");
+
 
 
         if(childNo.equals("0")){
@@ -82,6 +83,7 @@ public class ParentRequest extends AppCompatActivity {
 
         }else{
             URL_REQ="http://10.0.2.2/easyvan/parentSendReqUpdate.php";
+
         }
 
         final String strFirstName = edtchildFirstName.getText().toString();
@@ -119,14 +121,13 @@ public class ParentRequest extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String,String>();
 
                 params.put("childNo",childNo);
-                params.put("nic",nic);
+                params.put("parentUsername",parentUsername);
                 params.put("firstName",strFirstName);
                 params.put("lastName",strLastName);
                 params.put("school",strSchool);
                 params.put("grade",strGrade);
                 params.put("pick",strPickupLoc);
                 params.put("drop",strDropOffLoc);
-                params.put("ownerID",ownerID);
                 params.put("vehicleNo",vehicleNo);
 
 
