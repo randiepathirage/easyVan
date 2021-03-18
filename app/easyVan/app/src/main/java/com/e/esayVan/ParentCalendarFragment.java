@@ -1,20 +1,31 @@
 package com.e.esayVan;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Calendar;
+
 public class ParentCalendarFragment extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
     Button btnMarkAttend;
+    EditText edtDate;
+    private Spinner spinner;
+
+    DatePickerDialog.OnDateSetListener setListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +33,41 @@ public class ParentCalendarFragment extends AppCompatActivity {
         setContentView(R.layout.activity_parent_calendar);
         getSupportActionBar().setTitle("Calendar");
 
+        //selecting date
+        edtDate=findViewById(R.id.edtDate);
+
+        Calendar calendar=Calendar.getInstance();
+        final int year=calendar.get(Calendar.YEAR);
+        final int month=calendar.get(Calendar.MONTH);
+        final int day=calendar.get(Calendar.DAY_OF_MONTH);
+
+        edtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog=new DatePickerDialog(ParentCalendarFragment.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month=month+1;
+                        String date=day+"/"+month+"/"+year;
+                        edtDate.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
+
+        //add spinner to select child
+        spinner=findViewById(R.id.spinner);
+      //  ArrayAdapter<String> adapter=new ArrayAdapter<String>(ParentCalendarFragment.this,
+     //           android.R.layout.simple_list_item_1,getResources().getStringArray(R.strings.names));
+     //   adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+     //   adapter.setAdaptor(adapter);
+
         btnMarkAttend=findViewById(R.id.btnMarkAttend);
         btnMarkAttend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ParentAttendance.class);
-                startActivity(i);
+
             }
         });
 

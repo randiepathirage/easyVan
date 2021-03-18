@@ -130,8 +130,8 @@ public class ParentPayFragment extends AppCompatActivity {
 
         if (requestCode == PAYPAL_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this,"Cancel",Toast.LENGTH_SHORT).show();
-        /*        PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                Toast.makeText(this, "Payment Canceled", Toast.LENGTH_SHORT).show();
+                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                 if (confirmation != null) {
                     try {
                         String paymentDetails = confirmation.toJSONObject().toString(4);
@@ -141,16 +141,15 @@ public class ParentPayFragment extends AppCompatActivity {
                         );
                     } catch (JSONException e) {
                         e.printStackTrace();
-                    }*/
+                    }
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
                 }
-                else if(resultCode== Activity.RESULT_CANCELED){
-                    Toast.makeText(this,"Cancel",Toast.LENGTH_SHORT).show();
-                }
-            }
-            else if(requestCode==PaymentActivity.RESULT_EXTRAS_INVALID){
-                Toast.makeText(this,"Invalid",Toast.LENGTH_SHORT).show();
+            } else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+                Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
             }
         }
+    }
 
     @Override
     protected void onDestroy() {

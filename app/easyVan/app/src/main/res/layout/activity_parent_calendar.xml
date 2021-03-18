@@ -1,60 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ParentCalendarFragment">
+    tools:context=".ParentCalendarFragment"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/text_calender"
         android:layout_width="match_parent"
-        android:text="today event"
+        android:text="Inform if your child will absent to the school van"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="20dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="50dp"
+        android:paddingBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select child:"
+        android:textColor="#000"
+        android:layout_marginLeft="30dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select date:"
+        android:textColor="#000"
+        android:layout_marginLeft="30dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:id="@+id/edtDate"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"/>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:textColor="#000"
+        android:layout_marginLeft="30dp"/>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:padding="10dp"
+        android:text="Morning(Mark if child will be absent in morning)"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="464dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:padding="10dp"
+        android:text="Evening(Mark if child will be absent in evening)"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="514dp" />
+
+
 
     <Button
         android:id="@+id/btnMarkAttend"
         android:layout_width="163dp"
         android:layout_height="48dp"
         android:background="@drawable/roundededge"
-        android:text="Mark Attendance"
+        android:text="done"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.734"
         android:textColor="#fff"
         android:textStyle="bold"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnMarkAttend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_calender">
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:focusedMonthDateColor="@color/theme"
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
-            android:background="#fff"
-            android:layout_marginTop="60dp"
-            android:selectedWeekBackgroundColor="@color/theme" />
-
-    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -70,4 +104,4 @@
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/parent_nav" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
