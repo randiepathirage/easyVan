@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ParentSelectChild"></activity>
+        <activity android:name=".PaymentDetails"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDCZgBybGyK5DAy0B5o6HWR4BBFqaamSCU" />
+
+        <activity android:name=".ParentSelectChild" />
         <activity android:name=".AdminAddUser" />
         <activity android:name=".AdminViewSchoolVan" />
         <activity android:name=".AdminUpdateDriver" />
@@ -48,7 +56,6 @@
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".OwnerReport" />
-        <activity android:name=".AdminNewArticle" />
         <activity android:name=".AdminVerifyDrivers" />
         <activity android:name=".AdminVerifySchoolVans" />
         <activity android:name=".AdminSchoolVans" />
