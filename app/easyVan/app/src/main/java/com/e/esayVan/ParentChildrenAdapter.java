@@ -93,8 +93,10 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                     drop=String.valueOf(children.getDropoffLocation());
                     //check if child already got a van
                     check();
+                }else if(mode.equals("select")){
+
                 }
-                //Toast.makeText(mCtx,children.getFirstName(),Toast.LENGTH_SHORT).show();
+
             }
         });
 
