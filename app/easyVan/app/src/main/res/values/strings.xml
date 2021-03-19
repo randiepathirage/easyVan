@@ -45,5 +45,10 @@
         <item>child</item>
     </string-array>
 
+    <string-array name="names">
+        <item>Home</item>
+        <item>Other</item>
+        <item>work</item>
+    </string-array>
 
 </resources>
