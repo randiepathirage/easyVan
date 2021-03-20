@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_margin="10dp">
 
         <LinearLayout
@@ -99,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="170dp"
         android:background="#fff"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
