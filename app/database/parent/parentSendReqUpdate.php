@@ -1,7 +1,7 @@
 <?php
     //randie................................................................
     require  "conn.php";
-  /*
+  
     $child_no=$_POST['childNo'];
     $parentUsername=$_POST['parentUsername'];
     $firstname=$_POST['firstName'];
@@ -10,7 +10,7 @@
     $grade=$_POST['grade'];
     $pick=$_POST['pick'];
     $drop=$_POST['drop'];
-    $vehicle_no=$_POST['vehicleNo'];*/
+    $vehicle_no=$_POST['vehicleNo'];
 
 
     $status='pending';
@@ -22,6 +22,7 @@
     date_default_timezone_set("Asia/Colombo");
     $time=date("h:i:sa");
 
+/*
     $child_no='2';
     $parentUsername="randie";
     $firstname="malit";
@@ -30,7 +31,7 @@
     $grade="4";
     $pick="wrre";
     $drop="rerer";
-    $vehicle_no="CBF-7375";
+    $vehicle_no="CBF-7375";*/
 
 
     //check if thischild already requested a van and pending
