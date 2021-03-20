@@ -57,13 +57,13 @@ public class ParentPayFragment extends AppCompatActivity {
     Button payementbtn;
     EditText edtAmount;
     String amount="";
-    String userName,childSelected;
+    String userName,childSelected,monthSelected;
     Spinner spinner,spinner2;
     ArrayList<String> childlist=new ArrayList<>();
     ArrayAdapter<String> childAdapter;
     RequestQueue requestQueue;
     final static int PAYHERE_REQUEST = 11010;
-    String URL_PAY="";
+    String URL_PAY="http://10.0.2.2/easyvan/insertPayment.php";
 
 
 
@@ -128,6 +128,20 @@ public class ParentPayFragment extends AppCompatActivity {
 
         //loading spinner to select month
         spinner2=findViewById(R.id.spin2);
+        ArrayAdapter<CharSequence> monthAdapter=ArrayAdapter.createFromResource(this,R.array.months, android.R.layout.simple_spinner_item);
+        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(monthAdapter);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                monthSelected= (String) spinner.getItemAtPosition(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         edtAmount=findViewById(R.id.edtAmount);
         payementbtn=findViewById(R.id.paymentbtn);
@@ -172,6 +186,35 @@ public class ParentPayFragment extends AppCompatActivity {
         });
 
 
+    }
+
+    public void pay(View view) {
+
+        amount = edtAmount.getText().toString();
+
+        //payhere
+        InitRequest req = new InitRequest();
+        req.setMerchantId("1216429");       // Your Merchant PayHere ID
+        req.setMerchantSecret("8RfjzO7FfzG4vTWJXGsvtD4eXuKuPQt2S8Rl7kxG1N58"); // Your Merchant secret (Add your app at Settings > Domains & Credentials, to get this))
+        req.setCurrency("LKR");             // Currency code LKR/USD/GBP/EUR/AUD
+        req.setAmount(Double.parseDouble(amount));             // Final Amount to be charged
+        req.setOrderId("230000123");        // Unique Reference ID
+        req.setItemsDescription("van fees");  // Item description title
+        req.setCustom1("This is the custom message 1");
+        req.setCustom2("This is the custom message 2");
+        req.getCustomer().setFirstName(userName);
+        req.getCustomer().setLastName(userName);
+        req.getCustomer().setEmail("samanp@gmail.com");
+        req.getCustomer().setPhone("+94771234567");
+        req.getCustomer().getAddress().setAddress("No.1, Galle Road");
+        req.getCustomer().getAddress().setCity("Colombo");
+        req.getCustomer().getAddress().setCountry("Sri Lanka");
+
+
+        Intent intent = new Intent(this, PHMainActivity.class);
+        intent.putExtra(PHConstants.INTENT_EXTRA_DATA, req);
+        PHConfigs.setBaseUrl(PHConfigs.SANDBOX_URL);
+        startActivityForResult(intent, PAYHERE_REQUEST);
     }
 
     @Override
@@ -228,6 +271,7 @@ public class ParentPayFragment extends AppCompatActivity {
                 params.put("amount", amount);
                 params.put("childName", childSelected);
                 params.put("username", userName);
+                params.put("month",monthSelected);
 
                 return params;
             }
@@ -267,32 +311,5 @@ public class ParentPayFragment extends AppCompatActivity {
         return true;
     }
 
-    public void pay(View view) {
 
-        amount = edtAmount.getText().toString();
-
-        //payhere
-        InitRequest req = new InitRequest();
-        req.setMerchantId("1216429");       // Your Merchant PayHere ID
-        req.setMerchantSecret("8RfjzO7FfzG4vTWJXGsvtD4eXuKuPQt2S8Rl7kxG1N58"); // Your Merchant secret (Add your app at Settings > Domains & Credentials, to get this))
-        req.setCurrency("LKR");             // Currency code LKR/USD/GBP/EUR/AUD
-        req.setAmount(Double.parseDouble(amount));             // Final Amount to be charged
-        req.setOrderId("230000123");        // Unique Reference ID
-        req.setItemsDescription("van fees");  // Item description title
-        req.setCustom1("This is the custom message 1");
-        req.setCustom2("This is the custom message 2");
-        req.getCustomer().setFirstName(userName);
-        req.getCustomer().setLastName(userName);
-        req.getCustomer().setEmail("samanp@gmail.com");
-        req.getCustomer().setPhone("+94771234567");
-        req.getCustomer().getAddress().setAddress("No.1, Galle Road");
-        req.getCustomer().getAddress().setCity("Colombo");
-        req.getCustomer().getAddress().setCountry("Sri Lanka");
-
-
-        Intent intent = new Intent(this, PHMainActivity.class);
-        intent.putExtra(PHConstants.INTENT_EXTRA_DATA, req);
-        PHConfigs.setBaseUrl(PHConfigs.SANDBOX_URL);
-        startActivityForResult(intent, PAYHERE_REQUEST);
-    }
 }
