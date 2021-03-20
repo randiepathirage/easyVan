@@ -8,18 +8,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class OwnerReport extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class OwnerReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //private Menu menu;
     Button bt1;
-    Spinner spin1 , spin2;
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/driverlist.php";
+    Spinner spin1;
+    ArrayList<String> vehicleList = new ArrayList<>();
+    ArrayAdapter<String> vehicleAdapter;
+    RequestQueue requestQueue;
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +48,46 @@ public class OwnerReport extends AppCompatActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mang = new Intent(OwnerReport.this,OwnerReportExpenses.class);
+                Intent mang = new Intent(OwnerReport.this, OwnerReportExpenses.class);
                 startActivity(mang);
 
             }
         });
+        requestQueue = Volley.newRequestQueue(this);
+        spin1 = findViewById(R.id.spinnerVehicle);
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = response.getJSONArray("vehicle");
+
+                for(int i=0; i<jsonArray.length();i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String vehicleNumber = jsonObject.optString("number");
+                    vehicleList.add(vehicleNumber);
+                    vehicleAdapter = new ArrayAdapter<>(OwnerReport.this, android.R.layout.simple_spinner_item,vehicleList);
+                    vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spin1.setAdapter(vehicleAdapter  );
+
+                }
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        //Toast.makeText(OwnerReport.this, (CharSequence) vehicleAdapter, Toast.LENGTH_LONG).show();
+        requestQueue.add(jsonObjectRequest);
+
+
 
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
@@ -79,6 +132,7 @@ public class OwnerReport extends AppCompatActivity {
                 return false;
             }
         });
+
         getSupportActionBar().setTitle("Report");
     }
     private Menu menu;
@@ -116,4 +170,13 @@ public class OwnerReport extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
