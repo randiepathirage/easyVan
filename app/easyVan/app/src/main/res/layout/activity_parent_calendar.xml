@@ -26,21 +26,20 @@
         android:textColor="#000"
         android:layout_marginLeft="30dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <Spinner
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spin"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginRight="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select date:"
         android:textColor="#000"
-        android:layout_marginLeft="30dp"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -49,8 +48,6 @@
         android:id="@+id/edtDate"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="30dp"/>
-
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="175dp"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/parent_nav" />

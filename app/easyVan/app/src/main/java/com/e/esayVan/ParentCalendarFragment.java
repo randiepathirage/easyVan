@@ -24,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -43,21 +44,69 @@ public class ParentCalendarFragment extends AppCompatActivity {
     BottomNavigationView bottom_nav;
     Button btnMarkAttend;
     EditText edtDate;
-    String strNic="",vehicleNo="",ownerID="",userName;
+    String userName;
+    Spinner spinner;
+    ArrayList<String> childlist=new ArrayList<>();
+    ArrayAdapter<String> childAdapter;
+    RequestQueue requestQueue;
 
-    String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
 
-    //a list to store all the child details
-    List<ParentChild> childlist;
-
-    //the recyclerview
-    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_calendar);
         getSupportActionBar().setTitle("Calendar");
+
+        //get the session username
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
+        String URL="http://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
+
+        requestQueue=Volley.newRequestQueue(this);
+
+        spinner=findViewById(R.id.spin);
+
+       // loadSpinner();
+
+      JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,URL,null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            JSONArray jsonArray=response.getJSONArray("children");
+                            for(int i=0;i<jsonArray.length();i++){
+                                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                                String childName=jsonObject.optString("child_name");
+                                childlist.add(childName);
+                                childAdapter=new ArrayAdapter<>(ParentCalendarFragment.this, android.R.layout.simple_spinner_item,childlist);
+                                childAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                spinner.setAdapter(childAdapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentCalendarFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+        //spinner.setOnItemClickListener(this);
+
+
+
+
+
+
+
+
+
 
         //selecting date
         edtDate=findViewById(R.id.edtDate);
@@ -82,23 +131,6 @@ public class ParentCalendarFragment extends AppCompatActivity {
             }
         });
 
-        //view children details
-        //getting the recyclerview from xml
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        RecyclerView.ItemDecoration divider=new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(divider);
-
-        //initializing the childrenlist
-        childlist = new ArrayList<>();
-
-        //get the session username
-        SessionManagement sessionManagement = new SessionManagement(this);
-        userName = sessionManagement.getUserName();
-
-        loadChildList();
 
         btnMarkAttend=findViewById(R.id.btnMarkAttend);
         btnMarkAttend.setOnClickListener(new View.OnClickListener() {
@@ -146,62 +178,6 @@ public class ParentCalendarFragment extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    private void loadChildList() {
-
-
-        StringRequest stringRequest=new StringRequest(Request.Method.POST,VIEW_CHILD_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray array=new JSONArray(response);
-
-                            for(int i=0;i<array.length();i++){
-                                JSONObject child=array.getJSONObject(i);
-                                childlist.add(new ParentChild(
-                                        child.getString("grade"),
-                                        child.getString("school"),
-                                        child.getString("firstName"),
-                                        child.getString("lastName"),
-                                        child.getString("pickupLocation"),
-                                        child.getString("dropoffLocation"),
-                                        child.getString("childNo")
-
-                                ));
-
-                            }
-
-                            //creating recyclerview adapter
-                            ParentChildrenList adapter = new ParentChildrenList(ParentCalendarFragment.this,childlist);
-                            //setting adapter to recyclerview
-                            recyclerView.setAdapter(adapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentCalendarFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
-
-                params.put("username",userName);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
     }
 
     //app bar
