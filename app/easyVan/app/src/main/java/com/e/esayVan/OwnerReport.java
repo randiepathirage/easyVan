@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,13 +17,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class OwnerReport extends AppCompatActivity {
 
     //private Menu menu;
+    Button bt1;
     Spinner spin1 , spin2;
-
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/driverlist.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
 
+        bt1 = (Button) findViewById(R.id.button11);
+
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mang = new Intent(OwnerReport.this,OwnerReportExpenses.class);
+                startActivity(mang);
+
+            }
+        });
 
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
@@ -101,5 +114,6 @@ public class OwnerReport extends AppCompatActivity {
         }
         return true;
     }
+
 
 }
