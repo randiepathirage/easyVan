@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Config;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,11 +20,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -38,6 +41,15 @@ import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import lk.payhere.androidsdk.PHConfigs;
+import lk.payhere.androidsdk.PHConstants;
+import lk.payhere.androidsdk.PHMainActivity;
+import lk.payhere.androidsdk.PHResponse;
+import lk.payhere.androidsdk.model.InitRequest;
+import lk.payhere.androidsdk.model.StatusResponse;
 
 public class ParentPayFragment extends AppCompatActivity {
 
@@ -46,15 +58,12 @@ public class ParentPayFragment extends AppCompatActivity {
     EditText edtAmount;
     String amount="";
     String userName,childSelected;
-    Spinner spinner;
+    Spinner spinner,spinner2;
     ArrayList<String> childlist=new ArrayList<>();
     ArrayAdapter<String> childAdapter;
     RequestQueue requestQueue;
-
-
-    public static final int PAYPAL_REQUEST_CODE=7171;
-    private static PayPalConfiguration config= new PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-            .clientId(PaypalClientIDConfigClass.PAYPAL_CLIENT_ID);
+    final static int PAYHERE_REQUEST = 11010;
+    String URL_PAY="";
 
 
 
@@ -69,13 +78,12 @@ public class ParentPayFragment extends AppCompatActivity {
         userName = sessionManagement.getUserName();
 
 
-        //loading spinner
+        //loading spinner to select child
         String URL="http://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
 
         requestQueue= Volley.newRequestQueue(this);
 
         spinner=findViewById(R.id.spin);
-
 
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,URL,null,
                 new Response.Listener<JSONObject>() {
@@ -118,27 +126,11 @@ public class ParentPayFragment extends AppCompatActivity {
             }
         });
 
-
+        //loading spinner to select month
+        spinner2=findViewById(R.id.spin2);
 
         edtAmount=findViewById(R.id.edtAmount);
         payementbtn=findViewById(R.id.paymentbtn);
-
-        //start paypal service
-        Intent intent=new Intent(this,PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config);
-        startService(intent);
-
-        payementbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PaypalPaymentsMethod();
-            }
-        });
-
-
-
-
-
 
         //bottom navigation
         bottom_nav = findViewById(R.id.bottom_navigation);
@@ -182,51 +174,70 @@ public class ParentPayFragment extends AppCompatActivity {
 
     }
 
-    private void PaypalPaymentsMethod() {
-
-        amount=edtAmount.getText().toString();
-        PayPalPayment payment=new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD","van fees",PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent intent=new Intent(this, PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payment);
-        startActivityForResult(intent,PAYPAL_REQUEST_CODE);
-    }
-
-
-
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PAYPAL_REQUEST_CODE) {
+        if (requestCode == PAYHERE_REQUEST && data != null && data.hasExtra(PHConstants.INTENT_EXTRA_RESULT)) {
+            PHResponse<StatusResponse> response = (PHResponse<StatusResponse>) data.getSerializableExtra(PHConstants.INTENT_EXTRA_RESULT);
             if (resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this, "Payment Canceled", Toast.LENGTH_SHORT).show();
-                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (confirmation != null) {
-                    try {
-                        String paymentDetails = confirmation.toJSONObject().toString(4);
-                        startActivity(new Intent(this, PaymentDetails.class)
-                                .putExtra("PaymentDetails", paymentDetails)
-                                .putExtra("paymentAmount", amount)
-                        );
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                String msg;
+                if (response != null)
+                    if (response.isSuccess()){
+                        msg = "Activity result:" + response.getData().toString();
+                        updateDatabase();
                     }
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
-                }
-            } else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
-                Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
+                    else
+                        msg = "Result:" + response.toString();
+                else
+                    msg = "Result: no response";
+                //Log.d(TAG, msg);
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                //textView.setText(msg);
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                if (response != null)
+                    Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(this, "User canceled the request", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        stopService(new Intent(this,PayPalService.class));
-        super.onDestroy();
+    private void updateDatabase() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL_PAY,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(ParentPayFragment.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
+                        finish();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentPayFragment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("amount", amount);
+                params.put("childName", childSelected);
+                params.put("username", userName);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentPayFragment.this);
+        requestQueue.add(request);
+
+
     }
+
 
     //app bar
     @Override
@@ -254,5 +265,34 @@ public class ParentPayFragment extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void pay(View view) {
+
+        amount = edtAmount.getText().toString();
+
+        //payhere
+        InitRequest req = new InitRequest();
+        req.setMerchantId("1216429");       // Your Merchant PayHere ID
+        req.setMerchantSecret("8RfjzO7FfzG4vTWJXGsvtD4eXuKuPQt2S8Rl7kxG1N58"); // Your Merchant secret (Add your app at Settings > Domains & Credentials, to get this))
+        req.setCurrency("LKR");             // Currency code LKR/USD/GBP/EUR/AUD
+        req.setAmount(Double.parseDouble(amount));             // Final Amount to be charged
+        req.setOrderId("230000123");        // Unique Reference ID
+        req.setItemsDescription("van fees");  // Item description title
+        req.setCustom1("This is the custom message 1");
+        req.setCustom2("This is the custom message 2");
+        req.getCustomer().setFirstName(userName);
+        req.getCustomer().setLastName(userName);
+        req.getCustomer().setEmail("samanp@gmail.com");
+        req.getCustomer().setPhone("+94771234567");
+        req.getCustomer().getAddress().setAddress("No.1, Galle Road");
+        req.getCustomer().getAddress().setCity("Colombo");
+        req.getCustomer().getAddress().setCountry("Sri Lanka");
+
+
+        Intent intent = new Intent(this, PHMainActivity.class);
+        intent.putExtra(PHConstants.INTENT_EXTRA_DATA, req);
+        PHConfigs.setBaseUrl(PHConfigs.SANDBOX_URL);
+        startActivityForResult(intent, PAYHERE_REQUEST);
     }
 }
