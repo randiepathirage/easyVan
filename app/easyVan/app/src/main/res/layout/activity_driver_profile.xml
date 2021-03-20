@@ -110,7 +110,7 @@
         android:background="@drawable/roundededge"
         android:paddingHorizontal="30dp"
         android:text="Edit Profile"
-        android:textColor="#fff" />
+        android:textColor="#ffff" />
 
     <ImageView
         android:id="@+id/imageView3"
