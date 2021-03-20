@@ -1,6 +1,7 @@
 package com.e.esayVan;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -45,19 +47,42 @@ public class ParentCalendarFragment extends AppCompatActivity {
     BottomNavigationView bottom_nav;
     Button btnMarkAttend;
     EditText edtDate;
-    String userName,childSelected;
+    String userName,childSelected,morning="1",evening="1";
     Spinner spinner;
     ArrayList<String> childlist=new ArrayList<>();
     ArrayAdapter<String> childAdapter;
     RequestQueue requestQueue;
-
-
+    CheckBox chkMorning,chkEvening;
+    String URL_MARK="http://10.0.2.2/easyvan/parentMarkAttendance.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_calendar);
         getSupportActionBar().setTitle("Calendar");
+
+        btnMarkAttend=findViewById(R.id.btnMarkAttend);
+        chkMorning=findViewById(R.id.checkM);
+        chkEvening=findViewById(R.id.checkE);
+
+        //checkbox
+        chkMorning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkMorning.isChecked()){
+                    morning="0";
+                }
+            }
+        });
+
+        chkEvening.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkEvening.isChecked()){
+                    evening="0";
+                }
+            }
+        });
 
         //get the session username
         SessionManagement sessionManagement = new SessionManagement(this);
@@ -128,7 +153,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month=month+1;
-                        String date=day+"/"+month+"/"+year;
+                        String date=year+"-"+month+"-"+day;
                         edtDate.setText(date);
                     }
                 },year,month,day);
@@ -137,14 +162,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
         });
 
 
-        btnMarkAttend=findViewById(R.id.btnMarkAttend);
-        btnMarkAttend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
+        //bottom navigation
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_calendar);
 
@@ -185,6 +203,52 @@ public class ParentCalendarFragment extends AppCompatActivity {
         });
     }
 
+    public void markAttendance(View view) {
+
+        final String date = edtDate.getText().toString();
+
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("updating....");
+        progressDialog.show();
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL_MARK,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(ParentCalendarFragment.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
+                        finish();
+                        progressDialog.dismiss();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentCalendarFragment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("date", date);
+                params.put("childName", childSelected);
+                params.put("username", userName);
+                params.put("morning", morning);
+                params.put("evening", evening);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentCalendarFragment.this);
+        requestQueue.add(request);
+
+    }
+
     //app bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -212,4 +276,6 @@ public class ParentCalendarFragment extends AppCompatActivity {
 
         return true;
     }
+
+
 }
