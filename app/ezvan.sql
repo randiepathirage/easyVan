@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 16, 2021 at 03:41 PM
+-- Generation Time: Mar 20, 2021 at 12:29 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -54,7 +54,7 @@ CREATE TABLE `assign` (
 --
 
 CREATE TABLE `attendance` (
-  `child_no` int(11) NOT NULL,
+  `child_no` int(10) NOT NULL,
   `date` date NOT NULL,
   `evening` tinyint(1) NOT NULL,
   `morning` tinyint(1) NOT NULL
@@ -67,28 +67,28 @@ CREATE TABLE `attendance` (
 --
 
 CREATE TABLE `child` (
-  `child_no` int(100) NOT NULL,
+  `child_no` int(10) NOT NULL,
   `parent_NIC_no` varchar(20) NOT NULL,
   `grade` varchar(5) NOT NULL,
   `school` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `pickup_location` varchar(50) NOT NULL,
-  `dropoff_location` varchar(50) NOT NULL
+  `dropoff_location` varchar(50) NOT NULL,
+  `vehicle_no` varchar(11) DEFAULT NULL,
+  `start_date` varchar(10) DEFAULT NULL,
+  `fees` decimal(10,2) DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `child_assign`
+-- Dumping data for table `child`
 --
 
-CREATE TABLE `child_assign` (
-  `child_no` int(50) NOT NULL,
-  `vehicle_no` varchar(10) NOT NULL,
-  `start_date` date NOT NULL,
-  `fees` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `child` (`child_no`, `parent_NIC_no`, `grade`, `school`, `first_name`, `last_name`, `pickup_location`, `dropoff_location`, `vehicle_no`, `start_date`, `fees`) VALUES
+(2, '986760296v', '4', 'abc collage', 'mihisara', 'wijethunga', 'wrre', 'rerer', 'NULL', 'NULL', '0.00'),
+(3, '986760296v', '5', 'musaes collage', 'hemna', 'kithsaranie', 'homagama', 'homagama', 'NULL', NULL, NULL),
+(4, '986760296v', '3', 'abc collage', 'devin', 'wijeshinghe', 'wallaatta', 'wallawatta', NULL, NULL, NULL),
+(11, '986760296v', '5', 'afafas', 'fafafa', 'afafa', 'qwtjnb', 'gaba', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -97,6 +97,7 @@ CREATE TABLE `child_assign` (
 --
 
 CREATE TABLE `emergency_message` (
+  `msg_no` int(10) NOT NULL,
   `parent_NIC_no` varchar(20) NOT NULL,
   `driver_NIC_no` varchar(20) NOT NULL,
   `message` varchar(100) NOT NULL,
@@ -166,7 +167,7 @@ CREATE TABLE `license` (
 --
 
 CREATE TABLE `location` (
-  `vehicle_no` varchar(10) NOT NULL,
+  `vehicle_no` varchar(15) NOT NULL,
   `longitude` decimal(10,0) NOT NULL,
   `latitude` decimal(10,0) NOT NULL,
   `time` time(4) NOT NULL,
@@ -187,6 +188,16 @@ CREATE TABLE `login` (
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`NIC_no`, `username`, `password`, `salt`, `email`) VALUES
+('', '', ' eab280f49d129e13d2450e6ed7bda074fddf35183cad4e6e4251842785113b19', '*^XyAZpn`h+sc`clR9jk', ' '),
+('33765ere5v', 'resasdfvb', 'b71b87f50e23b389722d7e57e2234d3d658a842c25090473184b5e71d282b9ad', '}yeU+{~a(ZX8]/}_&Uk4', 'rfsvvcd'),
+('986760296v', 'randie', '896672d5223046cf7ab868b06dbf983be9a248a3590f00fdfb2946424a231836', 'gn|bggFtG1Dn*xP}]HH4', 'randiepathirage@gmail.com'),
+('98765ere5v', 'reeresasdfvb', '93368c037289956fff51a3b8b0aed53d1d893243182324f9d40f983b3b456c24', '%w)MHQ4P%(OH2cAp~!l%', 'rfgvvffsvvcd');
+
 -- --------------------------------------------------------
 
 --
@@ -194,6 +205,7 @@ CREATE TABLE `login` (
 --
 
 CREATE TABLE `notify` (
+  `no` int(10) NOT NULL,
   `parent_NIC_no` varchar(10) NOT NULL,
   `driver_NIC_no` varchar(10) NOT NULL,
   `message` int(100) NOT NULL,
@@ -221,9 +233,11 @@ CREATE TABLE `parent_owner_driver` (
 --
 
 INSERT INTO `parent_owner_driver` (`NIC_no`, `parent_flag`, `driver_flag`, `owner_flag`, `admin_flag`, `license_no`) VALUES
+('33765ere5v', 0, 0, 1, 0, '0'),
 ('345p', 1, 0, 0, 0, '42252'),
 ('8675743p', 1, 0, 0, 0, ' 0'),
-('986760294v', 0, 0, 1, 0, '0');
+('986760294v', 0, 0, 1, 0, '0'),
+('986760296v', 1, 0, 0, 0, '0');
 
 -- --------------------------------------------------------
 
@@ -254,8 +268,17 @@ CREATE TABLE `request` (
   `vehicle_no` varchar(15) NOT NULL,
   `owner_NIC_no` varchar(10) NOT NULL,
   `date` date NOT NULL,
-  `time` int(11) NOT NULL
+  `time` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`req_id`, `status`, `parent_NIC_no`, `child_no`, `vehicle_no`, `owner_NIC_no`, `date`, `time`) VALUES
+(5, 'accepted', '986760296v', 2, 'CBF-7375', '986760294v', '2021-03-17', '05:07:41pm'),
+(15, 'pending', '986760296v', 2, 'CBF-7375', '986760294v', '2021-03-17', '07:06:23pm'),
+(16, 'pending', '986760296v', 3, 'CBF-7375', '986760294v', '2021-03-19', '12:11:08am');
 
 -- --------------------------------------------------------
 
@@ -319,6 +342,15 @@ CREATE TABLE `user` (
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`NIC_no`, `contact_no`, `last_name`, `first_name`, `address`) VALUES
+('33765ere5v', 432265456, 'A', 'A', 'A'),
+('986760294v', 423535, 'pathirage', 'kulaathana', ';lkjuhygtrfedcvb '),
+('986760296v', 713731752, 'Pathirage', 'randie', 'godagama  homagama');
+
 -- --------------------------------------------------------
 
 --
@@ -363,8 +395,9 @@ ALTER TABLE `absence_date`
 --
 ALTER TABLE `assign`
   ADD PRIMARY KEY (`driver_NIC_no`,`owner_NIC_no`,`vehicle_no`),
-  ADD KEY `owner_NIC_no` (`owner_NIC_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`);
+  ADD KEY `assign_ibfk_2` (`owner_NIC_no`),
+  ADD KEY `assign_ibfk_3` (`vehicle_no`),
+  ADD KEY `driver_NIC_no` (`driver_NIC_no`);
 
 --
 -- Indexes for table `attendance`
@@ -376,28 +409,19 @@ ALTER TABLE `attendance`
 -- Indexes for table `child`
 --
 ALTER TABLE `child`
-  ADD PRIMARY KEY (`child_no`,`parent_NIC_no`),
-  ADD KEY `parent_NIC_no` (`parent_NIC_no`);
-
---
--- Indexes for table `child_assign`
---
-ALTER TABLE `child_assign`
-  ADD PRIMARY KEY (`child_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`);
+  ADD PRIMARY KEY (`child_no`,`parent_NIC_no`);
 
 --
 -- Indexes for table `emergency_message`
 --
 ALTER TABLE `emergency_message`
-  ADD PRIMARY KEY (`parent_NIC_no`,`driver_NIC_no`);
+  ADD PRIMARY KEY (`msg_no`);
 
 --
 -- Indexes for table `expense`
 --
 ALTER TABLE `expense`
-  ADD PRIMARY KEY (`key_id`,`vehicle_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`);
+  ADD PRIMARY KEY (`key_id`,`vehicle_no`);
 
 --
 -- Indexes for table `fee`
@@ -409,15 +433,19 @@ ALTER TABLE `fee`
 -- Indexes for table `insurance`
 --
 ALTER TABLE `insurance`
-  ADD PRIMARY KEY (`vehicle_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`);
+  ADD PRIMARY KEY (`insurance_no`,`vehicle_no`);
 
 --
 -- Indexes for table `license`
 --
 ALTER TABLE `license`
-  ADD PRIMARY KEY (`license_no`,`vehicle_no`),
-  ADD KEY `vehicle_no` (`vehicle_no`);
+  ADD PRIMARY KEY (`license_no`,`vehicle_no`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`vehicle_no`);
 
 --
 -- Indexes for table `login`
@@ -431,7 +459,7 @@ ALTER TABLE `login`
 -- Indexes for table `notify`
 --
 ALTER TABLE `notify`
-  ADD PRIMARY KEY (`parent_NIC_no`,`driver_NIC_no`);
+  ADD PRIMARY KEY (`no`);
 
 --
 -- Indexes for table `parent_owner_driver`
@@ -479,8 +507,7 @@ ALTER TABLE `user`
 -- Indexes for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  ADD PRIMARY KEY (`number`,`owner_NIC_no`),
-  ADD KEY `owner_NIC_no` (`owner_NIC_no`);
+  ADD PRIMARY KEY (`number`,`owner_NIC_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -490,13 +517,31 @@ ALTER TABLE `vehicle`
 -- AUTO_INCREMENT for table `child`
 --
 ALTER TABLE `child`
-  MODIFY `child_no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `child_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `emergency_message`
+--
+ALTER TABLE `emergency_message`
+  MODIFY `msg_no` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
   MODIFY `key_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `notify`
+--
+ALTER TABLE `notify`
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `request`
+--
+ALTER TABLE `request`
+  MODIFY `req_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -506,49 +551,30 @@ ALTER TABLE `expense`
 -- Constraints for table `assign`
 --
 ALTER TABLE `assign`
-  ADD CONSTRAINT `assign_ibfk_1` FOREIGN KEY (`driver_NIC_no`) REFERENCES `user` (`NIC_no`),
-  ADD CONSTRAINT `assign_ibfk_2` FOREIGN KEY (`owner_NIC_no`) REFERENCES `user` (`NIC_no`),
-  ADD CONSTRAINT `assign_ibfk_3` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`);
-
---
--- Constraints for table `child`
---
-ALTER TABLE `child`
-  ADD CONSTRAINT `child_ibfk_2` FOREIGN KEY (`parent_NIC_no`) REFERENCES `login` (`NIC_no`) ON UPDATE CASCADE;
-
---
--- Constraints for table `child_assign`
---
-ALTER TABLE `child_assign`
-  ADD CONSTRAINT `child_assign_ibfk_1` FOREIGN KEY (`child_no`) REFERENCES `child` (`child_no`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `child_assign_ibfk_2` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`);
+  ADD CONSTRAINT `assign_ibfk_1` FOREIGN KEY (`driver_NIC_no`) REFERENCES `user` (`NIC_no`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `assign_ibfk_2` FOREIGN KEY (`owner_NIC_no`) REFERENCES `user` (`NIC_no`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `assign_ibfk_3` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `expense`
 --
 ALTER TABLE `expense`
-  ADD CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `insurance`
+-- Constraints for table `location`
 --
-ALTER TABLE `insurance`
-  ADD CONSTRAINT `insurance_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE;
-
---
--- Constraints for table `license`
---
-ALTER TABLE `license`
-  ADD CONSTRAINT `license_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE;
+ALTER TABLE `location`
+  ADD CONSTRAINT `location_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `request`
 --
 ALTER TABLE `request`
-  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`owner_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `request_ibfk_3` FOREIGN KEY (`parent_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `request_ibfk_4` FOREIGN KEY (`child_no`) REFERENCES `child` (`child_no`);
+  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`owner_NIC_no`) REFERENCES `user` (`NIC_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `request_ibfk_3` FOREIGN KEY (`parent_NIC_no`) REFERENCES `user` (`NIC_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `request_ibfk_4` FOREIGN KEY (`child_no`) REFERENCES `child` (`child_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `school`
@@ -561,12 +587,6 @@ ALTER TABLE `school`
 --
 ALTER TABLE `town`
   ADD CONSTRAINT `town_ibfk_1` FOREIGN KEY (`vehicle_no`) REFERENCES `vehicle` (`number`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `vehicle`
---
-ALTER TABLE `vehicle`
-  ADD CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`owner_NIC_no`) REFERENCES `parent_owner_driver` (`NIC_no`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
