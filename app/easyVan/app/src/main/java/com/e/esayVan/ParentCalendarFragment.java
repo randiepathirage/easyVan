@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -44,7 +45,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
     BottomNavigationView bottom_nav;
     Button btnMarkAttend;
     EditText edtDate;
-    String userName;
+    String userName,childSelected;
     Spinner spinner;
     ArrayList<String> childlist=new ArrayList<>();
     ArrayAdapter<String> childAdapter;
@@ -61,13 +62,15 @@ public class ParentCalendarFragment extends AppCompatActivity {
         //get the session username
         SessionManagement sessionManagement = new SessionManagement(this);
         userName = sessionManagement.getUserName();
+
+
+        //loading spinner
         String URL="http://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
 
         requestQueue=Volley.newRequestQueue(this);
 
         spinner=findViewById(R.id.spin);
 
-       // loadSpinner();
 
       JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,URL,null,
                 new Response.Listener<JSONObject>() {
@@ -97,16 +100,18 @@ public class ParentCalendarFragment extends AppCompatActivity {
             }
         });
         requestQueue.add(jsonObjectRequest);
-        //spinner.setOnItemClickListener(this);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                childSelected= (String) spinner.getItemAtPosition(i);
+               // Toast.makeText(ParentCalendarFragment.this,childSelected,Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-
-
-
-
-
-
-
+            }
+        });
 
         //selecting date
         edtDate=findViewById(R.id.edtDate);
