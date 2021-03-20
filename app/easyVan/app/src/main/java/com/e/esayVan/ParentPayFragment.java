@@ -8,14 +8,23 @@ import android.util.Config;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
@@ -23,9 +32,12 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class ParentPayFragment extends AppCompatActivity {
 
@@ -33,6 +45,11 @@ public class ParentPayFragment extends AppCompatActivity {
     Button payementbtn;
     EditText edtAmount;
     String amount="";
+    String userName,childSelected;
+    Spinner spinner;
+    ArrayList<String> childlist=new ArrayList<>();
+    ArrayAdapter<String> childAdapter;
+    RequestQueue requestQueue;
 
 
     public static final int PAYPAL_REQUEST_CODE=7171;
@@ -46,6 +63,60 @@ public class ParentPayFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_pay);
         getSupportActionBar().setTitle("Pay fees");
+
+        //get the session username
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
+
+
+        //loading spinner
+        String URL="http://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
+
+        requestQueue= Volley.newRequestQueue(this);
+
+        spinner=findViewById(R.id.spin);
+
+
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,URL,null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            JSONArray jsonArray=response.getJSONArray("children");
+                            for(int i=0;i<jsonArray.length();i++){
+                                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                                String childName=jsonObject.optString("child_name");
+                                childlist.add(childName);
+                                childAdapter=new ArrayAdapter<>(ParentPayFragment.this, android.R.layout.simple_spinner_item,childlist);
+                                childAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                spinner.setAdapter(childAdapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentPayFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                childSelected= (String) spinner.getItemAtPosition(i);
+                // Toast.makeText(ParentCalendarFragment.this,childSelected,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 

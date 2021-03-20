@@ -5,90 +5,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParentCalendarFragment"
-    android:orientation="vertical"
-    android:background="#fff">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_calender"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:text="Inform if your child will absent to the school van"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="30dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:paddingBottom="20dp" />
+        android:layout_height="500dp"
+        android:layout_margin="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select child:"
-        android:textColor="#000"
-        android:layout_marginLeft="30dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spin"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"/>
+            <TextView
+                android:id="@+id/text_calender"
+                android:layout_width="match_parent"
+                android:text="Inform if your child will absent to the school van"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:paddingBottom="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select date:"
-        android:textColor="#000"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select child:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:id="@+id/edtDate"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="30dp"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spin"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Time:"
-        android:textColor="#000"
-        android:layout_marginLeft="30dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select date:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"/>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:padding="10dp"
-        android:text="Morning(Mark if child will be absent in morning)"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="464dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:id="@+id/edtDate"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="30dp"/>
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:padding="10dp"
-        android:text="Evening(Mark if child will be absent in evening)"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="514dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"/>
+
+            <CheckBox
+                android:id="@+id/checkM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:padding="10dp"
+                android:text="Morning(Mark if child will be absent in morning)"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="464dp" />
+
+            <CheckBox
+                android:id="@+id/checkE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:padding="10dp"
+                android:text="Evening(Mark if child will be absent in evening)"
+                tools:layout_editor_absoluteX="99dp"
+                tools:layout_editor_absoluteY="514dp" />
 
 
 
-    <Button
-        android:id="@+id/btnMarkAttend"
-        android:layout_width="163dp"
-        android:layout_height="48dp"
-        android:background="@drawable/roundededge"
-        android:text="done"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:textColor="#fff"
-        android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btnMarkAttend"
+                android:layout_width="163dp"
+                android:layout_height="48dp"
+                android:background="@drawable/roundededge"
+                android:text="done"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:onClick="markAttendance"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -96,7 +112,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
-        android:layout_marginTop="175dp"
+        android:layout_marginTop="118dp"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/parent_nav" />

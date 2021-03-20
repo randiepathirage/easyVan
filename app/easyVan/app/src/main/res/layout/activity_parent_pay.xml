@@ -7,41 +7,81 @@
     tools:context=".ParentPayFragment"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textAlignment="center"
-        android:text="Pay van fees"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"/>
+        android:layout_height="400dp"
+        android:layout_margin="10dp">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter amount"
-        android:id="@+id/edtAmount"
-        android:layout_gravity="center"
-        android:layout_margin="50dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/paymentbtn"
-        android:background="@drawable/roundededge"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:text="Pay"
-        android:textColor="#fff"
-        android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                android:text="Pay van fees"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select child:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"
+                android:textSize="18dp"
+                android:paddingVertical="10dp"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spin"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter amount:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"
+                android:textSize="18dp"
+                android:paddingVertical="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtAmount"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/paymentbtn"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/roundededge"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:text="Pay"
+                android:textColor="#fff"
+                android:textStyle="bold"/>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="220dp"
         android:background="#fff"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
