@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class SessionManagement extends Context {
 
-    String URL_UPDATELOG="http://10.0.2.2/easyvan/logoutLog.php";
+    String URL_UPDATELOG="https://10.0.2.2/easyvan/logoutLog.php";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String SHARED_PREF_NAME="session";
@@ -93,6 +93,7 @@ public class SessionManagement extends Context {
 
         final String username=getUserName();
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_UPDATELOG,
                 new Response.Listener<String>() {
                     @Override
