@@ -100,7 +100,8 @@ public class AdminChildren extends AppCompatActivity {
 
     private void deleteData(final int child_no) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deletechild.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/deletechild.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

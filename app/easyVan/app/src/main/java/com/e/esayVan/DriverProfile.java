@@ -48,7 +48,7 @@ public class DriverProfile extends AppCompatActivity {
     private String strNic,strAddress,strEmail, strContactNo;
     BottomNavigationView bottom_nav;
 
-    String URL="http://10.0.2.2/easyvan/driverprofile.php";
+    String URL="https://10.0.2.2/easyvan/driverprofile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,6 +160,7 @@ public class DriverProfile extends AppCompatActivity {
     //load account details
     public void sendJsonrequest() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST , URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

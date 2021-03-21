@@ -32,7 +32,7 @@ public class AdminDrivers extends AppCompatActivity {
     ListView driverlistView;
     AdminDriverAdapter driveradapter;
     public static ArrayList<AdminDriverArray> adminDriverArrayList = new ArrayList<>();
-    String url = "http://10.0.2.2/easyvan/drivers.php";
+    String url = "https://10.0.2.2/easyvan/drivers.php";
     AdminDriverArray driver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,8 @@ public class AdminDrivers extends AppCompatActivity {
 
     private void deleteData(final String NIC_no) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deleteuser.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/deleteuser.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -137,6 +138,7 @@ public class AdminDrivers extends AppCompatActivity {
 
     public void retrieveData(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override

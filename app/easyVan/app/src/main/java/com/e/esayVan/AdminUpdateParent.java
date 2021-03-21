@@ -69,7 +69,8 @@ public class AdminUpdateParent extends AppCompatActivity {
         progressDialog.setMessage("Updating....");
         progressDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/updateuser.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/updateuser.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -96,7 +96,8 @@ public class AdminAddChild extends AppCompatActivity {
 
         else{
             progressDialog.show();
-            StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/addchild.php",
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/addchild.php",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

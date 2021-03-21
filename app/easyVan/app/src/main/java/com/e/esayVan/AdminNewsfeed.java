@@ -33,7 +33,7 @@ import java.util.List;
 public class AdminNewsfeed extends AppCompatActivity {
     private Button btnnew;
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
     //a list to store all the vehicles
     List<ParentVans> vehicleList;
@@ -119,6 +119,7 @@ public class AdminNewsfeed extends AppCompatActivity {
     }
 
     private void loadVehicles() {
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override

@@ -90,13 +90,13 @@ public class ParentCalendarFragment extends AppCompatActivity {
 
 
         //loading spinner
-        String URL="http://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
+        String URL="https://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
 
         requestQueue=Volley.newRequestQueue(this);
 
         spinner=findViewById(R.id.spin);
 
-
+        HttpsTrustManager.allowAllSSL();
       JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,URL,null,
                 new Response.Listener<JSONObject>() {
                     @Override
