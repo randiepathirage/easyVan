@@ -30,7 +30,7 @@
         echo json_encode($return_arr);
     }
     else{
-        echo "Error".$query_assign."<br>".$conn->error;
+        echo "Error".$query."<br>".$conn->error;
     }
 
 

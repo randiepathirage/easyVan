@@ -51,7 +51,7 @@
   if($result){
       echo 'payment updated';
 	}else{
-      echo "Error".$query_insert."<br>".$conn->error;
+      echo "Error".$query."<br>".$conn->error;
 	}
 
 

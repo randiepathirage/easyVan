@@ -29,11 +29,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.paypal.android.sdk.payments.PayPalPayment;
-import com.paypal.android.sdk.payments.PayPalService;
-import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -79,12 +74,13 @@ public class ParentPayFragment extends AppCompatActivity {
 
 
         //loading spinner to select child
-        String URL="http://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
+        String URL="https://10.0.2.2/easyvan/loadSpinner.php?parentUsername="+userName;
 
         requestQueue= Volley.newRequestQueue(this);
 
         spinner=findViewById(R.id.spin);
 
+        HttpsTrustManager.allowAllSSL();
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,URL,null,
                 new Response.Listener<JSONObject>() {
                     @Override

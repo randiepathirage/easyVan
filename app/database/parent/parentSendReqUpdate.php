@@ -83,7 +83,7 @@
              
          }
          else{
-             echo "Error".$query_insert."<br>".$conn->error;
+             echo "Error".$query_update."<br>".$conn->error;
          }
     }
 
