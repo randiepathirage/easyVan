@@ -5,29 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -37,10 +39,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.IOException;
-import java.sql.Driver;
-import java.util.List;
-import java.util.Locale;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DriverRoute extends AppCompatActivity {
 
@@ -50,14 +50,19 @@ public class DriverRoute extends AppCompatActivity {
     Toolbar top_bar;
 
     Button btLocation;
-    TextView txt1, txt2, txt3, txt4, txt5;
+    String longitude, latitude,userName;
     FusedLocationProviderClient client;
+    String URL_SET="https://10.0.2.2/easyvan/setLocation.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_route);
         getSupportActionBar().setTitle("Route");
+
+        //get the session username
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.nav_route);
@@ -98,12 +103,8 @@ public class DriverRoute extends AppCompatActivity {
         });
 
 
-        //location
+        //get location
         btLocation = findViewById(R.id.btnStart);
-        txt1 = findViewById(R.id.text_view1);
-        txt2 = findViewById(R.id.text_view2);
-
-
         //initilize fused location
         client = LocationServices.getFusedLocationProviderClient(this);
 
@@ -154,8 +155,10 @@ public class DriverRoute extends AppCompatActivity {
                          //   List<Address> addresses = geocoder.getFromLocation(
                          //           location.getLatitude(), location.getLongitude(), 1);
 
-                        txt1.setText(String.valueOf(location.getLongitude()));
-                        txt2.setText(String.valueOf(location.getLatitude()));
+                        longitude=String.valueOf(location.getLongitude());
+                        latitude=String.valueOf(location.getLatitude());
+
+                        setLocation();
 
                     }else{
                         //when location result is null
@@ -170,8 +173,12 @@ public class DriverRoute extends AppCompatActivity {
                             @Override
                             public void onLocationResult(LocationResult locationResult) {
                                 Location location1=locationResult.getLastLocation();
-                                txt1.setText(String.valueOf(location1.getLongitude()));
-                                txt2.setText(String.valueOf(location1.getLatitude()));
+
+                                longitude=String.valueOf(location1.getLongitude());
+                                latitude=String.valueOf(location1.getLatitude());
+
+                                setLocation();
+
                             }
                         };
                         client.requestLocationUpdates(locationRequest,
@@ -184,7 +191,45 @@ public class DriverRoute extends AppCompatActivity {
         }
     }
 
+    private void setLocation() {
 
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, URL_SET,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(DriverRoute.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), DriverAttendance.class));
+                        finish();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DriverRoute.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("username", userName);
+                params.put("longitude",longitude);
+                params.put("latitude",latitude);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(DriverRoute.this);
+        requestQueue.add(request);
+
+
+
+    }
+
+
+    //header navigation bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.driver_appbar,menu);
