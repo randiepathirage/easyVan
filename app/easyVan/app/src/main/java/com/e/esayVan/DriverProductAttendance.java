@@ -2,18 +2,23 @@ package com.e.esayVan;
 
 public class DriverProductAttendance {
 
-    private String fname,lname;
+    private String c_no,date,time;
 
-    public DriverProductAttendance(String fname,String lname) {
-        this.fname = fname;
-        this.lname = lname;
+    public DriverProductAttendance(String c_no) {
+        this.c_no = c_no;
+       // this.date = date;
+        //this.time = time;
     }
 
-    public String getFname() {
-        return fname;
+    public String getC_no() {
+        return c_no;
     }
 
-    public String getLname() {
-        return lname;
+    /*public String getDate() {
+        return date;
     }
+
+    public String getTime() {
+        return time;
+    }*/
 }
