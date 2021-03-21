@@ -78,6 +78,7 @@ public class ParentLocationFragment extends AppCompatActivity {
             }
         });
 
+        //maps
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
         client = LocationServices.getFusedLocationProviderClient(ParentLocationFragment.this);
 
