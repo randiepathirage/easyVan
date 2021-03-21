@@ -34,8 +34,8 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     String userName;
 
 
-    String URL_DELETE="http://10.0.2.2/easyvan/removeChildVan.php";
-    String URL_CHECK="http://10.0.2.2/easyvan/checkChildStatus.php";
+    String URL_DELETE="https://10.0.2.2/easyvan/removeChildVan.php";
+    String URL_CHECK="https://10.0.2.2/easyvan/checkChildStatus.php";
 
     //getting the context and product list with constructor
     public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, String strNic,String vehicleNo,String ownerID, String mode) {
@@ -104,6 +104,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     public void removeChildVan(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_DELETE,
                 new Response.Listener<String>() {
                     @Override
@@ -133,6 +134,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     public  void check(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST,URL_CHECK,
                 new Response.Listener<String>() {
                     @Override

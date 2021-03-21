@@ -47,7 +47,6 @@
         <activity android:name=".AdminViewParent" />
         <activity android:name=".ParentEditDays" />
         <activity android:name=".OwnerVansAdd" />
-        <activity android:name=".sample" />
         <activity android:name=".DriverNotification" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />

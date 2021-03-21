@@ -63,7 +63,7 @@ public class ParentPayFragment extends AppCompatActivity {
     ArrayAdapter<String> childAdapter;
     RequestQueue requestQueue;
     final static int PAYHERE_REQUEST = 11010;
-    String URL_PAY="http://10.0.2.2/easyvan/insertPayment.php";
+    String URL_PAY="https://10.0.2.2/easyvan/insertPayment.php";
 
 
 
@@ -247,6 +247,7 @@ public class ParentPayFragment extends AppCompatActivity {
 
     private void updateDatabase() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_PAY,
                 new Response.Listener<String>() {
                     @Override

@@ -53,7 +53,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
     ArrayAdapter<String> childAdapter;
     RequestQueue requestQueue;
     CheckBox chkMorning,chkEvening;
-    String URL_MARK="http://10.0.2.2/easyvan/parentMarkAttendance.php";
+    String URL_MARK="https://10.0.2.2/easyvan/parentMarkAttendance.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,6 +212,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
         progressDialog.setMessage("updating....");
         progressDialog.show();
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_MARK,
                 new Response.Listener<String>() {
                     @Override
