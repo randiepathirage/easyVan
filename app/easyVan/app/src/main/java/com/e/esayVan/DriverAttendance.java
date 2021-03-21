@@ -108,10 +108,10 @@ public class DriverAttendance extends AppCompatActivity {
                             for(int i = 0;i<products.length();i++){
                                 JSONObject productobject = products.getJSONObject(i);
 
-                                String fname = productobject.getString("fname");
-                                String lname = productobject.getString("lname");
+                                String c_no = productobject.getString("c_no");
 
-                                DriverProductAttendance product = new DriverProductAttendance(fname,lname);
+
+                                DriverProductAttendance product = new DriverProductAttendance(c_no);
                                 productAttendanceList.add(product);
                             }
                             DriverProductAttendanceAdapter adapter =new DriverProductAttendanceAdapter(DriverAttendance.this,productAttendanceList);
