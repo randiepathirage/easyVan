@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class OwnerVans extends AppCompatActivity {
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/vanlist.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/vanlist.php";
     //a list to store all the vehicles
     List<OwnerVansProduct> VanList;
     OwnerVansProductAdapter adapter;
@@ -67,6 +67,8 @@ public class OwnerVans extends AppCompatActivity {
 
     }
     private void loadVehicles() {
+
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override

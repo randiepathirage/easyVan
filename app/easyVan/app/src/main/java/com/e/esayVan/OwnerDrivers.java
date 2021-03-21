@@ -37,7 +37,7 @@ public class OwnerDrivers extends AppCompatActivity {
     //View for driver list
     String Name;
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/driverlist.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/driverlist.php";
 
     //a list to store all the vehicles
     List<OwnerDriversProduct> DriverList;
@@ -72,6 +72,8 @@ public class OwnerDrivers extends AppCompatActivity {
 
     }
     private void loadVehicles() {
+
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override

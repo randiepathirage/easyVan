@@ -37,7 +37,7 @@ public class DriverViewChildDetails extends AppCompatActivity {
 
     String Name;
 
-    private static final String DRIVER_PRODUCT_URL = "http://10.0.2.2/easyvan/driverChild.php";
+    private static final String DRIVER_PRODUCT_URL = "https://10.0.2.2/easyvan/driverChild.php";
 
     List<DriverProduct> driverProductList;
 
@@ -102,6 +102,8 @@ public class DriverViewChildDetails extends AppCompatActivity {
     }
 
     private void loadProducts(){
+
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, DRIVER_PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override

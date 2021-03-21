@@ -37,7 +37,7 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/spinner.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +57,7 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
         spin1 = findViewById(R.id.spinnerVehicle);
 
 
+        HttpsTrustManager.allowAllSSL();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

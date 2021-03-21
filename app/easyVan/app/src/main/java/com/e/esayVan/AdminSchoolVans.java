@@ -32,7 +32,7 @@ public class AdminSchoolVans extends AppCompatActivity {
     ListView vanlistView;
     AdminSchoolVanAdapter vanadapter;
     public static ArrayList<AdminSchoolVanArray> adminVanArrayList = new ArrayList<>();
-    String url = "http://10.0.2.2/easyvan/vans.php";
+    String url = "https://10.0.2.2/easyvan/vans.php";
     AdminSchoolVanArray van;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,8 @@ public class AdminSchoolVans extends AppCompatActivity {
 
     private void deleteData(final String number) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deletevan.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/deletevan.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -126,6 +127,7 @@ public class AdminSchoolVans extends AppCompatActivity {
 
     public void retrieveData(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
