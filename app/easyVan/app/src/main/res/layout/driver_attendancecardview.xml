@@ -16,11 +16,13 @@
 
 
             <TextView
-                android:id="@+id/at_name"
+                android:id="@+id/at_c_no"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:text="first name"
+                android:textAlignment="center"
+                android:text="child no"
+                android:textSize="18dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
@@ -31,16 +33,30 @@
                 android:layout_height="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="80dp" />
+                android:layout_marginEnd="15dp" />
 
-            <TextView
-                android:id="@+id/at_lname"
+            <EditText
+                android:id="@+id/at_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/at_name"
-                android:layout_marginLeft="5dp"
-                android:text="last name"
-                android:textColor="#000000" />
+                android:layout_toEndOf="@+id/at_c_no"
+                android:layout_marginLeft="20dp"
+                android:hint="Enter date"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:background="@android:drawable/editbox_background"/>
+
+            <EditText
+                android:id="@+id/at_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/at_date"
+                android:layout_marginLeft="20dp"
+                android:hint="Time"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:background="@android:drawable/editbox_background"/>
 
 
         </RelativeLayout>
