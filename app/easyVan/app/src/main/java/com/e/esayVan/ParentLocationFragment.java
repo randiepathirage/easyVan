@@ -1,6 +1,7 @@
 package com.e.esayVan;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -12,7 +13,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,19 +37,36 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ParentLocationFragment extends AppCompatActivity {
 
-    private FusedLocationProviderClient client;
-    private SupportMapFragment mapFragment;
-    private int REQUEST_CODE=111;
-
+    String userName;
+    String URL_CHILDLOCATION="https://10.0.2.2/easyvan/getchildLocation.php";
     BottomNavigationView bottom_nav;
+    ArrayList<String> childName=new ArrayList<>();
+    ArrayList<String> longitude=new ArrayList<>();
+    ArrayList<String> latitude=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_location);
         getSupportActionBar().setTitle("Location");
+
+        //get the session username
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
+
+        getChildrenLocation();
+
+
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_location);
@@ -77,68 +105,75 @@ public class ParentLocationFragment extends AppCompatActivity {
                 return false;
             }
         });
-
-        //maps
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
-        client = LocationServices.getFusedLocationProviderClient(ParentLocationFragment.this);
-
-        if (ActivityCompat.checkSelfPermission(ParentLocationFragment.this, Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED) {
-            getCurrentLocation();
-        }else{
-            ActivityCompat.requestPermissions(ParentLocationFragment.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
-        }
     }
 
-    private void getCurrentLocation() {
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Task<Location> task = client.getLastLocation();
+    private void getChildrenLocation() {
 
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(final Location location) {
-                if(location!=null){
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, URL_CHILDLOCATION,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
-                    mapFragment.getMapAsync(new OnMapReadyCallback() {
-                        @Override
-                        public void onMapReady(GoogleMap googleMap) {
-                            LatLng latLng =new LatLng(location.getLatitude(),location.getLongitude());
+                          JSONObject jsonObject = null;
+                      try {
 
-                            MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("you are here");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,14));
+                           jsonObject = new JSONObject(response);
+                            JSONArray result = jsonObject.getJSONArray("data");
 
-                            googleMap.addMarker(markerOptions).showInfoWindow();
+
+                            for(int i=0;i<result.length();i++){
+                                JSONObject collegeData = result.getJSONObject(i);
+                                childName.add(collegeData.getString("child_name"));
+                                longitude.add(collegeData.getString("longitude"));
+                               // Toast.makeText(ParentLocationFragment.this,longitude.get(i),Toast.LENGTH_LONG).show();
+                                latitude.add(collegeData.getString("latitude"));
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
 
-            }
-        });
-    }
+                        //create bunble to send to the fragment
+                        Bundle b=new Bundle();
+                     //   b.putString("username",userName);
+                        b.putStringArrayList("children",childName);
+                        b.putStringArrayList("longitude",longitude);
+                        b.putStringArrayList("latitude",latitude);
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode==REQUEST_CODE){
-            if(grantResults.length>0&& grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                getCurrentLocation();
-            }else{
-                Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
+                        //initilaze fragment
+                        MapsFragment fragment=new MapsFragment();
+                        fragment.setArguments(b);
+                        //open fragment
+                        getSupportFragmentManager().beginTransaction().replace(R.id.maps,fragment).commit();
+
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ParentLocationFragment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("username", userName);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentLocationFragment.this);
+        requestQueue.add(request);
+
     }
 
     //app bar
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.parent_appbar, menu);
