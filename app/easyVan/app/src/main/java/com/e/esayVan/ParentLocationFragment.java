@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -30,7 +31,7 @@ public class ParentLocationFragment extends AppCompatActivity {
 
     private FusedLocationProviderClient client;
     private SupportMapFragment mapFragment;
-    private int REQUEST_CODE=111;
+    private int REQUEST_CODE=44;
 
     BottomNavigationView bottom_nav;
 
@@ -39,6 +40,12 @@ public class ParentLocationFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_location);
         getSupportActionBar().setTitle("Location");
+
+        //initilaze fragment
+        Fragment fragment=new MapsFragment();
+
+        //open fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.maps,fragment).commit();
 
         bottom_nav = findViewById(R.id.bottom_navigation);
         bottom_nav.setSelectedItemId(R.id.navigation_location);
@@ -79,7 +86,7 @@ public class ParentLocationFragment extends AppCompatActivity {
         });
 
         //maps
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
+    /*    mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
         client = LocationServices.getFusedLocationProviderClient(ParentLocationFragment.this);
 
         if (ActivityCompat.checkSelfPermission(ParentLocationFragment.this, Manifest.permission.ACCESS_FINE_LOCATION) ==
@@ -115,9 +122,9 @@ public class ParentLocationFragment extends AppCompatActivity {
                             LatLng latLng =new LatLng(location.getLatitude(),location.getLongitude());
 
                             MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("you are here");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,14));
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
 
-                            googleMap.addMarker(markerOptions).showInfoWindow();
+                            googleMap.addMarker(markerOptions);
                         }
                     });
                 }
@@ -134,7 +141,7 @@ public class ParentLocationFragment extends AppCompatActivity {
             }else{
                 Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
     }
 
     //app bar
