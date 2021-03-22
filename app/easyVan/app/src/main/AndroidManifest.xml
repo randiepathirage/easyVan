@@ -100,10 +100,10 @@
         <activity android:name=".DriverAlert" />
         <activity android:name=".Driver" />
         <activity android:name=".Parent" />
-        <activity android:name=".ParentLocationFragment" />
-        <activity android:name=".ParentCalendarFragment" />
+        <activity android:name=".ParentLocation" />
+        <activity android:name=".ParentCalendar" />
         <activity android:name=".ParentNewsfeed" />
-        <activity android:name=".ParentPayFragment" />
+        <activity android:name=".ParentPay" />
         <activity android:name=".ParentAccount" />
         <activity android:name=".ParentDetails" />
         <activity android:name=".ParentEdit" />

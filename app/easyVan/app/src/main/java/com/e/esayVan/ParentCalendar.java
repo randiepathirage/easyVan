@@ -18,9 +18,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -39,10 +36,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class ParentCalendarFragment extends AppCompatActivity {
+public class ParentCalendar extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
     Button btnMarkAttend;
@@ -108,7 +104,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                                 JSONObject jsonObject=jsonArray.getJSONObject(i);
                                 String childName=jsonObject.optString("child_name");
                                 childlist.add(childName);
-                                childAdapter=new ArrayAdapter<>(ParentCalendarFragment.this, android.R.layout.simple_spinner_item,childlist);
+                                childAdapter=new ArrayAdapter<>(ParentCalendar.this, android.R.layout.simple_spinner_item,childlist);
                                 childAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 spinner.setAdapter(childAdapter);
                             }
@@ -120,7 +116,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentCalendarFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentCalendar.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -149,7 +145,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
         edtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog=new DatePickerDialog(ParentCalendarFragment.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog=new DatePickerDialog(ParentCalendar.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month=month+1;
@@ -178,7 +174,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_location:
-                        Intent j = new Intent(getApplicationContext(), ParentLocationFragment.class);
+                        Intent j = new Intent(getApplicationContext(), ParentLocation.class);
                         startActivity(j);
                         overridePendingTransition(0,0);
                         return true;
@@ -187,7 +183,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_Pay:
-                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        Intent l = new Intent(getApplicationContext(), ParentPay.class);
                         startActivity(l);
                         overridePendingTransition(0,0);
                         return true;
@@ -218,7 +214,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(ParentCalendarFragment.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ParentCalendar.this, response, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
                         finish();
                         progressDialog.dismiss();
@@ -227,7 +223,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentCalendarFragment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentCalendar.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         }) {
@@ -245,7 +241,7 @@ public class ParentCalendarFragment extends AppCompatActivity {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentCalendarFragment.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentCalendar.this);
         requestQueue.add(request);
 
     }
@@ -266,10 +262,10 @@ public class ParentCalendarFragment extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(ParentCalendarFragment.this);
+                SessionManagement sessionManagement = new SessionManagement(ParentCalendar.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(ParentCalendarFragment.this, Login.class);
+                Intent intent = new Intent(ParentCalendar.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;
