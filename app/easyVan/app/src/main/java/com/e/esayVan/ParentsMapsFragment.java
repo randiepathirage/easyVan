@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class MapsFragment extends Fragment {
+public class ParentsMapsFragment extends Fragment {
     String name;
     ArrayList<String> childName=new ArrayList<>();
     ArrayList<String> longitude=new ArrayList<>();

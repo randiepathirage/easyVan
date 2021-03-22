@@ -1,10 +1,6 @@
 package com.e.esayVan;
 
-import android.Manifest;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,10 +8,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,17 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -45,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParentLocationFragment extends AppCompatActivity {
+public class ParentLocation extends AppCompatActivity {
 
     String userName;
     String URL_CHILDLOCATION="https://10.0.2.2/easyvan/getchildLocation.php";
@@ -85,13 +66,13 @@ public class ParentLocationFragment extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_calendar:
-                        Intent k = new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                        Intent k = new Intent(getApplicationContext(), ParentCalendar.class);
                         startActivity(k);
                         overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.navigation_Pay:
-                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        Intent l = new Intent(getApplicationContext(), ParentPay.class);
                         startActivity(l);
                         overridePendingTransition(0, 0);
                         return true;
@@ -144,7 +125,7 @@ public class ParentLocationFragment extends AppCompatActivity {
                         b.putStringArrayList("latitude",latitude);
 
                         //initilaze fragment
-                        MapsFragment fragment=new MapsFragment();
+                        ParentsMapsFragment fragment=new ParentsMapsFragment();
                         fragment.setArguments(b);
                         //open fragment
                         getSupportFragmentManager().beginTransaction().replace(R.id.maps,fragment).commit();
@@ -155,7 +136,7 @@ public class ParentLocationFragment extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentLocationFragment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentLocation.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
 
@@ -168,7 +149,7 @@ public class ParentLocationFragment extends AppCompatActivity {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentLocationFragment.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentLocation.this);
         requestQueue.add(request);
 
     }
@@ -189,10 +170,10 @@ public class ParentLocationFragment extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(ParentLocationFragment.this);
+                SessionManagement sessionManagement = new SessionManagement(ParentLocation.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(ParentLocationFragment.this, Login.class);
+                Intent intent = new Intent(ParentLocation.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;

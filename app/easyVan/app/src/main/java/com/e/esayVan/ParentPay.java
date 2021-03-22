@@ -2,10 +2,7 @@ package com.e.esayVan;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Config;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -34,7 +30,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +41,7 @@ import lk.payhere.androidsdk.PHResponse;
 import lk.payhere.androidsdk.model.InitRequest;
 import lk.payhere.androidsdk.model.StatusResponse;
 
-public class ParentPayFragment extends AppCompatActivity {
+public class ParentPay extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
     Button payementbtn;
@@ -92,7 +87,7 @@ public class ParentPayFragment extends AppCompatActivity {
                                 JSONObject jsonObject=jsonArray.getJSONObject(i);
                                 String childName=jsonObject.optString("child_name");
                                 childlist.add(childName);
-                                childAdapter=new ArrayAdapter<>(ParentPayFragment.this, android.R.layout.simple_spinner_item,childlist);
+                                childAdapter=new ArrayAdapter<>(ParentPay.this, android.R.layout.simple_spinner_item,childlist);
                                 childAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 spinner.setAdapter(childAdapter);
                             }
@@ -104,7 +99,7 @@ public class ParentPayFragment extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentPayFragment.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentPay.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -157,13 +152,13 @@ public class ParentPayFragment extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_location:
-                        Intent i = new Intent(getApplicationContext(), ParentLocationFragment.class);
+                        Intent i = new Intent(getApplicationContext(), ParentLocation.class);
                         startActivity(i);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_calendar:
-                        Intent k = new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                        Intent k = new Intent(getApplicationContext(), ParentCalendar.class);
                         startActivity(k);
                         overridePendingTransition(0,0);
                         return true;
@@ -249,7 +244,7 @@ public class ParentPayFragment extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(ParentPayFragment.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ParentPay.this, response, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
                         finish();
 
@@ -257,7 +252,7 @@ public class ParentPayFragment extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentPayFragment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentPay.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
 
@@ -273,7 +268,7 @@ public class ParentPayFragment extends AppCompatActivity {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentPayFragment.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(ParentPay.this);
         requestQueue.add(request);
 
 
@@ -296,10 +291,10 @@ public class ParentPayFragment extends AppCompatActivity {
                 return true;
 
             case R.id.logout:
-                SessionManagement sessionManagement = new SessionManagement(ParentPayFragment.this);
+                SessionManagement sessionManagement = new SessionManagement(ParentPay.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(ParentPayFragment.this, Login.class);
+                Intent intent = new Intent(ParentPay.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;

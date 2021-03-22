@@ -33,7 +33,7 @@ public class Parent extends AppCompatActivity {
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), ParentLocationFragment.class);
+                Intent intent=new Intent(getApplicationContext(), ParentLocation.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +42,7 @@ public class Parent extends AppCompatActivity {
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                Intent intent=new Intent(getApplicationContext(), ParentCalendar.class);
                 startActivity(intent);
             }
         });
@@ -51,7 +51,7 @@ public class Parent extends AppCompatActivity {
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), ParentPayFragment.class);
+                Intent intent=new Intent(getApplicationContext(), ParentPay.class);
                 startActivity(intent);
             }
         });

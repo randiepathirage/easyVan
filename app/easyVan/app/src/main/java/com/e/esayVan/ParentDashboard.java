@@ -36,19 +36,19 @@ public class ParentDashboard extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_location:
-                        Intent i = new Intent(getApplicationContext(), ParentLocationFragment.class);
+                        Intent i = new Intent(getApplicationContext(), ParentLocation.class);
                         startActivity(i);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_calendar:
-                        Intent k = new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                        Intent k = new Intent(getApplicationContext(), ParentCalendar.class);
                         startActivity(k);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_Pay:
-                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        Intent l = new Intent(getApplicationContext(), ParentPay.class);
                         startActivity(l);
                         overridePendingTransition(0,0);
                         return true;
