@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.android.volley.Request;
@@ -25,28 +27,41 @@ import java.util.ArrayList;
 
 public class OwnerExpenses extends AppCompatActivity {
 
-    Spinner spin2;
+    Spinner spinExp,spinVehicle;
     //spiner view in vehicle
-    Spinner spin1;
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";//spiner
+
+
+
+    //add expenses
+    EditText date,amount;
+    String Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_expenses);
 
-        spin2 = findViewById(R.id.spinner3);
-        ArrayAdapter myadapter2 = new ArrayAdapter(OwnerExpenses.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_2));
-        myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spin2.setAdapter(myadapter2);
 
         requestQueue = Volley.newRequestQueue(this);
-        spin1 = findViewById(R.id.E_spinnerVehicle);
+        spinVehicle = findViewById(R.id.E_spinnerVehicle);
+        spinExp =findViewById(R.id.E_spinExpType);
+        date= findViewById(R.id.E_date);
+        amount = (EditText) findViewById(R.id.ex_amount);
 
 
+//expenses type spinner
+        ArrayAdapter myadapter2 = new ArrayAdapter(OwnerExpenses.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_2));
+        myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinExp.setAdapter(myadapter2);
+
+
+
+//vehicle datail load to spiner
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -60,7 +75,7 @@ public class OwnerExpenses extends AppCompatActivity {
                         vehicleList.add(vehicleNumber);
                         vehicleAdapter = new ArrayAdapter<>(OwnerExpenses.this, android.R.layout.simple_spinner_item,vehicleList);
                         vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        spin1.setAdapter(vehicleAdapter  );
+                        spinVehicle.setAdapter(vehicleAdapter  );
 
                     }
                 }
@@ -75,7 +90,7 @@ public class OwnerExpenses extends AppCompatActivity {
             }
         });
         //Toast.makeText(OwnerReport.this, (CharSequence) vehicleAdapter, Toast.LENGTH_LONG).show();
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonObjectRequest);//end of vehicle load spinner
 
 
 
@@ -124,6 +139,29 @@ public class OwnerExpenses extends AppCompatActivity {
         });
         getSupportActionBar().setTitle("Expenses");
     }
+    //add UI data to db via driverBackgroundAdd
+    public void ownerAddExpense(View view){
+
+       String str_amount = amount.getText().toString();
+        String str_type = spinExp.getSelectedItem().toString();
+       String str_date = date.getText().toString();
+       String str_vehicleNo = spinVehicle.getSelectedItem().toString();
+
+       // String str_amount = "23440";
+      //  String str_type = "fuel";
+       //  String str_date = "2021-01-21";
+       // String str_vehicleNo = "kk 2332";
+
+
+        String match = "ownerAddExpense";
+
+        OwnerExpensesBackground OwnerExpensesBackground = new OwnerExpensesBackground(this);
+        OwnerExpensesBackground.execute(match,str_amount,str_type,str_date,str_vehicleNo);
+
+    }
+
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
