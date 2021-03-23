@@ -66,7 +66,7 @@ public class AdminUpdateChild extends AppCompatActivity {
         final String grade = edcgrade.getText().toString();
         final String pickup_location = edcpickup.getText().toString();
         final String vehicle_no = edcvan.getText().toString();
-        final String monthly_fee = edcfee.getText().toString();
+        final String fees = edcfee.getText().toString();
         final String parent_name = pname;
 
 
@@ -110,7 +110,7 @@ public class AdminUpdateChild extends AppCompatActivity {
                 params.put("grade",grade);
                 params.put("pickup_location",pickup_location);
                 params.put("vehicle_no",vehicle_no);
-                params.put("monthly_fee",monthly_fee);
+                params.put("fees",fees);
                 params.put("parent_name", parent_name);
 
 

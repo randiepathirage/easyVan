@@ -210,6 +210,52 @@ public class AdminOwners extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),AdminAddUser.class));
     }
 
+    public void btn_switch_owner(View view){
+
+        SessionManagement sessionManagement = new SessionManagement(AdminOwners.this);
+        final String username = sessionManagement.getUserName();
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Updating....");
+        progressDialog.show();
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/switchadmin.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(AdminOwners.this,"Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                        progressDialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(AdminOwners.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> oparams = new HashMap<String,String>();
+
+                oparams.put("username",username);
+
+                return oparams;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(AdminOwners.this);
+        requestQueue.add(request);
+
+
+    }
+
 }
 
 

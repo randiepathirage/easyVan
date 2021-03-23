@@ -12,4 +12,9 @@
         android:id="@+id/logout"
         app:showAsAction="never"
         android:title="Log Out" />
+
+    <item
+        android:id="@+id/switchowner"
+        app:showAsAction="never"
+        android:title="Switch Account" />
 </menu>
