@@ -32,7 +32,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/myListView"
         android:layout_marginTop="60dp"
-        android:background="#fff"/>
+        android:background="#fff">
+
+
+    </ListView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -42,8 +45,22 @@
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/theme"
         android:layout_alignParentRight="true"
-        android:layout_margin="30dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="50dp"
         />
+    <Button
+        android:id="@+id/switchowner"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundededge"
+        android:text="Add me as an Owner"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+        android:onClick="btn_switch_owner"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>
