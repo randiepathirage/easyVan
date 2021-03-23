@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".OwnerExpenses">
 
+    <EditText
+        android:id="@+id/E_date"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="40dp"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Date: yyyy-mm-dd"
+        android:padding="15dp"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -24,70 +40,69 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="87dp"
         android:text="Select School Van"
-        android:layout_marginBottom="20dp"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintEnd_toStartOf="@+id/E_spinnerVehicle"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="242dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="30dp"
-        android:spinnerMode="dropdown"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/E_spinnerVehicle"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
         android:text="Select Expenses Type"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
-
-    <EditText
-        android:id="@+id/editTextDate2"
-        android:layout_width="146dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="60dp"
         android:text="Amount"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/E_spinExpType" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/E_spinExpType"
         android:layout_width="242dp"
         android:layout_height="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/ex_amount"
+        android:layout_width="146dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/E_spinExpType" />
 
     <Button
         android:id="@+id/button1"
@@ -96,6 +111,7 @@
         android:layout_marginBottom="84dp"
         android:background="@drawable/roundededge"
         android:text="Save"
+        android:onClick="ownerAddExpense"
         android:textAllCaps="false"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
@@ -103,6 +119,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="29dp"
+        android:text="Date"
+        app:layout_constraintEnd_toStartOf="@+id/date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

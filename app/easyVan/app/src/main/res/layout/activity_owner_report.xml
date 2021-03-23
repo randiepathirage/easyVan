@@ -155,7 +155,8 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/add_van_type" />
+        app:layout_constraintTop_toBottomOf="@+id/add_van_type"
+        android:hint="yyyy/mm/dd"/>
 
     <EditText
         android:id="@+id/editTextDate6"
@@ -168,7 +169,8 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate5" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate5"
+        android:hint="yyyy/mm/dd"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
