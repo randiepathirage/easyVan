@@ -19,7 +19,7 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
 
     private Context mCtx;
     private List<ParentNotifications> notificationList;
-    String type;
+    String type,id;
 
     public ParentNotificationAdapter(Context mCtx, List<ParentNotifications> notificationList) {
 
@@ -44,6 +44,7 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
         //binding the data with the viewholder views
 
             type=notifications.getType();
+
             if(type.equals("request")){
                 holder.textViewMsg.setText("New request to "+notifications.getMessage());
             }else{
@@ -64,9 +65,14 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
             holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
              public void onClick(View v) {
+                type=notifications.getType();
                 if(type.equals("request")){
                     Intent intent = new Intent(mCtx, OwnerRespond.class);
+                    id=notifications.getId();
+                    intent.putExtra("reqId",id);
                     mCtx.startActivity(intent);
+                }else{
+
                 }
             }
             });
