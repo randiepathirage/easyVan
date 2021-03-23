@@ -2,7 +2,9 @@ package com.e.esayVan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +23,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OwnerRespond extends AppCompatActivity {
+public class OwnerRespond extends AppCompatActivity implements RequestAcceptDialog.RequestAcceptDialogListener {
 
-    String id;
+    String id,vehicleNo,childId;
     String URL="https://10.0.2.2/easyvan/viewRequestDetails.php";
+    String URL_REJECT="https://10.0.2.2/easyvan/rejectRequest.php";
+    String URL_ACCEPT="https://10.0.2.2/easyvan/acceptRequest.php";
     TextView txtchildName,txtparentName,txtparentContact,txtschool,txtgrade,txtpickup,txtdropOff;
     String childFirstName,childLastName,parentName,parentContact,school,grade,pickup,dropOff;
 
@@ -35,6 +39,8 @@ public class OwnerRespond extends AppCompatActivity {
         getSupportActionBar().setTitle("Request");
 
         id=getIntent().getStringExtra("reqId");
+        vehicleNo=getIntent().getStringExtra("vehicleNo");
+        childId=getIntent().getStringExtra("childId");
         //Toast.makeText(this,id,Toast.LENGTH_LONG).show();
 
         txtchildName=findViewById(R.id.childName);
@@ -101,5 +107,81 @@ public class OwnerRespond extends AppCompatActivity {
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
+    }
+
+    public void accept(View view) {
+
+        RequestAcceptDialog requestAcceptDialog=new RequestAcceptDialog();
+        requestAcceptDialog.show(getSupportFragmentManager(),"example dialog");
+
+    }
+
+    public void reject(View view) {
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, URL_REJECT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(OwnerRespond.this, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), OwnerManage.class));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OwnerRespond.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("id", id);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(OwnerRespond.this);
+        requestQueue.add(request);
+
+
+    }
+
+    @Override
+    public void applyText(final String fees) {
+
+
+
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, URL_ACCEPT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(OwnerRespond.this,response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), OwnerManage.class));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OwnerRespond.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("id", id);
+                params.put("fees",fees);
+                params.put("childId",childId);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(OwnerRespond.this);
+        requestQueue.add(request);
     }
 }

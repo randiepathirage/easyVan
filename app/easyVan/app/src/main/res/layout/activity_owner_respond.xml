@@ -101,7 +101,8 @@
                         android:text="Accept"
                         android:textColor="#fff"
                         android:textStyle="bold"
-                        android:layout_marginRight="30dp"/>
+                        android:layout_marginRight="30dp"
+                        android:onClick="accept"/>
 
                     <Button
                         android:id="@+id/btnReject"
@@ -111,7 +112,8 @@
                         android:layout_marginTop="50dp"
                         android:text="Reject"
                         android:textColor="#fff"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="reject"/>
 
                 </LinearLayout>
             </LinearLayout>
