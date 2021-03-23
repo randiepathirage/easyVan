@@ -1,10 +1,11 @@
 package com.e.esayVan;
 
 public class ParentNotifications {
-    String message,date,time,type;
+    String message,date,time,type,id;
 
-    public ParentNotifications(String message, String date,String time,String type) {
+    public ParentNotifications(String id, String message, String date,String time,String type) {
 
+        this.id=id;
         this.type=type;
         this.date=date;
         this.time=time;
@@ -32,6 +33,14 @@ public class ParentNotifications {
         this.type = type;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setDate(String date) {
         this.date = date;
     }
@@ -43,5 +52,6 @@ public class ParentNotifications {
     public void setTime(String time) {
         this.time = time;
     }
+
 
 }

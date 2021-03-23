@@ -75,6 +75,7 @@ public class OwnerNotification extends AppCompatActivity {
                             for(int i=0;i<array.length();i++){
                                 JSONObject notification=array.getJSONObject(i);
                                 notificationList.add(new ParentNotifications(
+                                        notification.getString("reqId"),
                                         notification.getString("message"),
                                         notification.getString("date"),
                                         notification.getString("time"),
