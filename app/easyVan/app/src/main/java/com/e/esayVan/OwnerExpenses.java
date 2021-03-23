@@ -9,11 +9,29 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class OwnerExpenses extends AppCompatActivity {
 
     Spinner spin2;
+    //spiner view in vehicle
+    Spinner spin1;
+    ArrayList<String> vehicleList = new ArrayList<>();
+    ArrayAdapter<String> vehicleAdapter;
+    RequestQueue requestQueue;
+    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +42,42 @@ public class OwnerExpenses extends AppCompatActivity {
         ArrayAdapter myadapter2 = new ArrayAdapter(OwnerExpenses.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.owner_report_2));
         myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spin2.setAdapter(myadapter2);
+
+        requestQueue = Volley.newRequestQueue(this);
+        spin1 = findViewById(R.id.E_spinnerVehicle);
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = response.getJSONArray("vehicle");
+
+                    for(int i=0; i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String vehicleNumber = jsonObject.optString("number");
+                        vehicleList.add(vehicleNumber);
+                        vehicleAdapter = new ArrayAdapter<>(OwnerExpenses.this, android.R.layout.simple_spinner_item,vehicleList);
+                        vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spin1.setAdapter(vehicleAdapter  );
+
+                    }
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        //Toast.makeText(OwnerReport.this, (CharSequence) vehicleAdapter, Toast.LENGTH_LONG).show();
+        requestQueue.add(jsonObjectRequest);
+
+
 
         /*declar variable*/
         BottomNavigationView bottomNavigationView ;
