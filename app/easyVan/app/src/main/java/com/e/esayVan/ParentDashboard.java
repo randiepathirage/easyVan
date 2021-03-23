@@ -119,7 +119,8 @@ public class ParentDashboard extends AppCompatActivity {
                                         notification.getString("message"),
                                         notification.getString("date"),
                                         notification.getString("time"),
-                                        notification.getString("type")
+                                        notification.getString("type"),
+                                        notification.getString("childId")
 
                                 ));
                            // Toast.makeText(ParentDashboard.this, notification.getString("message"), Toast.LENGTH_SHORT).show();

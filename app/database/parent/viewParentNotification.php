@@ -30,6 +30,7 @@
     	$temp['date']=$row['date'];
     	$temp['time']=$row['time'];
     	$temp['type']="emergency";
+      $temp['childId']=0;
 
     	array_push($notifications, $temp);
 	}
@@ -45,6 +46,7 @@
     	$temp['date']=$row['date'];
     	$temp['time']=$row['time'];
     	$temp['type']="owner msg";
+      $temp['childId']=0;
 
     	array_push($notifications, $temp);
 	}
