@@ -27,7 +27,7 @@ import java.util.List;
 
 public class ParentNewsfeed extends AppCompatActivity {
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
 
     //a list to store all the vehicles
@@ -68,19 +68,19 @@ public class ParentNewsfeed extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_location:
-                        Intent i = new Intent(getApplicationContext(), ParentLocationFragment.class);
+                        Intent i = new Intent(getApplicationContext(), ParentLocation.class);
                         startActivity(i);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_calendar:
-                        Intent k = new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                        Intent k = new Intent(getApplicationContext(), ParentCalendar.class);
                         startActivity(k);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_Pay:
-                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        Intent l = new Intent(getApplicationContext(), ParentPay.class);
                         startActivity(l);
                         overridePendingTransition(0,0);
                         return true;
@@ -101,6 +101,8 @@ public class ParentNewsfeed extends AppCompatActivity {
 
     //loading vehicles
     private void loadVehicles() {
+
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override

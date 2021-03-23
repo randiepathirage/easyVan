@@ -29,8 +29,8 @@ public class DriverProfileUpdate extends AppCompatActivity {
     private EditText edtContactNo, edtAddress, edtEmail, edtUsername, edtNic;
     private String strNic, strAddress, strEmail, strContactNo, userName;
 
-    String URL_VIEW = "http://10.0.2.2/easyvan/driverprofile.php";
-    String URL_UPDATE = "http://10.0.2.2/easyvan/driverUpdateProfile.php";
+    String URL_VIEW = "https://10.0.2.2/easyvan/driverprofile.php";
+    String URL_UPDATE = "https://10.0.2.2/easyvan/driverUpdateProfile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class DriverProfileUpdate extends AppCompatActivity {
     //load account details
     public void sendJsonrequest(){
 
-
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL_VIEW, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -115,6 +115,7 @@ public class DriverProfileUpdate extends AppCompatActivity {
         progressDialog.setMessage("updating....");
         progressDialog.show();
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_UPDATE,
                 new Response.Listener<String>() {
                     @Override

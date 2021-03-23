@@ -23,7 +23,7 @@ import java.util.Map;
 public class UserChangePassword extends AppCompatActivity {
 
     EditText password,confirmPassword,oldPass;
-    String URL_UPDATE="http://10.0.2.2/easyvan/userResetPass.php";
+    String URL_UPDATE="https://10.0.2.2/easyvan/userResetPass.php";
     String oldPassword ,userName;
 
     @Override
@@ -104,6 +104,7 @@ public class UserChangePassword extends AppCompatActivity {
         progressDialog.setMessage("updating....");
         progressDialog.show();
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_UPDATE,
                 new Response.Listener<String>() {
                     @Override

@@ -1,75 +1,94 @@
 <?php
     //randie................................................................
     require  "conn.php";
-    
-    $license_no=0;
-    $user_firstname=$_POST['firstName'];
-    $user_lastname=$_POST['lastName'];
-    $nic_no=$_POST['NICNo'];
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    $address=$_POST['address'];
-    $contact_no=$_POST['contactNo'];
-    $email=$_POST['email'];
-    $user_role=$_POST['userRole'];
+  
 
-    
-   /* 
-    $user_firstname="A";
-    $user_lastname="A";
-    $nic_no="98765ere5v";
-    $username="reeresasdfvb";
-    $password="123";
-    $address="A";
-    $contact_no=55523165456;
-    $email="rfgvvffsvvcd";
-    $user_role="owner";
-    $license_no=0;*/
-    
-    /*
-    //avoid adding duplicate values 
-    $check_email="SELECT * FROM login WHERE email='$email'";
-    $email_result= mysqli_query($conn,$check_email);
-
-   $check_username="SELECT username FROM login WHERE username='$username'";
-   $username_result= mysqli_query($conn,$check_username);
-
-   $check_nic="SELECT NIC_no FROM login WHERE NIC_no='$nic_no'";
-    $nic_result= mysqli_query($conn,$check_nic);
-
-   $check_contact="SELECT * FROM user WHERE contact_no='$contact_no'";
-   $contact_result= mysqli_query($conn,$check_contact);
+    $child_no=$_POST['childNo'];
+    $parentUsername=$_POST['parentUsername'];
+    $firstname=$_POST['firstName'];
+    $lastname=$_POST['lastName'];
+    $school=$_POST['school'];
+    $grade=$_POST['grade'];
+    $pick=$_POST['pick'];
+    $drop=$_POST['drop'];
+    $vehicle_no=$_POST['vehicleNo'];
 
 
+    $status='pending';
+    //status =0 -->not assigned
+    //status =1-->assinged 
 
-    if(mysqli_num_rows($email_result)>0){
-        echo "This email is already registered";  
-    }
-    else if(mysqli_num_rows($username_result)>0){
-        echo "This username is already taken"; 
-    }
-    else if(mysqli_num_rows($nic_result)>0){
-        echo "This NIC number is already registered"; 
-    }
 
-    else if(mysqli_num_rows($contact_result)>0){
-        echo "This contact number is already registered"; 
-    }
-    else{*/
-        $query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username','$password','$email')";
+    $day=date("Y-m-d");
+    date_default_timezone_set("Asia/Colombo");
+    $time=date("h:i:sa");
 
-        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$address')";
+/* 
+    $parentUsername="randie";
+    $firstname="malit";
+    $lastname="fernando";
+    $school="abc collage";
+    $grade="4";
+    $pick="wrre";
+    $drop="rerer";
+    $vehicle_no="CBF-7375";*/
 
-        $query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,parent_flag,driver_flag,owner_flag,admin_flag,license_no) VALUES ('$nic_no','$parent','$driver','$owner','$admin','$license_no')";
 
-        if($conn->query($query_login)===TRUE && $conn->query($query_user)===TRUE && $conn->query($query_parent_owner_driver)===TRUE){
-            echo "Insert Successful";
-                
+        //get ownerid and parent id 
+        $query_parentID="SELECT NIC_no FROM login WHERE username='$parentUsername'";
+        $result_parentID=mysqli_query($conn,$query_parentID);
+
+        $nic="";
+
+        while($row=mysqli_fetch_assoc($result_parentID)){
+        
+            $nic=$row['NIC_no'];
         }
-        else{
-            echo "Error".$query_login."<br>".$conn->error;
+
+
+        $query_ownerID="SELECT owner_NIC_no FROM vehicle WHERE number='$vehicle_no'";
+        $result_ownerID=mysqli_query($conn,$query_ownerID);
+
+        $owner_NIC_no="";
+
+        while($row=mysqli_fetch_assoc($result_ownerID)){
+        
+            $owner_NIC_no=$row['owner_NIC_no'];
         }
-   // }
-        $conn->close();
+
+
+        //check if this child is already regitered in the system
+        //one parent cant have two children from same frst name and last name
+        $query_check="SELECT * FROM child WHERE first_name='$firstname' AND last_name='$lastname'AND parent_NIC_no='$nic'";
+        $result_check=mysqli_query($conn,$query_check);
+
+        if(mysqli_num_rows($result_check)>0){
+            echo "This child is already registered in the system";
+        }else{
+
+
+            $query_insert="INSERT INTO child(parent_NIC_no,grade,school,first_name,last_name,pickup_location,dropoff_location) VALUES ('$nic','$grade','$school','$firstname','$lastname','$pick','$drop')";
+            $result_insert = mysqli_query($conn,$query_insert);
+
+            $last_id=$conn->insert_id;
+
+
+            $query_assign="INSERT INTO request(status,parent_NIC_no,child_no,vehicle_no,owner_NIC_no,date,time) VALUES ('$status','$nic','$last_id','$vehicle_no','$owner_NIC_no','$day','$time')";
+            $result_assign=mysqli_query($conn,$query_assign);
+
+
+            if($result_insert){
+                if($result_assign){
+                    echo "request sent";
+             }
+             else{
+                echo "Error".$query_assign."<br>".$conn->error;
+            }
+             
+            }else{
+                echo "Error".$query_insert."<br>".$conn->error;
+            }
+        }
+    $conn->close();
 
 ?>

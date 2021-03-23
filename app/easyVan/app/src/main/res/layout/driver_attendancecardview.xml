@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:id="@+id/DriverCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+
+            <TextView
+                android:id="@+id/at_c_no"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:textAlignment="center"
+                android:text="child no"
+                android:textSize="18dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000" />
+
+
+            <CheckBox
+                android:id="@+id/at_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp" />
+
+            <EditText
+                android:id="@+id/at_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/at_c_no"
+                android:layout_marginLeft="20dp"
+                android:hint="Enter date"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:background="@android:drawable/editbox_background"/>
+
+            <EditText
+                android:id="@+id/at_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/at_date"
+                android:layout_marginLeft="20dp"
+                android:hint="Time"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:background="@android:drawable/editbox_background"/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

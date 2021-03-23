@@ -46,7 +46,7 @@ public class OwnerAccount extends AppCompatActivity {
     Button btnEdit;
     private String strNic,strAddress,strEmail, strContactNo;
 
-    String URL="http://10.0.2.2/easyvan/OwnerAccount.php";
+    String URL="https://10.0.2.2/easyvan/OwnerAccount.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +114,7 @@ public class OwnerAccount extends AppCompatActivity {
         //load account details
         public void sendJsonrequest() {
 
+            HttpsTrustManager.allowAllSSL();
             StringRequest stringRequest = new StringRequest(Request.Method.POST , URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {

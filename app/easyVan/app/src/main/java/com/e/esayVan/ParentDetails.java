@@ -29,8 +29,8 @@ import java.util.Map;
 
 public class ParentDetails extends AppCompatActivity {
 
-    String URL="http://10.0.2.2/easyvan/viewMoreDetails.php";
-    String URL_POST="http://10.0.2.2/easyvan/parentRate.php";
+    String URL="https://10.0.2.2/easyvan/viewMoreDetails.php";
+    String URL_POST="https://10.0.2.2/easyvan/parentRate.php";
 
     private String strfirstName, strlastName ,strvehicleNo,strstartDate,strmonthlyFee,strownerNIC,strownerContact,strownerLastName,strownerFirstName,strdriverNIC,
             strdriverContact, strdriverLastName, strdriverFirstName, strlicenseNo;
@@ -83,6 +83,7 @@ public class ParentDetails extends AppCompatActivity {
 
     private void loadDetails() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
