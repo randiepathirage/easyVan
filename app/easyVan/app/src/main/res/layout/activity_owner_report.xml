@@ -19,7 +19,7 @@
         app:menu="@menu/owner_nav" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/buttonNext"
         android:layout_width="170dp"
         android:layout_height="41dp"
         android:layout_marginTop="40dp"
@@ -155,7 +155,8 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/add_van_type" />
+        app:layout_constraintTop_toBottomOf="@+id/add_van_type"
+        android:hint="yyyy/mm/dd"/>
 
     <EditText
         android:id="@+id/editTextDate6"
@@ -168,7 +169,20 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate5" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate5"
+        android:hint="yyyy/mm/dd"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="162dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNext" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
