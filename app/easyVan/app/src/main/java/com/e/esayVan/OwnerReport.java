@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintJob;
+import android.print.PrintManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,9 +39,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class OwnerReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class OwnerReport<webView> extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Context mCtx;
+    private WebView webView;
     //private Menu menu;
     Button bt1,bt2;
     Spinner spin1;
@@ -238,4 +245,6 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
 
 
     }
+
+
 }
