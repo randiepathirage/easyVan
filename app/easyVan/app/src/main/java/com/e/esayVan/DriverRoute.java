@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.view.Menu;
@@ -48,8 +49,9 @@ public class DriverRoute extends AppCompatActivity {
     Button go;
     BottomNavigationView bottom_nav;
     Toolbar top_bar;
+    boolean isActive;
 
-    Button btLocation;
+    Button btLocation,btnEnd;
     String longitude, latitude,userName;
     FusedLocationProviderClient client;
     String URL_SET="https://10.0.2.2/easyvan/setLocation.php";
@@ -105,17 +107,21 @@ public class DriverRoute extends AppCompatActivity {
 
         //get location
         btLocation = findViewById(R.id.btnStart);
+        btnEnd=findViewById(R.id.btnEnd);
         //initilize fused location
         client = LocationServices.getFusedLocationProviderClient(this);
 
         btLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //check permission
-                if (ActivityCompat.checkSelfPermission(DriverRoute.this,
+
+                isActive=true;
+                content();
+
+  /*             if (ActivityCompat.checkSelfPermission(DriverRoute.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                         && ActivityCompat.checkSelfPermission(DriverRoute.this
-                ,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED) {
+                        ,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED) {
 
                     //when both permission are granted
                     getLocation();
@@ -123,9 +129,59 @@ public class DriverRoute extends AppCompatActivity {
                     //permission denied
                     ActivityCompat.requestPermissions(DriverRoute.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},100);
-                }
+                }*/
+
+
+
+
+
+
+
             }
         });
+
+        btnEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isActive=false;
+                Toast.makeText(DriverRoute.this, "Location stopped", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void content(){
+        if(isActive){
+
+            //check permission
+            if (ActivityCompat.checkSelfPermission(DriverRoute.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(DriverRoute.this
+                    ,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED) {
+
+                //when both permission are granted
+                getLocation();
+            } else {
+                //permission denied
+                ActivityCompat.requestPermissions(DriverRoute.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},100);
+            }
+
+            refresh(30000);//30 seconds
+        }
+
+    }
+
+    private void refresh(int milliseconds){
+
+        final Handler handler=new Handler();
+        final Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                content();
+            }
+        };
+        handler.postDelayed(runnable,milliseconds);
+
     }
 
     @Override
@@ -201,8 +257,6 @@ public class DriverRoute extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         Toast.makeText(DriverRoute.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), DriverAttendance.class));
-                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override
