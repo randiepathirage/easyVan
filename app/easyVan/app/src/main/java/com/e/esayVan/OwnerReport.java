@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,23 +40,28 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
     private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";
+    //data transfert to db
+    Spinner spinner_R_vehicle;
+    RadioButton vehicle_part,fuel,license,vehicle_service,full_report ;
+    RadioGroup vanType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
 
-        bt1 = (Button) findViewById(R.id.button11);
 
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mang = new Intent(OwnerReport.this, OwnerReportExpenses.class);
-                startActivity(mang);
-
-            }
-        });
         requestQueue = Volley.newRequestQueue(this);
-        spin1 = findViewById(R.id.spinnerVehicle);
+        spin1 = findViewById(R.id.R_spinnerVehicle);
+
+        //getUI data
+        vanType = (RadioGroup)findViewById(R.id.R_van_type);
+        vehicle_part = (RadioButton)findViewById(R.id.R_vehicle_part);
+        fuel = (RadioButton)findViewById(R.id.R_fuel);
+        license = (RadioButton)findViewById(R.id.R_licence);
+        vehicle_service = (RadioButton)findViewById(R.id.R_vehicle_service);
+        full_report = (RadioButton)findViewById(R.id.R_full_report);
+
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
@@ -141,7 +148,42 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
         getMenuInflater().inflate(R.menu.owner_appbar, menu);
         return true;
     }
+    public void GenareteView(View view) {
+        //vehicle_part,fuel,license,vehicle_service,full_report
+        String ExpType = null;
+        if (vehicle_part.isChecked()) {
+            ExpType = "vehicle part";
+        }
+        else if (fuel.isChecked()) {
+            ExpType = "fuel";
+        }
+        else if (license.isChecked()){
+            ExpType = "license";
+        }
+        else if(vehicle_service.isChecked()){
+            ExpType = "vehicle service";
+        }
+        else if(full_report.isChecked()){
+            ExpType = "full report";
+        }
 
+        String Str_vehicleNO = spin1.getSelectedItem().toString();
+        String str_type = ExpType;
+        String match = "report";
+        /*String str_type = "fuel";
+        String Str_vehicleNO = "KK 2332";*/
+/*
+
+        Toast.makeText(OwnerReport.this, str_type, Toast.LENGTH_LONG).show();
+        Toast.makeText(OwnerReport.this, match, Toast.LENGTH_LONG).show();
+        Toast.makeText(OwnerReport.this, Str_vehicleNO, Toast.LENGTH_LONG).show();
+*/
+
+
+        OwnerReportBackground backgroundWorker=new OwnerReportBackground(OwnerReport.this);
+        backgroundWorker.execute(match,Str_vehicleNO,
+                str_type);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -179,4 +221,7 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-}
+
+
+
+    }
