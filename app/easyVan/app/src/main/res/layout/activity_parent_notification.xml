@@ -5,21 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParentDashboard"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="176dp"
-        android:layout_height="193dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp"/>
+    android:orientation="vertical"
+    android:background="@drawable/doodle_back_logo">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
         android:layout_width="match_parent"
         android:layout_height="360dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="277dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

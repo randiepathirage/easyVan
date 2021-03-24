@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DriverPayment">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:layout_alignParentBottom="true"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
-        app:menu="@menu/driver_nav"
-        tools:layout_editor_absoluteY="675dp" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

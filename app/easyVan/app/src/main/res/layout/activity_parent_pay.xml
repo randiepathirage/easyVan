@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParentPay"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/doodle_back_logo">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
