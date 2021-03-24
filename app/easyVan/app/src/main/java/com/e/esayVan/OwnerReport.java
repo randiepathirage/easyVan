@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class OwnerReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //private Menu menu;
-    Button bt1;
+    Button bt1,bt2;
     Spinner spin1;
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
@@ -43,9 +43,16 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
 
-        bt1 = (Button) findViewById(R.id.buttonNext);
+        bt2 = (Button) findViewById(R.id.buttR);
         requestQueue = Volley.newRequestQueue(this);
         spin1 = findViewById(R.id.spinnerVehicle);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
+                startActivity(mang);
+
+            }});
 
 
         HttpsTrustManager.allowAllSSL();
