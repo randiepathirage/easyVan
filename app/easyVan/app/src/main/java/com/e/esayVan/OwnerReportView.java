@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -34,11 +35,24 @@ public class OwnerReportView extends AppCompatActivity {
     String Name;
     //add button
     Button addVan;
+    String vehicle= "KK 2332";
+    String expType = "fuel";
+      //  String vehicle,expType;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report_view);
+
+      //vehicle=getIntent().getStringExtra("vehicleNo");
+       //expType=getIntent().getStringExtra("expType");
+
+        Toast.makeText(OwnerReportView.this, vehicle,Toast.LENGTH_SHORT).show();
+        Toast.makeText(OwnerReportView.this, expType,Toast.LENGTH_SHORT).show();
+
+
         recyclerView = (RecyclerView) findViewById(R.id.R_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -51,10 +65,16 @@ public class OwnerReportView extends AppCompatActivity {
         //initializing the vehiclelist
         ReportList = new ArrayList<>();
 
+
+
+
+
         loadVehicles();
 
 
+
     }
+
     private void loadVehicles() {
 
         HttpsTrustManager.allowAllSSL();
@@ -100,8 +120,12 @@ public class OwnerReportView extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
 
-                params.put("username",Name);
-                // Toast.makeText(OwnerDrivers.this,userName,Toast.LENGTH_LONG).show();
+               //params.put("username",Name);
+
+               params.put("expType",expType);
+               params.put("vehicle",vehicle);
+                /*   Toast.makeText(OwnerReportView.this,expType,Toast.LENGTH_LONG).show();
+                Toast.makeText(OwnerReportView.this,vehicle,Toast.LENGTH_LONG).show();*/
                 // params.put("username",userName);
                 //  Toast.makeText(OwnerDrivers.this,userName,Toast.LENGTH_SHORT);
                 return params;
@@ -114,5 +138,6 @@ public class OwnerReportView extends AppCompatActivity {
 
 
     }
+
 
 }

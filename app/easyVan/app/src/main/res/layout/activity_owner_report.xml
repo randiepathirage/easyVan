@@ -26,6 +26,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/roundededge"
         android:text="Generate"
+        android:onClick="genarate"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
@@ -43,7 +44,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/R_vPart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="51dp"
@@ -53,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/radioButton8" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/R_fuel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="51dp"
@@ -65,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/R_v_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="51dp"
@@ -75,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/radioButton5" />
 
         <RadioButton
-            android:id="@+id/radioButton8"
+            android:id="@+id/R_licence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="51dp"
@@ -85,7 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/radioButton6" />
 
         <RadioButton
-            android:id="@+id/radioButton9"
+            android:id="@+id/R_full"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="51dp"
@@ -171,18 +172,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate5"
         android:hint="yyyy/mm/dd"/>
-
-    <Button
-        android:id="@+id/buttR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="162dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonNext" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
