@@ -152,9 +152,6 @@ public class OwnerRespond extends AppCompatActivity implements RequestAcceptDial
     @Override
     public void applyText(final String fees) {
 
-
-
-
         HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_ACCEPT,
                 new Response.Listener<String>() {
