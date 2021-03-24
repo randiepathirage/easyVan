@@ -30,13 +30,8 @@ public class OwnerManage extends AppCompatActivity {
         driverBtn = findViewById(R.id.driverBt);
         vanBtn = findViewById(R.id.vanBt);
 
-        driverBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mang = new Intent(OwnerManage.this,OwnerDrivers.class);
-                startActivity(mang);
 
-            }});
+
 
         vanBtn.setOnClickListener(new View.OnClickListener() {
             @Override

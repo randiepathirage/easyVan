@@ -2,6 +2,7 @@ package com.e.esayVan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,16 +31,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OwnerReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+
+
     //private Menu menu;
-    Button bt1;
+    Button btnView;
     Spinner spin1;
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";
+    private static final String PRODUCT_URL_spin="http://10.0.2.2/easyvan/spinner.php";
     //data transfert to db
     Spinner spinner_R_vehicle;
     RadioButton vehicle_part,fuel,license,vehicle_service,full_report ;
@@ -61,10 +65,19 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
         license = (RadioButton)findViewById(R.id.R_licence);
         vehicle_service = (RadioButton)findViewById(R.id.R_vehicle_service);
         full_report = (RadioButton)findViewById(R.id.R_full_report);
+        btnView = findViewById(R.id.buttonView);
+
+       /* btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mang = new Intent(OwnerReport.this,OwnerReportView2.class);
+                startActivity(mang);
+
+            }});*/
 
 
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL_spin, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 JSONArray jsonArray = null;
