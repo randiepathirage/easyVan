@@ -43,16 +43,7 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
 
-        bt1 = (Button) findViewById(R.id.button11);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mang = new Intent(OwnerReport.this, OwnerReportExpenses.class);
-                startActivity(mang);
-
-            }
-        });
+        bt1 = (Button) findViewById(R.id.buttonNext);
         requestQueue = Volley.newRequestQueue(this);
         spin1 = findViewById(R.id.spinnerVehicle);
 
