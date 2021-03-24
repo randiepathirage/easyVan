@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OwnerExpenses">
+    tools:context=".OwnerExpenses"
+    android:background="@drawable/doodle_back_gray">
 
     <EditText
         android:id="@+id/E_date"
