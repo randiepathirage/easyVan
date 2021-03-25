@@ -231,12 +231,14 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
         Toast.makeText(OwnerReport.this, str_exType,Toast.LENGTH_SHORT).show();
  */
         Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
+        mang.putExtra("vehicleNo",str_vehicle);
+        mang.putExtra("expType",str_exType);//passing data to OwnerReportView
         startActivity(mang);
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    //  mang.putExtra("vehicleNo",str_vehicle);
-    //  mang.putExtra("expType",str_exType);//passing data to OwnerReportView
+   //mang.putExtra("vehicleNo",str_vehicle);
+   //mang.putExtra("expType",str_exType);//passing data to OwnerReportView
       //  mCtx.startActivity(mang);
 
 
