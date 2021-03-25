@@ -1,11 +1,6 @@
 <?php
  require  "conn.php";
 
-$file = fopen('ApplicationLogs.txt','a');
-
-date_default_timezone_set("Asia/Colombo");
-$day=date("Y-m-d");
-$time=date("h:i:sa");
 
  $user_firstname=$_POST['firstName'];
  $user_lastname=$_POST['lastName'];
@@ -18,24 +13,26 @@ $time=date("h:i:sa");
  $license_no = $_POST['licenseNo'];
 
  $ownerName =$_POST['ownerName'];
+ $v_no = "KK 2332";
  
- $user_role = "driver";
+/* $user_role = "driver";
+ $user_middlename = "None";*/
+/*  $user_firstname="dshde";
+ $user_lastname="ss";
+ $nic_no="1234567";
+ $username="driver1";
+ $password="Driver123@";
+ $address="111";
+ $contact_no="s1212";
+ $email="ddd@gmail.com";
+ $license_no = "1s21212";
 
-    $salt=generateRandomString();
+ $ownerName ="owner";
 
-    function generateRandomString($length = 20) {
-       $characters='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|[]/?~`';
-       $charactersLength = strlen($characters);
-       $randomString = '';
-       for ($i = 0; $i < $length; $i++) {
-           $randomString .= $characters[rand(0, $charactersLength - 1)];
-       }
-       return $randomString;
-    }
+ $NIC_no=123456789;*/
+ 
 
-    //$password=md5($password);
-    $password=$password.$salt;
-    $password=hash('sha256',$password);
+
 
 
 
@@ -53,16 +50,13 @@ $time=date("h:i:sa");
 
 
 if(mysqli_num_rows($nic_result)>0){
-        echo "This NIC is already registered";
-        fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR");  
+        echo "This NIC is already registered";  
     }
     else if(mysqli_num_rows($contact_result)>0){
-        echo "This Contact_no is already taken";
-        fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR"); 
+        echo "This Contact_no is already taken"; 
     }
      else if(mysqli_num_rows($username_result)>0){
-        echo "This username is already taken";
-        fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail      ERROR"); 
+        echo "This username is already taken"; 
     }
 
 else{
@@ -79,35 +73,33 @@ else{
 
 
         //update DB
-        $query_login="INSERT INTO login(NIC_no,username,password,salt,email) VALUES ('$nic_no','$username',' $password','$salt',' $email')";
+        $query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username',' $password',' $email')";
 
-        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$user_middlename','$address')";
+        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$address')";
 
-        $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";
+       /* $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";*/
 
         $query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,driver_flag,license_no) VALUES ('$nic_no','1','$license_no')";
 
-        $query_assign = "INSERT INTO assign(driver_NIC_no, owner_NIC_no) VALUES ('$nic_no','$owner')";
+        $query_assign = "INSERT INTO assign(driver_NIC_no, owner_NIC_no,vehicle_no) VALUES ('$nic_no','$owner','$v_no')";
 
         if($conn->query($query_login)===TRUE){
             if($conn->query($query_user)===TRUE){
-                if($conn->query($query_user_role)===TRUE){
+               /* if($conn->query($query_user_role)===TRUE)*/
                     if($conn->query($query_parent_owner_driver)===TRUE){
                     	if($conn->query($query_assign)===TRUE){
                         	echo "Insert Successful Driver";
-                            fwrite($file,"\n$day  $time   $nic_no      REGISTRATION $user_role    ALERT");
                     	}
                     }
-                }
+                
             }
         }
 
         else{
             echo "Error".$query_login."<br>".$conn->error;
-            fwrite($file,"\n$day  $time   $nic_no      REGISTRATION fail       ERROR");
+            echo "fail";
         }
 }
     $conn->close();
-    fclose($file);
 
 ?>
