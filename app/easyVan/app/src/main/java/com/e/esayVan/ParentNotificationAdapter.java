@@ -51,9 +51,9 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
                 holder.textViewMsg.setText("Your request to vehicle no "+notifications.getMessage()+" is rejected");
             }else if(type.equals("accepted")){
                 holder.textViewMsg.setText("Your request to vehicle no "+notifications.getMessage()+" is accepted");
-            }
-
-            else{
+            }else if(type.equals("attendance")){
+                holder.textViewMsg.setText(notifications.getChildId()+" "+notifications.getMessage()+" on "+notifications.getDate());
+            } else{
                 holder.textViewMsg.setText(String.valueOf(notifications.getMessage()));
             }
 
