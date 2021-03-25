@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_gravity="center"
+        android:background="@drawable/search_bg"
+        app:cardCornerRadius="8dp"
         android:id="@+id/card">
 
         <RelativeLayout

@@ -28,7 +28,7 @@ public class Admin extends AppCompatActivity {
     private Button btnver;
     private Button btngen;
     private Button btnnws;
-    String user;
+    String user,c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,17 +77,17 @@ public class Admin extends AppCompatActivity {
 
     public boolean checkrole(final String username) {
 
-        final int[] c = new int[1];
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/checkuser.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/checkuser.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
                         if(response.equalsIgnoreCase("user is an owner")){
-                            c[0] = 1;
+                            c = "y";
                         }
                         else{
-                            c[0] = 0;
+                            c  = "n";
                         }
 
                     }
@@ -109,7 +109,7 @@ public class Admin extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
 
-        if(c[0]==1)
+        if(c == "y")
             return true;
         else
             return false;
@@ -133,11 +133,12 @@ public class Admin extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
+
             case R.id.switchowner:
                 SessionManagement sessionManagementr = new SessionManagement(Admin.this);
                 user = sessionManagementr.getUserName();
 
-                if(checkrole(user))
+                if(checkrole(user)==true)
                 {
                     Intent ointent = new Intent(getApplicationContext(),OwnerManage.class);
                     startActivity(ointent);
@@ -145,9 +146,10 @@ public class Admin extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(Admin.this,"You are not an owner.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AdminManage.this,c, Toast.LENGTH_SHORT).show();
                 }
-
         }
+
 
         return true;
     }
