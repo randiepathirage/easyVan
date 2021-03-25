@@ -48,13 +48,12 @@ public class OwnerReportView extends AppCompatActivity {
     String Name;
     //add button
     Button addVan;
-
    /* String vehicle = "KK 2332";
     String expType = "fuel";*/
     String vehicle ;
     String expType;
 
-
+    private WebView webView;
     //  String vehicle,expType;
 
 
@@ -63,11 +62,8 @@ public class OwnerReportView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report_view);
 
-
-
-       /* Toast.makeText(OwnerReportView.this, vehicle,Toast.LENGTH_SHORT).show();
-        Toast.makeText(OwnerReportView.this, expType,Toast.LENGTH_SHORT).show();*/
-
+        vehicle=getIntent().getStringExtra("vehicleNo");
+        expType=getIntent().getStringExtra("expType");
 
         Total = findViewById(R.id.textView35);
 
@@ -78,6 +74,21 @@ public class OwnerReportView extends AppCompatActivity {
         Toast.makeText(OwnerReportView.this,"OK",Toast.LENGTH_SHORT);
 
 
+
+        recyclerView = (RecyclerView) findViewById(R.id.R_recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        SessionManagement sessionManagement = new SessionManagement(OwnerReportView.this);
+        Name = sessionManagement.getUserName();
+
+        // Toast.makeText(OwnerVans.this, Name,Toast.LENGTH_SHORT).show();
+
+        //initializing the vehiclelist
+        ReportList = new ArrayList<>();
+
+        sendJsonrequest();
+        loadVehicles();
 
 
 
