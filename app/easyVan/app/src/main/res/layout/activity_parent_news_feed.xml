@@ -7,21 +7,18 @@
     tools:context=".ParentNewsfeed"
     android:orientation="vertical">
 
-    <SearchView
+    <EditText
         android:id="@+id/searchView"
+        android:background="@drawable/search_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="5dp"
-        android:autofillHints="Enter school"
-        android:gravity="center"
-        android:iconifiedByDefault="true"
-        android:outlineSpotShadowColor="@color/theme"
-        android:paddingBottom="10dp"
-        android:queryHint="Enter school">
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Enter School"
+        android:paddingLeft="10dp"
+        android:outlineSpotShadowColor="@color/theme"/>
 
-    </SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
