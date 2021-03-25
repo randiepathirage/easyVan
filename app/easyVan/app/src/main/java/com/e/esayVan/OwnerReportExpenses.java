@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -35,7 +36,7 @@ import static com.e.esayVan.R.id.recyclerView;
 public class OwnerReportExpenses extends AppCompatActivity {
 
     //View for driver list
-    String Name;
+    String Name,user,c;
 
     private static final String PRODUCT_URL="https://10.0.2.2/easyvan/OwnerReport.php";
 
@@ -71,6 +72,88 @@ public class OwnerReportExpenses extends AppCompatActivity {
 
 
     }
+
+    public boolean checkrole(final String username) {
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/checkuser.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equalsIgnoreCase("user is an owner")){
+                            c = "y";
+                        }
+                        else{
+                            c  = "n";
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OwnerReportExpenses.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("username",username);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+        if(c == "y")
+            return true;
+        else
+            return false;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.notification:
+                startActivity(new Intent(this,OwnerNotification.class));
+                return true;
+
+            case R.id.reqest:
+                startActivity(new Intent(this,OwnerRequest.class));
+                return true;
+
+            case R.id.top_profile:
+                startActivity(new Intent(this,OwnerAccount.class));
+                return true;
+
+            case R.id.logout:
+                SessionManagement sessionManagement = new SessionManagement(OwnerReportExpenses.this);
+                sessionManagement.removeSession();
+
+                Intent intent = new Intent(OwnerReportExpenses.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+
+            case R.id.switchadmin:
+                SessionManagement sessionManagementr = new SessionManagement(OwnerReportExpenses.this);
+                user = sessionManagementr.getUserName();
+
+                if(checkrole(user)==true)
+                {
+                    Intent ointent = new Intent(getApplicationContext(),AdminManage.class);
+                    startActivity(ointent);
+                    return true;
+                }
+                else{
+                    Toast.makeText(OwnerReportExpenses.this,"You are not an admin.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AdminManage.this,c, Toast.LENGTH_SHORT).show();
+                }
+        }
+        return true;
+    }
+
     private void loadVehicles() {
 
         HttpsTrustManager.allowAllSSL();
