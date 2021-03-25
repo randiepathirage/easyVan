@@ -237,8 +237,8 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-   //mang.putExtra("vehicleNo",str_vehicle);
-   //mang.putExtra("expType",str_exType);//passing data to OwnerReportView
+    //  mang.putExtra("vehicleNo",str_vehicle);
+    //  mang.putExtra("expType",str_exType);//passing data to OwnerReportView
       //  mCtx.startActivity(mang);
 
 
