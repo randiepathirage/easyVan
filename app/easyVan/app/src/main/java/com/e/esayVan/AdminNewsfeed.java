@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,6 +43,9 @@ public class AdminNewsfeed extends AppCompatActivity {
     //the recyclerview
     RecyclerView recyclerView;
     BottomNavigationView bottom_nav;
+    EditText searchView;
+    CharSequence search="";
+    ParentVansAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +63,29 @@ public class AdminNewsfeed extends AppCompatActivity {
 
         //initializing the vehiclelist
         vehicleList = new ArrayList<>();
-
         loadVehicles();
 
 
+        //filtering option
+        searchView=findViewById(R.id.searchView);
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(charSequence);
+                search=charSequence;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -148,7 +173,7 @@ public class AdminNewsfeed extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentVansAdapter adapter = new ParentVansAdapter(AdminNewsfeed.this, vehicleList);
+                            adapter = new ParentVansAdapter(AdminNewsfeed.this, vehicleList);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 
