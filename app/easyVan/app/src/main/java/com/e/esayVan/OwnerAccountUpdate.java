@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class OwnerAccountUpdate extends AppCompatActivity {
 
-    private EditText edtContactNo, edtAddress, edtEmail, edtUsername, edtNic;
+    private EditText edtContactNo, edtAddress, edtEmail, edtUsername, Total;
     private String strNic, strAddress, strEmail, strContactNo, userName;
 
     String URL_VIEW = "https://10.0.2.2/easyvan/OwnerAccount.php";
@@ -43,6 +43,8 @@ public class OwnerAccountUpdate extends AppCompatActivity {
         edtContactNo = findViewById(R.id.acc_et_ContactNo);
         edtEmail = findViewById(R.id.acc_et_Email);
         edtUsername = findViewById(R.id.acc_et_firstName);
+        Total = findViewById(R.id.acc_et_Email);
+
 
         SessionManagement sessionManagement = new SessionManagement(this);
         userName = sessionManagement.getUserName();

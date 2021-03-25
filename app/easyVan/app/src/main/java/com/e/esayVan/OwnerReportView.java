@@ -14,6 +14,8 @@ import android.print.PrintManager;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,7 +35,10 @@ import java.util.List;
 import java.util.Map;
 
 public class OwnerReportView extends AppCompatActivity {
-    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/reportView.php";
+    private static final String PRODUCT_URL = "https://10.0.2.2/easyvan/reportView.php";
+    private static final String URL_VIEW = "https://10.0.2.2/easyvan/total.php";
+    private String Str_amount;
+    private TextView Total;
     //a list to store all the vehicles
     List<OwnerReportProduct> ReportList;
     OwnerReportProductAdapter adapter;
@@ -43,11 +48,13 @@ public class OwnerReportView extends AppCompatActivity {
     String Name;
     //add button
     Button addVan;
-    String vehicle= "KK 2332";
-    String expType = "fuel";
+   /* String vehicle = "KK 2332";
+    String expType = "fuel";*/
+    String vehicle ;
+    String expType;
+
     private WebView webView;
     //  String vehicle,expType;
-
 
 
     @Override
@@ -55,11 +62,17 @@ public class OwnerReportView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report_view);
 
-      //vehicle=getIntent().getStringExtra("vehicleNo");
-       //expType=getIntent().getStringExtra("expType");
+        vehicle=getIntent().getStringExtra("vehicleNo");
+        expType=getIntent().getStringExtra("expType");
 
-        Toast.makeText(OwnerReportView.this, vehicle,Toast.LENGTH_SHORT).show();
-        Toast.makeText(OwnerReportView.this, expType,Toast.LENGTH_SHORT).show();
+        Total = findViewById(R.id.textView35);
+
+
+       /* Toast.makeText(OwnerReportView.this, vehicle, Toast.LENGTH_SHORT).show();
+        Toast.makeText(OwnerReportView.this, expType, Toast.LENGTH_SHORT).show();*/
+
+        Toast.makeText(OwnerReportView.this,"OK",Toast.LENGTH_SHORT);
+
 
 
         recyclerView = (RecyclerView) findViewById(R.id.R_recyclerView);
@@ -74,28 +87,26 @@ public class OwnerReportView extends AppCompatActivity {
         //initializing the vehiclelist
         ReportList = new ArrayList<>();
 
-
-
-
-
+        sendJsonrequest();
         loadVehicles();
 
 
 
     }
 
+
     private void loadVehicles() {
 
         HttpsTrustManager.allowAllSSL();
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray array=new JSONArray(response);
+                            JSONArray array = new JSONArray(response);
 
-                            for(int i=0;i<array.length();i++){
-                                JSONObject products=array.getJSONObject(i);
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject products = array.getJSONObject(i);
 
                                 ReportList.add(new OwnerReportProduct(
                                         products.getString("vehicleNo"),
@@ -122,17 +133,16 @@ public class OwnerReportView extends AppCompatActivity {
                 // Toast.makeText(OwnerDrivers.this,error.getMessage(),Toast.LENGTH_LONG).show();
 
             }
-        })
-        {
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
+                Map<String, String> params = new HashMap<String, String>();
 
-               //params.put("username",Name);
+                //params.put("username",Name);
 
-               params.put("expType",expType);
-               params.put("vehicle",vehicle);
+                params.put("expType", expType);
+                params.put("vehicle", vehicle);
                 /*   Toast.makeText(OwnerReportView.this,expType,Toast.LENGTH_LONG).show();
                 Toast.makeText(OwnerReportView.this,vehicle,Toast.LENGTH_LONG).show();*/
                 // params.put("username",userName);
@@ -147,7 +157,9 @@ public class OwnerReportView extends AppCompatActivity {
 
 
     }
-    public void pdf(View view) {
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>pdf view>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/*    public void pdf(View view) {
         Context context = OwnerReportView.this;
         PrintManager printManager = (PrintManager)OwnerReportView.this.getSystemService(context.PRINT_SERVICE);
         PrintDocumentAdapter adapter = null;
@@ -160,7 +172,59 @@ public class OwnerReportView extends AppCompatActivity {
         }
 
 
+    }*/
+    private void sendJsonrequest() {
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, URL_VIEW, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Total.setText("1000");
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray result = jsonObject.getJSONArray("ata");
+                    JSONObject collegeData = result.getJSONObject(0);
+
+
+                    Str_amount = collegeData.getString("amount");
+                  /*  strContactNo = collegeData.getString("contact_no");
+                    strEmail = collegeData.getString("email");
+                    strAddress = collegeData.getString("address");*/
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Total.setText("total:"+Str_amount);
+                Total.setText("2000");
+               // Total.setText("1000");
+               // Total.setText(Str_amount);
+             //   Toast.makeText(OwnerReportView.this,Str_amount,Toast.LENGTH_SHORT);
+
+               /* edtContactNo.setText(strContactNo);
+                edtEmail.setText(strEmail);
+                edtUsername.setText(userName);*/
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OwnerReportView.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("vehicle_no", vehicle);
+
+                return params;
+            }
+        };
+
+
     }
-
-
 }
