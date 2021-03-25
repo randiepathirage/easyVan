@@ -16,5 +16,5 @@
     <item
         android:id="@+id/switchowner"
         app:showAsAction="never"
-        android:title="Switch Account" />
+        android:title="Switch to Owner" />
 </menu>
