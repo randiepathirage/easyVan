@@ -43,8 +43,8 @@ public class OwnerReportView extends AppCompatActivity {
     String Name;
     //add button
     Button addVan;
-    String vehicle= "KK 2332";
-    String expType = "fuel";
+    String vehicle;
+    String expType ;
     private WebView webView;
     //  String vehicle,expType;
 
@@ -55,11 +55,11 @@ public class OwnerReportView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report_view);
 
-      //vehicle=getIntent().getStringExtra("vehicleNo");
-       //expType=getIntent().getStringExtra("expType");
+      vehicle=getIntent().getStringExtra("vehicleNo");
+       expType=getIntent().getStringExtra("expType");
 
-        Toast.makeText(OwnerReportView.this, vehicle,Toast.LENGTH_SHORT).show();
-        Toast.makeText(OwnerReportView.this, expType,Toast.LENGTH_SHORT).show();
+       /* Toast.makeText(OwnerReportView.this, vehicle,Toast.LENGTH_SHORT).show();
+        Toast.makeText(OwnerReportView.this, expType,Toast.LENGTH_SHORT).show();*/
 
 
         recyclerView = (RecyclerView) findViewById(R.id.R_recyclerView);
