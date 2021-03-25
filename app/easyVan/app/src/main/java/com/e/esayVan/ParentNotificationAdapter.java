@@ -19,7 +19,7 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
 
     private Context mCtx;
     private List<ParentNotifications> notificationList;
-    String type,id;
+    String type,id,vehicleNo,chilId;
 
     public ParentNotificationAdapter(Context mCtx, List<ParentNotifications> notificationList) {
 
@@ -47,7 +47,13 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
 
             if(type.equals("request")){
                 holder.textViewMsg.setText("New request to "+notifications.getMessage());
-            }else{
+            }else if(type.equals("rejected")){
+                holder.textViewMsg.setText("Your request to vehicle no "+notifications.getMessage()+" is rejected");
+            }else if(type.equals("accepted")){
+                holder.textViewMsg.setText("Your request to vehicle no "+notifications.getMessage()+" is accepted");
+            }
+
+            else{
                 holder.textViewMsg.setText(String.valueOf(notifications.getMessage()));
             }
 
@@ -69,7 +75,25 @@ public class ParentNotificationAdapter extends RecyclerView.Adapter<ParentNotifi
                 if(type.equals("request")){
                     Intent intent = new Intent(mCtx, OwnerRespond.class);
                     id=notifications.getId();
+                    vehicleNo=notifications.getMessage();
+                    chilId=notifications.getChildId();
+
+                    intent.putExtra("vehicleNo",vehicleNo);
                     intent.putExtra("reqId",id);
+                    intent.putExtra("childId",chilId);
+                    mCtx.startActivity(intent);
+
+                }else if(type.equals("accepted")){
+                    Intent intent = new Intent(mCtx,ParentAccepted.class);
+
+                    id=notifications.getId();
+                    vehicleNo=notifications.getMessage();
+                    chilId=notifications.getChildId();
+
+                    intent.putExtra("vehicleNo",vehicleNo);
+                    intent.putExtra("reqId",id);
+                    intent.putExtra("childId",chilId);
+
                     mCtx.startActivity(intent);
                 }else{
 

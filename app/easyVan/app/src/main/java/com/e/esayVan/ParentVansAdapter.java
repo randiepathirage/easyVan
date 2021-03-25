@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.VansViewHolder> {
@@ -19,11 +21,13 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
 
         //we are storing all the products in a list
         private List<ParentVans> vehicleList;
+        List<ParentVans> filterVans;
 
         //getting the context and product list with constructor
         public ParentVansAdapter(Context mCtx, List<ParentVans> vehicleList) {
             this.mCtx = mCtx;
             this.vehicleList = vehicleList;
+            this.filterVans=vehicleList;
         }
 
         @Override
@@ -82,7 +86,7 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
 
         @Override
         public int getItemCount() {
-            return vehicleList.size();
+            return filterVans.size();
         }
 
 
@@ -103,5 +107,38 @@ public class ParentVansAdapter extends RecyclerView.Adapter<ParentVansAdapter.Va
                 textViewSchools=itemView.findViewById(R.id.textViewSchools);
                 textViewTowns=itemView.findViewById(R.id.textViewTowns);
             }
+        }
+
+        public Filter getFilter(){
+            return new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence charSequence) {
+
+                    String key=charSequence.toString();
+                    if(key.isEmpty()){
+                        filterVans=vehicleList;
+                    }else {
+                        List<ParentVans> lstFiltered=new ArrayList<>();
+                        for(ParentVans row:vehicleList){
+                            if(row.getSchool().toLowerCase().contains(key.toLowerCase())){
+                                lstFiltered.add(row);
+                            }
+                        }
+
+                        filterVans=lstFiltered;
+
+                    }
+                    FilterResults filterResults=new FilterResults();
+                    filterResults.values=filterVans;
+                    return filterResults;
+                }
+
+                @Override
+                protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+                        filterVans=(List<ParentVans>)filterResults.values;
+                        notifyDataSetChanged();
+                }
+            };
         }
 }

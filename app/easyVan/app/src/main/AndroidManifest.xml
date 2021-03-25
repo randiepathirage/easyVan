@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OwnerRespond"></activity>
+        <activity android:name=".OwnerReportView"></activity>
+        <activity android:name=".ParentAccepted" />
+        <activity android:name=".OwnerRespond" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -74,7 +76,8 @@
         <activity android:name=".AdminDrivers" />
         <activity android:name=".AdminOwners" />
         <activity android:name=".AdminParents" />
-        <activity android:name=".AdminNewsfeed" />
+        <activity android:name=".AdminNewsfeed"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".AdminReportGenerator" />
         <activity android:name=".AdminManage" />
         <activity android:name=".AdminVerify" />
@@ -101,7 +104,8 @@
         <activity android:name=".Parent" />
         <activity android:name=".ParentLocation" />
         <activity android:name=".ParentCalendar" />
-        <activity android:name=".ParentNewsfeed" />
+        <activity android:name=".ParentNewsfeed"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ParentPay" />
         <activity android:name=".ParentAccount" />
         <activity android:name=".ParentDetails" />
@@ -111,6 +115,7 @@
         <activity android:name=".ParentRequest" />
         <activity
             android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

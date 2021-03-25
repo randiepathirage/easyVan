@@ -3,15 +3,25 @@ package com.e.esayVan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintJob;
+import android.print.PrintManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,33 +43,47 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OwnerReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class OwnerReport<webView> extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    private Context mCtx;
+    private WebView webView;
     //private Menu menu;
-    Button bt1;
+    Button bt1,bt2;
     Spinner spin1;
     String user,c;
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
     private static final String PRODUCT_URL="https://10.0.2.2/easyvan/spinner.php";
+
+    RadioGroup expType;
+    RadioButton vehiclePart, fuel,vehicleService, license, full;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
 
-        bt1 = (Button) findViewById(R.id.button11);
 
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mang = new Intent(OwnerReport.this, OwnerReportExpenses.class);
-                startActivity(mang);
-
-            }
-        });
         requestQueue = Volley.newRequestQueue(this);
         spin1 = findViewById(R.id.spinnerVehicle);
+/*         bt2.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View view) {
+                Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
+                startActivity(mang);
+
+            }});*/
+
+
+        //get UI data DB >>>>>>>>>>>>>>>.
+        expType = (RadioGroup)findViewById(R.id.add_van_type);
+        vehiclePart = (RadioButton)findViewById(R.id.R_vPart);
+        fuel = (RadioButton)findViewById(R.id.R_fuel);
+        vehicleService = (RadioButton)findViewById(R.id.R_v_service);
+        license = (RadioButton)findViewById(R.id.R_licence);
+        full = (RadioButton)findViewById(R.id.R_full);
+
 
 
         HttpsTrustManager.allowAllSSL();
@@ -241,4 +265,49 @@ public class OwnerReport extends AppCompatActivity implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    public void genarate(View view) {
+
+        String exType = null;
+
+        if (vehiclePart.isChecked()) {
+            exType = "vehicle part";
+        }
+        else if(fuel.isChecked()) {
+            exType = "fuel";
+        }
+        else if(vehicleService.isChecked()) {
+            exType = "vehicle service";
+        }
+        else if(license.isChecked()) {
+            exType = "licence";
+        }
+        else if(full.isChecked()) {
+            exType = "full";
+        }
+
+        String str_vehicle = spin1.getSelectedItem().toString();
+        String str_exType = exType;
+       /* Toast.makeText(OwnerReport.this, str_vehicle,Toast.LENGTH_SHORT).show();
+        Toast.makeText(OwnerReport.this, str_exType,Toast.LENGTH_SHORT).show();
+ */
+        Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
+        mang.putExtra("vehicleNo",str_vehicle);
+        mang.putExtra("expType",str_exType);//passing data to OwnerReportView
+        startActivity(mang);
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //  mang.putExtra("vehicleNo",str_vehicle);
+    //  mang.putExtra("expType",str_exType);//passing data to OwnerReportView
+      //  mCtx.startActivity(mang);
+
+
+     /*OwnerReportView OwnerReportView  = new OwnerReportView(OwnerReport.this);
+     OwnerReportView.execute(str_vehicle,str_exType);*/
+
+
+    }
+
+
 }

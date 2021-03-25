@@ -6,15 +6,9 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     tools:context=".Login"
-    android:background="@drawable/background"
+    android:background="@drawable/doodle_back_logo"
     android:orientation="vertical"
     android:gravity="center">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        app:srcCompat="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="wrap_content"

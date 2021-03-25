@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-
-public class OwnerReportProductAdapter extends RecyclerView.Adapter<OwnerReportProductAdapter.ProductViewHolder>  {
-
+public class OwnerReportProductAdapter  extends RecyclerView.Adapter<OwnerReportProductAdapter.ProductViewHolder>  {
     //View for driver list
 
     //this context we will use to inflate the layout
@@ -29,23 +27,24 @@ public class OwnerReportProductAdapter extends RecyclerView.Adapter<OwnerReportP
 
 
     @Override
-    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OwnerReportProductAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.activity_owner_report_view_list_layout, null);
-        return new ProductViewHolder(view);
+        return new OwnerReportProductAdapter.ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ProductViewHolder holder, int position) {
+    public void onBindViewHolder(OwnerReportProductAdapter.ProductViewHolder holder, int position) {
         //getting the product of the specified position
         OwnerReportProduct product = productList.get(position);
 
         //binding the data with the viewholder views
-        holder.vehicle.setText(product.getVehicle());
+        holder.vehicleNo.setText(product.getVehicle_No());
         holder.type.setText(product.getType());
-        holder.date.setText(product.getDate());
         holder.amount.setText(product.getAmount());
+        holder.date.setText(product.getDate());
+
 
     }
 
@@ -58,15 +57,15 @@ public class OwnerReportProductAdapter extends RecyclerView.Adapter<OwnerReportP
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView vehicle, type , date , amount;
+        TextView vehicleNo , type, amount,date;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-
-            vehicle = itemView.findViewById(R.id.R_vehicle);
+            vehicleNo = itemView.findViewById(R.id.R_VehicleNO);
             type= itemView.findViewById(R.id.R_type);
-            date = itemView.findViewById(R.id.R_date);
             amount = itemView.findViewById(R.id.R_amount);
+            date = itemView.findViewById(R.id.R_date);
+
 
         }
     }

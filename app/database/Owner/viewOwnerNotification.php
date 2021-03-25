@@ -30,11 +30,12 @@
     	$temp['date']=$row['date'];
     	$temp['time']=$row['time'];
     	$temp['type']="emergency";
+      $temp['childId']=0;
 
     	array_push($notifications, $temp);
 	}
 
-   $query_request="SELECT req_id,vehicle_no,date,time FROM request WHERE owner_NIC_no='$nic'";
+   $query_request="SELECT req_id,child_no,vehicle_no,date,time FROM request WHERE owner_NIC_no='$nic'AND status='pending'";
    $result_request=mysqli_query($conn,$query_request);
 
      while($row=mysqli_fetch_assoc($result_request)){
@@ -45,6 +46,7 @@
     	$temp['date']=$row['date'];
     	$temp['time']=$row['time'];
     	$temp['type']="request";
+      $temp['childId']=$row['child_no'];
 
     	array_push($notifications, $temp);
 	}
