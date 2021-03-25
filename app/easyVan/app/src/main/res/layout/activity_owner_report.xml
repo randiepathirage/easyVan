@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OwnerReport"
-    android:background="@drawable/doodle_back_gray">
+   >
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -173,6 +173,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate5"
         android:hint="yyyy/mm/dd"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

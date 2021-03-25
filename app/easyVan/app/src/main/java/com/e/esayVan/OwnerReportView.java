@@ -4,7 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintJob;
+import android.print.PrintManager;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -37,7 +45,8 @@ public class OwnerReportView extends AppCompatActivity {
     Button addVan;
     String vehicle= "KK 2332";
     String expType = "fuel";
-      //  String vehicle,expType;
+    private WebView webView;
+    //  String vehicle,expType;
 
 
 
@@ -135,6 +144,20 @@ public class OwnerReportView extends AppCompatActivity {
         };
 
         Volley.newRequestQueue(this).add(stringRequest);
+
+
+    }
+    public void pdf(View view) {
+        Context context = OwnerReportView.this;
+        PrintManager printManager = (PrintManager)OwnerReportView.this.getSystemService(context.PRINT_SERVICE);
+        PrintDocumentAdapter adapter = null;
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            adapter=webView.createPrintDocumentAdapter();
+        }
+        String JobName = getString(R.string.app_name) + "Document";
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            PrintJob printJob=printManager.print(JobName,adapter,new PrintAttributes.Builder().build());
+        }
 
 
     }
