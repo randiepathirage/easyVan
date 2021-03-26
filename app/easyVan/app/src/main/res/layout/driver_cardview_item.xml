@@ -23,6 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Student number"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
@@ -33,6 +35,8 @@
                 android:layout_below="@id/txtn7"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:text="first name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
@@ -42,6 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtn6"
                 android:layout_marginLeft="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="5dp"
                 android:text="last name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -52,6 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtn5"
                 android:layout_marginLeft="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="5dp"
                 android:text="grade"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -62,6 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtn4"
                 android:layout_marginLeft="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="5dp"
                 android:text="school"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -72,6 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtn3"
                 android:layout_marginLeft="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="5dp"
                 android:text="pickup location"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -83,6 +95,8 @@
                 android:layout_below="@id/txtn2"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="50dp"
                 android:text="dropoff location"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
@@ -93,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="203dp"
+                android:textSize="16dp"
+                android:layout_marginEnd="50dp"
                 android:text="TextView" />
 
             <TextView
@@ -103,7 +118,8 @@
                 android:layout_below="@+id/number"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="203dp"
+                android:textSize="16dp"
+                android:layout_marginEnd="50dp"
                 android:text="TextView" />
 
             <TextView
@@ -112,7 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fname"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="203dp"
+                android:layout_marginEnd="50dp"
+                android:textSize="16dp"
                 android:layout_marginTop="5dp"
                 android:text="TextView" />
 
@@ -123,7 +140,8 @@
                 android:layout_below="@+id/lname"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="203dp"
+                android:textSize="16dp"
+                android:layout_marginEnd="50dp"
                 android:text="TextView" />
 
             <TextView
@@ -133,7 +151,8 @@
                 android:layout_below="@+id/grade"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="203dp"
+                android:textSize="16dp"
+                android:layout_marginEnd="50dp"
                 android:text="TextView" />
 
             <TextView
@@ -143,7 +162,8 @@
                 android:layout_below="@+id/school"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="203dp"
+                android:textSize="16dp"
+                android:layout_marginEnd="50dp"
                 android:text="TextView" />
 
             <TextView
@@ -153,7 +173,8 @@
                 android:layout_below="@+id/pick_loc"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="203dp"
+                android:textSize="16dp"
+                android:layout_marginEnd="50dp"
                 android:text="TextView" />
 
 
