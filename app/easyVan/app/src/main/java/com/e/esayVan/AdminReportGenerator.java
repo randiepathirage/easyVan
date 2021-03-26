@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class AdminReportGenerator extends AppCompatActivity {
     ArrayAdapter<String> oadapter;
     RequestQueue requestQueue;
     String user, c;
+    final String owner = spinnerowners.getSelectedItem().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,6 @@ public class AdminReportGenerator extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -110,6 +111,42 @@ public class AdminReportGenerator extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void btn_report(View view){
+
+        spindata(owner);
+    }
+
+    public void spindata(final String owner) {
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request2 = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/checkuser.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if (response.equalsIgnoreCase("user is an owner")) {
+                            Toast.makeText(AdminReportGenerator.this,"Report is Generating.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(AdminReportGenerator.this,"Something wrong.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AdminReportGenerator.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("owner", owner);
+                return params;
+            }
+        };
     }
 
     public boolean checkrole(final String username) {
