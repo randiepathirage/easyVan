@@ -2,8 +2,11 @@ package com.e.esayVan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,12 +30,15 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     Button btnRequest,login,signup;;
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
     //a list to store all the vehicles
     List<ParentVans> vehicleList;
     //the recyclerview
     RecyclerView recyclerView;
+    ParentVansAdapter adapter;
+    EditText searchView;
+    CharSequence search="";
 
 
     @Override
@@ -67,8 +73,34 @@ public class MainActivity extends AppCompatActivity {
 
         //initializing the vehiclelist
         vehicleList = new ArrayList<>();
-
         loadVehicles();
+
+
+        //filtering option
+        searchView=findViewById(R.id.searchView1);
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(charSequence);
+                search=charSequence;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
+
 
 
 
@@ -76,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadVehicles() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -104,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentVansAdapter adapter = new ParentVansAdapter(MainActivity.this, vehicleList);
+                            adapter = new ParentVansAdapter(MainActivity.this, vehicleList);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
 

@@ -2,8 +2,11 @@ package com.e.esayVan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,7 +30,7 @@ import java.util.List;
 
 public class ParentNewsfeed extends AppCompatActivity {
 
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/viewParentNewsfeed.php";
+    private static final String PRODUCT_URL="https://10.0.2.2/easyvan/viewParentNewsfeed.php";
 
 
     //a list to store all the vehicles
@@ -35,7 +38,9 @@ public class ParentNewsfeed extends AppCompatActivity {
     //the recyclerview
     RecyclerView recyclerView;
     BottomNavigationView bottom_nav;
-
+    EditText searchView;
+    CharSequence search="";
+    ParentVansAdapter adapter;
 
 
     @Override
@@ -50,10 +55,38 @@ public class ParentNewsfeed extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
             //initializing the vehiclelist
             vehicleList = new ArrayList<>();
-
             loadVehicles();
+
+
+
+
+        //filtering option
+        searchView=findViewById(R.id.searchView);
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(charSequence);
+                search=charSequence;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
 
 
         //bottom navigation
@@ -68,19 +101,19 @@ public class ParentNewsfeed extends AppCompatActivity {
                         return true;
 
                     case R.id.navigation_location:
-                        Intent i = new Intent(getApplicationContext(), ParentLocationFragment.class);
+                        Intent i = new Intent(getApplicationContext(), ParentLocation.class);
                         startActivity(i);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_calendar:
-                        Intent k = new Intent(getApplicationContext(), ParentCalendarFragment.class);
+                        Intent k = new Intent(getApplicationContext(), ParentCalendar.class);
                         startActivity(k);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navigation_Pay:
-                        Intent l = new Intent(getApplicationContext(), ParentPayFragment.class);
+                        Intent l = new Intent(getApplicationContext(), ParentPay.class);
                         startActivity(l);
                         overridePendingTransition(0,0);
                         return true;
@@ -101,6 +134,8 @@ public class ParentNewsfeed extends AppCompatActivity {
 
     //loading vehicles
     private void loadVehicles() {
+
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.GET, PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -128,9 +163,10 @@ public class ParentNewsfeed extends AppCompatActivity {
                             }
 
                             //creating recyclerview adapter
-                            ParentVansAdapter adapter = new ParentVansAdapter(ParentNewsfeed.this, vehicleList);
+                            adapter = new ParentVansAdapter(ParentNewsfeed.this, vehicleList);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -145,6 +181,8 @@ public class ParentNewsfeed extends AppCompatActivity {
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+
+
     }
 
 

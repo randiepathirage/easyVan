@@ -6,46 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ParentDashboard"
     android:orientation="vertical"
-    android:background="@drawable/background">
+    android:background="@drawable/doodle_back_gray">
 
-    <ImageView
-        android:layout_width="176dp"
-        android:layout_height="193dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView1"
+        android:layout_width="match_parent"
+        android:layout_height="605dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"/>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="#F7F9F9">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center"
-            android:textSize="16dp"
-            android:text="Notification 1"
-            android:layout_margin="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="#F7F9F9">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:gravity="center_vertical|center"
-            android:text="Notification 1"
-            android:layout_margin="10dp"/>
-    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -54,6 +22,5 @@
         android:background="#fff"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:menu="@menu/parent_nav"
-        android:layout_marginTop="240dp"/>
+        app:menu="@menu/parent_nav" />
 </LinearLayout>

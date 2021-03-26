@@ -48,8 +48,8 @@ public class ParentAccount extends AppCompatActivity {
     //the recyclerview
     RecyclerView recyclerView;
 
-    String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
-    private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
+    String URL="https://10.0.2.2/easyvan/viewParentDetails.php";
+    private static final String VIEW_CHILD_URL="https://10.0.2.2/easyvan/viewChildDetails.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +96,7 @@ public class ParentAccount extends AppCompatActivity {
 
     private void loadChildren() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST,VIEW_CHILD_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -151,6 +152,7 @@ public class ParentAccount extends AppCompatActivity {
     //load account details
     public void sendJsonrequest(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

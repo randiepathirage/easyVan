@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.e.esayVan">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ParentSelectChild"></activity>
+        <activity android:name=".sample"></activity>
+        <activity android:name=".OwnerReportView" />
+        <activity android:name=".ParentAccepted" />
+        <activity android:name=".OwnerRespond" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".PaymentDetails" />
+        <activity android:name=".ParentSelectChild" />
         <activity android:name=".AdminAddUser" />
         <activity android:name=".AdminViewSchoolVan" />
         <activity android:name=".AdminUpdateDriver" />
@@ -37,7 +61,6 @@
         <activity android:name=".AdminViewParent" />
         <activity android:name=".ParentEditDays" />
         <activity android:name=".OwnerVansAdd" />
-        <activity android:name=".sample" />
         <activity android:name=".DriverNotification" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".DriverSignUp" />
@@ -48,14 +71,15 @@
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".OwnerReport" />
-        <activity android:name=".AdminNewArticle" />
         <activity android:name=".AdminVerifyDrivers" />
         <activity android:name=".AdminVerifySchoolVans" />
         <activity android:name=".AdminSchoolVans" />
         <activity android:name=".AdminDrivers" />
         <activity android:name=".AdminOwners" />
         <activity android:name=".AdminParents" />
-        <activity android:name=".AdminNewsfeed" />
+        <activity
+            android:name=".AdminNewsfeed"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".AdminReportGenerator" />
         <activity android:name=".AdminManage" />
         <activity android:name=".AdminVerify" />
@@ -80,19 +104,23 @@
         <activity android:name=".DriverAlert" />
         <activity android:name=".Driver" />
         <activity android:name=".Parent" />
-        <activity android:name=".ParentLocationFragment" />
-        <activity android:name=".ParentCalendarFragment" />
-        <activity android:name=".ParentNewsfeed" />
-        <activity android:name=".ParentPayFragment" />
+        <activity android:name=".ParentLocation" />
+        <activity android:name=".ParentCalendar" />
+        <activity
+            android:name=".ParentNewsfeed"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ParentPay" />
         <activity android:name=".ParentAccount" />
-        <activity android:name=".ParentDetails" />
+        <activity android:name=".ParentDetails"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ParentEdit" />
         <activity android:name=".ParentDashboard" />
         <activity android:name=".ParentAttendance" />
         <activity android:name=".ParentRequest" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

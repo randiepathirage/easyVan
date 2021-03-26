@@ -38,7 +38,7 @@ public class DriverAttendance extends AppCompatActivity {
     List<DriverProductAttendance> productAttendanceList;
     String Name;
 
-    private static final String DRIVER_PRODUCT_URL = "http://10.0.2.2/easyvan/driverattendance.php";
+    private static final String DRIVER_PRODUCT_URL = "https://10.0.2.2/easyvan/driverattendance.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,7 @@ public class DriverAttendance extends AppCompatActivity {
     }
 
     private void loadProducts(){
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, DRIVER_PRODUCT_URL,
                 new Response.Listener<String>() {
                     @Override

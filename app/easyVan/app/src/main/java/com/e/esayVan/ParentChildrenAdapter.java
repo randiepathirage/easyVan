@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +31,11 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
     private List<ParentChild> childlist;
     String no,parentNIC,mode,childNo;
     String firstName,lastName, grade, school,pick,drop,vehicleNo,ownerID;
+    String userName;
 
 
-    String URL_DELETE="http://10.0.2.2/easyvan/removeChildVan.php";
-    String URL_CHECK="http://10.0.2.2/easyvan/checkChildStatus.php";
+    String URL_DELETE="https://10.0.2.2/easyvan/removeChildVan.php";
+    String URL_CHECK="https://10.0.2.2/easyvan/checkChildStatus.php";
 
     //getting the context and product list with constructor
     public ParentChildrenAdapter(Context mCtx, List<ParentChild> childlist, String strNic,String vehicleNo,String ownerID, String mode) {
@@ -94,9 +92,11 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                     pick=String.valueOf(children.getPickupLocation());
                     drop=String.valueOf(children.getDropoffLocation());
                     //check if child already got a van
-                    check(parentNIC);
+                    check();
+                }else if(mode.equals("select")){
+
                 }
-                //Toast.makeText(mCtx,children.getFirstName(),Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -104,6 +104,7 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     public void removeChildVan(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, URL_DELETE,
                 new Response.Listener<String>() {
                     @Override
@@ -131,8 +132,9 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
         requestQueue.add(request);
     }
 
-    public  void check(final String nic){
+    public  void check(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST,URL_CHECK,
                 new Response.Listener<String>() {
                     @Override
@@ -154,11 +156,13 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                             AlertDialog alert =builder.create();
                             alert.show();
                         }else{
-                            Toast.makeText(mCtx,nic,Toast.LENGTH_LONG).show();
+
+                            SessionManagement sessionManagement = new SessionManagement(mCtx);
+                            userName = sessionManagement.getUserName();
 
                             Intent intent = new Intent(mCtx,ParentRequest.class);
 
-                            intent.putExtra("nic",nic);
+                            intent.putExtra("ParentUsername",userName);
                             intent.putExtra("childNo",childNo);
                             intent.putExtra("firstName",firstName);
                             intent.putExtra("lastName",lastName);
@@ -167,7 +171,6 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
                             intent.putExtra("pick",pick);
                             intent.putExtra("drop",drop);
                             intent.putExtra("vehicleNo",vehicleNo);
-                            intent.putExtra("ownerID",ownerID);
 
                             mCtx.startActivity(intent);
                         }
@@ -218,7 +221,3 @@ public class ParentChildrenAdapter extends RecyclerView.Adapter<ParentChildrenAd
 
     }
 }
-
-/*
-
- */

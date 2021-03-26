@@ -32,7 +32,7 @@ public class AdminParents extends AppCompatActivity {
     ListView listView;
     AdminParentAdapter adapter;
     public static ArrayList<AdminParentArray> adminParentArrayList = new ArrayList<>();
-    String url = "http://10.0.2.2/easyvan/parents.php";
+    String url = "https://10.0.2.2/easyvan/parents.php";
     AdminParentArray parent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,8 @@ public class AdminParents extends AppCompatActivity {
 
     private void deleteData(final String NIC_no) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deleteuser.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/deleteuser.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

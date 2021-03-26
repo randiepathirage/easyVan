@@ -32,7 +32,7 @@ public class AdminOwners extends AppCompatActivity {
     ListView ownerlistView;
     AdminOwnerAdapter owneradapter;
     public static ArrayList<AdminOwnerArray> adminOwnerArrayList = new ArrayList<>();
-    String url = "http://10.0.2.2/easyvan/owners.php";
+    String url = "https://10.0.2.2/easyvan/owners.php";
     AdminOwnerArray owner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,8 @@ public class AdminOwners extends AppCompatActivity {
 
     private void deleteData(final String NIC_no) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deleteuser.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/deleteuser.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -137,6 +138,7 @@ public class AdminOwners extends AppCompatActivity {
 
     public void retrieveData(){
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -206,6 +208,52 @@ public class AdminOwners extends AppCompatActivity {
 
     public void btn_add_owner(View view) {
         startActivity(new Intent(getApplicationContext(),AdminAddUser.class));
+    }
+
+    public void btn_switch_owner(View view){
+
+        SessionManagement sessionManagement = new SessionManagement(AdminOwners.this);
+        final String username = sessionManagement.getUserName();
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Updating....");
+        progressDialog.show();
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/switchadmin.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Toast.makeText(AdminOwners.this,"Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                        progressDialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(AdminOwners.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> oparams = new HashMap<String,String>();
+
+                oparams.put("username",username);
+
+                return oparams;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(AdminOwners.this);
+        requestQueue.add(request);
+
+
     }
 
 }

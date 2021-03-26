@@ -13,9 +13,24 @@
  $license_no = $_POST['licenseNo'];
 
  $ownerName =$_POST['ownerName'];
+ $v_no = "KK 2332";
  
- $user_role = "driver";
- $user_middlename = "None";
+/* $user_role = "driver";
+ $user_middlename = "None";*/
+/*  $user_firstname="dshde";
+ $user_lastname="ss";
+ $nic_no="1234567";
+ $username="driver1";
+ $password="Driver123@";
+ $address="111";
+ $contact_no="s1212";
+ $email="ddd@gmail.com";
+ $license_no = "1s21212";
+
+ $ownerName ="owner";
+
+ $NIC_no=123456789;*/
+ 
 
 
 
@@ -60,28 +75,29 @@ else{
         //update DB
         $query_login="INSERT INTO login(NIC_no,username,password,email) VALUES ('$nic_no','$username',' $password',' $email')";
 
-        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,middle_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$user_middlename','$address')";
+        $query_user="INSERT INTO user(NIC_no,contact_no,last_name,first_name,address) VALUES ('$nic_no','$contact_no','$user_lastname','$user_firstname','$address')";
 
-        $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";
+       /* $query_user_role="INSERT INTO user_role(NIC_no,user_role) VALUES ('$nic_no','$user_role')";*/
 
         $query_parent_owner_driver="INSERT INTO parent_owner_driver(NIC_no,driver_flag,license_no) VALUES ('$nic_no','1','$license_no')";
 
-        $query_assign = "INSERT INTO assign(driver_NIC_no, owner_NIC_no) VALUES ('$nic_no','$owner')";
+        $query_assign = "INSERT INTO assign(driver_NIC_no, owner_NIC_no,vehicle_no) VALUES ('$nic_no','$owner','$v_no')";
 
         if($conn->query($query_login)===TRUE){
             if($conn->query($query_user)===TRUE){
-                if($conn->query($query_user_role)===TRUE){
+               /* if($conn->query($query_user_role)===TRUE)*/
                     if($conn->query($query_parent_owner_driver)===TRUE){
                     	if($conn->query($query_assign)===TRUE){
                         	echo "Insert Successful Driver";
                     	}
                     }
-                }
+                
             }
         }
 
         else{
             echo "Error".$query_login."<br>".$conn->error;
+            echo "fail";
         }
 }
     $conn->close();

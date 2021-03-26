@@ -3,7 +3,7 @@
 
  	$result = array();
  	$result['data'] = array();
- 	$select= "SELECT child.child_no,child.parent_NIC_no,child.first_name,child.last_name,child.school,child.grade,child.pickup_location,child.vehicle_no,child.monthly_fee, user.first_name as parent_name FROM user JOIN child ON user.NIC_no = child.parent_NIC_no";
+ 	$select= "SELECT child.child_no,child.parent_NIC_no,child.first_name,child.last_name,child.school,child.grade,child.pickup_location,child.vehicle_no,child.fees, user.first_name as parent_name FROM user JOIN child ON user.NIC_no = child.parent_NIC_no";
  	$responce = mysqli_query($conn,$select);
 
  	while($row = mysqli_fetch_array($responce))
@@ -16,7 +16,7 @@
  			$index['grade'] = $row['5'];
  			$index['pickup_location'] = $row['6'];
  			$index['vehicle_no'] = $row['7'];
- 			$index['monthly_fee'] = $row['8'];
+ 			$index['fees'] = $row['8'];
  			$index['parent_name'] = $row['9'];
 
  			array_push($result['data'], $index);

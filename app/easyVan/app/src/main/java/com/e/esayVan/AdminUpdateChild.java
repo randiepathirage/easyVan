@@ -66,7 +66,7 @@ public class AdminUpdateChild extends AppCompatActivity {
         final String grade = edcgrade.getText().toString();
         final String pickup_location = edcpickup.getText().toString();
         final String vehicle_no = edcvan.getText().toString();
-        final String monthly_fee = edcfee.getText().toString();
+        final String fees = edcfee.getText().toString();
         final String parent_name = pname;
 
 
@@ -76,7 +76,8 @@ public class AdminUpdateChild extends AppCompatActivity {
         progressDialog.setMessage("Updating....");
         progressDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/updatechild.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/updatechild.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -109,7 +110,7 @@ public class AdminUpdateChild extends AppCompatActivity {
                 params.put("grade",grade);
                 params.put("pickup_location",pickup_location);
                 params.put("vehicle_no",vehicle_no);
-                params.put("monthly_fee",monthly_fee);
+                params.put("fees",fees);
                 params.put("parent_name", parent_name);
 
 

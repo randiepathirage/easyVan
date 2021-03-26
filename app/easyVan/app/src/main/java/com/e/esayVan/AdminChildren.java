@@ -32,7 +32,7 @@ public class AdminChildren extends AppCompatActivity {
     ListView listView;
     AdminChildAdapter adapter;
     public static ArrayList<AdminChildArray> adminChildArrayList = new ArrayList<>();
-    String url = "http://10.0.2.2/easyvan/children.php";
+    String url = "https://10.0.2.2/easyvan/children.php";
     AdminChildArray child;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,8 @@ public class AdminChildren extends AppCompatActivity {
 
     private void deleteData(final int child_no) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2/easyvan/deletechild.php",
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/deletechild.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -164,7 +165,7 @@ public class AdminChildren extends AppCompatActivity {
                                     String grade = object.getString("grade");
                                     String pickup = object.getString("pickup_location");
                                     String vehiclenum = object.getString("vehicle_no");
-                                    String fee = object.getString("monthly_fee");
+                                    String fee = object.getString("fees");
                                     String pname = object.getString("parent_name");
 
 

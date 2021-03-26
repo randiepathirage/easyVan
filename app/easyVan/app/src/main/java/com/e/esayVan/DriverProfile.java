@@ -48,53 +48,13 @@ public class DriverProfile extends AppCompatActivity {
     private String strNic,strAddress,strEmail, strContactNo;
     BottomNavigationView bottom_nav;
 
-    String URL="http://10.0.2.2/easyvan/driverprofile.php";
+    String URL="https://10.0.2.2/easyvan/driverprofile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_profile);
         getSupportActionBar().setTitle("Account");
-
-        bottom_nav = findViewById(R.id.bottom_navigation);
-
-        bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.nav_c_details:
-                        Intent i = new Intent(getApplicationContext(),DriverViewChildDetails.class);
-                        startActivity(i);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_attendance:
-                        Intent j = new Intent(getApplicationContext(),DriverAttendance.class);
-                        startActivity(j);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_alert:
-                        Intent k = new Intent(getApplicationContext(),DriverAlert.class);
-                        startActivity(k);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_route:
-                        Intent l = new Intent(getApplicationContext(),DriverRoute.class);
-                        startActivity(l);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.nav_expense:
-                        Intent m = new Intent(getApplicationContext(),DriverExpense.class);
-                        startActivity(m);
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
 
         username = findViewById(R.id.txt_Username);
         nic = findViewById(R.id.txt_Nic);
@@ -160,6 +120,7 @@ public class DriverProfile extends AppCompatActivity {
     //load account details
     public void sendJsonrequest() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Request.Method.POST , URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -3,9 +3,10 @@
     require  "conn.php";
 
     $child_no=$_POST["childNumber"];
+    //$child_no='2';
 
     //get child details 
-    $stmt_child ="SELECT first_name,last_name,vehicle_no,start_date,monthly_fee FROM child WHERE child_no='$child_no' ";
+    $stmt_child ="SELECT first_name,last_name,vehicle_no,start_date,fees FROM child WHERE child_no='$child_no' ";
     $result_child=mysqli_query($conn,$stmt_child);//executing the query
 
     $details['data'] = array(); 

@@ -29,13 +29,13 @@ import java.util.Map;
 
 public class ParentSelectChild extends AppCompatActivity {
 
-    private static final String VIEW_CHILD_URL="http://10.0.2.2/easyvan/viewChildDetails.php";
-    String URL="http://10.0.2.2/easyvan/viewParentDetails.php";
-    String ownerID,vehicleNo;
+    private static final String VIEW_CHILD_URL="https://10.0.2.2/easyvan/viewChildDetails.php";
+    String URL="https://10.0.2.2/easyvan/viewParentDetails.php";
+    String ownerID="",vehicleNo;
     //a list to store all the child details
     List<ParentChild> childlist;
     String userName;
-    String strNic;
+    String strNic="";
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -51,7 +51,7 @@ public class ParentSelectChild extends AppCompatActivity {
         userName = sessionManagement.getUserName();
 
         //load account details
-        getParentId();
+        //getParentId();
 
 
 
@@ -65,7 +65,7 @@ public class ParentSelectChild extends AppCompatActivity {
 
         //van number and owner id
         vehicleNo=getIntent().getStringExtra("vehicleNo");
-        ownerID=getIntent().getStringExtra("ownerID");
+        //ownerID=getIntent().getStringExtra("ownerID");
 
         loadChildren();
 
@@ -76,57 +76,17 @@ public class ParentSelectChild extends AppCompatActivity {
 
                 Intent intent =new Intent(ParentSelectChild.this,ParentRequest.class);
                 intent.putExtra("childNo","0");
-                intent.putExtra("nic",strNic);
+                //intent.putExtra("nic",strNic);
                 intent.putExtra("vehicleNo",vehicleNo);
-                intent.putExtra("ownerID",ownerID);
+                intent.putExtra("ParentUsername",userName);
                 startActivity(intent);
             }
         });
     }
 
-    private void getParentId() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray result = jsonObject.getJSONArray("data");
-                    JSONObject collegeData = result.getJSONObject(0);
-
-
-                    strNic =collegeData.getString("NIC_no");
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        },new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentSelectChild.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
-            }
-        })
-        {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
-
-                params.put("username",userName);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-    }
-
     private void loadChildren() {
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST,VIEW_CHILD_URL,
                 new Response.Listener<String>() {
                     @Override
