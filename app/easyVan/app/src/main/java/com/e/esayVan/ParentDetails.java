@@ -67,7 +67,7 @@ public class ParentDetails extends AppCompatActivity {
         //load child details
         loadDetails();
 
-        //edit days button
+   /*     //edit days button
         editDates=(Button)findViewById(R.id.btnEditDays);
         editDates.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +76,7 @@ public class ParentDetails extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
 
 
     }
