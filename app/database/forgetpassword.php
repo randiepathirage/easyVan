@@ -6,6 +6,7 @@
     require 'admin.php';
 
     $email = $_POST["email"];
+    $code=$_POST["random"];
     //$nic_no = "555";
     //$email = "mruv98@gmail.com";
 
@@ -40,10 +41,10 @@
 
          //$url="http://". $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) ."/resetform.php?".key=$email;
          $url="http://localhost/easyvan/resetform.php?key=$email";
-         $mail->Subject = 'Your password reset link';
+         $mail->Subject = 'Your password reset code';
          $mail->isHTML(true);
          $mail->Body    = "<h1>You requested a password reset</h1>
-                                     Click <a href='$url'>this link</a> to do so";
+                                here is your code to reset the password $code";
 
 
         if(!$mail->send()) {

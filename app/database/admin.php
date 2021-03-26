@@ -1,6 +1,6 @@
 <?php
 
-    $adminemail = "";
-    $adminpassword = "";
+    $adminemail = "ajithwik123@gmail.com";
+    $adminpassword = "ajith@123";
 
 ?>
