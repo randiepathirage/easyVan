@@ -7,8 +7,8 @@
     $message=$_POST['message'];
 
 
-    // $user_name="Nimal";
-    // $message="sdfvdsdssd";
+    //  $user_name="Senal";
+    //  $message="sdfvdsdssd";
 
     // genarate driver NIC using username>>>>>>>>>
 
@@ -18,8 +18,37 @@
     $Driver_NIC= $NIC_result['NIC_no'];
 
     //>>>>>>>>>>>>
+
+    //Genarate vehicle number.........................
+    $VehicelNO = "SELECT vehicle_no FROM assign WHERE driver_NIC_no = '$Driver_NIC';";
+
+    $query_VehicelNO = mysqli_query($conn,$VehicelNO);
+
+    $VN_result = mysqli_fetch_assoc($query_VehicelNO);
+
+    $Result_VehicelNO = $VN_result['vehicle_no'];
+    //...............................................
+
+    // genarate child no >>>>>>>>>
+
+    $child_no = "SELECT child_no FROM child_assign WHERE vehicle_no = '$Result_VehicelNO';";
+    $query_Childno = mysqli_query($conn,$child_no);
+    $Cno_result = mysqli_fetch_assoc($query_Childno);
+    $result_Childno = $Cno_result['child_no'];
+
+    //>>>>>>>>>>>>
+
+
+    // genarate parent nic  >>>>>>>>>
+
+    $parent_nic = "SELECT parent_NIC_no FROM child WHERE child_no = '$result_Childno';";
+    $query_parentNIC = mysqli_query($conn,$parent_nic);
+    $parentNIC_result = mysqli_fetch_assoc($query_parentNIC);
+    $result_parentNIC = $parentNIC_result['parent_NIC_no'];
+ 
+    //>>>>>>>>>>>>
         
-    $mysql_qury = "INSERT INTO emergency_message(driver_NIC_no,message,date,time) VALUES ('$Driver_NIC','$message',now(),now())";
+    $mysql_qury = "INSERT INTO emergency_message(parent_NIC_no,driver_NIC_no,message,date,time) VALUES ('$result_parentNIC','$Driver_NIC','$message',now(),now())";
 
     if($conn->query($mysql_qury)===TRUE){
         echo "insert success";
