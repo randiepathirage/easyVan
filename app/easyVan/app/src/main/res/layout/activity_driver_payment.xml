@@ -4,7 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DriverPayment">
+    tools:context=".DriverPayment"
+    android:background="@drawable/doodle_back_gray"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Add payment"
+        android:background="@drawable/roundededge"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child who paid the van fees"
+        android:textStyle="bold"
+        android:textColor="#AB000000"
+        android:textSize="25dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/searchView"
+        android:background="@drawable/search_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Month"
+        android:paddingLeft="10dp"
+        android:outlineSpotShadowColor="@color/theme"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView1"
+        android:layout_width="match_parent"
+        android:layout_height="605dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"/>
 
 
 
