@@ -18,67 +18,15 @@
         app:menu="@menu/driver_nav"
         tools:layout_editor_absoluteY="675dp" />
 
-    <Spinner
-        android:id="@+id/type"
-        android:layout_width="266dp"
-        android:layout_height="72dp"
-        android:layout_below="@+id/amount"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="70dp"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="559dp" />
-
-    <TextView
-        android:id="@+id/txtselect"
-        android:layout_width="140dp"
-        android:layout_height="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="207dp"
-        android:layout_marginEnd="197dp"
-        android:text="Select expense:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteY="497dp" />
-
-    <Button
-        android:id="@+id/btn_send"
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/type"
-        android:layout_marginTop="94dp"
-        android:background="@drawable/roundededge"
-        android:onClick="AddExpense"
-        android:text="Send"
-        android:textColor="#FFFFFF" />
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="266dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="71dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="Date: yyyy-mm-dd"
-        android:padding="15dp"
-        android:textSize="18dp" />
-
     <EditText
         android:id="@+id/amount"
         android:layout_width="266dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="50dp"
+        android:layout_below="@+id/date"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="65dp"
         android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:hint="Amount:"
@@ -89,8 +37,60 @@
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="663dp" />
 
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="170dp"
+        android:background="@drawable/roundededge"
+        android:gravity="center"
+        android:onClick="AddExpense"
+        android:text="Send"
+        android:textColor="#FFFFFF" />
 
+    <Spinner
+        android:id="@+id/type"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/amount"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_light"
+        android:layout_marginEnd="65dp"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="559dp" />
 
+    <TextView
+        android:id="@+id/txtselect"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/amount"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="190dp"
+        android:text="Select expense:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteY="497dp" />
+
+    <DatePicker
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="315dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="70dp" />
 
 
 

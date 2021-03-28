@@ -44,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/alert_msg"
         android:layout_width="342dp"
         android:layout_height="157dp"
         android:layout_alignParentStart="true"
@@ -68,7 +69,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/alert_send"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -77,6 +78,7 @@
         android:layout_marginEnd="130dp"
         android:background="@drawable/roundededge"
         android:text="Send"
+        android:onClick="SendAlert"
         android:textColor="#FFFFFF"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,12 +8,13 @@
     tools:context=".AdminReportGenerator">
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/btnrep"
         android:layout_width="170dp"
         android:layout_height="41dp"
         android:layout_marginBottom="300dp"
         android:background="@drawable/roundededge"
         android:text="Generate"
+        android:onClick="btn_report"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
