@@ -83,6 +83,9 @@ public class ParentPay extends AppCompatActivity {
 
                         try {
                             JSONArray jsonArray=response.getJSONArray("children");
+                            if(jsonArray.length()==0){
+                                Toast.makeText(ParentPay.this,"You have to register a child",Toast.LENGTH_LONG).show();
+                            }
                             for(int i=0;i<jsonArray.length();i++){
                                 JSONObject jsonObject=jsonArray.getJSONObject(i);
                                 String childName=jsonObject.optString("child_name");
@@ -183,29 +186,34 @@ public class ParentPay extends AppCompatActivity {
 
         amount = edtAmount.getText().toString();
 
-        //payhere
-        InitRequest req = new InitRequest();
-        req.setMerchantId("1216429");       // Your Merchant PayHere ID
-        req.setMerchantSecret("8RfjzO7FfzG4vTWJXGsvtD4eXuKuPQt2S8Rl7kxG1N58"); // Your Merchant secret (Add your app at Settings > Domains & Credentials, to get this))
-        req.setCurrency("LKR");             // Currency code LKR/USD/GBP/EUR/AUD
-        req.setAmount(Double.parseDouble(amount));             // Final Amount to be charged
-        req.setOrderId("230000123");        // Unique Reference ID
-        req.setItemsDescription("van fees");  // Item description title
-        req.setCustom1("This is the custom message 1");
-        req.setCustom2("This is the custom message 2");
-        req.getCustomer().setFirstName(userName);
-        req.getCustomer().setLastName(userName);
-        req.getCustomer().setEmail("samanp@gmail.com");
-        req.getCustomer().setPhone("+94771234567");
-        req.getCustomer().getAddress().setAddress("No.1, Galle Road");
-        req.getCustomer().getAddress().setCity("Colombo");
-        req.getCustomer().getAddress().setCountry("Sri Lanka");
+        if(amount.isEmpty()){
+            Toast.makeText(this, "Please enter amount", Toast.LENGTH_SHORT).show();
+        }else {
+
+            //payhere
+            InitRequest req = new InitRequest();
+            req.setMerchantId("1216429");       // Your Merchant PayHere ID
+            req.setMerchantSecret("8RfjzO7FfzG4vTWJXGsvtD4eXuKuPQt2S8Rl7kxG1N58"); // Your Merchant secret (Add your app at Settings > Domains & Credentials, to get this))
+            req.setCurrency("LKR");             // Currency code LKR/USD/GBP/EUR/AUD
+            req.setAmount(Double.parseDouble(amount));             // Final Amount to be charged
+            req.setOrderId("230000123");        // Unique Reference ID
+            req.setItemsDescription("van fees");  // Item description title
+            req.setCustom1("This is the custom message 1");
+            req.setCustom2("This is the custom message 2");
+            req.getCustomer().setFirstName(userName);
+            req.getCustomer().setLastName(userName);
+            req.getCustomer().setEmail("samanp@gmail.com");
+            req.getCustomer().setPhone("+94771234567");
+            req.getCustomer().getAddress().setAddress("No.1, Galle Road");
+            req.getCustomer().getAddress().setCity("Colombo");
+            req.getCustomer().getAddress().setCountry("Sri Lanka");
 
 
-        Intent intent = new Intent(this, PHMainActivity.class);
-        intent.putExtra(PHConstants.INTENT_EXTRA_DATA, req);
-        PHConfigs.setBaseUrl(PHConfigs.SANDBOX_URL);
-        startActivityForResult(intent, PAYHERE_REQUEST);
+            Intent intent = new Intent(this, PHMainActivity.class);
+            intent.putExtra(PHConstants.INTENT_EXTRA_DATA, req);
+            PHConfigs.setBaseUrl(PHConfigs.SANDBOX_URL);
+            startActivityForResult(intent, PAYHERE_REQUEST);
+        }
     }
 
     @Override
