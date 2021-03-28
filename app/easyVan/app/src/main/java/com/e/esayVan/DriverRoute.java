@@ -166,7 +166,7 @@ public class DriverRoute extends AppCompatActivity {
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},100);
             }
 
-            refresh(30000);//30 seconds
+            refresh(10000);//10 seconds
         }
 
     }
