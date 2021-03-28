@@ -69,9 +69,9 @@ public class DriverNotification extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try {
                             JSONArray array=new JSONArray(response);
-
                             for(int i=0;i<array.length();i++){
                                 JSONObject notification=array.getJSONObject(i);
                                 notificationList.add(new ParentNotifications(
@@ -83,7 +83,7 @@ public class DriverNotification extends AppCompatActivity {
                                         notification.getString("childId")
 
                                 ));
-                                //Toast.makeText(DriverNotification.this,"dfdfdfd", Toast.LENGTH_SHORT).show();
+
                             }
 
                             //creating recyclerview adapter

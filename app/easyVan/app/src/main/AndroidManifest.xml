@@ -94,7 +94,8 @@
         <activity android:name=".OwnerRequest" />
         <activity android:name=".OwnerNotification" />
         <activity android:name=".Owner" />
-        <activity android:name=".DriverPayment" />
+        <activity android:name=".DriverPayment"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".DriverRoute" />
         <activity android:name=".DriverAttendance" />
         <activity android:name=".DriverViewChildDetails" />
