@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ParentDashboard"
     android:orientation="vertical"
-    android:background="@drawable/doodle_back_gray">
+    android:background="@drawable/doodle_back_logo">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
