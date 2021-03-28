@@ -1,8 +1,8 @@
 package com.e.esayVan;
 
-public class PayemntChild{
+public class PaymentChild {
     String firstName,lastName,Month;
-    public PayemntChild(String firstName, String lastName, String month) {
+    public PaymentChild(String firstName, String lastName, String month) {
         this.firstName=firstName;
         this.lastName=lastName;
         this.Month=month;

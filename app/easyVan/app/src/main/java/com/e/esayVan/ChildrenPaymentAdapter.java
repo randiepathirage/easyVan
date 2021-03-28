@@ -19,8 +19,8 @@ public class ChildrenPaymentAdapter extends RecyclerView.Adapter<ChildrenPayment
     private Context mCtx;
 
     //we are storing all the products in a list
-    private List<PayemntChild> childlist;
-    List<PayemntChild> filterChildren;
+    private List<PaymentChild> childlist;
+    List<PaymentChild> filterChildren;
     String no,parentNIC,mode,childNo;
     String firstName,lastName, grade, school,pick,drop,vehicleNo,ownerID;
     String userName;
@@ -30,7 +30,7 @@ public class ChildrenPaymentAdapter extends RecyclerView.Adapter<ChildrenPayment
     String URL_CHECK="https://10.0.2.2/easyvan/checkChildStatus.php";
 
     //getting the context and product list with constructor
-    public ChildrenPaymentAdapter(Context mCtx, List<PayemntChild> childlist) {
+    public ChildrenPaymentAdapter(Context mCtx, List<PaymentChild> childlist) {
         this.mCtx = mCtx;
         this.childlist = childlist;
         this.filterChildren=childlist;
@@ -47,7 +47,7 @@ public class ChildrenPaymentAdapter extends RecyclerView.Adapter<ChildrenPayment
 
     @Override
     public void onBindViewHolder(@NonNull ChildrenPaymentAdapter.ChildrenViewHolder holder, final int position) {
-        final PayemntChild children = childlist.get(position);
+        final PaymentChild children = childlist.get(position);
 
 
         //binding the data with the viewholder views
@@ -88,8 +88,8 @@ public class ChildrenPaymentAdapter extends RecyclerView.Adapter<ChildrenPayment
                 if(key.isEmpty()){
                     filterChildren=childlist;
                 }else {
-                    List<PayemntChild> lstFiltered=new ArrayList<>();
-                    for(PayemntChild row:childlist){
+                    List<PaymentChild> lstFiltered=new ArrayList<>();
+                    for(PaymentChild row:childlist){
                         if(row.getMonth().toLowerCase().contains(key.toLowerCase())){
                             lstFiltered.add(row);
                         }
@@ -106,7 +106,7 @@ public class ChildrenPaymentAdapter extends RecyclerView.Adapter<ChildrenPayment
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-                filterChildren=(List<PayemntChild>)filterResults.values;
+                filterChildren=(List<PaymentChild>)filterResults.values;
                 notifyDataSetChanged();
             }
         };

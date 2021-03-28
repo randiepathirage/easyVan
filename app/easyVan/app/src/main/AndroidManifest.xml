@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sample"></activity>
+        <activity android:name=".DriverViewPaidChildren"></activity>
+        <activity android:name=".sample" />
         <activity android:name=".OwnerReportView" />
         <activity android:name=".ParentAccepted" />
         <activity android:name=".OwnerRespond" />
@@ -94,8 +95,9 @@
         <activity android:name=".OwnerRequest" />
         <activity android:name=".OwnerNotification" />
         <activity android:name=".Owner" />
-        <activity android:name=".DriverPayment"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".DriverPayment"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".DriverRoute" />
         <activity android:name=".DriverAttendance" />
         <activity android:name=".DriverViewChildDetails" />
@@ -112,8 +114,9 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ParentPay" />
         <activity android:name=".ParentAccount" />
-        <activity android:name=".ParentDetails"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".ParentDetails"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ParentEdit" />
         <activity android:name=".ParentDashboard" />
         <activity android:name=".ParentAttendance" />
