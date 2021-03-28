@@ -20,6 +20,11 @@
         app:showAsAction="always"/>
 
     <item
+        android:id="@+id/switchadmin"
+        app:showAsAction="never"
+        android:title="Switch to Admin" />
+
+    <item
         android:id="@+id/logout"
         app:showAsAction="never"
         android:title="Log Out" />
