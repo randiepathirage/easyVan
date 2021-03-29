@@ -16,48 +16,49 @@
 
 
             <TextView
-                android:id="@+id/at_c_no"
+                android:id="@+id/at_fname"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:textAlignment="center"
-                android:text="child no"
+                android:text="fname"
                 android:textSize="18dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
 
-            <CheckBox
-                android:id="@+id/at_checkBox"
+            <Button
+                android:id="@+id/at_evening"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="15dp" />
+                android:layout_marginEnd="15dp"
+                android:text="Evening"
+                android:onClick="MarkEvening"/>
 
-            <EditText
-                android:id="@+id/at_date"
+
+            <Button
+                android:id="@+id/at_morning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/at_c_no"
-                android:layout_marginLeft="20dp"
-                android:hint="Enter date"
-                android:textSize="18dp"
+                android:text="Morning"
+                android:layout_marginLeft="180dp"
                 android:textAlignment="center"
-                android:textColor="#000000"
-                android:background="@android:drawable/editbox_background"/>
+                android:onClick="MarkMorning"
+                android:textColor="#000000" />
 
-            <EditText
-                android:id="@+id/at_time"
+            <TextView
+                android:id="@+id/at_lname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/at_date"
-                android:layout_marginLeft="20dp"
-                android:hint="Time"
-                android:textAlignment="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/at_fname"
+                android:text="lname"
                 android:textColor="#000000"
-                android:background="@android:drawable/editbox_background"/>
-
+                android:textSize="18dp" />
 
         </RelativeLayout>
 

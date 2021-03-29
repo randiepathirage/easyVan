@@ -35,7 +35,8 @@ public class DriverProductAttendanceAdapter extends RecyclerView.Adapter<DriverP
 
         DriverProductAttendance productAttendance = driverattendancelist.get(position);
 
-        holder.c_no.setText(productAttendance.getC_no());
+        holder.fname.setText(productAttendance.getFname());
+        holder.lname.setText(productAttendance.getLname());
 
 
     }
@@ -47,14 +48,13 @@ public class DriverProductAttendanceAdapter extends RecyclerView.Adapter<DriverP
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView c_no;
+        TextView fname,lname;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            c_no = itemView.findViewById(R.id.at_c_no);
-//            date = itemView.findViewById(R.id.at_date);
-//            time = itemView.findViewById(R.id.at_time);
+            fname = itemView.findViewById(R.id.at_fname);
+            lname = itemView.findViewById(R.id.at_lname);
         }
     }
 }

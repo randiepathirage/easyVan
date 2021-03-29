@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -109,10 +111,11 @@ public class DriverAttendance extends AppCompatActivity {
                             for(int i = 0;i<products.length();i++){
                                 JSONObject productobject = products.getJSONObject(i);
 
-                                String c_no = productobject.getString("c_no");
+                                String fname = productobject.getString("f_name");
+                                String lname = productobject.getString("l_name");
 
 
-                                DriverProductAttendance product = new DriverProductAttendance(c_no);
+                                DriverProductAttendance product = new DriverProductAttendance(fname,lname);
                                 productAttendanceList.add(product);
                             }
                             DriverProductAttendanceAdapter adapter =new DriverProductAttendanceAdapter(DriverAttendance.this,productAttendanceList);
@@ -190,5 +193,29 @@ public class DriverAttendance extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+    public void MarkMorning(View view){
+        TextView fname = (TextView) findViewById(R.id.at_fname);
+        String str_fname = fname.getText().toString();
+
+        String str_username = Name ;
+
+        String match = "Morning";
+
+        DriverBackgroundAttendance driverBackgroundAttendance = new DriverBackgroundAttendance(this);
+        driverBackgroundAttendance.execute(match,str_fname,str_username);
+    }
+
+    public void MarkEvening(View view){
+        TextView fname = (TextView) findViewById(R.id.at_fname);
+        String str_fname = fname.getText().toString();
+
+        String str_username = Name ;
+
+        String match = "Evening";
+
+        DriverBackgroundAttendance driverBackgroundAttendance = new DriverBackgroundAttendance(this);
+        driverBackgroundAttendance.execute(match,str_fname,str_username);
     }
 }
