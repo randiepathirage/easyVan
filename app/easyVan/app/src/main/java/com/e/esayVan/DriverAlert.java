@@ -7,23 +7,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class DriverAlert extends AppCompatActivity {
 
     BottomNavigationView bottom_nav;
     Spinner spin;
+    TextInputEditText msg;
+    Button btn_send;
+    String Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_alert);
         getSupportActionBar().setTitle("Alert");
+
+        msg = (TextInputEditText)findViewById(R.id.alert_msg);
+        btn_send = (Button)findViewById(R.id.alert_send);
+
+        SessionManagement sessionManagement = new SessionManagement(DriverAlert.this);
+        Name = sessionManagement.getUserName();
 
         spin = findViewById(R.id.spinner_alert);
         ArrayAdapter myadapter = new ArrayAdapter(DriverAlert.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_alert));
@@ -104,6 +117,20 @@ public class DriverAlert extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+    public void SendAlert(View view){
+        String str_msg = msg.getText().toString();
+        String str_username = Name ;
+
+        String match = "sendalert";
+        if(str_msg.isEmpty()){
+            Toast.makeText(DriverAlert.this,"Please enter message",Toast.LENGTH_LONG).show();
+        }else {
+
+            DriverBackgroundAlert driverBackgroundAlert = new DriverBackgroundAlert(this);
+            driverBackgroundAlert.execute(match, str_msg, str_username);
+        }
     }
 
 }

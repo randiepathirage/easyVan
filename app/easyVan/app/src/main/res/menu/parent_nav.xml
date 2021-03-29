@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:title="Dashboard"
+        android:title="Notifications"
         android:icon="@drawable/ic_report" />
 
     <item
@@ -24,5 +24,5 @@
     <item
         android:id="@+id/navigation_calendar"
         android:icon="@drawable/ic_calendar_black"
-        android:title="Calendar" />
+        android:title="Attendance" />
 </menu>

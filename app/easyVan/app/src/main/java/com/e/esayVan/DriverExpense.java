@@ -9,21 +9,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DriverExpense extends AppCompatActivity {
 
-    EditText date,amount;
-
+    EditText amount;
+    DatePicker datePicker;
     Spinner spin;
     BottomNavigationView bottom_nav;
     Toolbar top_bar;
@@ -39,10 +43,10 @@ public class DriverExpense extends AppCompatActivity {
         SessionManagement sessionManagement = new SessionManagement(DriverExpense.this);
         Name = sessionManagement.getUserName();
 
-        date = (EditText) findViewById(R.id.date);
+        datePicker = (DatePicker) findViewById(R.id.date);
         amount = (EditText) findViewById(R.id.amount);
-
         spin = findViewById(R.id.type);
+
         ArrayAdapter myadapter = new ArrayAdapter(DriverExpense.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.select_expense));
         myadapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spin.setAdapter(myadapter);
@@ -90,14 +94,28 @@ public class DriverExpense extends AppCompatActivity {
 
         String str_amount = amount.getText().toString();
         String str_type = spin.getSelectedItem().toString();
-        String str_date = date.getText().toString();
         String str_username = Name ;
 
 
-        String match = "addexpense";
+        int int_day = datePicker.getDayOfMonth();
+        int int_month = datePicker.getMonth();
+        int int_year = datePicker.getYear();
 
-        DriverBackgroundAdd driverBackgroundAdd = new DriverBackgroundAdd(this);
-        driverBackgroundAdd.execute(match,str_amount,str_type,str_date,str_username);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(int_year, int_month, int_day);
+
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+        String str_Date = format.format(calendar.getTime());
+
+        if(str_amount.isEmpty()||str_Date.isEmpty()){
+            Toast.makeText(DriverExpense.this,"Please fill all the fields",Toast.LENGTH_LONG).show();
+        }else {
+
+            String match = "addexpense";
+
+            DriverBackgroundAdd driverBackgroundAdd = new DriverBackgroundAdd(this);
+            driverBackgroundAdd.execute(match, str_amount, str_type, str_Date, str_username);
+        }
 
     }
     @Override

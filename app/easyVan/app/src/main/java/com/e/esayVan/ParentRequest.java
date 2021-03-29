@@ -77,67 +77,71 @@ public class ParentRequest extends AppCompatActivity {
 
     public void sendReq(View view) {
 
-        if(childNo.equals("0")){
+        if (childNo.equals("0")) {
             //if child is not registered before
-            URL_REQ="https://10.0.2.2/easyvan/parentSendReq.php";
+            URL_REQ = "https://10.0.2.2/easyvan/parentSendReq.php";
 
-        }else{
-            URL_REQ="https://10.0.2.2/easyvan/parentSendReqUpdate.php";
+        } else {
+            URL_REQ = "https://10.0.2.2/easyvan/parentSendReqUpdate.php";
 
         }
 
         final String strFirstName = edtchildFirstName.getText().toString();
-        final String strLastName=edtchildLastName.getText().toString();
+        final String strLastName = edtchildLastName.getText().toString();
         final String strSchool = edtschool.getText().toString();
         final String strGrade = edtgrade.getText().toString();
         final String strPickupLoc = edtpickupLoc.getText().toString();
         final String strDropOffLoc = edtdropOffLoc.getText().toString();
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("sending....");
-        progressDialog.show();
+        if (strFirstName.isEmpty() || strLastName.isEmpty() || strSchool.isEmpty() || strGrade.isEmpty() || strPickupLoc.isEmpty() || strDropOffLoc.isEmpty()) {
+                Toast.makeText(ParentRequest.this,"Please fill all the fields",Toast.LENGTH_LONG).show();
+        } else {
 
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, URL_REQ,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("sending....");
+            progressDialog.show();
 
-                        Toast.makeText(ParentRequest.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ParentNewsfeed.class));
-                        finish();
-                        progressDialog.dismiss();
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(Request.Method.POST, URL_REQ,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentRequest.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        }) {
+                            Toast.makeText(ParentRequest.this, response, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ParentNewsfeed.class));
+                            finish();
+                            progressDialog.dismiss();
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(ParentRequest.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
+            }) {
 
-                params.put("childNo",childNo);
-                params.put("parentUsername",parentUsername);
-                params.put("firstName",strFirstName);
-                params.put("lastName",strLastName);
-                params.put("school",strSchool);
-                params.put("grade",strGrade);
-                params.put("pick",strPickupLoc);
-                params.put("drop",strDropOffLoc);
-                params.put("vehicleNo",vehicleNo);
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("childNo", childNo);
+                    params.put("parentUsername", parentUsername);
+                    params.put("firstName", strFirstName);
+                    params.put("lastName", strLastName);
+                    params.put("school", strSchool);
+                    params.put("grade", strGrade);
+                    params.put("pick", strPickupLoc);
+                    params.put("drop", strDropOffLoc);
+                    params.put("vehicleNo", vehicleNo);
 
 
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(ParentRequest.this);
+            requestQueue.add(request);
 
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentRequest.this);
-        requestQueue.add(request);
-
+        }
     }
 }

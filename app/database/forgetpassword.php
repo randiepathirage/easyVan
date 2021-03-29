@@ -1,21 +1,27 @@
 <?php
     require 'conn.php';
-    require 'PHPMailer/PHPMailerAutoload.php';
-    require 'PHPMailer/class.phpmailer.php';
-    require 'PHPMailer/class.smtp.php';
+    require 'PHPMailer/PHPMailer.php';
+    require 'PHPMailer/SMTP.php';
+    require 'PHPMailer/Exception.php';
     require 'admin.php';
 
-    $email = $_POST["email"];
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    //$email = $_POST["email"];
+    //$code=$_POST["random"];
     //$nic_no = "555";
-    //$email = "mruv98@gmail.com";
+    $email = "mruv98@gmail.com";
+    $code="5555";
 
-
+   
     $sql = "SELECT * FROM login where email LIKE '$email'";
     $query = mysqli_query($conn,$sql);
 
-   if(mysqli_num_rows($query)===1)
+   if(mysqli_num_rows($query)==1)
    {
-        $mail = new PHPMailer;
+        $mail = new PHPMailer();
 
         //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
@@ -25,14 +31,14 @@
         $mail->Username = $adminemail;                 // SMTP username
         $mail->Password = $adminpassword;                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                                    // TCP port to connect to
+        $mail->Port = "587";                                    // TCP port to connect to
 
-        $mail->setFrom( $adminemail, 'EZvan');
+        $mail->setFrom( $adminemail, 'EasyVan');
         $mail->addAddress($email);     // Add a recipient
-        $mail->addReplyTo( $adminemail, 'EZvan');
+        $mail->addReplyTo( $adminemail, 'EasyVan');
 
 
-        /*$mail->Subject = 'Forgot Password for EZvan';
+        /*$mail->Subject = 'Forgot Password for EZvan'; 
         $mail->isHTML(true);
         $mail->Body    = "click here the link below :
          "https://localhost/easyvan/resetPassword.php?".key=$email;*/
@@ -40,10 +46,10 @@
 
          //$url="http://". $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) ."/resetform.php?".key=$email;
          $url="http://localhost/easyvan/resetform.php?key=$email";
-         $mail->Subject = 'Your password reset link';
+         $mail->Subject = 'Your password reset code';
          $mail->isHTML(true);
          $mail->Body    = "<h1>You requested a password reset</h1>
-                                     Click <a href='$url'>this link</a> to do so";
+                                here is your code to reset the password $code";
 
 
         if(!$mail->send()) {
@@ -58,6 +64,7 @@
     {
         echo "Enter A Valid Email";
     }
+    $mail->smtpClose();
     mysqli_close($conn);
 
 ?>
