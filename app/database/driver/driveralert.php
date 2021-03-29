@@ -41,7 +41,7 @@
     $mysql_qury = "INSERT INTO emergency_message(parent_NIC_no,driver_NIC_no,message,date,time) VALUES ('$result_parentNIC','$Driver_NIC','$message',now(),now())";
 
     if($conn->query($mysql_qury)===TRUE){
-        echo "insert success";
+        echo "Alert send";
     }else{
         echo "Error" . $mysql_qury . "<br>" . $conn->error; 
     }

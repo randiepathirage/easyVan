@@ -17,7 +17,8 @@
  			$index['start_location'] = $row['6'];
  			$index['insurance_no'] = $row['7'];
  			$index['license_no'] = $row['8'];
-
+ 			
+ 			// push index array to data field
  			array_push($result['data'], $index);
  		}
 

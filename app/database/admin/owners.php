@@ -15,12 +15,13 @@
  			$index['address'] = $row['4'];
  			$index['username'] = $row['5'];
  			$index['email'] = $row['6'];
-
+ 			
+ 			// push index array to data field
  			array_push($result['data'], $index);
  		}
 
  			$result["success"]="1";
  			echo json_encode($result);
- 			mysqli_close($connection);
+ 			mysqli_close($conn);
 
   ?>
