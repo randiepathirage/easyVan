@@ -59,6 +59,7 @@ public class AdminReportGenerator extends AppCompatActivity {
         spinnerowners = findViewById(R.id.spinnerowners);
         HttpsTrustManager.allowAllSSL();
         String url = "https://10.0.2.2/easyvan/owner_spinner.php";
+        //get data to spinner
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -115,6 +116,7 @@ public class AdminReportGenerator extends AppCompatActivity {
             }
         });
 
+        //get data from calendars
         edtD1=findViewById(R.id.edtDate1);
 
         Calendar calendar1=Calendar.getInstance();
