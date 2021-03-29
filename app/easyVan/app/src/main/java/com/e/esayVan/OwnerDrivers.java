@@ -64,14 +64,14 @@ public class OwnerDrivers extends AppCompatActivity {
         //initializing the vehiclelist
         DriverList = new ArrayList<>();
 
-       loadVehicles();
+       loadDrivers();
 
         getSupportActionBar().setTitle("Drivers");
 
 
 
     }
-    private void loadVehicles() {
+    private void loadDrivers() {
 
         HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,

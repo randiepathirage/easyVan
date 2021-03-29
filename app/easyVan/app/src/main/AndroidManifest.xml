@@ -20,8 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DriverViewPaidChildren"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".OwnerEditDriverDetials"></activity>
+        <activity
+            android:name=".DriverViewPaidChildren"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".OwnerReportView" />
         <activity android:name=".ParentAccepted" />
         <activity android:name=".OwnerRespond" />
@@ -87,8 +89,9 @@
         <activity android:name=".Admin" />
         <activity android:name=".OwnerLocation" />
         <activity android:name=".OwnerCalendar" />
-        <activity android:name=".OwnerExpenses"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".OwnerExpenses"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".OwnerVans" />
         <activity android:name=".OwnerDrivers" />
         <activity android:name=".OwnerManage" />
@@ -103,8 +106,9 @@
         <activity android:name=".DriverAttendance" />
         <activity android:name=".DriverViewChildDetails" />
         <activity android:name=".DriverChildDetails" />
-        <activity android:name=".DriverExpense"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".DriverExpense"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".DriverCalendar" />
         <activity android:name=".DriverAlert" />
         <activity android:name=".Driver" />
