@@ -212,32 +212,23 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:text="User Role"
-                android:textColor="#000"
-                android:textSize="18dp" />
+                android:text="Vehicle No"
+                android:textColor="#000" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30dp">
+            <Spinner
+                android:id="@+id/type"
+                android:layout_width="266dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/amount"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="50dp" />
 
-                <RadioButton
-                    android:id="@+id/radioParent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checked="true"
-                    android:clickable="true"
-                    android:enabled="true"
-                    android:text="Driver" />
-
-            </RadioGroup>
 
             <Button
                 android:layout_width="wrap_content"

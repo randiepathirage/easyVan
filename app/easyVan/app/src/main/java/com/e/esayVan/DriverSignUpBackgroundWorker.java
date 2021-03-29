@@ -1,6 +1,7 @@
 package com.e.esayVan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ public class DriverSignUpBackgroundWorker extends AsyncTask<String,Void,String> 
             String userRole=params[9];
             String licenseNo = params[10];
             String owner_name = params[11];
-
+            String vehicle_no= params[12];
             URL url = new URL(driverSignUp_url);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
@@ -61,7 +62,8 @@ public class DriverSignUpBackgroundWorker extends AsyncTask<String,Void,String> 
                             +URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"
                             +URLEncoder.encode("userRole","UTF-8")+"="+URLEncoder.encode(userRole,"UTF-8") + "&"
                             +URLEncoder.encode("licenseNo","UTF-8")+"="+URLEncoder.encode(licenseNo,"UTF-8") + "&"
-                            +URLEncoder.encode("ownerName","UTF-8")+"="+URLEncoder.encode(owner_name,"UTF-8");
+                            +URLEncoder.encode("ownerName","UTF-8")+"="+URLEncoder.encode(owner_name,"UTF-8")+"&"
+                            +URLEncoder.encode("vehicle_no","UTF-8")+"="+URLEncoder.encode(vehicle_no,"UTF-8");
                     ;
 
             bufferedWriter.write(post_data);
@@ -99,6 +101,9 @@ public class DriverSignUpBackgroundWorker extends AsyncTask<String,Void,String> 
     protected void onPostExecute(String result) {
 
         Toast.makeText(context,result,Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(context, OwnerManage.class);
+        context.startActivity(intent);
+
 
     }
 

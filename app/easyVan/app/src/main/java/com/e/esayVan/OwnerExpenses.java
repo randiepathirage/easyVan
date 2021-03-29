@@ -69,7 +69,8 @@ public class OwnerExpenses extends AppCompatActivity {
         String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php?parentUsername="+userName;
 
 //vehicle datail load to spiner
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                PRODUCT_URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 JSONArray jsonArray = null;
