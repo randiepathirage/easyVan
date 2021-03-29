@@ -50,6 +50,59 @@ public class DriverProfileUpdate extends AppCompatActivity {
         sendJsonrequest();
 
     }
+
+
+    private Boolean validateAddress(){
+        String val_address= edtAddress.getText().toString();
+
+        if(val_address.isEmpty()){
+            edtAddress.setError("This field cannot be empty");
+            return false;
+        }
+        else{
+            edtAddress.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validateContactNo() {
+
+        String MobilePattern = "[0-9]{10}";
+        String val_contactNo = edtContactNo.getText().toString();
+
+        if (val_contactNo.isEmpty()) {
+            edtContactNo.setError("This field cannot be empty");
+            return false;
+        }
+        else if (!edtContactNo.getText().toString().matches(MobilePattern)) {
+
+            edtContactNo.setError("please insert valid mobile number");
+            return false;
+        }else {
+            edtContactNo.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validateEmail(){
+        String val_email=edtEmail.getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(val_email.isEmpty()){
+            edtEmail.setError("This field cannot be empty");
+            return false;
+        }
+        else if(!val_email.matches(emailPattern)){
+            edtEmail.setError("Invalid email address");
+            return false;
+        }
+        else{
+            edtEmail.setError(null);
+            return true;
+        }
+    }
+
+
     //load account details
     public void sendJsonrequest(){
 
@@ -114,46 +167,51 @@ public class DriverProfileUpdate extends AppCompatActivity {
         final String email = edtEmail.getText().toString();
         final String address = edtAddress.getText().toString();
 
-        final ProgressDialog progressDialog = new ProgressDialog(DriverProfileUpdate.this);
-        progressDialog.setMessage("updating....");
-        progressDialog.show();
+        if (!validateContactNo() | !validateEmail() | !validateAddress()) {
 
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, URL_UPDATE,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+        } else {
 
-                        Toast.makeText(DriverProfileUpdate.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), DriverProfile.class));
-                        finish();
-                        progressDialog.dismiss();
+            final ProgressDialog progressDialog = new ProgressDialog(DriverProfileUpdate.this);
+            progressDialog.setMessage("updating....");
+            progressDialog.show();
 
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DriverProfileUpdate.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        }) {
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(Request.Method.POST, URL_UPDATE,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
+                            Toast.makeText(DriverProfileUpdate.this, response, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), DriverProfile.class));
+                            finish();
+                            progressDialog.dismiss();
 
-                params.put("username", username);
-                params.put("contact", contact);
-                params.put("email", email);
-                params.put("address", address);
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(DriverProfileUpdate.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
+            }) {
 
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(DriverProfileUpdate.this);
-        requestQueue.add(request);
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("username", username);
+                    params.put("contact", contact);
+                    params.put("email", email);
+                    params.put("address", address);
+
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(DriverProfileUpdate.this);
+            requestQueue.add(request);
 
 
+        }
     }
 
 }

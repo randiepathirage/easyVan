@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -123,9 +124,13 @@ public class DriverAlert extends AppCompatActivity {
         String str_username = Name ;
 
         String match = "sendalert";
+        if(str_msg.isEmpty()){
+            Toast.makeText(DriverAlert.this,"Please enter message",Toast.LENGTH_LONG).show();
+        }else {
 
-        DriverBackgroundAlert driverBackgroundAlert = new DriverBackgroundAlert(this);
-        driverBackgroundAlert.execute(match,str_msg,str_username);
+            DriverBackgroundAlert driverBackgroundAlert = new DriverBackgroundAlert(this);
+            driverBackgroundAlert.execute(match, str_msg, str_username);
+        }
     }
 
 }
