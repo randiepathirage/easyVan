@@ -29,19 +29,9 @@
     $Result_VehicelNO = $VN_result['vehicle_no'];
     //...............................................
 
-    // genarate child no >>>>>>>>>
-
-    $child_no = "SELECT child_no FROM child_assign WHERE vehicle_no = '$Result_VehicelNO';";
-    $query_Childno = mysqli_query($conn,$child_no);
-    $Cno_result = mysqli_fetch_assoc($query_Childno);
-    $result_Childno = $Cno_result['child_no'];
-
-    //>>>>>>>>>>>>
-
-
     // genarate parent nic  >>>>>>>>>
 
-    $parent_nic = "SELECT parent_NIC_no FROM child WHERE child_no = '$result_Childno';";
+    $parent_nic = "SELECT parent_NIC_no FROM child WHERE vehicle_no = '$Result_VehicelNO';";
     $query_parentNIC = mysqli_query($conn,$parent_nic);
     $parentNIC_result = mysqli_fetch_assoc($query_parentNIC);
     $result_parentNIC = $parentNIC_result['parent_NIC_no'];

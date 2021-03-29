@@ -30,7 +30,7 @@ $Result_VehicelNO= $VN_result ['vehicle_no'];
 //Genarate child details.........................
 
 $stmt = $conn->prepare("SELECT child_no 
-FROM child WHERE child_no IN (SELECT child_no FROM child_assign WHERE vehicle_no = '$Result_VehicelNO'); ");
+FROM child WHERE vehicle_no = '$Result_VehicelNO'");
 
 //...........................................
 
