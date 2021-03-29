@@ -128,7 +128,7 @@ public class ParentPay extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                monthSelected= (String) spinner.getItemAtPosition(i);
+                monthSelected= (String) spinner2.getItemAtPosition(i);
             }
 
             @Override

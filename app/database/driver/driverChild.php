@@ -4,6 +4,7 @@
 
 require  "conn.php";
 //creating a query
+
 $user_name = $_POST['username'];
 
 
@@ -14,6 +15,7 @@ $query_NIC = mysqli_query($conn,$NIC);
 $NIC_result = mysqli_fetch_assoc($query_NIC);
 $Driver_NIC = $NIC_result['NIC_no'];
 //>>>>>>>>>>>>
+//echo "$Driver_NIC";
 
 //Genarate vehicle number.........................
 $VehicelNO = "SELECT vehicle_no FROM assign WHERE driver_NIC_no = '$Driver_NIC';";
@@ -24,12 +26,13 @@ $VN_result = mysqli_fetch_assoc($query_VehicelNO);
 
 $Result_VehicelNO = $VN_result['vehicle_no'];
 //...............................................
-
+//echo "$Result_VehicelNO";
 
 //Genarate child details.........................
 
 $stmt = $conn->prepare("SELECT child_no,first_name,last_name,grade,school,pickup_location,dropoff_location 
-FROM child WHERE vehicle_no = '$Result_VehicelNO'");
+FROM child WHERE child_no IN (SELECT child_no FROM child WHERE vehicle_no = '$Result_VehicelNO');");
+
 
 //...............................................
 
