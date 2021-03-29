@@ -13,18 +13,18 @@
        $vehicle_no=$_POST['vehicle_no'];
        $fee=$_POST['monthly_fee'];
 
-       /*$pnic="920140945v";
-       $firstname="Thilina";
-       $lastname="Dilshan";
-       $school="Ananda College";
-       $grade="11";
-       $pickup="Nugegoda";
-       $dropoff="Maradana";
-       $sdate="2020-08-01";
-       $vehicle_no="GF-6754";
-       $fee="3000";*/
+      /* $pnic="881040945v";
+       $firstname="Nimesha";
+       $lastname="De silva";
+       $school="Vishaka College";
+       $grade="9";
+       $pickup="Maharagama";
+       $dropoff="Colombo";
+       $sdate="2020-05-01";
+       $vehicle_no="SP-8585";
+       $fee="6000";*/
 
-     $sql = "INSERT INTO `child` (`child_no`, `parent_NIC_no`, `grade`, `school`, `first_name`, `last_name`, `pickup_location`, `dropoff_location`, `vehicle_no`, `start_date`, `monthly_fee`) VALUES (NULL, '$pnic', '$grade', '$school', '$firstname', '$lastname', '$pickup', '$dropoff', '$vehicle_no', '$sdate', '$fee');";
+     $sql = "INSERT INTO `child` (`child_no`, `parent_NIC_no`, `grade`, `school`, `first_name`, `last_name`, `pickup_location`, `dropoff_location`, `vehicle_no`, `start_date`, `fees`) VALUES (NULL, '$pnic', '$grade', '$school', '$firstname', '$lastname', '$pickup', '$dropoff', '$vehicle_no', '$sdate', '$fee');";
 
      $result = mysqli_query($conn,$sql);
 

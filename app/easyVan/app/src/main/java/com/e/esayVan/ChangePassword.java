@@ -24,7 +24,7 @@ public class ChangePassword extends AppCompatActivity {
 
     EditText password,confirmPassword;
     String email;
-    String URL_UPDATE="https://10.0.2.2/easyvan/resetform.php";
+    String URL_UPDATE="https://10.0.2.2/easyvan/userResetPass.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

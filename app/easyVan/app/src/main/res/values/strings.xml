@@ -24,6 +24,11 @@
         <item>License renew</item>
         <item>Other</item>
     </string-array>
+    <string-array name="report">
+        <item>Expenses</item>
+        <item>Fuel</item>
+        <item>Income</item>
+    </string-array>
 
     <string-array name="select_alert">
         <item>Emergency</item>

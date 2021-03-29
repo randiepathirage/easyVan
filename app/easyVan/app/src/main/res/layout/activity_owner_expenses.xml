@@ -8,7 +8,7 @@
     android:background="@drawable/doodle_back_gray">
 
     <EditText
-        android:id="@+id/E_date"
+        android:id="@+id/edtdate"
         android:layout_width="266dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

@@ -49,7 +49,7 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
     private WebView webView;
     //private Menu menu;
     Button bt1,bt2;
-    Spinner spin1;
+    Spinner spin1,reportType;
     String user,c;
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
@@ -67,6 +67,11 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
 
         requestQueue = Volley.newRequestQueue(this);
         spin1 = findViewById(R.id.spinnerVehicle);
+        reportType = findViewById(R.id.spinnerType);
+        //expenses type spinner
+        ArrayAdapter myadapter2 = new ArrayAdapter(OwnerReport.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.report));
+        myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        reportType.setAdapter(myadapter2);
 /*         bt2.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {
@@ -74,15 +79,6 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
                 startActivity(mang);
 
             }});*/
-
-
-        //get UI data DB >>>>>>>>>>>>>>>.
-        expType = (RadioGroup)findViewById(R.id.add_van_type);
-        vehiclePart = (RadioButton)findViewById(R.id.R_vPart);
-        fuel = (RadioButton)findViewById(R.id.R_fuel);
-        vehicleService = (RadioButton)findViewById(R.id.R_v_service);
-        license = (RadioButton)findViewById(R.id.R_licence);
-        full = (RadioButton)findViewById(R.id.R_full);
 
 
 

@@ -1,411 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DriverPayment">
+    tools:context=".DriverPayment"
+    android:background="@drawable/doodle_back_gray"
+    android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="70dp">
+        android:text="Check paid children list"
+        android:background="@drawable/roundededge"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:onClick="viewChildren"
+        />
 
-        <TableLayout
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TableRow
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="50dp"
-                    android:backgroundTint="#D1CECA"
-                    android:textAlignment="center"
-                    android:background="@android:drawable/editbox_background"
-                    android:textStyle="bold"
-                    android:text="Name"
-                    android:textSize="26dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:backgroundTint="#D1CECA"
-                    android:textAlignment="center"
-                    android:background="@android:drawable/editbox_background"
-                    android:textStyle="bold"
-                    android:text="Amount"
-                    android:textSize="26dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:backgroundTint="#D1CECA"
-                    android:textAlignment="center"
-                    android:background="@android:drawable/editbox_background"
-                    android:textStyle="bold"
-                    android:text="Mark"
-                    android:textSize="26dp"/>
-            </TableRow>
+                android:textAlignment="center"
+                android:text="Pay van fees"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
 
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Kalana Thathsara"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="20dp"
-                    android:text="1200"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select child:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"
+                android:textSize="18dp"
+                android:paddingVertical="10dp"/>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp" />
-            </TableRow>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spin"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
 
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Chamith Wasura"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:text="1500"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select month:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"
+                android:textSize="18dp"
+                android:paddingVertical="10dp"/>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spin2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
 
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Sameera Gamage"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:text="1000"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter amount:"
+                android:textColor="#000"
+                android:layout_marginLeft="30dp"
+                android:textSize="18dp"
+                android:paddingVertical="10dp"/>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtAmount"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:inputType="numberDecimal"/>
 
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Manula Hasaranga"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:text="1400"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:textSize="18dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp" />
-            </TableRow>
-
-        </TableLayout>
-
-    </ScrollView>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/paymentbtn"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/roundededge"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:text="Paid"
+                android:onClick="paid"
+                android:textColor="#fff"
+                android:textStyle="bold"/>
 
 
 
-</RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
