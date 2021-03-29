@@ -76,15 +76,6 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
             }});*/
 
 
-        //get UI data DB >>>>>>>>>>>>>>>.
-        expType = (RadioGroup)findViewById(R.id.add_van_type);
-        vehiclePart = (RadioButton)findViewById(R.id.R_vPart);
-        fuel = (RadioButton)findViewById(R.id.R_fuel);
-        vehicleService = (RadioButton)findViewById(R.id.R_v_service);
-        license = (RadioButton)findViewById(R.id.R_licence);
-        full = (RadioButton)findViewById(R.id.R_full);
-
-
 
         HttpsTrustManager.allowAllSSL();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
