@@ -34,7 +34,7 @@ public class ParentDetails extends AppCompatActivity {
 
     private String strfirstName, strlastName ,strvehicleNo,strstartDate,strmonthlyFee,strownerNIC,strownerContact,strownerLastName,strownerFirstName,strdriverNIC,
             strdriverContact, strdriverLastName, strdriverFirstName, strlicenseNo;
-    String childNumber,r,parentNIC,review;
+    String childNumber,r,parentNIC,review="";
     Button editDates, btnPost;
     RatingBar ratingBar;
     private TextView startDate,MonthlyFee,driverName,driverContact,driverNic,driverLicence,ownerName,ownerContact,ownerNic,name,vehicleNo;
@@ -170,7 +170,7 @@ public class ParentDetails extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentDetails.this, "error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentDetails.this, (CharSequence) error, Toast.LENGTH_SHORT).show();
                 //progressDialog.dismiss();
             }
         }) {

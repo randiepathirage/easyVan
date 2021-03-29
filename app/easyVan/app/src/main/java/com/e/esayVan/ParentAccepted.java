@@ -104,77 +104,78 @@ public class ParentAccepted extends AppCompatActivity {
     public void agree(View view) {
 
         final String date = editDate.getText().toString();
+        if (date.isEmpty()) {
+            Toast.makeText(ParentAccepted.this,"Please select a starting date",Toast.LENGTH_LONG).show();
+        } else {
 
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, URL_AGREE,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(Request.Method.POST, URL_AGREE,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                        Toast.makeText(ParentAccepted.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentAccepted.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ParentAccepted.this, response, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(ParentAccepted.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("childId", childId);
+                    params.put("vehicleNo", vehicleNo);
+                    params.put("date", date);
+                    params.put("id", id);
+
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(ParentAccepted.this);
+            requestQueue.add(request);
             }
-        }) {
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
+        }
 
-                params.put("childId", childId);
-                params.put("vehicleNo",vehicleNo);
-                params.put("date",date);
-                params.put("id",id);
+        public void discard (View view){
 
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentAccepted.this);
-        requestQueue.add(request);
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(Request.Method.POST, URL_DISCARD,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-    }
+                            Toast.makeText(ParentAccepted.this, response, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(ParentAccepted.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
 
-    public void discard(View view) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
 
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, URL_DISCARD,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+                    params.put("childId", childId);
+                    params.put("id", id);
 
-                        Toast.makeText(ParentAccepted.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentAccepted.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
-
-                params.put("childId", childId);
-                params.put("id",id);
-
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentAccepted.this);
-        requestQueue.add(request);
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(ParentAccepted.this);
+            requestQueue.add(request);
 
 
+            Intent intent = new Intent(ParentAccepted.this, ParentDashboard.class);
+            startActivity(intent);
 
-
-
-        Intent intent=new Intent(ParentAccepted.this,ParentDashboard.class);
-        startActivity(intent);
-
-    }
+        }
 }

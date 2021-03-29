@@ -55,7 +55,7 @@ public class ParentCalendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_calendar);
-        getSupportActionBar().setTitle("Calendar");
+        getSupportActionBar().setTitle("Mark Attendance");
 
         btnMarkAttend=findViewById(R.id.btnMarkAttend);
         chkMorning=findViewById(R.id.checkM);
@@ -203,46 +203,53 @@ public class ParentCalendar extends AppCompatActivity {
 
         final String date = edtDate.getText().toString();
 
+        if(date.isEmpty()){
+            Toast.makeText(ParentCalendar.this,"Please select a date",Toast.LENGTH_LONG).show();
+        } else if (morning.equals("1") && evening.equals("1")) {
+            Toast.makeText(ParentCalendar.this,"Please select morning or evening",Toast.LENGTH_LONG).show();
+        } else {
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("updating....");
-        progressDialog.show();
 
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, URL_MARK,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("updating....");
+            progressDialog.show();
 
-                        Toast.makeText(ParentCalendar.this, response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
-                        finish();
-                        progressDialog.dismiss();
+            HttpsTrustManager.allowAllSSL();
+            StringRequest request = new StringRequest(Request.Method.POST, URL_MARK,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ParentCalendar.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        }) {
+                            Toast.makeText(ParentCalendar.this, response, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
+                            finish();
+                            progressDialog.dismiss();
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String,String>();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(ParentCalendar.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
+            }) {
 
-                params.put("date", date);
-                params.put("childName", childSelected);
-                params.put("username", userName);
-                params.put("morning", morning);
-                params.put("evening", evening);
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
 
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(ParentCalendar.this);
-        requestQueue.add(request);
+                    params.put("date", date);
+                    params.put("childName", childSelected);
+                    params.put("username", userName);
+                    params.put("morning", morning);
+                    params.put("evening", evening);
+
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(ParentCalendar.this);
+            requestQueue.add(request);
+        }
 
     }
 
