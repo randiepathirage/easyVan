@@ -4,8 +4,8 @@
 
 require  "conn.php";
 //creating a query
-$user_name= $_POST['username'];
-//$user_name="driver1";
+
+$user_name = $_POST['username'];
 
 
 //Genarate driver NIC using username>>>>>>>>>
@@ -32,6 +32,7 @@ $Result_VehicelNO = $VN_result['vehicle_no'];
 
 $stmt = $conn->prepare("SELECT child_no,first_name,last_name,grade,school,pickup_location,dropoff_location 
 FROM child WHERE child_no IN (SELECT child_no FROM child WHERE vehicle_no = '$Result_VehicelNO');");
+
 
 //...............................................
 

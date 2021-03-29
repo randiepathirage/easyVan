@@ -106,11 +106,14 @@ public class DriverProfileUpdate extends AppCompatActivity {
 
     public void updateDriverAccountDetails(View view) {
 
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
+
         final String username = edtUsername.getText().toString();
         final String contact = edtContactNo.getText().toString();
         final String email = edtEmail.getText().toString();
         final String address = edtAddress.getText().toString();
-        final String nic = "961062435v";
+
         final ProgressDialog progressDialog = new ProgressDialog(DriverProfileUpdate.this);
         progressDialog.setMessage("updating....");
         progressDialog.show();
@@ -138,8 +141,8 @@ public class DriverProfileUpdate extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
-                params.put("id", nic);
-                params.put("name", username);
+
+                params.put("username", username);
                 params.put("contact", contact);
                 params.put("email", email);
                 params.put("address", address);
