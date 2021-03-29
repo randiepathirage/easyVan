@@ -2,12 +2,14 @@ package com.e.esayVan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -24,15 +26,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class OwnerExpenses extends AppCompatActivity {
 
+    String userName;
     Spinner spinExp,spinVehicle;
+    EditText edtDate;
     //spiner view in vehicle
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
-    private static final String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php";//spiner
 
 
 
@@ -50,7 +54,6 @@ public class OwnerExpenses extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         spinVehicle = findViewById(R.id.E_spinnerVehicle);
         spinExp =findViewById(R.id.E_spinExpType);
-        date= findViewById(R.id.E_date);
         amount = (EditText) findViewById(R.id.ex_amount);
 
 
@@ -59,7 +62,11 @@ public class OwnerExpenses extends AppCompatActivity {
         myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinExp.setAdapter(myadapter2);
 
+        //get the session username
+        SessionManagement sessionManagement = new SessionManagement(this);
+        userName = sessionManagement.getUserName();
 
+        String PRODUCT_URL="http://10.0.2.2/easyvan/spinner.php?parentUsername="+userName;
 
 //vehicle datail load to spiner
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PRODUCT_URL, null, new Response.Listener<JSONObject>() {
@@ -75,7 +82,7 @@ public class OwnerExpenses extends AppCompatActivity {
                         vehicleList.add(vehicleNumber);
                         vehicleAdapter = new ArrayAdapter<>(OwnerExpenses.this, android.R.layout.simple_spinner_item,vehicleList);
                         vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        spinVehicle.setAdapter(vehicleAdapter  );
+                        spinVehicle.setAdapter(vehicleAdapter);
 
                     }
                 }
@@ -91,6 +98,30 @@ public class OwnerExpenses extends AppCompatActivity {
         });
         //Toast.makeText(OwnerReport.this, (CharSequence) vehicleAdapter, Toast.LENGTH_LONG).show();
         requestQueue.add(jsonObjectRequest);//end of vehicle load spinner
+
+
+        //selecting date
+      edtDate=findViewById(R.id.edtdate);
+
+        Calendar calendar=Calendar.getInstance();
+        final int year=calendar.get(Calendar.YEAR);
+        final int month=calendar.get(Calendar.MONTH);
+        final int day=calendar.get(Calendar.DAY_OF_MONTH);
+
+          edtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog=new DatePickerDialog(OwnerExpenses.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month=month+1;
+                        String date=year+"-"+month+"-"+day;
+                        edtDate.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
 
 
@@ -144,7 +175,7 @@ public class OwnerExpenses extends AppCompatActivity {
 
        String str_amount = amount.getText().toString();
         String str_type = spinExp.getSelectedItem().toString();
-       String str_date = date.getText().toString();
+       String str_date = edtDate.getText().toString();
        String str_vehicleNo = spinVehicle.getSelectedItem().toString();
 
        // String str_amount = "23440";

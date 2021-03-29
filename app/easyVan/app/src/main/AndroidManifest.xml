@@ -87,7 +87,8 @@
         <activity android:name=".Admin" />
         <activity android:name=".OwnerLocation" />
         <activity android:name=".OwnerCalendar" />
-        <activity android:name=".OwnerExpenses" />
+        <activity android:name=".OwnerExpenses"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".OwnerVans" />
         <activity android:name=".OwnerDrivers" />
         <activity android:name=".OwnerManage" />

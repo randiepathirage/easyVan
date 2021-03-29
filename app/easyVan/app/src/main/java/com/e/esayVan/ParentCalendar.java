@@ -120,6 +120,7 @@ public class ParentCalendar extends AppCompatActivity {
 
             }
         });
+
         requestQueue.add(jsonObjectRequest);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
