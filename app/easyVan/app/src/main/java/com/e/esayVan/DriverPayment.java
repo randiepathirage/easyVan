@@ -117,7 +117,7 @@ public class DriverPayment extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                monthSelected= (String) spinner.getItemAtPosition(i);
+                monthSelected= (String) spinner2.getItemAtPosition(i);
             }
 
             @Override
@@ -189,7 +189,7 @@ public class DriverPayment extends AppCompatActivity {
                         public void onResponse(String response) {
 
                             Toast.makeText(DriverPayment.this, response, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), ParentDashboard.class));
+                            startActivity(new Intent(getApplicationContext(), DriverRoute.class));
                             finish();
 
                         }

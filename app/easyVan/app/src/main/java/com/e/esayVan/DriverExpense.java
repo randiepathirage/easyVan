@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -95,6 +96,7 @@ public class DriverExpense extends AppCompatActivity {
         String str_type = spin.getSelectedItem().toString();
         String str_username = Name ;
 
+
         int int_day = datePicker.getDayOfMonth();
         int int_month = datePicker.getMonth();
         int int_year = datePicker.getYear();
@@ -105,10 +107,15 @@ public class DriverExpense extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
         String str_Date = format.format(calendar.getTime());
 
-        String match = "addexpense";
+        if(str_amount.isEmpty()||str_Date.isEmpty()){
+            Toast.makeText(DriverExpense.this,"Please fill all the fields",Toast.LENGTH_LONG).show();
+        }else {
 
-        DriverBackgroundAdd driverBackgroundAdd = new DriverBackgroundAdd(this);
-        driverBackgroundAdd.execute(match,str_amount,str_type,str_Date,str_username);
+            String match = "addexpense";
+
+            DriverBackgroundAdd driverBackgroundAdd = new DriverBackgroundAdd(this);
+            driverBackgroundAdd.execute(match, str_amount, str_type, str_Date, str_username);
+        }
 
     }
     @Override

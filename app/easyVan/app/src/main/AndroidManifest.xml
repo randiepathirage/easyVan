@@ -102,7 +102,8 @@
         <activity android:name=".DriverAttendance" />
         <activity android:name=".DriverViewChildDetails" />
         <activity android:name=".DriverChildDetails" />
-        <activity android:name=".DriverExpense" />
+        <activity android:name=".DriverExpense"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".DriverCalendar" />
         <activity android:name=".DriverAlert" />
         <activity android:name=".Driver" />
