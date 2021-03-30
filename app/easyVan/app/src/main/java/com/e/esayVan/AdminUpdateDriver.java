@@ -50,8 +50,105 @@ public class AdminUpdateDriver extends AppCompatActivity {
         edemail.setText(AdminDrivers.adminDriverArrayList.get(position).getEmail());
 
 
+    }
 
 
+
+
+    private Boolean validateName(){
+        String val_firstName= edfname.getText().toString();
+        String val_lastName= edlname.getText().toString();
+
+        if(val_firstName.isEmpty() & val_lastName.isEmpty()){
+            edfname.setError("This field cannot be empty");
+            edlname.setError("This field cannot be empty");
+            return false;
+        }
+        else if(val_lastName.isEmpty()){
+            edfname.setError("This field cannot be empty");
+            edfname.setError(null);
+            return false;
+        }
+        else if(val_firstName.isEmpty()){
+            edfname.setError("This field cannot be empty");
+            edlname.setError(null);
+            return false;
+        }
+        else{
+            edfname.setError(null);
+            edlname.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validateUsername(){
+        String val_username= edusername.getText().toString();
+        String noWhitespaces="\\A\\w{4,20}\\z";
+
+        if(val_username.isEmpty() ){
+            edusername.setError("This field cannot be empty");
+            return false;
+        }
+        else if (!val_username.matches(noWhitespaces)) {
+            edusername.setError("White Spaces are not allowed");
+            return false;
+        }
+        else{
+            edusername.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validateEmail(){
+        String val_email=edemail.getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(val_email.isEmpty()){
+            edemail.setError("This field cannot be empty");
+            return false;
+        }
+        else if(!val_email.matches(emailPattern)){
+            edemail.setError("Invalid email address");
+            return false;
+        }
+        else{
+            edemail.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validateContactNo() {
+
+        String MobilePattern = "[0-9]{10}";
+        String val_contactNo = edcontact.getText().toString();
+
+        if (val_contactNo.isEmpty()) {
+            edcontact.setError("This field cannot be empty");
+            return false;
+        }
+        else if (!edcontact.getText().toString().matches(MobilePattern)) {
+
+            edcontact.setError("please insert valid mobile number");
+            return false;
+        }else {
+            edcontact.setError(null);
+            return true;
+        }
+    }
+
+
+
+    private Boolean validateAddress(){
+        String val_address= edaddress.getText().toString();
+
+        if(val_address.isEmpty()){
+            edaddress.setError("This field cannot be empty");
+            return false;
+        }
+        else{
+            edaddress.setError(null);
+            return true;
+        }
     }
 
     public void btn_updateowner(View view) {
@@ -64,6 +161,9 @@ public class AdminUpdateDriver extends AppCompatActivity {
         final String username = edusername.getText().toString();
         final String email = edemail.getText().toString();
 
+        if(!validateName()|!validateUsername() |!validateContactNo()|!validateEmail()|!validateAddress()){
+            return;
+        }
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Updating....");
