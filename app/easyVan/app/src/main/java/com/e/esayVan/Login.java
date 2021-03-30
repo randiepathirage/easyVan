@@ -35,8 +35,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 Intent forgotIntent = new Intent(Login.this,ForgotPassword.class);
                 startActivity(forgotIntent);
             }

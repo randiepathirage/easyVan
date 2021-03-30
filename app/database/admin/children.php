@@ -3,7 +3,6 @@
 
  	$result = array();
  	$result['data'] = array();
-
  	$select= "SELECT child.child_no,child.parent_NIC_no,child.first_name,child.last_name,child.school,child.grade,child.pickup_location,child.vehicle_no,child.fees, user.first_name as parent_name FROM user JOIN child ON user.NIC_no = child.parent_NIC_no";
  	$responce = mysqli_query($conn,$select);
 
@@ -20,7 +19,6 @@
  			$index['fees'] = $row['8'];
  			$index['parent_name'] = $row['9'];
 
- 			//pushing index array to data field
  			array_push($result['data'], $index);
  		}
 
