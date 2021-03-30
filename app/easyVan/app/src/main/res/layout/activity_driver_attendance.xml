@@ -42,7 +42,7 @@
                     android:layout_height="40dp"
                     android:background="@android:drawable/editbox_background"
                     android:backgroundTint="#D1CECA"
-                    android:text="Child no"
+                    android:text="Child name"
                     android:textAlignment="center"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="250dp"
+                    android:layout_marginLeft="140dp"
                     android:background="@android:drawable/editbox_background"
                     android:backgroundTint="#D1CECA"
                     android:text="Remark"
