@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select driver"
+        android:text="Select vehicle:"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
         android:textSize="18dp"
