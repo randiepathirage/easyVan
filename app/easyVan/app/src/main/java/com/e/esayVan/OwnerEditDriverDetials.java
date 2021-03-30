@@ -44,7 +44,7 @@ public class OwnerEditDriverDetials extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_edit_driver_detials);
-        getSupportActionBar().setTitle("Update Driver Details");
+        getSupportActionBar().setTitle("Reassign driver");
 
         requestQueue = Volley.newRequestQueue(this);
         spinVehicle = findViewById(R.id.E_spinnerVehicle);

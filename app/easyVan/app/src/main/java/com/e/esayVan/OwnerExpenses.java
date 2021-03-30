@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -178,6 +179,10 @@ public class OwnerExpenses extends AppCompatActivity {
         String str_type = spinExp.getSelectedItem().toString();
        String str_date = edtDate.getText().toString();
        String str_vehicleNo = spinVehicle.getSelectedItem().toString();
+
+       if(str_amount.isEmpty()||str_date.isEmpty()){
+           Toast.makeText(OwnerExpenses.this,"Please fill all the fields",Toast.LENGTH_LONG).show();
+       }
 
        // String str_amount = "23440";
       //  String str_type = "fuel";

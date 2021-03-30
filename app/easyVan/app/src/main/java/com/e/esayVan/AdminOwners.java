@@ -77,25 +77,14 @@ public class AdminOwners extends AppCompatActivity {
 
                                 deleteData(adminOwnerArrayList.get(position).getoNic());
                                 break;
-
-
                         }
-
-
-
                     }
                 });
-
-
                 builder.create().show();
-
-
             }
         });
 
         retrieveData();
-
-
     }
 
     private void deleteData(final String NIC_no) {
@@ -139,11 +128,12 @@ public class AdminOwners extends AppCompatActivity {
     public void retrieveData(){
 
         HttpsTrustManager.allowAllSSL();
+
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        Toast.makeText(AdminOwners.this,"hiiii",Toast.LENGTH_LONG).show();
                         adminOwnerArrayList.clear();
                         try{
 
@@ -152,7 +142,6 @@ public class AdminOwners extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                             if(success.equals("1")){
-
 
                                 for(int i=0;i<jsonArray.length();i++){
 
@@ -167,29 +156,17 @@ public class AdminOwners extends AppCompatActivity {
                                     String email = object.getString("email");
 
 
-
                                     owner = new AdminOwnerArray(nic,contact,lname,fname,address,username,email);
                                     adminOwnerArrayList.add(owner);
                                     owneradapter.notifyDataSetChanged();
 
-
                                 }
 
-
-
                             }
-
-
                         }
                         catch (JSONException e){
                             e.printStackTrace();
                         }
-
-
-
-
-
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -200,10 +177,6 @@ public class AdminOwners extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
-
-
-
-
     }
 
     public void btn_add_owner(View view) {
@@ -252,8 +225,6 @@ public class AdminOwners extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(AdminOwners.this);
         requestQueue.add(request);
-
-
     }
 
 }
