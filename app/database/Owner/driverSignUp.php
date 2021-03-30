@@ -13,7 +13,7 @@
  $license_no = $_POST['licenseNo'];
 
  $ownerName =$_POST['ownerName'];
- $v_no = "KK 2332";
+
  
 /* $user_role = "driver";
  $user_middlename = "None";*/

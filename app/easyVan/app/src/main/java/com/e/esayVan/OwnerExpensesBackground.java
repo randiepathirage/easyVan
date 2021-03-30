@@ -34,8 +34,8 @@ public class OwnerExpensesBackground extends AsyncTask<String,Void,String>  {
 
                 String amount = params[1];
                 String type = params[2];
-               String date = params[3];
-                String vehicleNo = params[4];
+              // String date = params[3];
+                String vehicleNo = params[3];
 
 
                 URL url = new URL(addexpense_url2);
@@ -48,7 +48,7 @@ public class OwnerExpensesBackground extends AsyncTask<String,Void,String>  {
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String post_data = URLEncoder.encode("amount","UTF-8")+"="+URLEncoder.encode(amount,"UTF-8")+"&"
                         +URLEncoder.encode("type","UTF-8")+"="+URLEncoder.encode(type,"UTF-8")+"&"
-                        +URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"
+                      //  +URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"
                         +URLEncoder.encode("vehicle_no","UTF-8")+"="+URLEncoder.encode(vehicleNo,"UTF-8");
 
                 bufferedWriter.write(post_data);

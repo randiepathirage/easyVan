@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Report type"
+            android:text="Expense type"
             android:layout_margin="50dp"
             android:textColor="#000"/>
 
@@ -61,7 +61,7 @@
 
 
     <EditText
-        android:id="@+id/editTextDate5"
+        android:id="@+id/fromDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
@@ -70,8 +70,9 @@
         android:ems="10"
         android:inputType="date" />
 
+
     <EditText
-        android:id="@+id/editTextDate6"
+        android:id="@+id/toDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
@@ -88,7 +89,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/roundededge"
         android:text="Generate"
-        android:onClick="genarate"
+        android:onClick="OwnerReport"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp" />

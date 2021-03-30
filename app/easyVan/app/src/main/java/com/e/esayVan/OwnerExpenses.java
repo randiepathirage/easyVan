@@ -50,7 +50,7 @@ public class OwnerExpenses extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         spinVehicle = findViewById(R.id.E_spinnerVehicle);
         spinExp =findViewById(R.id.E_spinExpType);
-        date= findViewById(R.id.E_date);
+        //date= findViewById(R.id.E_date);
         amount = (EditText) findViewById(R.id.ex_amount);
 
 
@@ -144,7 +144,7 @@ public class OwnerExpenses extends AppCompatActivity {
 
        String str_amount = amount.getText().toString();
         String str_type = spinExp.getSelectedItem().toString();
-       String str_date = date.getText().toString();
+   //    String str_date = date.getText().toString();
        String str_vehicleNo = spinVehicle.getSelectedItem().toString();
 
        // String str_amount = "23440";
@@ -156,7 +156,7 @@ public class OwnerExpenses extends AppCompatActivity {
         String match = "ownerAddExpense";
 
         OwnerExpensesBackground OwnerExpensesBackground = new OwnerExpensesBackground(this);
-        OwnerExpensesBackground.execute(match,str_amount,str_type,str_date,str_vehicleNo);
+        OwnerExpensesBackground.execute(match,str_amount,str_type,str_vehicleNo);
 
     }
 

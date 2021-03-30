@@ -3,6 +3,7 @@ package com.e.esayVan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -18,6 +19,8 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -40,6 +43,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +59,7 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
     private static final String PRODUCT_URL="https://10.0.2.2/easyvan/spinner.php";
+    EditText fromDate , toDate;
 
     RadioGroup expType;
     RadioButton vehiclePart, fuel,vehicleService, license, full;
@@ -63,6 +68,43 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
+
+        fromDate = findViewById(R.id.fromDate);
+        toDate = findViewById(R.id.toDate);
+
+        Calendar calendar1=Calendar.getInstance();
+        final int year1=calendar1.get(Calendar.YEAR);
+        final int month1=calendar1.get(Calendar.MONTH);
+        final int day1=calendar1.get(Calendar.DAY_OF_MONTH);
+
+        fromDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog1=new DatePickerDialog(OwnerReport.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year1, int month1, int day1) {
+                        month1=month1+1;
+                        String d1=year1+"-"+month1+"-"+day1;
+                        fromDate.setText(d1);
+                    }
+                },year1,month1,day1);
+                datePickerDialog1.show();
+            }
+        });
+        toDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog1=new DatePickerDialog(OwnerReport.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year1, int month1, int day1) {
+                        month1=month1+1;
+                        String d1=year1+"-"+month1+"-"+day1;
+                        toDate.setText(d1);
+                    }
+                },year1,month1,day1);
+                datePickerDialog1.show();
+            }
+        });
 
 
         requestQueue = Volley.newRequestQueue(this);
@@ -303,6 +345,44 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
      OwnerReportView.execute(str_vehicle,str_exType);*/
 
 
+    }
+    public void OwnerReport(View view){
+
+        final String vehicle = spin1.getSelectedItem().toString();
+        final String date1 = fromDate.getText().toString();
+        final String date2 = toDate.getText().toString();
+
+        HttpsTrustManager.allowAllSSL();
+        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/adminreport.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if (response.equalsIgnoreCase("send")) {
+                            Toast.makeText(OwnerReport.this,"Report Has Been Emailed To The User.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(OwnerReport.this,"", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OwnerReport.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("vehicle", vehicle);
+                params.put("date1", date1);
+                params.put("date2", date2);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
     }
 
 

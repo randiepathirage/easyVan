@@ -3,7 +3,7 @@
     require  "conn.php";
 
     
-    $id = $_POST["id"];
+   // $id = $_POST["id"];
     $first_name = $_POST["name"];    
     $contact = $_POST["contact"];
     $email = $_POST["email"];
@@ -15,6 +15,12 @@
     $email = "dimuthuabc@gmail.com";
     $address = "hakamana";
     */
+         //Genarate driver NIC using username
+
+    $NIC = "SELECT NIC_no FROM login  WHERE username = '$first_name'";
+    $query_NIC = mysqli_query($conn,$NIC);
+    $NIC_result = mysqli_fetch_assoc($query_NIC);
+   $id = $NIC_result['NIC_no'];
      
     $sql_user = "UPDATE user    
                 SET  contact_no = '$contact', address = '$address', first_name = '$first_name' 
