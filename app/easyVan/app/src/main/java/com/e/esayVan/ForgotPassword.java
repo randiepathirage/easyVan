@@ -53,7 +53,6 @@ public class ForgotPassword extends AppCompatActivity {
                     Toast.makeText(ForgotPassword.this, "Enter your email", Toast.LENGTH_SHORT).show();
 
                 }else{
-
                     //generate random number
                     r=new Random();
                     output=r.nextInt((9999-999)+1)+999;
