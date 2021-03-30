@@ -33,19 +33,27 @@
     $d1 = mysqli_fetch_assoc($nic_no);
     $nic = $d1['NIC_no'];
     
-
     $vehicle_no = mysqli_query($conn,"SELECT vehicle_no FROM assign WHERE owner_NIC_no = '$nic'");
     $d2 = mysqli_fetch_assoc($vehicle_no);
     $vehicle = $d2['vehicle_no'];
 
     $exp = mysqli_query($conn,"SELECT SUM(amount) FROM expense WHERE vehicle_no='$vehicle' AND date BETWEEN '$date1' AND '$date2'");
-    $d3 = mysqli_fetch_assoc($exp);
-    $expense = $d3['SUM(amount)'];
+    if($exp){
+            $d3 = mysqli_fetch_assoc($exp);
+            $expense = $d3['SUM(amount)'];
+        }
+     else
+        $expense = '0';    
 
     $fee = mysqli_query($conn,"SELECT SUM(fee.amount) FROM fee JOIN child on fee.child_no = child.child_no WHERE child.vehicle_no = '$vehicle' AND fee.paid_date BETWEEN '$date1' AND '$date2'");
-    $d4 = mysqli_fetch_assoc($fee);
-    $fees = $d4['SUM(fee.amount)'];
-
+    if($fee)
+    {
+            $d4 = mysqli_fetch_assoc($fee);
+            $fees = $d4['SUM(fee.amount)'];
+    }
+    else
+        $fees = '0'; 
+          
     $income = $fees-$expense;
 
      class PDF extends FPDF
