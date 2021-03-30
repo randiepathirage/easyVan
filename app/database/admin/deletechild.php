@@ -2,7 +2,7 @@
 
 require 'conn.php';
 
-$cnum = $_POST['child_no'];
+ $cnum = $_POST['child_no'];
 
 
 $Query_child = "DELETE FROM child WHERE child_no = '$cnum'";
