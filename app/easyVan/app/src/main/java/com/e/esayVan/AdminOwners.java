@@ -133,7 +133,6 @@ public class AdminOwners extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(AdminOwners.this,"hiiii",Toast.LENGTH_LONG).show();
                         adminOwnerArrayList.clear();
                         try{
 
