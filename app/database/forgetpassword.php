@@ -9,11 +9,11 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    //$email = $_POST["email"];
-    //$code=$_POST["random"];
+    $email = $_POST["email"];
+    $code=$_POST["random"];
     //$nic_no = "555";
-    $email = "mruv98@gmail.com";
-    $code="5555";
+    //$email = "mruv98@gmail.com";
+    //$code="5555";
 
    
     $sql = "SELECT * FROM login where email LIKE '$email'";
@@ -38,14 +38,7 @@
         $mail->addReplyTo( $adminemail, 'EasyVan');
 
 
-        /*$mail->Subject = 'Forgot Password for EZvan'; 
-        $mail->isHTML(true);
-        $mail->Body    = "click here the link below :
-         "https://localhost/easyvan/resetPassword.php?".key=$email;*/
-
-
-         //$url="http://". $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) ."/resetform.php?".key=$email;
-         $url="http://localhost/easyvan/resetform.php?key=$email";
+       
          $mail->Subject = 'Your password reset code';
          $mail->isHTML(true);
          $mail->Body    = "<h1>You requested a password reset</h1>

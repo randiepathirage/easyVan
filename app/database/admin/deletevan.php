@@ -2,8 +2,8 @@
 
 require 'conn.php';
 
- //$number = $_POST['number'];
- $number = "001";
+ $number = $_POST['number'];
+ //$number = "001";
 
  $Query_vehi = "DELETE FROM vehicle WHERE number = '$number'";
  $Query_insurance = "DELETE FROM insurance WHERE vehicle_no = '$number'";

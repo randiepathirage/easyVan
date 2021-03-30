@@ -16,6 +16,11 @@
     $date1=$_POST["date1"];
     $date2=$_POST["date2"];
 
+    /*$username="ruvidu";
+    $date1="2021-03-01";
+    $date2="2021-03-31";*/
+
+
 
     $owner = "SELECT * FROM login WHERE username='$username'";
     $data = mysqli_query($conn,$owner);
@@ -33,7 +38,7 @@
     $d2 = mysqli_fetch_assoc($vehicle_no);
     $vehicle = $d2['vehicle_no'];
 
-    $exp = mysqli_query($conn,"SELECT SUM(amount) FROM expense WHERE vehicle_no=$vehicle AND date BETWEEN '$date1' AND '$date2'");
+    $exp = mysqli_query($conn,"SELECT SUM(amount) FROM expense WHERE vehicle_no='$vehicle' AND date BETWEEN '$date1' AND '$date2'");
     $d3 = mysqli_fetch_assoc($exp);
     $expense = $d3['SUM(amount)'];
 
@@ -120,10 +125,9 @@
 
         if(!$mail->send()) {
             echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+
         } else {
-            $msg["mail"] = "send";
-            echo json_encode($msg);
+            echo 'send';
         }
 
         $mail->smtpClose();

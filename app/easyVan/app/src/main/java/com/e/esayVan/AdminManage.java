@@ -180,7 +180,7 @@ public class AdminManage extends AppCompatActivity {
                 SessionManagement sessionManagementr = new SessionManagement(AdminManage.this);
                 user = sessionManagementr.getUserName();
 
-                if(checkrole(user)==true)
+                if(checkrole(user))
                 {
                     Intent ointent = new Intent(getApplicationContext(),OwnerManage.class);
                     startActivity(ointent);
