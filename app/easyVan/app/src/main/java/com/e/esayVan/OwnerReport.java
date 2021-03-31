@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.DatePicker;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintJob;
@@ -19,7 +20,6 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -27,14 +27,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -44,8 +42,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class OwnerReport<webView> extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -53,25 +49,33 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
     private WebView webView;
     //private Menu menu;
     Button bt1,bt2;
-    Spinner spin1,reportType;
-    String user,c;
+    Spinner spin1;
     ArrayList<String> vehicleList = new ArrayList<>();
     ArrayAdapter<String> vehicleAdapter;
     RequestQueue requestQueue;
     private static final String PRODUCT_URL="https://10.0.2.2/easyvan/spinner.php";
-    EditText fromDate , toDate;
 
     RadioGroup expType;
-    RadioButton vehiclePart, fuel,vehicleService, license, full;
+    RadioButton expense, fuel , profit;
+    EditText fromDate , toDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_report);
 
+
+        requestQueue = Volley.newRequestQueue(this);
+        spin1 = findViewById(R.id.spinnerVehicle);
+/*         bt2.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View view) {
+                Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
+                startActivity(mang);
+
+            }});*/
         fromDate = findViewById(R.id.fromDate);
         toDate = findViewById(R.id.toDate);
-
         Calendar calendar1=Calendar.getInstance();
         final int year1=calendar1.get(Calendar.YEAR);
         final int month1=calendar1.get(Calendar.MONTH);
@@ -107,20 +111,13 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
         });
 
 
-        requestQueue = Volley.newRequestQueue(this);
-        spin1 = findViewById(R.id.spinnerVehicle);
-        reportType = findViewById(R.id.spinnerType);
-        //expenses type spinner
-        ArrayAdapter myadapter2 = new ArrayAdapter(OwnerReport.this,R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(R.array.report));
-        myadapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        reportType.setAdapter(myadapter2);
-/*         bt2.setOnClickListener(new View.OnClickListener() {
-           @Override
-            public void onClick(View view) {
-                Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
-                startActivity(mang);
-
-            }});*/
+        //get UI data DB >>>>>>>>>>>>>>>.
+        expType = (RadioGroup)findViewById(R.id.add_van_type);
+      //  vehiclePart = (RadioButton)findViewById(R.id.R_vPart);
+        fuel = (RadioButton)findViewById(R.id.R_fuel);
+      //  vehicleService = (RadioButton)findViewById(R.id.R_v_service);
+        expense = (RadioButton)findViewById(R.id.R_licence);
+        profit = (RadioButton)findViewById(R.id.R_full);
 
 
 
@@ -132,15 +129,15 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
                 try {
                     jsonArray = response.getJSONArray("vehicle");
 
-                for(int i=0; i<jsonArray.length();i++){
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String vehicleNumber = jsonObject.optString("number");
-                    vehicleList.add(vehicleNumber);
-                    vehicleAdapter = new ArrayAdapter<>(OwnerReport.this, android.R.layout.simple_spinner_item,vehicleList);
-                    vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spin1.setAdapter(vehicleAdapter  );
+                    for(int i=0; i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String vehicleNumber = jsonObject.optString("number");
+                        vehicleList.add(vehicleNumber);
+                        vehicleAdapter = new ArrayAdapter<>(OwnerReport.this, android.R.layout.simple_spinner_item,vehicleList);
+                        vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spin1.setAdapter(vehicleAdapter  );
 
-                }
+                    }
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -203,47 +200,6 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
 
         getSupportActionBar().setTitle("Report");
     }
-
-    public boolean checkrole(final String username) {
-
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/checkuser.php",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        if(response.equalsIgnoreCase("user is an owner")){
-                            c = "y";
-                        }
-                        else{
-                            c  = "n";
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(OwnerReport.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Map<String,String> params = new HashMap<String,String>();
-                params.put("username",username);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
-
-        if(c == "y")
-            return true;
-        else
-            return false;
-    }
-
     private Menu menu;
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
@@ -274,21 +230,6 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;
-
-            case R.id.switchadmin:
-                SessionManagement sessionManagementr = new SessionManagement(OwnerReport.this);
-                user = sessionManagementr.getUserName();
-
-                if(checkrole(user)==true)
-                {
-                    Intent ointent = new Intent(getApplicationContext(),AdminManage.class);
-                    startActivity(ointent);
-                    return true;
-                }
-                else{
-                    Toast.makeText(OwnerReport.this,"You are not an admin.", Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(AdminManage.this,c, Toast.LENGTH_SHORT).show();
-                }
         }
         return true;
     }
@@ -308,81 +249,43 @@ public class OwnerReport<webView> extends AppCompatActivity implements AdapterVi
 
         String exType = null;
 
-        if (vehiclePart.isChecked()) {
-            exType = "vehicle part";
+
+         if(fuel.isChecked()) {
+            exType = "Fuel";
         }
-        else if(fuel.isChecked()) {
-            exType = "fuel";
+
+        else if(expense.isChecked()) {
+            exType = "expense";
         }
-        else if(vehicleService.isChecked()) {
-            exType = "vehicle service";
-        }
-        else if(license.isChecked()) {
-            exType = "licence";
-        }
-        else if(full.isChecked()) {
-            exType = "full";
+        else if(profit.isChecked()) {
+            exType = "profit";
         }
 
         String str_vehicle = spin1.getSelectedItem().toString();
         String str_exType = exType;
-       /* Toast.makeText(OwnerReport.this, str_vehicle,Toast.LENGTH_SHORT).show();
-        Toast.makeText(OwnerReport.this, str_exType,Toast.LENGTH_SHORT).show();
- */
+        final String date1 = fromDate.getText().toString();
+        final String date2 = toDate.getText().toString();
+        Toast.makeText(OwnerReport.this, date1,Toast.LENGTH_SHORT).show();
+        Toast.makeText(OwnerReport.this, date2,Toast.LENGTH_SHORT).show();
         Intent mang = new Intent(OwnerReport.this,OwnerReportView.class);
         mang.putExtra("vehicleNo",str_vehicle);
-        mang.putExtra("expType",str_exType);//passing data to OwnerReportView
+        mang.putExtra("expType",str_exType);
+        mang.putExtra("date1",date1);
+        mang.putExtra("date2",date2);
+        //passing data to OwnerReportView
         startActivity(mang);
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    //  mang.putExtra("vehicleNo",str_vehicle);
-    //  mang.putExtra("expType",str_exType);//passing data to OwnerReportView
-      //  mCtx.startActivity(mang);
+        //  mang.putExtra("vehicleNo",str_vehicle);
+        //  mang.putExtra("expType",str_exType);//passing data to OwnerReportView
+        //  mCtx.startActivity(mang);
 
 
      /*OwnerReportView OwnerReportView  = new OwnerReportView(OwnerReport.this);
      OwnerReportView.execute(str_vehicle,str_exType);*/
 
 
-    }
-    public void OwnerReport(View view){
-
-        final String vehicle = spin1.getSelectedItem().toString();
-        final String date1 = fromDate.getText().toString();
-        final String date2 = toDate.getText().toString();
-
-        HttpsTrustManager.allowAllSSL();
-        StringRequest request = new StringRequest(Request.Method.POST, "https://10.0.2.2/easyvan/adminreport.php",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        if (response.equalsIgnoreCase("send")) {
-                            Toast.makeText(OwnerReport.this,"Report Has Been Emailed To The User.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(OwnerReport.this,"", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(OwnerReport.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("vehicle", vehicle);
-                params.put("date1", date1);
-                params.put("date2", date2);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
     }
 
 

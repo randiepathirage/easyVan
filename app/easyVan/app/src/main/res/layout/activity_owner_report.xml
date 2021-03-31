@@ -1,98 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/doodle_back_gray"
-    android:orientation="vertical"
-    tools:context=".OwnerReport">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vehicle Number"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:textColor="#000"/>
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerVehicle"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Expense type"
-            android:layout_margin="50dp"
-            android:textColor="#000"/>
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerType"
-            android:layout_width="150dp"
-            android:layout_marginLeft="15dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"/>
-
-    </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time duration"
-            android:layout_marginLeft="50dp"
-            android:textColor="#000"/>
-
-
-
-    <EditText
-        android:id="@+id/fromDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:layout_marginBottom="20dp"
-        android:hint="from"
-        android:ems="10"
-        android:inputType="date" />
-
-
-    <EditText
-        android:id="@+id/toDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:hint="to"
-        android:ems="10"
-        android:inputType="date" />
-
-
-    <Button
-        android:id="@+id/buttonNext"
-        android:layout_width="170dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/roundededge"
-        android:text="Generate"
-        android:onClick="OwnerReport"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="20sp" />
+    tools:context=".OwnerReport"
+    >
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -102,13 +15,142 @@
         android:background="#fff"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        android:layout_marginTop="135dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/owner_nav" />
 
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="170dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/roundededge"
+        android:text="Generate"
+        android:onClick="genarate"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate6" />
+
+    <RadioGroup
+        android:id="@+id/add_van_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView28"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+        <RadioButton
+            android:id="@+id/R_fuel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="302dp"
+            android:text="Fuel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <RadioButton
+            android:id="@+id/R_licence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="10dp"
+            android:text="Expenses"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton6" />
+
+        <RadioButton
+            android:id="@+id/R_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="10dp"
+            android:text="Profit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton7" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="252dp"
+        android:text="Vehicle Number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="280dp"
+        android:text="Expenses type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="305dp"
+        android:text="Time duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_van_type" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerVehicle"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fromDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="from"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_van_type" />
+
+    <EditText
+        android:id="@+id/toDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="to"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromDate" />
 
 
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
