@@ -3,6 +3,7 @@
 
  	$result = array();
  	$result['data'] = array();
+
  	$select= "SELECT user.*, login.username,login.email FROM user JOIN login ON user.NIC_no = login.NIC_no JOIN parent_owner_driver ON user.NIC_no = parent_owner_driver.NIC_no where parent_owner_driver.driver_flag=1";
  	$responce = mysqli_query($conn,$select);
 
@@ -16,6 +17,7 @@
  			$index['username'] = $row['5'];
  			$index['email'] = $row['6'];
 
+ 			// push index array to data field
  			array_push($result['data'], $index);
  		}
 

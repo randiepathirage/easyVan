@@ -16,6 +16,11 @@
     $date1=$_POST["date1"];
     $date2=$_POST["date2"];
 
+    /*$username="ruvidu";
+    $date1="2021-03-01";
+    $date2="2021-03-31";*/
+
+
 
     $owner = "SELECT * FROM login WHERE username='$username'";
     $data = mysqli_query($conn,$owner);
@@ -28,19 +33,27 @@
     $d1 = mysqli_fetch_assoc($nic_no);
     $nic = $d1['NIC_no'];
     
-
     $vehicle_no = mysqli_query($conn,"SELECT vehicle_no FROM assign WHERE owner_NIC_no = '$nic'");
     $d2 = mysqli_fetch_assoc($vehicle_no);
     $vehicle = $d2['vehicle_no'];
 
-    $exp = mysqli_query($conn,"SELECT SUM(amount) FROM expense WHERE vehicle_no=$vehicle AND date BETWEEN '$date1' AND '$date2'");
-    $d3 = mysqli_fetch_assoc($exp);
-    $expense = $d3['SUM(amount)'];
+    $exp = mysqli_query($conn,"SELECT SUM(amount) FROM expense WHERE vehicle_no='$vehicle' AND date BETWEEN '$date1' AND '$date2'");
+    if($exp){
+            $d3 = mysqli_fetch_assoc($exp);
+            $expense = $d3['SUM(amount)'];
+        }
+     else
+        $expense = '0';    
 
     $fee = mysqli_query($conn,"SELECT SUM(fee.amount) FROM fee JOIN child on fee.child_no = child.child_no WHERE child.vehicle_no = '$vehicle' AND fee.paid_date BETWEEN '$date1' AND '$date2'");
-    $d4 = mysqli_fetch_assoc($fee);
-    $fees = $d4['SUM(fee.amount)'];
-
+    if($fee)
+    {
+            $d4 = mysqli_fetch_assoc($fee);
+            $fees = $d4['SUM(fee.amount)'];
+    }
+    else
+        $fees = '0'; 
+          
     $income = $fees-$expense;
 
      class PDF extends FPDF
@@ -120,10 +133,9 @@
 
         if(!$mail->send()) {
             echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+
         } else {
-            $msg["mail"] = "send";
-            echo json_encode($msg);
+            echo 'send';
         }
 
         $mail->smtpClose();

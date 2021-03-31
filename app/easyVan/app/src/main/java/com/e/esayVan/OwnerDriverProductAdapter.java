@@ -1,6 +1,7 @@
 package com.e.esayVan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         //getting the product of the specified position
-        OwnerDriversProduct product = productList.get(position);
+        final OwnerDriversProduct product = productList.get(position);
 
         //binding the data with the viewholder views
         holder.username.setText(product.getUsername() );
@@ -46,9 +47,23 @@ public class OwnerDriverProductAdapter extends RecyclerView.Adapter<OwnerDriverP
         holder.LicenseNO.setText(product.getLicenseNo());
         holder.contact.setText(product.getContactNo());
         holder.email.setText(product.getEmail());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mCtx, OwnerEditDriverDetials.class);
+                intent.putExtra("username",product.getUsername());
+                intent.putExtra("vehicleNo",product.getVehicleNo());
+                intent.putExtra("LicenseNo",product.getLicenseNo());
+                intent.putExtra("content",product.getContactNo());
+                intent.putExtra("email",product.getEmail());
+                mCtx.startActivity(intent);
+
+            }
+        });
+
     }
-
-
     @Override
     public int getItemCount() {
         return productList.size();

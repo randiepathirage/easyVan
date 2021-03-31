@@ -5,7 +5,7 @@
 require  "conn.php";
 //creating a query
 $user_name=$_POST['username'];
-$user_name="Nimal";
+//$user_name="Nimal";
 
 // genarate driver NIC using username>>>>>>>>>
 
@@ -29,7 +29,7 @@ $Result_VehicelNO= $VN_result ['vehicle_no'];
 
 //Genarate child details.........................
 
-$stmt = $conn->prepare("SELECT child_no 
+$stmt = $conn->prepare("SELECT first_name,last_name 
 FROM child WHERE vehicle_no = '$Result_VehicelNO'");
 
 //...........................................
@@ -40,7 +40,7 @@ FROM child WHERE vehicle_no = '$Result_VehicelNO'");
 $stmt->execute();
 
 //binding results to the query 
-$stmt->bind_result($child_no);
+$stmt->bind_result($f_name,$l_name);
 
 $products = array(); 
 
@@ -48,7 +48,8 @@ $products = array();
 while($stmt->fetch()){
 $temp = array();
 
-$temp['c_no'] =  $child_no; 
+$temp['f_name'] =  $f_name; 
+$temp['l_name'] =  $l_name; 
 
 array_push($products, $temp);
 }

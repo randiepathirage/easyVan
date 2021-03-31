@@ -66,14 +66,14 @@ public class OwnerDrivers extends AppCompatActivity {
         //initializing the vehiclelist
         DriverList = new ArrayList<>();
 
-       loadVehicles();
+       loadDrivers();
 
         getSupportActionBar().setTitle("Drivers");
 
 
 
     }
-    private void loadVehicles() {
+    private void loadDrivers() {
 
         HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, PRODUCT_URL,
@@ -134,6 +134,7 @@ public class OwnerDrivers extends AppCompatActivity {
 
 
     }
+
     public void btn_add_Driver (View view) {
         startActivity(new Intent(getApplicationContext(),DriverSignUp.class));
     }

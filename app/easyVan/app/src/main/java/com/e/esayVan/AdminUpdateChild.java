@@ -56,6 +56,34 @@ public class AdminUpdateChild extends AppCompatActivity {
 
     }
 
+    private Boolean validateName(){
+        String val_firstName= edcfname.getText().toString();
+        String val_lastName= edclname.getText().toString();
+
+        if(val_firstName.isEmpty() & val_lastName.isEmpty()){
+            edcfname.setError("This field cannot be empty");
+            edclname.setError("This field cannot be empty");
+            return false;
+        }
+        else if(val_lastName.isEmpty()){
+            edcfname.setError("This field cannot be empty");
+            edclname.setError(null);
+            return false;
+        }
+        else if(val_firstName.isEmpty()){
+            edcfname.setError("This field cannot be empty");
+            edclname.setError(null);
+            return false;
+        }
+        else{
+            edcfname.setError(null);
+            edclname.setError(null);
+            return true;
+        }
+    }
+
+
+
     public void btn_updateData(View view) {
 
         final String child_no = cnum;
@@ -68,6 +96,10 @@ public class AdminUpdateChild extends AppCompatActivity {
         final String vehicle_no = edcvan.getText().toString();
         final String fees = edcfee.getText().toString();
         final String parent_name = pname;
+
+        if(!validateName()){
+            return;
+        }
 
 
 

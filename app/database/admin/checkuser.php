@@ -2,8 +2,8 @@
 
 require 'conn.php';
 
- //$username = $_POST['username'];
- $username = "ruvidu";
+ $username = $_POST['username'];
+ //$username = "ruvidu";
 
  $nic_no= mysqli_query($conn,"SELECT NIC_no FROM login WHERE username = '$username'");
  $result = mysqli_fetch_array($nic_no);
