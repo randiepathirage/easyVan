@@ -48,10 +48,10 @@ public class OwnerReportView extends AppCompatActivity {
     String Name;
     //add button
     Button addVan;
-   /* String vehicle = "KK 2332";
-    String expType = "fuel";*/
+    /* String vehicle = "KK 2332";
+     String expType = "fuel";*/
     String vehicle ;
-    String expType;
+    String expType,date1,date2;
 
     private WebView webView;
     //  String vehicle,expType;
@@ -64,6 +64,8 @@ public class OwnerReportView extends AppCompatActivity {
 
         vehicle=getIntent().getStringExtra("vehicleNo");
         expType=getIntent().getStringExtra("expType");
+        date1=getIntent().getStringExtra("date1");
+        date2=getIntent().getStringExtra("date2");
 
         Total = findViewById(R.id.textView35);
 
@@ -143,6 +145,8 @@ public class OwnerReportView extends AppCompatActivity {
 
                 params.put("expType", expType);
                 params.put("vehicle", vehicle);
+                params.put("date1", date1);
+                params.put("date2", date2);
                 /*   Toast.makeText(OwnerReportView.this,expType,Toast.LENGTH_LONG).show();
                 Toast.makeText(OwnerReportView.this,vehicle,Toast.LENGTH_LONG).show();*/
                 // params.put("username",userName);
@@ -198,9 +202,9 @@ public class OwnerReportView extends AppCompatActivity {
 
                 Total.setText("total:"+Str_amount);
                 Total.setText("2000");
-               // Total.setText("1000");
-               // Total.setText(Str_amount);
-             //   Toast.makeText(OwnerReportView.this,Str_amount,Toast.LENGTH_SHORT);
+                // Total.setText("1000");
+                // Total.setText(Str_amount);
+                //   Toast.makeText(OwnerReportView.this,Str_amount,Toast.LENGTH_SHORT);
 
                /* edtContactNo.setText(strContactNo);
                 edtEmail.setText(strEmail);

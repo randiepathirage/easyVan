@@ -113,7 +113,6 @@ public class OwnerAccountUpdate extends AppCompatActivity {
         final String contact = edtContactNo.getText().toString();
         final String email = edtEmail.getText().toString();
         final String address = edtAddress.getText().toString();
-        final String nic = "123456789";
         final ProgressDialog progressDialog = new ProgressDialog(OwnerAccountUpdate.this);
         progressDialog.setMessage("updating....");
         progressDialog.show();
@@ -141,7 +140,6 @@ public class OwnerAccountUpdate extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String,String>();
-                params.put("id", nic);
                 params.put("name", username);
                 params.put("contact", contact);
                 params.put("email", email);

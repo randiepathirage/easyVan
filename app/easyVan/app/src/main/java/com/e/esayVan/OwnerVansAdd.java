@@ -254,7 +254,7 @@ public class OwnerVansAdd extends AppCompatActivity {
         }
     }
 
-    private Boolean validateCaretacker() {
+/*    private Boolean validateCaretacker() {
         String val_caretacker = caretaker.getText().toString();
 
         if (val_caretacker.isEmpty()) {
@@ -264,7 +264,7 @@ public class OwnerVansAdd extends AppCompatActivity {
             caretaker.setError(null);
             return true;
         }
-    }
+    }*/
     private Boolean validateSeats()
     {
 
@@ -315,7 +315,7 @@ public class OwnerVansAdd extends AppCompatActivity {
              //   | !validateType()
                 | !validateModel()
                 | !validatePermitNo()
-                | !validateCaretacker()
+                //| !validateCaretacker()
                 | !validateVehicleNo()
                 | !validateSeats()
                 | !validateschool()

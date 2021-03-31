@@ -7,21 +7,6 @@
     tools:context=".OwnerExpenses"
     android:background="@drawable/doodle_back_gray">
 
-    <EditText
-        android:id="@+id/edtdate"
-        android:layout_width="266dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="40dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="Date: yyyy-mm-dd"
-        android:padding="15dp"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -65,11 +50,11 @@
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="100dp"
         android:text="Select Expenses Type"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <TextView
         android:id="@+id/textView3"
@@ -120,18 +105,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="29dp"
-        android:text="Date"
-        app:layout_constraintEnd_toStartOf="@+id/date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
