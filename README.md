@@ -1,3 +1,5 @@
+## Introduction
+
 School van is one of the leading transportation modes used among Sri Lankan school children as it is convenient and safer than the other public transportation modes. Even though around 30,000 school vans/buses (According to state estimates) provide service in Sri Lanka, a vital requirement of proper information providing mechanism to the stakeholders of the school transportation is prevailing.
 
 EasyVan is an application that allows all the school van owners to input details about school vans. If a parent is required to find a school van for the child, he/she could quickly browse through the application and find a suitable school van according to his/her specifications
